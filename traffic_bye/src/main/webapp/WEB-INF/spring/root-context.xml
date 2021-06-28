@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- <util:properties id="team2" location="classpath:/config/database.properties" 
+		/> -->
+
+	<context:property-placeholder
+		location="classpath:config/*" />
+
+
+	<bean id="dataSource" class="oracle.ucp.jdbc.PoolDataSourceImpl">
+		<property name="connectionFactoryClassName"
+			value="${db.connectionFactoryClassName}" />
+
+		<!-- Connection URL uses a TNS alias -->
+		<property name="URL" value="${db.URL}" />
+		<property name="user" value="${db.user}" />
+		<property name="password" value="${db.password}" />
+		<property name="initialPoolSize"
+			value="${db.initialPoolSize}" />
+		<property name="maxPoolSize" value="${db.maxPoolSize}" />
+		<!-- <property name="connectionFactoryClassName" value="oracle.jdbc.pool.OracleDataSource" 
+			/> Connection URL uses a TNS alias <property name="URL" value="jdbc:oracle:thin:@db202106211415_medium?TNS_ADMIN=C:/dev/Wallet_DB202106211415" 
+			/> <property name="user" value="team2" /> <property name="password" value="Hyundaiite123" 
+			/> <property name="initialPoolSize" value="5" /> <property name="maxPoolSize" 
+			value="10" /> -->
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<bean id="SqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
+
+	<bean id="sampleDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="SqlSession"
+		p:mapperInterface="traffic.bye.dao.SampleDAO" />
+
+
+</beans>

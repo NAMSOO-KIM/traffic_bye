@@ -48,3 +48,13 @@ Thumbs.db
 *.mov
 *.wmv
 
+# properties files
+
+### Eclipse Patch ###
+# Eclipse Core
+.project
+.settings/
+
+# STS (Spring Tool Suite)
+.springBeans
+*.properties
