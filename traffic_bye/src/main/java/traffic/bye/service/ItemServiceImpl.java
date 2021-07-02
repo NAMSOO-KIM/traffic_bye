@@ -1,0 +1,30 @@
+package traffic.bye.service;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+import traffic.bye.dao.ItemDAO;
+import traffic.bye.vo.ItemVO;
+
+
+@Slf4j
+@Service
+public class ItemServiceImpl implements ItemService {
+	
+	@Autowired
+	private ItemDAO itemDAO;
+
+
+	@Override
+	public List<ItemVO> getItemList() throws Exception {
+		
+		return itemDAO.getItemList();
+	}
+
+	
+}

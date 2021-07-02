@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.ItemDAO">
+
+	
+	<select id="getItemList" resultType="ItemVO">
+	<![CDATA[
+		select i.id, i.CATEGORY_ID, i.name, i.stock, i.price, i.detail, i.store_id, im.upload_file_name, im.real_file_name
+		from item i
+		join item_image im
+		on i.id = im.item_id
+	]]>
+	</select>
+	
+	
+	
+</mapper>

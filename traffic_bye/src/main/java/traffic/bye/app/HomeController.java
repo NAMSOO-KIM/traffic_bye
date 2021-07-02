@@ -2,6 +2,7 @@ package traffic.bye.app;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import traffic.bye.dao.SampleDAO;
+import traffic.bye.service.ItemService;
+import traffic.bye.vo.ItemVO;
 
 /**
  * Handles requests for the application home page.
@@ -24,6 +27,9 @@ public class HomeController {
 	
 	@Autowired
 	SampleDAO sampleDAO;
+	
+	@Autowired
+	ItemService itemService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -41,6 +47,14 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
+		try {
+			List<ItemVO> list = itemService.getItemList();
+			model.addAttribute("itemList",list);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "index";
