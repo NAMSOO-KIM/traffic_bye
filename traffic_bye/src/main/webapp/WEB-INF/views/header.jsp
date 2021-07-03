@@ -6,8 +6,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <link rel="icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon">
+    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
+                  
+    <!--Slick slider css-->
+    
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/slick.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/slick-theme.css">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/animate.css">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/themify-icons.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/bootstrap.css">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/style.css">
+
+<!-- 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ -->
 </head>
 <body>
     <!-- loader start -->
@@ -48,8 +85,8 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logo.png"
-                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                    <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logos.png"
+                                            class="img-fluid blur-up lazyload" alt="" style="width: 179px; height: 34px;"></a>
                                 </div>
                             </div>
                             <div class="menu-right pull-right">
@@ -402,8 +439,8 @@
                                 </div>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logo.png"
-                                        class="img-fluid blur-up lazyload" alt=""></a>
+                                <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logos.png"
+                                        class="img-fluid blur-up lazyload" alt="" style="width: 179px; height: 34px;"></a>
                             </div>
                         </div>
                         <div class="menu-right pull-right">
@@ -425,7 +462,7 @@
                                                             <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title">
-                                                                        <h5>add to cart</h5>
+                                                                        <h5></h5>
                                                                     </div>
                                                                     <div class="menu-content">
                                                                         <ul>
