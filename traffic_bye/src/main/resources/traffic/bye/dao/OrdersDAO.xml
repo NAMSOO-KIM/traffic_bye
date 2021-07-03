@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.OrdersDAO">
+<insert id="inserOrders" parameterType="OrdersVO">
+
+insert into orders(id,member_id,departure_date, payment_date, status, amount,destination_id, cigarette_amount, drink_amount, perfume_amount)
+values(order_id_seq.nextval,1,sysdate,sysdate, 0, 3,1,1,1,1);
+
+</insert>
+
+</mapper>
