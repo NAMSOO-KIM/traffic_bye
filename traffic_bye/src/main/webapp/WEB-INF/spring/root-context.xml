@@ -44,18 +44,6 @@
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
 
-	<bean id="SqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
-
-	<bean id="sampleDAO"
-		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="SqlSession"
-		p:mapperInterface="traffic.bye.dao.SampleDAO" />
-	<bean id="memberDAO"
-		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="SqlSession"
-		p:mapperInterface="traffic.bye.dao.MemberDAO" />
 
 
 </beans>
