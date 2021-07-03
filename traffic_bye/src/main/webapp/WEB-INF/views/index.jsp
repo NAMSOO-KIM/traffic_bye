@@ -6,47 +6,11 @@
 <c:set var="itemList" value="${itemList}" />
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="multikart">
-    <meta name="keywords" content="multikart">
-    <meta name="author" content="multikart">
-    <link rel="icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon">
-    <link rel="shortcut icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon">
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
-
-    <!--Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
-                  
-    <!--Slick slider css-->
-    
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/slick.css">
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/slick-theme.css">
-
-    <!-- Animate icon -->
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/animate.css">
-
-    <!-- Themify icon -->
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/themify-icons.css">
-
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/bootstrap.css">
-
-    <!-- Theme css -->
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/style.css">
-
-
 
 </head>
-
+ -->
 <body class="theme-color-1">
 
 
@@ -57,15 +21,21 @@
         <div class="slide-1 home-slider">
             <div>
                 <div class="home  text-center">
-                    <img src="${contextPath}/resources/assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload">
+                
+                  <!--  <img src="${contextPath}/resources/assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload"> --> 
+                  <img src="https://cdn.hddfs.com/files/dm/20210526/975ccbe9_202105260921408170.jpg?RS=1920x718" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
                                     <div>
-                                        <h4>welcome to fashion</h4>
-                                        <h1>men fashion</h1>
+                                    	 <!-- 
+                                        <h4>윤아가 차근차근 알려줄게요~</h4>
+                                        <h1>혼잡도 서비스 함께해요!</h1>
+                                         -->
+                                        <!-- 
                                         <a href="#" class="btn btn-solid">shop now</a>
+                                         -->
                                     </div>
                                 </div>
                             </div>
@@ -75,15 +45,16 @@
             </div>
             <div>
                 <div class="home text-center">
-                    <img src="${contextPath}/resources/assets/images/home-banner/2.jpg" alt="" class="bg-img blur-up lazyload">
+                    <img src="https://cdn.hddfs.com/files/dm/20210601/726d8e81_202106011800365620.jpg?RS=1920x450" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
                                     <div>
-                                        <h4>welcome to fashion</h4>
+                                        <!-- <h4>welcome to fashion</h4>
                                         <h1>women fashion</h1>
                                         <a href="#" class="btn btn-solid">shop now</a>
+                                         -->
                                     </div>
                                 </div>
                             </div>
@@ -104,15 +75,17 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="${contextPath}/resources/assets/images/sub-banner1.jpg" class="img-fluid blur-up lazyload bg-img"
+                                <img src="https://cdn.hddfs.com/files/dm/20210426/f8ebe76c_202104260935171020.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
+                            <!-- 
                             <div class="contain-banner">
                                 <div>
                                     <h4>save 30%</h4>
                                     <h2>men</h2>
                                 </div>
                             </div>
+                             -->
                         </div>
                     </a>
                 </div>
@@ -120,15 +93,17 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="${contextPath}/resources/assets/images/sub-banner2.jpg" class="img-fluid blur-up lazyload bg-img"
+                                <img src="https://cdn.hddfs.com/files/dm/20210512/2d87894d_202105121747001780.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
+                            <!-- 
                             <div class="contain-banner">
                                 <div>
                                     <h4>save 60%</h4>
                                     <h2>women</h2>
                                 </div>
                             </div>
+                             -->
                         </div>
                     </a>
                 </div>
@@ -140,11 +115,13 @@
 
     <!-- Paragraph-->
     <div class="title1 section-t-space">
-        <h4>special offer</h4>
-        <h2 class="title-inner1">Latest Drops</h2>
+        <h4>베스트 상품!</h4>
+        <h2 class="title-inner1">스마트 오더 인기 제품</h2>
     </div>
+    <!-- 
     <div class="container">
         <div class="row">
+        
             <div class="col-lg-6 offset-lg-3">
                 <div class="product-para">
                     <p class="text-center">Looking for the latest trends in clothing, shoes and accessories? Welcome to our 'Latest Drops' edit, bringing you all the latest styles from all your fave brands.</p>
@@ -152,6 +129,7 @@
             </div>
         </div>
     </div>
+     -->
     <!-- Paragraph end -->
 
 
@@ -161,197 +139,54 @@
             <div class="row">
                 <div class="col">
                     <div class="product-4 product-m no-arrow">
-                        <div class="product-box">
-                            <div class="img-wrapper">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
-                                        <i class="ti-shopping-cart"></i>
-                                    </button>
-                                    <a href="javascript:void(0)" title="Add to Wishlist">
-                                        <i class="ti-heart" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
-                                        <i class="ti-search" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="compare.html" title="Compare">
-                                        <i class="ti-reload" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Purple polo tshirt</h6>
-                                </a>
-                                <h4>$20.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-wrapper">
-                                <div class="lable-block"><span class="lable3">new</span> <span class="lable4">on
-                                        sale</span></div>
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html">
-                                        <img src="${contextPath}/resources/assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt=""></a>
-                                </div>
-                                <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-bs-toggle="modal" data-bs-target="#quick-view"
-                                        title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a
-                                        href="compare.html" title="Compare"><i class="ti-reload"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Sleevless white top</h6>
-                                </a>
-                                <h4>$25.00 <del>$30.00</del></h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-wrapper">
-                                <div class="lable-block"><span class="lable3">new</span> <span class="lable4">on
-                                        sale</span></div>
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/33.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/34.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-bs-toggle="modal" data-bs-target="#quick-view"
-                                        title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a
-                                        href="compare.html" title="Compare"><i class="ti-reload"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>multi color polo tshirt</h6>
-                                </a>
-                                <h4>$65.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-wrapper">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-bs-toggle="modal" data-bs-target="#quick-view"
-                                        title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a
-                                        href="compare.html" title="Compare"><i class="ti-reload"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Candy red solid tshirt</h6>
-                                </a>
-                                <h4>$89.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-wrapper">
-                                <div class="lable-block"><span class="lable3">new</span> <span class="lable4">on
-                                        sale</span></div>
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/33.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="${contextPath}/resources/assets/images/pro3/34.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-bs-toggle="modal" data-bs-target="#quick-view"
-                                        title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a
-                                        href="compare.html" title="Compare"><i class="ti-reload"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>multicolored polo tshirt</h6>
-                                </a>
-                                <h4>$36.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
+                    	<!--  시작 -->
+                    	
+                    	<c:forEach items="${itemList}" var="itemVar">
+                              <div class="product-box">
+                                  <div class="img-wrapper">
+                                      <div class="front">
+                                          <a href="${contextPath}/items/${itemVar.id}"><img
+                                                  src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
+                                                  class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                      </div>
+                                      <div class="back">
+                                          <a href="${contextPath}/items/${itemVar.id}"><img
+                                                  src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
+                                                  class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                      </div>
+                                      <div class="cart-info cart-wrap">
+                                          <button data-bs-toggle="modal" data-bs-target="#addtocart"
+                                              title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                              href="javascript:void(0)" title="Add to Wishlist"><i
+                                                  class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                              data-bs-toggle="modal" data-bs-target="#quick-view"
+                                              title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                                          <a href="compare.html" title="Compare"><i class="ti-reload"
+                                                  aria-hidden="true"></i></a>
+                                      </div>
+                                  </div>
+                                  <div class="product-detail">
+                                      <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                              class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                              class="fa fa-star"></i></div>
+                                      <a href="product-page(no-sidebar).html">
+                                          <h6>${itemVar.name}</h6>
+                                      </a>
+                                      <h4>${itemVar.price}</h4>
+                                      <ul class="color-variant">
+                                          <li class="bg-light0"></li>
+                                          <li class="bg-light1"></li>
+                                          <li class="bg-light2"></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              </c:forEach>
+                        
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
     </section>
     <!-- Product slider end -->
 
@@ -359,14 +194,15 @@
     <!-- Parallax banner -->
     <section class="p-0">
         <div class="full-banner parallax text-center p-left">
-            <img src="${contextPath}/resources/assets/images/parallax/1.jpg" alt="" class="bg-img blur-up lazyload">
+            <img src="https://cdn.hddfs.com/files/dm/20210526/b804f39c_202105261400021610.jpg?RS=1920x450" alt="" class="bg-img blur-up lazyload">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="banner-contain">
                             <h2>2021</h2>
-                            <h3>fashion trends</h3>
-                            <h4>special offer</h4>
+                            <h3 style="color:white !important">혼잡도 분석 서비스</h3>
+                            <h5 style="color:white !important">스따또!!</h5>
+                            
                         </div>
                     </div>
                 </div>
@@ -378,8 +214,8 @@
 
     <!-- Tab product -->
     <div class="title1 section-t-space">
-        <h4>exclusive products</h4>
-        <h2 class="title-inner1">everyday casual</h2>
+        <h4>얼마 남지 않았어요!</h4>
+        <h2 class="title-inner1">곧 매진될 상품</h2>
     </div>
     <section class="section-b-space pt-0 ratio_asos">
         <div class="container">
@@ -387,22 +223,20 @@
                 <div class="col">
                     <div class="theme-tab">
                         <ul class="tabs tab-title">
-                            <li class="current"><a href="tab-4">work casual</a></li>
-                            <li class=""><a href="tab-5">WFH Wear</a></li>
-                            <li class=""><a href="tab-6">comfort wear</a></li>
+                            <li class="current"><a href="tab-4">식품</a></li>
+                            <li class=""><a href="tab-5">전자</a></li>
+                            <li class=""><a href="tab-6">담배/주류</a></li>
                         </ul>
                         <div class="tab-content-cls">
                             <div id="tab-4" class="tab-content active default">
                                 <div class="no-slider row">
                                 
-                                
-                                
-                                	<!-- 여기 진짜진짜 최종 -->
+                                	
                                 <c:forEach items="${itemList}" var="itemVar">
                                     <div class="product-box">
                                         <div class="img-wrapper">
                                             <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
+                                                <a href="${contextPath}/items/${itemVar.id}"><img
                                                         src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
@@ -439,20 +273,22 @@
                                     </div>
                                     </c:forEach>
                             </div>
+                            </div>
                             <div id="tab-5" class="tab-content">
+                            	
                                 <div class="no-slider row">
+                                	
+                                    <c:forEach items="${itemList}" var="itemVar">
                                     <div class="product-box">
                                         <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
                                             <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/33.jpg"
+                                                <a href="${contextPath}/items/${itemVar.id}"><img
+                                                        src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/34.jpg"
+                                                <a href="${contextPath}/items/${itemVar.id}"><img
+                                                        src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -471,9 +307,9 @@
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i></div>
                                             <a href="product-page(no-sidebar).html">
-                                                <h6>purple solid polo tshirt</h6>
+                                                <h6>${itemVar.name}</h6>
                                             </a>
-                                            <h4>$50.00</h4>
+                                            <h4>${itemVar.price}</h4>
                                             <ul class="color-variant">
                                                 <li class="bg-light0"></li>
                                                 <li class="bg-light1"></li>
@@ -481,350 +317,26 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Candy red solid tshirt</h6>
-                                            </a>
-                                            <h4>$35.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>sleevles white tshirt with text</h6>
-                                            </a>
-                                            <h4>$55.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>purple solid polo tshirt</h6>
-                                            </a>
-                                            <h4>$56.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    </c:forEach>
                                     
-                                    
-                                    <!-- 여기부터 진짜 시작 -->
-                                    
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>purple solid polo tshirt</h6>
-                                            </a>
-                                            <h4>$35.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>sleevles white tshirt with text</h6>
-                                            </a>
-                                            <h4>$16.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/33.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>multi-color polo tshirt</h6>
-                                            </a>
-                                            <h4>$19.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Candy red solid tshirt</h6>
-                                            </a>
-                                            <h4>$18.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
                             
                             
                             <div id="tab-6" class="tab-content">
                                 <div class="no-slider row">
-                                	<!-- 여기 시작 -->
-                               	<!--<c:forEach items="${itemList}" var="itemVar"> -->
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/33.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>adfadf</h6>
-                                            </a>
-                                            <h4>asf</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--</c:forEach> -->
-                                    
-                                    
-                                    <!-- 여기 끝 -->
-                                    
-                                 
-                                    
+                                <c:forEach items="${itemList}" var="itemVar">
                                     <div class="product-box">
                                         <div class="img-wrapper">
                                             <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/27.jpg"
+                                                <a href="${contextPath}/items/${itemVar.id}"><img
+                                                        src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/28.jpg"
+                                                <a href="${contextPath}/items/${itemVar.id}"><img
+                                                        src="${contextPath}/ItemImage?id=${itemVar.store_id}&image=${itemVar.real_file_name}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -843,9 +355,9 @@
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i></div>
                                             <a href="product-page(no-sidebar).html">
-                                                <h6>purple solid polo tshirt</h6>
+                                                <h6>${itemVar.name}</h6>
                                             </a>
-                                            <h4>$35.00</h4>
+                                            <h4>${itemVar.price}</h4>
                                             <ul class="color-variant">
                                                 <li class="bg-light0"></li>
                                                 <li class="bg-light1"></li>
@@ -853,250 +365,14 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/33.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>multi-color polo tshirt</h6>
-                                            </a>
-                                            <h4>$28.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
+                                    </c:forEach>
                                     </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>sleevles white tshirt with text</h6>
-                                            </a>
-                                            <h4>$16.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Candy red solid tshirt</h6>
-                                            </a>
-                                            <h4>$24.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Candy red solid tshirt</h6>
-                                            </a>
-                                            <h4>$24.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>sleevles white tshirt with text</h6>
-                                            </a>
-                                            <h4>$38.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>purple solid polo tshirt</h6>
-                                            </a>
-                                            <h4>$24.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                     
-                                     
                                 </div>
                             </div>
-                             
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            
     </section>
     <!-- Tab product end -->
 
@@ -1113,8 +389,8 @@
                                 fill="#ff4c3b" />
                         </svg>
                         <div class="media-body">
-                            <h4>free shipping</h4>
-                            <p>free shipping world wide</p>
+                            <h4>빠른 서비스</h4>
+                            <p>편리하고 빠른 서비스</p>
                         </div>
                     </div>
                 </div>
@@ -1143,8 +419,8 @@
                             </g>
                         </svg>
                         <div class="media-body">
-                            <h4>24 X 7 service</h4>
-                            <p>online service for new customer</p>
+                            <h4>24시간 이용 가능</h4>
+                            <p>쉬지 않아요~!</p>
                         </div>
                     </div>
                 </div>
@@ -1171,8 +447,8 @@
                                 fill="#ff4c3b" />
                         </svg>
                         <div class="media-body">
-                            <h4>festival offer</h4>
-                            <p>new online special festival offer</p>
+                            <h4>알림 서비스</h4>
+                            <p>준비가 되면 알려드려요~</p>
                         </div>
                     </div>
                 </div>
@@ -1187,8 +463,8 @@
         <div class="row">
             <div class="col">
                 <div class="title1 section-t-space">
-                    <h4>From the Blog</h4>
-                    <h2 class="title-inner1">Fashion for you</h2>
+                    <h4>현대면세점</h4>
+                    <h2 class="title-inner1">WHAT’S NEW IN SNS</h2>
                 </div>
             </div>
         </div>
@@ -1199,100 +475,68 @@
                 <div class="col-md-12">
                     <div class="slide-3 no-arrow slick-default-margin">
                         <div class="col-md-12">
-                            <a href="#">
+                            <a href="https://www.instagram.com/hddfs.official/">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="${contextPath}/resources/assets/images/blog/1.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="https://cdn.hddfs.com/files/dm/20210112/fe561b7c_202101121731431210.jpg?RS=1000x591" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
                                 </div>
                             </a>
                             <div class="blog-details">
-                                <h4>25 January 2021</h4>
+                                <h4>집콕하면 뭐겠어요! 여러분들!</h4>
                                 <a href="#">
-                                    <p>Top 10 January Best-Sellers Products – All Under $50!</p>
+                                    <p>운동도 하고, 레고도 하고, 명상도 하고!</p>
+                                    
                                 </a>
                                 <hr class="style1">
+                                <!-- 
                                 <h6>by: John Dio , 2 Comment</h6>
+                                 -->
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <a href="#">
+                            <a href="https://www.instagram.com/hddfs.official/">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="${contextPath}/resources/assets/images/blog/2.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="https://cdn.hddfs.com/files/dm/20210112/7b9cf7d5_202101121730471610.jpg?RS=1000x591" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
                                 </div>
                             </a>
                             <div class="blog-details">
-                                <h4>25 January 2018</h4>
+                                <h4>현백면에도 흰소가 방문했소!</h4>
                                 <a href="#">
-                                    <p>Quarantine Birthday Celebration | In The Times of COVID-19</p>
+                                    <p>주민 여러분들, 새해 복 많이 받으소!</p>
                                 </a>
                                 <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
+                                <!-- <h6>by: John Dio , 2 Comment</h6> -->
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <a href="#">
+                            <a href="https://www.instagram.com/hddfs.official/">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="${contextPath}/resources/assets/images/blog/3.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="https://cdn.hddfs.com/files/dm/20210112/381341dc_202101121729025050.jpg?RS=1000x591" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
                                 </div>
                             </a>
                             <div class="blog-details">
-                                <h4>25 January 2018</h4>
+                                <h4>2020년을 빛낸 현백면</h4>
                                 <a href="#">
-                                    <p>London fashion & Hair Trends From Fashion Week</p>
+                                    <p>2021년에도 현백면과 더 행복합시다</p>
                                 </a>
                                 <hr class="style1">
+                                <!-- 
                                 <h6>by: John Dio , 2 Comment</h6>
+                                 -->
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="${contextPath}/resources/assets/images/blog/4.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>Fun Fashion Clothing and Ideas for Valentine’s Day</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="${contextPath}/resources/assets/images/blog/5.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -1306,11 +550,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 p-0">
-                    <h2 class="title-borderless">#whowearwhat</h2>
+                    <h2 class="title-borderless">개발자</h2>
                     <div class="slide-7 no-arrow slick-instagram">
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/2.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/2.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -1318,7 +562,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/3.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/3.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -1326,60 +570,23 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/4.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/4.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
                             </a>
                         </div>
+                        
+                        
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/9.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/5.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
                             </a>
                         </div>
-                        <div>
-                            <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/6.jpg" class="bg-img"
-                                        alt="img">
-                                    <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/7.jpg" class="bg-img"
-                                        alt="img">
-                                    <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/8.jpg" class="bg-img"
-                                        alt="img">
-                                    <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/9.jpg" class="bg-img"
-                                        alt="img">
-                                    <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/2.jpg" class="bg-img"
-                                        alt="img">
-                                    <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                                </div>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -1387,74 +594,7 @@
     </section>
     <!-- instagram section end -->
 
-
-    <!--  logo section -->
-    <%-- <section class="section-b-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="slide-6 no-arrow">
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/1.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/2.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/3.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/4.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/5.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/6.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/7.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="logo-block">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/logos/8.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --%>
-    <!--  logo section end-->
-
-
-        
     <jsp:include page="footer.jsp"></jsp:include>
-
-
-    <!-- cookie bar start -->
-    <!-- <div class="cookie-bar">
-        <p>We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept
-            our cookie policy.</p>
-        <a href="javascript:void(0)" class="btn btn-solid btn-xs">accept</a>
-        <a href="javascript:void(0)" class="btn btn-solid btn-xs">decline</a>
-    </div> -->
-    <!-- cookie bar end -->
-
 
     <!--modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
@@ -1567,6 +707,7 @@
     <!-- theme setting -->
     <div class="theme-settings">
         <ul>
+        	<!-- 
             <li class="demo-li">
                 <a href="javascript:void(0)" onclick="openSetting()">
                     <div class="setting-sidebar" id="setting-icon">
@@ -1574,6 +715,7 @@
                     </div>
                 </a>
             </li>
+             -->
             <li>
                 <div class="dark-btn">Dark</div>
             </li>
@@ -1593,590 +735,9 @@
                     <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back
                     </div>
                 </div>
-                <div class="setting-body">
-                    <div class="setting-title">
-                        <div>
-                            <img src="${contextPath}/resources/assets/images/icon/logo.png" class="img-fluid" alt="">
-                            <h3>50+ <span>demos</span> <br> suit for any type of online store.</h3>
-                        </div>
-                    </div>
-                    <div class="setting-contant">
-                        <div class="row demo-section">
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="gradient.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/gradient.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="gradient.html" class="demo-text">
-                                        <h4>gradient<h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="index.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="index.html" class="demo-text">
-                                        <h4>fashion</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-2.html" class="demo-text">
-                                        <h4>fashion 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-3.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-3.html" class="demo-text">
-                                        <h4>fashion 3</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-4.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-4.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-4.html" class="demo-text">
-                                        <h4>fashion 4</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-5.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-5.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-5.html" class="demo-text">
-                                        <h4>fashion 5</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-6.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-6.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-6.html" class="demo-text">
-                                        <h4>fashion 6</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="fashion-7.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/fashion-7.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="fashion-7.html" class="demo-text">
-                                        <h4>fashion 7</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="furniture.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/furniture.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="furniture.html" class="demo-text">
-                                        <h4>furniture</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="furniture-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/furniture-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="furniture-2.html" class="demo-text">
-                                        <h4>furniture 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="furniture-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/furniture-dark.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="furniture-3.html" class="demo-text">
-                                        <h4>furniture dark</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="electronic-1.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/electronics.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="electronic-1.html" class="demo-text">
-                                        <h4>electronics</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="electronic-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/electronics-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="electronic-2.html" class="demo-text">
-                                        <h4>electronics 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="electronic-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/electronics-3.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="electronic-3.html" class="demo-text">
-                                        <h4>electronics 3</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="marketplace-demo.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/marketplace.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="marketplace-demo.html" class="demo-text">
-                                        <h4>marketplace</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="marketplace-demo-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/marketplace-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="marketplace-demo-2.html" class="demo-text">
-                                        <h4>marketplace 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="marketplace-demo-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/marketplace-3.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="marketplace-demo-3.html" class="demo-text">
-                                        <h4>marketplace 3</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="marketplace-demo-4.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/marketplace-4.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="marketplace-demo-4.html" class="demo-text">
-                                        <h4>marketplace 4</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="vegetables.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/vegetables.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="vegetables.html" class="demo-text">
-                                        <h4>vegetables</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="vegetables-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/vegetables-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="vegetables-2.html" class="demo-text">
-                                        <h4>vegetables 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="vegetables-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/vegetables-3.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="vegetables-3.html" class="demo-text">
-                                        <h4>vegetables 3</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="jewellery.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/jewellery.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="jewellery.html" class="demo-text">
-                                        <h4>jewellery</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="jewellery-2.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/jewellery-2.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="jewellery-2.html" class="demo-text">
-                                        <h4>jewellery 2</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="jewellery-3.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/jewellery-3.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="jewellery-3.html" class="demo-text">
-                                        <h4>jewellery 3</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="bags.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/bag.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="bags.html" class="demo-text">
-                                        <h4>bag</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="watch.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/watch.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="watch.html" class="demo-text">
-                                        <h4>watch</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="medical.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/medical.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="medical.html" class="demo-text">
-                                        <h4>medical</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="perfume.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/perfume.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="perfume.html" class="demo-text">
-                                        <h4>perfume</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="yoga.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/yoga.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="yoga.html" class="demo-text">
-                                        <h4>yoga</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="christmas.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/christmas.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="christmas.html" class="demo-text">
-                                        <h4>christmas</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="bicycle.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/bicycle.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="bicycle.html" class="demo-text">
-                                        <h4>bicycle</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="marijuana.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/marijuana.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="marijuana.html" class="demo-text">
-                                        <h4>marijuana</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="gym-product.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/gym.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="gym-product.html" class="demo-text">
-                                        <h4>gym</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="tools.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/tools.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="tools.html" class="demo-text">
-                                        <h4>tools</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="shoes.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/shoes.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="shoes.html" class="demo-text">
-                                        <h4>shoes</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="books.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/books.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="books.html" class="demo-text">
-                                        <h4>books</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="kids.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/kids.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="kids.html" class="demo-text">
-                                        <h4>kids</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="game.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/game.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="game.html" class="demo-text">
-                                        <h4>game</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="beauty.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/beauty.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="beauty.html" class="demo-text">
-                                        <h4>beauty</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="left_sidebar-demo.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/left-sidebar.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="left_sidebar-demo.html" class="demo-text">
-                                        <h4>left sidebar</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="video-slider.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/video-slider.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="video-slider.html" class="demo-text">
-                                        <h4>video slider</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="metro.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/metro.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="metro.html" class="demo-text">
-                                        <h4>metro</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="goggles.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/goggles.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="goggles.html" class="demo-text">
-                                        <h4>goggles</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="flower.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/flower.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="flower.html" class="demo-text">
-                                        <h4>flower</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="light.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/light.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="light.html" class="demo-text">
-                                        <h4>light</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="nursery.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/nursery.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="nursery.html" class="demo-text">
-                                        <h4>nursery</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="pets.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/pets.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="pets.html" class="demo-text">
-                                        <h4>pets</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="video.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/video.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="video.html" class="demo-text">
-                                        <h4>video</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="lookbook-demo.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/lookbook.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="lookbook-demo.html" class="demo-text">
-                                        <h4>lookbook</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="full-page.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/full-page.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="full-page.html" class="demo-text">
-                                        <h4>full page</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="instagram-shop.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/instagram.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="instagram-shop.html" class="demo-text">
-                                        <h4>instagram</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6 text-center demo-effects">
-                                <div class="set-position">
-                                    <a href="parallax.html" class="layout-container">
-                                        <img src="${contextPath}/resources/assets/images/landing-page/demo/parallax.jpg"
-                                            class="img-fluid bg-img bg-top" alt="">
-                                    </a>
-                                    <a href="parallax.html" class="demo-text">
-                                        <h4>parallax</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- 여기부터 -->
+                
+                <!-- 여기 -->
             </div>
         </div>
     </div>
@@ -2241,7 +802,7 @@
     </div>
     <!-- facebook chat section end -->
 
-
+	
     <!-- tap to top -->
     <div class="tap-top top-cls">
         <div>
@@ -2250,55 +811,8 @@
     </div>
     <!-- tap to top end -->
 
-
-    <!-- latest jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
-
-    <!-- fly cart ui jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
-
-    <!-- exitintent jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
-    <script src="${contextPath}/resources/assets/js/exit.js"></script>
-
-    <!-- slick js-->
-    <script src="${contextPath}/resources/assets/js/slick.js"></script>
-
-    <!-- menu js-->
-    <script src="${contextPath}/resources/assets/js/menu.js"></script>
-
-    <!-- lazyload js-->
-    <script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
-
-    <!-- Bootstrap js-->
-    <script src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Bootstrap Notification js-->
-    <script src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
-
-    <!-- Fly cart js-->
-    <script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
-
-    <!-- Theme js-->
-    <script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
-    <script src="${contextPath}/resources/assets/js/script.js"></script>
-
-    <script>
-        $(window).on('load', function () {
-            /* setTimeout(function () {
-                $('#exampleModal').modal('show');
-            }, 2500); */
-        });
-
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
-
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
-    </script>
-
+	<!-- script -->
+	
 </body>
 
 </html>

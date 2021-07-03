@@ -2,20 +2,20 @@ package traffic.bye.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import traffic.bye.service.ItemService;
 import traffic.bye.vo.ItemVO;
 
-
-
-@RestController
-public class TrafficByeController {
+@Controller
+public class ItemController {
 	
 	@Autowired
 	private ItemService itemService;
@@ -30,11 +30,10 @@ public class TrafficByeController {
 		return list;
 	}
 	
-	/*
-	@GetMapping(value = "earlybird")
-	public ModelAndView earlybird() throws Exception {
-		return new ModelAndView("earlybird");
+	@GetMapping(value = "items/{id}")
+	public ModelAndView itemDetail(@PathVariable("id") long id, HttpSession session) throws Exception {
+		
+		return new ModelAndView("productDetail");
 	}
-	*/
 	
 }
