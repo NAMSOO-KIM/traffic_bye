@@ -566,6 +566,24 @@ del {
 .row div[class*="col-"],
 .row .col {
   position: relative; }
+  
+.auth{
+	display: inline-block;
+	margin-left 100px;
+	margin-right: 100px;
+	text-align: center;
+}
+
+.auth:hover{
+	cursor: pointer;
+}
+
+.auth_img {
+  width: 125px;
+  border-radius: 50%;
+  border: 2px solid var(--color-light-white);
+  margin-bottom: 5px;
+}
 
 .form-inline {
   display: -webkit-box;

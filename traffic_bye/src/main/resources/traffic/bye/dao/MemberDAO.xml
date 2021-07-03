@@ -3,8 +3,24 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="traffic.bye.dao.SampleDAO">
-	<select id="test" resultType="String">
-		select * from t1 where rownum= 1
+<mapper namespace="traffic.bye.dao.MemberDAO">
+	<select id="checkPhoneDuplicate" parameterType="String" resultType="int">
+		select count(*) from member where phone = #{phone}
+	</select>
+	
+	<select id="checkKakaoDuplicate" parameterType="long" resultType="int">
+		select count(*) from member where auth_id = #{authId}
+	</select>
+	
+	<select id="checkIdDuplicate" parameterType="String" resultType="int">
+		select count(*) from member where login_id = #{loginId}
+	</select>
+	
+	<insert id="memberRegister" parameterType="MemberVO">
+		insert into member values(member_id_seq.nextval, #{passport}, #{phone}, #{name}, #{birth}, #{card}, #{cardCvc}, #{cardExpire}, #{role}, #{authType}, #{authId}, #{loginId}, #{password})
+	</insert>
+	
+	<select id="login" parameterType="LoginInfo" resultType="int">
+		select count(*) from member where login_id = #{loginId} and password = #{password}
 	</select>
 </mapper>
