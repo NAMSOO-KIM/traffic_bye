@@ -25,6 +25,12 @@ public class ItemServiceImpl implements ItemService {
 		
 		return itemDAO.getItemList();
 	}
+	
+	@Override
+	public ItemVO getItem(long id) throws Exception {
+
+		return itemDAO.getItem(id);
+	}
 
 	
 }
