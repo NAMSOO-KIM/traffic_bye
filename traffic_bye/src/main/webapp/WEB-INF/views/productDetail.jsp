@@ -4,6 +4,7 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="item" value="${item}" />
+<c:set var="store" value="${store}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,12 +61,16 @@
                                 <div class="col-lg-6 rtl-text">
                                     <div class="product-right pro_sticky_info" data-sticky_column>
                                         <h2>${item.name}</h2>
+                                        
+                                        <!-- 
                                         <div class="rating-section">
                                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i></div>
                                             <h6>120 ratings</h6>
                                         </div>
+                                         -->
+                                         
                                         <div class="label-section">
                                             <span class="badge badge-grey-color">남은 재고 수량</span>
                                             <span class="label-text">${item.stock}</span>
@@ -152,9 +157,12 @@
                                                 <p id="demo"></p>
                                             </div>
                                         </div>
+                                        -->
                                         <div class="border-product">
-                                            <h6 class="product-title">share it</h6>
+                                            <h6 class="product-title">${store.name}</h6>
                                             <div class="product-icon">
+                                            	<span class="lang">위치 : ${store.detail}</span>
+                                            	<!-- 
                                                 <ul class="product-social">
                                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -162,9 +170,10 @@
                                                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-rss"></i></a></li>
                                                 </ul>
+                                                 -->
                                             </div>
                                         </div>
-                                         -->
+                                         
                                         
                                     </div>
                                 </div>

@@ -56,6 +56,18 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ItemSqlSession"
 		p:mapperInterface="traffic.bye.dao.ItemDAO" />
+		
+	
+	<!-- StoreDAO -->
+	<bean id="StoreSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:typeAliasesPackage="traffic.bye.vo" />
+	
+	<bean id="StoreDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="StoreSqlSession"
+		p:mapperInterface="traffic.bye.dao.StoreDAO" />
 
 
 </beans>
