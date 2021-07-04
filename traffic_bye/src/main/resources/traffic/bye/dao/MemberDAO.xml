@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="memberRegister" parameterType="MemberVO">
-		insert into member values(member_id_seq.nextval, #{passport}, #{phone}, #{name}, #{birth}, #{card}, #{cardCvc}, #{cardExpire}, #{role}, #{authType}, #{authId}, #{loginId}, #{password})
+		insert into member values(member_id_seq.nextval, #{passport}, #{phone, jdbcType=NUMERIC}, #{name}, #{birth}, #{card}, #{cardCvc}, #{cardExpire}, #{role}, #{authType}, #{authId, jdbcType=NUMERIC}, #{loginId}, #{password})
 	</insert>
 	
 	<select id="login" parameterType="LoginInfo" resultType="int">

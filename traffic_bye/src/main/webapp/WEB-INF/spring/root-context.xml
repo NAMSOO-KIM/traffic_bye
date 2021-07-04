@@ -64,6 +64,5 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.MemberDAO" />
-
-
+		
 </beans>
