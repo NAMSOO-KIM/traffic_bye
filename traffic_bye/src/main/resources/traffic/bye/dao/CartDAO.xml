@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.CartDAO">
+	<!-- 
+	<select id="getItem" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select m.id, c.item_id, c.quantity, i.name, i.price, im.UPLOAD_FILE_NAME, im.REAL_FILE_NAME
+		from team2.cart c
+		inner join team2.member m on c.member_id = m.id
+		inner join team2.item i on c.item_id = i.id
+		inner join team2.item_image im on i.id = im.item_id
+
+	]]>
+	</select>
+	 -->
+	
+	
+</mapper>
