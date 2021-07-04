@@ -54,7 +54,7 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
-	
+
 
 
 </head>
@@ -62,7 +62,13 @@
 <body class="theme-color-1">
 
 	<jsp:include page="../header.jsp"></jsp:include>
-
+	<c:choose>
+		<c:when test="${not empty msg}">
+			<script>
+				alert("${msg}");
+			</script>
+		</c:when>
+	</c:choose>
 	<!--section start-->
 	<section class="register-page section-b-space">
 		<div class="container">
@@ -71,11 +77,13 @@
 					<h3>인증방식 선택</h3>
 					<div class="theme-card">
 						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/phone.png" class="auth_img">
+							<img src="${contextPath}/resources/imgs/phone.png"
+								class="auth_img">
 							<h3 class="auth_type">휴대폰 인증</h3>
 						</div>
 						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/kakao.png" class="auth_img">
+							<img src="${contextPath}/resources/imgs/kakao.png"
+								class="auth_img">
 							<h3 class="auth_type">카카오 인증</h3>
 						</div>
 					</div>

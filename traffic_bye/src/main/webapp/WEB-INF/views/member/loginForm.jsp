@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +12,11 @@
 <meta name="description" content="multikart">
 <meta name="keywords" content="multikart">
 <meta name="author" content="multikart">
-<link rel="icon" href="${contextPath}/resources/assets/images/favicon/1.png"
+<link rel="icon"
+	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<link rel="shortcut icon" href="${contextPath}/resources/assets/images/favicon/1.png"
+<link rel="shortcut icon"
+	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
 <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
@@ -50,7 +52,8 @@
 	href="${contextPath}/resources/assets/css/vendors/bootstrap.css">
 
 <!-- Theme css -->
-<link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/style.css">
 
 </head>
 
@@ -58,6 +61,14 @@
 
 
 	<jsp:include page="../header.jsp"></jsp:include>
+
+	<c:choose>
+		<c:when test="${not empty msg}">
+			<script>
+				alert("${msg}");
+			</script>
+		</c:when>
+	</c:choose>
 
 
 	<!-- breadcrumb start -->
@@ -90,15 +101,18 @@
 				<div class="col-lg-6">
 					<h3>Login</h3>
 					<div class="theme-card">
-						<form class="theme-form" action="${contextPath}/member/login" method="post">
+						<form class="theme-form" action="${contextPath}/member/login"
+							method="post">
 							<div class="form-group">
 								<label for="loginId">ID</label> <input type="text"
-									class="form-control" id="loginId" placeholder="Email" required="required" name="loginId">
+									class="form-control" id="loginId" placeholder="Email"
+									required="required" name="loginId">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label> <input type="password"
 									class="form-control" id="password"
-									placeholder="Enter your password" required="required" name="password">
+									placeholder="Enter your password" required="required"
+									name="password">
 							</div>
 							<input type="submit" class="btn btn-solid" value="로그인">
 						</form>
@@ -147,10 +161,12 @@
 	<script src="${contextPath}/resources/assets/js/slick.js"></script>
 
 	<!-- Bootstrap js-->
-	<script src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Bootstrap Notification js-->
-	<script src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
 
 	<!-- Theme js-->
 	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>

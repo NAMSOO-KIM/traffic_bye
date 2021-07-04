@@ -1,46 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>문자 인증</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="multikart">
+<meta name="keywords" content="multikart">
+<meta name="author" content="multikart">
+<link rel="icon"
+	href="${contextPath}/resources/assets/images/favicon/1.png"
+	type="image/x-icon">
+<link rel="shortcut icon"
+	href="${contextPath}/resources/assets/images/favicon/1.png"
+	type="image/x-icon">
+<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+
+<!--Google font-->
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
+	rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
+
+<!--Slick slider css-->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/slick-theme.css">
+
+<!-- Animate icon -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/animate.css">
+
+<!-- Themify icon -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/themify-icons.css">
+
+<!-- Bootstrap css -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/bootstrap.css">
+
+<!-- Theme css -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/style.css">
+
+
+
 </head>
-<body>
-	<form method="post" id="smsForm">
-		<table border="1" align="right" width="300" height="200">
 
-			<tr>
-				<td>
-					<center>
-						<br> <span style="color: green; font-weight: bold;">SMS
-							전송 (문자보내기)</span>
-					</center>
-					<ul>
-						<li>보낼사람 : <input type="text" name="from"
-							placeholder=" 전화번호 입력 ( '-' 포함 )" /></li>
-						<br>
-						<li>내용 : <textarea name="text" placeholder=" 보낼 내용 입력 "></textarea>
-						</li>
-						<br>
-						<center>
-							<input type="button" onclick="sendSMS('sendSms')" value="전송하기" /><br>
-						</center>
-					</ul>
+<body class="theme-color-1">
 
-				</td>
-			</tr>
-		</table>
-	</form>
+	<jsp:include page="../header.jsp"></jsp:include>
 
-	<script>
-		function sendSMS(pageName) {
+	<c:choose>
+		<c:when test="${not empty msg}">
+			<script>
+				alert("${msg}");
+			</script>
+		</c:when>
+	</c:choose>
 
-			console.log("문자를 전송합니다.");
-			$("#smsForm").attr("action", pageName + ".do"); //위에 있는 폼태그를 컨트롤러로 전송한다.
-			$("#smsForm").submit();
-		}
-	</script>
+	<!--section start-->
+	<section class="register-page section-b-space">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3>휴대폰 인증</h3>
+					<div class="theme-card">
+						<label for="phone">휴대폰 번호</label> <input type="text" id="phoneNum"
+							required="required" placeholder="번호를 입력하세요"> <input
+							type="button" id="sendSMS" value="인증번호 전송">
+						<form action="${contextPath}/member/auth/phone/check"
+							id="phoneCheck">
+							<input type="text" name="randomNumber"> <input
+								type="hidden" id="phone" name="phone"> <input
+								type="submit" value="입력">
+						</form>
+						<p id="certTimer"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section ends-->
+
+	<jsp:include page="../footer.jsp"></jsp:include>
+
+	<script src="${contextPath}/resources/js/phoneAuth.js"></script>
+
+
 
 </body>
 </html>
+
