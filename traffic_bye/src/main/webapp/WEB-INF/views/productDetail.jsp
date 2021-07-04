@@ -4,6 +4,9 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="item" value="${item}" />
+<c:set var="store" value="${store}" />
+<c:set var="RelatedItemlist" value="${RelatedItemlist}" />
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,24 +63,30 @@
                                 <div class="col-lg-6 rtl-text">
                                     <div class="product-right pro_sticky_info" data-sticky_column>
                                         <h2>${item.name}</h2>
+                                        
+                                        <!-- 
                                         <div class="rating-section">
                                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i></div>
                                             <h6>120 ratings</h6>
                                         </div>
+                                         -->
+                                         
                                         <div class="label-section">
                                             <span class="badge badge-grey-color">남은 재고 수량</span>
                                             <span class="label-text">${item.stock}</span>
                                         </div>
-                                        <h3 class="price-detail">$32.96 <del>$459.00</del><span>55% off</span></h3>
+                                        <h3 class="price-detail">$${item.price}
+                                        <!-- 
+                                        <del>$459.00</del><span>55% off</span></h3>
                                         
                                         <ul class="color-variant">
                                             <li class="bg-light0 active"></li>
                                             <li class="bg-light1"></li>
                                             <li class="bg-light2"></li>
                                         </ul>
-                                        
+                                        --> 
                                         <div id="selectSize"
                                             class="addeffect-section product-description border-product">
                                             <!-- 
@@ -152,9 +161,19 @@
                                                 <p id="demo"></p>
                                             </div>
                                         </div>
+                                        -->
                                         <div class="border-product">
-                                            <h6 class="product-title">share it</h6>
+                                        	<a href="${contextPath}/store/${store.id}">
+                                            	<h6 class="product-title">${store.name}</h6>
+                                            </a>
                                             <div class="product-icon">
+                                            
+                                            	<!-- 
+                                            	<span class="lang" style="color:black">위치 : ${store.detail}</span>
+                                            	 -->
+                                            	 
+                                            	<h5>위치 : ${store.detail}</h5>
+                                            	<!-- 
                                                 <ul class="product-social">
                                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -162,9 +181,10 @@
                                                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-rss"></i></a></li>
                                                 </ul>
+                                                 -->
                                             </div>
                                         </div>
-                                         -->
+                                         
                                         
                                     </div>
                                 </div>
@@ -326,15 +346,16 @@
                 </div>
             </div>
             <div class="row search-product">
+              <c:forEach items="${RelatedItemlist}" var="RelatedItemVar">       
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/33.jpg"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/34.jpg"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="cart-info cart-wrap">
@@ -350,9 +371,9 @@
                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                             <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
+                                <h6>${RelatedItemVar.name}</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>${RelatedItemVar.price}</h4>
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
@@ -361,6 +382,9 @@
                         </div>
                     </div>
                 </div>
+              </c:forEach>
+                
+                <!-- 
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -396,6 +420,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -431,6 +458,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -466,6 +496,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -501,6 +534,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -536,6 +572,9 @@
                         </div>
                     </div>
                 </div>
+                 -->
+                
+                
             </div>
         </div>
     </section>

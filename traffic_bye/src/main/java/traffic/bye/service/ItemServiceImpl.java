@@ -1,8 +1,7 @@
 package traffic.bye.service;
 
-import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +31,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.getItem(id);
 	}
 
+	@Override
+	public List<ItemVO> getRelatedItemList(HashMap<String, Object> map) throws Exception {
+		return itemDAO.getRelatedItemList(map);
+	}
+	
 	
 }

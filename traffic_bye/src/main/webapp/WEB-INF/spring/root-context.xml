@@ -44,18 +44,23 @@
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
 
-
-
-	<!-- ItemDAO -->
-	<bean id="ItemSqlSession"
+	<bean id="SqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
 
+	<!-- ItemDAO -->
 	<bean id="ItemDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="ItemSqlSession"
+		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.ItemDAO" />
+
+	<!-- StoreDAO -->
+	<bean id="StoreDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="SqlSession"
+		p:mapperInterface="traffic.bye.dao.StoreDAO" />
 	
+	<!-- MemberDAO -->
 	<bean id="OrdersSqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
@@ -66,14 +71,16 @@
 		p:sqlSessionFactory-ref="OrdersSqlSession"
 		p:mapperInterface="traffic.bye.dao.OrdersDAO" />
 
-	<bean id="SqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
-
 	<bean id="memberDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.MemberDAO" />
+		
+	<!-- CategoryDAO -->
+	<bean id="CategoryDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="SqlSession"
+		p:mapperInterface="traffic.bye.dao.CategoryDAO" />
 
 
 </beans>
