@@ -3,15 +3,17 @@
 <%@ page session="false" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="item" value="${item}" />
+<c:set var="store" value="${store}" />
+<c:set var="RelatedItemlist" value="${RelatedItemlist}" />
+
 
 <!DOCTYPE html>
 <html lang="en">
 
+<jsp:include page="header.jsp"></jsp:include>
 
 <body class="theme-color-1">
-
-	
-	<jsp:include page="header.jsp"></jsp:include>
 
     <!-- breadcrumb start -->
     <div class="breadcrumb-section">
@@ -37,151 +39,155 @@
 
 
     <!-- section start -->
-    <section>
+    <section class="section-b-space">
         <div class="collection-wrapper">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="product-slick">
-                            <div><img src="${contextPath}/resources/assets/images/pro3/1.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
-                            <div><img src="${contextPath}/resources/assets/images/pro3/2.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
-                            <div><img src="${contextPath}/resources/assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-2"></div>
-                            <div><img src="${contextPath}/resources/assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 p-0">
-                                <div class="slider-nav">
-                                    <div><img src="${contextPath}/resources/assets/images/pro3/1.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="${contextPath}/resources/assets/images/pro3/2.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="${contextPath}/resources/assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="${contextPath}/resources/assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 rtl-text">
-                        <div class="product-right">
-                            <div class="product-count">
-                                <ul>
-                                    <li>
-                                        <img src="${contextPath}/resources/assets/images/fire.gif" class="img-fluid" alt="image">
-                                        <span class="p-counter">37</span>
-                                        <span class="lang">orders in last 24 hours</span>
-                                    </li>
-                                    <li>
-                                        <img src="${contextPath}/resources/assets/images/person.gif" class="img-fluid user_img" alt="image">
-                                        <span class="p-counter">44</span>
-                                        <span class="lang">active view this</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h2>Women Pink Shirt</h2>
-                            <div class="rating-section">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <h6>120 ratings</h6>
-                            </div>
-                            <div class="label-section">
-                                <span class="badge badge-grey-color">#1 Best seller</span>
-                                <span class="label-text">in fashion</span>
-                            </div>
-                            <h3 class="price-detail">$32.96 <del>$459.00</del><span>55% off</span></h3>
-                            <ul class="color-variant">
-                                <li class="bg-light0 active"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                            <div id="selectSize" class="addeffect-section product-description border-product">
-                                <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal"
-                                            data-bs-target="#sizemodal">size
-                                            chart</a></span></h6>
-                                <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sheer
-                                                    Straight Kurta</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="row data-sticky_parent">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-12 product_img_scroll image-scroll" data-sticky_column>
+                                            <div>
+                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
+                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
+                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
+                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
                                             </div>
-                                            <div class="modal-body"><img src="${contextPath}/resources/assets/images/size-chart.jpg" alt=""
-                                                    class="img-fluid blur-up lazyload"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <h6 class="error-message">please select size</h6>
-                                <div class="size-box">
-                                    <ul>
-                                        <li><a href="javascript:void(0)">s</a></li>
-                                        <li><a href="javascript:void(0)">m</a></li>
-                                        <li><a href="javascript:void(0)">l</a></li>
-                                        <li><a href="javascript:void(0)">xl</a></li>
-                                    </ul>
-                                </div>
-                                <h6 class="product-title">quantity</h6>
-                                <div class="qty-box">
-                                    <div class="input-group"><span class="input-group-prepend"><button type="button"
-                                                class="btn quantity-left-minus" data-type="minus" data-field=""><i
-                                                    class="ti-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        <span class="input-group-prepend"><button type="button"
-                                                class="btn quantity-right-plus" data-type="plus" data-field=""><i
-                                                    class="ti-angle-right"></i></button></span>
+                                <div class="col-lg-6 rtl-text">
+                                    <div class="product-right pro_sticky_info" data-sticky_column>
+                                        <h2>${item.name}</h2>
+                                        
+                                        <!-- 
+                                        <div class="rating-section">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <h6>120 ratings</h6>
+                                        </div>
+                                         -->
+                                         
+                                        <div class="label-section">
+                                            <span class="badge badge-grey-color">남은 재고 수량</span>
+                                            <span class="label-text">${item.stock}</span>
+                                        </div>
+                                        <h3 class="price-detail">$${item.price}
+                                        <!-- 
+                                        <del>$459.00</del><span>55% off</span></h3>
+                                        
+                                        <ul class="color-variant">
+                                            <li class="bg-light0 active"></li>
+                                            <li class="bg-light1"></li>
+                                            <li class="bg-light2"></li>
+                                        </ul>
+                                        --> 
+                                        <div id="selectSize"
+                                            class="addeffect-section product-description border-product">
+                                            <!-- 
+                                            <h6 class="product-title size-text">select size <span><a href=""
+                                                        data-bs-toggle="modal" data-bs-target="#sizemodal">size
+                                                        chart</a></span></h6>
+                                             -->
+                                            <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Sheer
+                                                                Straight Kurta</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"><span
+                                                                    aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body"><img
+                                                                src="${contextPath}/resources/assets/images/size-chart.jpg" alt=""
+                                                                class="img-fluid blur-up lazyload"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 
+                                            <h6 class="error-message">please select size</h6>
+                                            <div class="size-box">
+                                                <ul>
+                                                    <li><a href="javascript:void(0)">s</a></li>
+                                                    <li><a href="javascript:void(0)">m</a></li>
+                                                    <li><a href="javascript:void(0)">l</a></li>
+                                                    <li><a href="javascript:void(0)">xl</a></li>
+                                                </ul>
+                                            </div>
+                                             -->
+                                            <h6 class="product-title">quantity</h6>
+                                            <div class="qty-box">
+                                                <div class="input-group"><span class="input-group-prepend"><button
+                                                            type="button" class="btn quantity-left-minus"
+                                                            data-type="minus" data-field=""><i
+                                                                class="ti-angle-left"></i></button> </span>
+                                                    <input type="text" name="quantity" class="form-control input-number"
+                                                        value="1"> <span class="input-group-prepend"><button
+                                                            type="button" class="btn quantity-right-plus"
+                                                            data-type="plus" data-field=""><i
+                                                                class="ti-angle-right"></i></button></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
+                                                class="btn btn-solid hover-solid btn-animation"><i
+                                                    class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to
+                                                cart</a> <a href="#" class="btn btn-solid"><i
+                                                    class="fa fa-bookmark fz-16 me-2"
+                                                    aria-hidden="true"></i>wishlist</a></div>
+                                        
+                                        
+                                        <div class="product-count">
+                                            <ul>
+                                                <li>
+                                                    <img src="${contextPath}/resources/assets/images/icon/truck.png" class="img-fluid"
+                                                        alt="image">
+                                                    <span class="lang">사이렌 오더 가능 상품</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <!-- 
+                                        <div class="border-product">
+                                            <h6 class="product-title">Sales Ends In</h6>
+                                            <div class="timer">
+                                                <p id="demo"></p>
+                                            </div>
+                                        </div>
+                                        -->
+                                        <div class="border-product">
+                                        	<a href="${contextPath}/store/${store.id}">
+                                            	<h6 class="product-title">${store.name}</h6>
+                                            </a>
+                                            <div class="product-icon">
+                                            
+                                            	<!-- 
+                                            	<span class="lang" style="color:black">위치 : ${store.detail}</span>
+                                            	 -->
+                                            	 
+                                            	<h5>위치 : ${store.detail}</h5>
+                                            	<!-- 
+                                                <ul class="product-social">
+                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                                </ul>
+                                                 -->
+                                            </div>
+                                        </div>
+                                         
+                                        
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
-                                    class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1"
-                                        aria-hidden="true"></i> add to cart</a> <a href="#" class="btn btn-solid"><i
-                                        class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a></div>
-                            <div class="product-count">
-                                <ul>
-                                    <li>
-                                        <img src="${contextPath}/resources/assets/images/icon/truck.png" class="img-fluid" alt="image">
-                                        <span class="lang">Free shipping for orders above $500 USD</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">Sales Ends In</h6>
-                                <div class="timer">
-                                    <p id="demo"></p>
-                                </div>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">shipping info</h6>
-                                <ul class="shipping-info">
-                                    <li>100% Original Products</li>
-                                    <li>Free Delivery on order above Rs. 799</li>
-                                    <li>Pay on delivery is available</li>
-                                    <li>Easy 30 days returns and exchanges</li>
-                                </ul>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">share it</h6>
-                                <div class="product-icon">
-                                    <ul class="product-social">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">100% secure payment</h6>
-                                <img src="${contextPath}/resources/assets/images/payment.png" class="img-fluid mt-1" alt="">
                             </div>
                         </div>
                     </div>
@@ -193,7 +199,7 @@
 
 
     <!-- product-tab starts -->
-    <section class="tab-product m-0">
+    <section class="tab-product pt-0 m-0">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-12">
@@ -224,25 +230,21 @@
                             aria-labelledby="top-home-tab">
                             <div class="product-tab-discription">
                                 <div class="part">
-                                    <p>The Model is wearing a white blouse from our stylist's collection, see the image
-                                        for a mock-up of what the actual blouse would look like.it has text written on
-                                        it in a black cursive language which looks great on a white color.</p>
+                                    <p>여기에 상품 설명 깰꼼하게 넣어버리면 되겠는걸?</p>
                                 </div>
                                 <div class="part">
-                                    <h5 class="inner-title">fabric:</h5>
-                                    <p>Art silk is manufactured by synthetic fibres like rayon. It's light in weight and
-                                        is soft on the skin for comfort in summers.Art silk is manufactured by synthetic
-                                        fibres like rayon. It's light in weight and is soft on the skin for comfort in
-                                        summers.</p>
+                                    <h5 class="inner-title">니코틴 함량:</h5>
+                                    <p>높음. 가성비로 최고 담배</p>
                                 </div>
                                 <div class="part">
-                                    <h5 class="inner-title">size & fit:</h5>
-                                    <p>The model (height 5'8") is wearing a size S</p>
+                                    <h5 class="inner-title">하이요</h5>
+                                    <p>상품설명</p>
                                 </div>
+                                
                                 <div class="part">
-                                    <h5 class="inner-title">Material & Care:</h5>
-                                    <p>Top fabric: pure cotton</p>
-                                    <p>Bottom fabric: pure cotton</p>
+                                    <h5 class="inner-title">하이하이이하이</h5>
+                                    <p>하욤</p>
+                                    <p>ㅎㅎ</p>
                                     <p>Hand-wash</p>
                                 </div>
                             </div>
@@ -344,15 +346,16 @@
                 </div>
             </div>
             <div class="row search-product">
+              <c:forEach items="${RelatedItemlist}" var="RelatedItemVar">       
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/33.jpg"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/34.jpg"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="cart-info cart-wrap">
@@ -368,9 +371,9 @@
                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                             <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
+                                <h6>${RelatedItemVar.name}</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>${RelatedItemVar.price}</h4>
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
@@ -379,6 +382,9 @@
                         </div>
                     </div>
                 </div>
+              </c:forEach>
+                
+                <!-- 
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -414,6 +420,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -449,6 +458,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -484,6 +496,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -519,6 +534,9 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 <div class="col-xl-2 col-md-4 col-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -554,12 +572,202 @@
                         </div>
                     </div>
                 </div>
+                 -->
+                
+                
             </div>
         </div>
     </section>
     <!-- product section end -->
+
 	<jsp:include page="footer.jsp"></jsp:include>
-    
+
+    <!-- theme setting -->
+    <div class="theme-settings">
+        <ul>
+        	<!-- 
+            <li class="demo-li">
+                <a href="javascript:void(0)" onclick="openSetting()">
+                    <div class="setting-sidebar" id="setting-icon">
+                        <h5>50+ <br>demo</h5>
+                    </div>
+                </a>
+            </li>
+             -->
+            <li>
+                <div class="dark-btn">Dark</div>
+            </li>
+            <li>
+                <div class="rtl-btn">RTL</div>
+            </li>
+            <li class="input-picker">
+                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
+            </li>
+        </ul>
+    </div>
+    <div class="scroll-setting-box">
+        <div id="setting_box" class="setting-box">
+            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+            <div class="setting_box_body">
+                <div onclick="closeSetting()">
+                    <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back
+                    </div>
+                </div>
+                <div class="setting-body">
+                    <div class="setting-title">
+                        <div>
+                            <img src="${contextPath}/resources/assets/images/icon/logo.png" class="img-fluid" alt="">
+                            <h3>장바구니 할거임<span>하욤</span> <br> suit for any type of online store.</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+	
+
+    <!-- Add to cart modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg addtocart">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="img-fluid blur-up lazyload pro-img"
+                                                src="${contextPath}/resources/assets/images/fashion/product/43.jpg" alt="">
+                                        </a>
+                                        <div class="media-body align-self-center text-center">
+                                            <a href="#">
+                                                <h6>
+                                                    <i class="fa fa-check"></i>Item
+                                                    <span>men full sleeves</span>
+                                                    <span> successfully added to your Cart</span>
+                                                </h6>
+                                            </a>
+                                            <div class="buttons">
+                                                <a href="#" class="view-cart btn btn-solid">Your cart</a>
+                                                <a href="#" class="checkout btn btn-solid">Check out</a>
+                                                <a href="#" class="continue btn btn-solid">Continue shopping</a>
+                                            </div>
+
+                                            <div class="upsell_payment">
+                                                <img src="${contextPath}/resources/assets/images/payment_cart.png"
+                                                    class="img-fluid blur-up lazyload" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-section">
+                                        <div class="col-12 product-upsell text-center">
+                                            <h4>Customers who bought this item also.</h4>
+                                        </div>
+                                        <div class="row" id="upsell_product">
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="${contextPath}/resources/assets/images/fashion/product/1.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>$25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="${contextPath}/resources/assets/images/fashion/product/34.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>$25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="${contextPath}/resources/assets/images/fashion/product/13.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>$25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="${contextPath}/resources/assets/images/fashion/product/19.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>$25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add to cart modal popup end-->
+
+    <!-- added to cart notification -->
+    <div class="added-notification">
+        <img src="${contextPath}/resources/assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
+        <h3>added to cart</h3>
+    </div>
+    <!-- added to cart notification -->
+
+
+    <!-- timer js-->
+    <script src="${contextPath}/resources/assets/js/timer.js"></script>
+
+    <!-- sticky sidebar -->
+    <script type="text/javascript" src="${contextPath}/resources/assets/js/sticky-kit.js"></script>
+	
+
+    <script>
+        $(document).ready(function () {
+        	
+            if ($(window).width() > 991) {
+                $(".product_img_scroll, .pro_sticky_info").stick_in_parent();
+            }
+        	
+        });
+
+    </script>
 </body>
 
 </html>
