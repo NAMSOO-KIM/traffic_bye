@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthInfo {
-	AuthType authType;
-	long id;
+	private AuthType authType;
+	private Long id;
+	private String phone;
 }

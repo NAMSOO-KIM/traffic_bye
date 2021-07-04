@@ -5,12 +5,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import net.nurigo.java_sdk.api.Message;
+
 
 @Configuration
 @PropertySource("classpath:config/authconfig.properties")
 public class AuthConfig {
 	@Value("${kakao.apikey}")
 	public String kakaoKey;
+	
+	@Value("${coolsms.apikey}")
+	public String coolSMSKey;
+	
+	@Value("${coolsms.secretkey}")
+	public String coolSMSSecret;
 
 	@Bean
 	public String kakaoAuthInfo() {
@@ -43,5 +51,10 @@ public class AuthConfig {
 		sb.append("&logout_redirect_uri=http://localhost/app/member/logout/kakao");
 		sb.append("&response_type=code");
 		return sb.toString();
+	}
+	
+	@Bean
+	Message coolSMS() {
+		return new Message(coolSMSKey, coolSMSSecret);
 	}
 }
