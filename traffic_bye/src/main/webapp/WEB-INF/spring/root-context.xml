@@ -44,14 +44,11 @@
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
 
-
-	
-	<!-- ItemDAO -->
-	<!-- 
-	<bean id="ItemSqlSession"
+	<bean id="SqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
- 	-->
+
+	<!-- ItemDAO -->
 	<bean id="ItemDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
@@ -59,21 +56,11 @@
 	
 	
 	<!-- StoreDAO -->
-	<!--
-	<bean id="StoreSqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource"
-		p:typeAliasesPackage="traffic.bye.vo" />
- 	-->
 	<bean id="StoreDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.StoreDAO" />
-
-	<bean id="SqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
-
+	<!-- MemberDAO -->
 	<bean id="memberDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
