@@ -75,9 +75,9 @@
                                          
                                         <div class="label-section">
                                             <span class="badge badge-grey-color">남은 재고 수량</span>
-                                            <span class="label-text">${item.stock}</span>
+                                            <span class="label-text" id="remain-stock" data-point="${item.stock}">${item.stock}</span>
                                         </div>
-                                        <h3 class="price-detail">$${item.price}
+                                        <h3 class="price-detail">$${item.price}</h3>
                                         <!-- 
                                         <del>$459.00</del><span>55% off</span></h3>
                                         
@@ -121,14 +121,14 @@
                                                     <li><a href="javascript:void(0)">xl</a></li>
                                                 </ul>
                                             </div>
-                                             -->
+                                            -->
                                             <h6 class="product-title">quantity</h6>
                                             <div class="qty-box">
                                                 <div class="input-group"><span class="input-group-prepend"><button
                                                             type="button" class="btn quantity-left-minus"
                                                             data-type="minus" data-field=""><i
                                                                 class="ti-angle-left"></i></button> </span>
-                                                    <input type="text" name="quantity" class="form-control input-number"
+                                                    <input type="text" name="quantity" id="selected-quantity" class="form-control input-number"
                                                         value="1"> <span class="input-group-prepend"><button
                                                             type="button" class="btn quantity-right-plus"
                                                             data-type="plus" data-field=""><i
