@@ -139,15 +139,18 @@
 					<a href="#" class="btn btn-solid">쇼핑 계속하기</a>
 				</div>
 				<div class="col-6">
-					<a href="#" class="btn btn-solid" id="sendBtn">스마트오더 주문하기!</a>
+					<a href="ordersdetail" class="btn btn-solid" id="sendBtn">스마트오더 주문하기!</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+	
+	
 	<script type="text/javascript">
 	var wsocket;
+	
 	function connect() {
 		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
 		wsocket.open = onOpen;
@@ -166,18 +169,7 @@
 			appendMessage(data.substring(4));
 		}
 		console.log(data);
-		plusMsg = '';
-		plusMsg += ' <div class="popup">'
-	           +'<button class="closeBtn" onClick="closePopup($(this))">X</button>'
-	           +'<p class="popup-title">📧새로운 ${command}</p>'
-	         +'<p class="popup-content">${senderNick} : ${content}</p>'
-	         +'</div>';
-		 $(".popup-container").append(plusMsg);
-		 $('.popup' + window.popupId).hide();
-		   $('.popup' + window.popupId).show("slow");
-		   setTimeout(()=>{
-			      $('.popup:first').remove();
-			   }, 5000);
+		$('#myModal').show();
 	}
 	function onClose(evt) {
 		appendMessage("연결을 끊었습니다.");
@@ -186,6 +178,7 @@
 		//흠... 히든으로 닉네임을 가져온다.
 		//주문 들어올때 아이디값 다 넘겨주고
 		//센드 할때 받은 아이디값을 주문상태를 넘겨준다.
+	 
 		var nickname = $('#nickname').val();
 		var msg = "상품준비를 해주세요!"
 		wsocket.send("1" + ":" + msg);
@@ -200,9 +193,10 @@
 		$('#chatArea').scrollTop($('#chatArea')[0].scrollHeight);
 	}
 	
-	
+	connect();
 	$(document).ready(function(){
-		connect();
+		
+		 
 		$('#message').keypress(function(event){
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			if(keycode=='13'){
@@ -213,10 +207,70 @@
 		
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
-		$('#exitBtn').click(function(){disconnect();});
-		
+		$('#exitBtn').click(function(){disconnect();});		
 	});
 </script>
+ <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */                          
+        }
+ 
+</style>
+ 
+ 
+ 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
+                <p style="text-align: center; line-height: 1.5;"><br /></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 도착했습니다.</span></p>
+                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
+                <p style="text-align: center; line-height: 1.5;"><br /></p>
+                <p><br /></p>
+            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;" >
+                     닫기
+                </span>
+            </div>
+      </div>
+    </div>
+        <!--End Modal-->
+    <script type="text/javascript">
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+        
+      </script>
+ 
+
+
+
 	<div class="popup-container"></div>
 
 
@@ -276,7 +330,7 @@
 	<!-- Theme js-->
 	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
 	<script src="${contextPath}/resources/assets/js/script.js"></script>
-
+    
 	<script>
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";

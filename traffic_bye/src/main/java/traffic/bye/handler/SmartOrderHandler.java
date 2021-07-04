@@ -28,6 +28,8 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 		System.out.println(session.getId() + "연결됨");
 		sessions.add(session);
 		users.put(session.getId(), session);
+		System.out.println(users);
+		//id -> 상점으로 바꿔야할듯
 	}
 
 	@Override
@@ -76,5 +78,5 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 		String[] parseData = msg.split(":");
 		return parseData[1];
 	}
-	
+
 }
