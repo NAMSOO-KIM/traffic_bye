@@ -1,5 +1,6 @@
 package traffic.bye.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.getItem(id);
 	}
 
+	@Override
+	public List<ItemVO> getRelatedItemList(HashMap<String, Object> map) throws Exception {
+		return itemDAO.getRelatedItemList(map);
+	}
+	
 	
 }

@@ -8,7 +8,7 @@ import traffic.bye.vo.CategoryVO;
 public interface CategoryDAO {
 	//ItemDTO getItem(long itemNO) throws Exception;
 	
-	List<CategoryVO> getCategory() throws SQLException;
+	List<CategoryVO> getCategoryList() throws SQLException;
 	
 	CategoryVO getCategory(long id) throws SQLException;
 	

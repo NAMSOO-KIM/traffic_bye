@@ -1,6 +1,7 @@
 package traffic.bye.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import traffic.bye.vo.ItemVO;
@@ -10,5 +11,7 @@ public interface ItemDAO {
 	List<ItemVO> getItemList() throws SQLException;
 	
 	ItemVO getItem(long id) throws SQLException;
+	
+	List<ItemVO> getRelatedItemList(HashMap<String, Object> map) throws SQLException;
 	
 }

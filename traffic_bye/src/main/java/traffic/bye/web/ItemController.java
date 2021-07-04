@@ -1,5 +1,6 @@
 package traffic.bye.web;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -53,7 +54,12 @@ public class ItemController {
 			
 			//관련 상품들 추천(카테고리가 같은 아이템 모두 가져옴)
 			long category_id = item.getCategory_id();
-			itemService.get
+			HashMap<String, Object> map = new HashMap<>();
+			map.put("category_id",category_id);
+			map.put("id",id);
+			
+			List<ItemVO> RelatedItemlist = itemService.getRelatedItemList(map);
+			mav.addObject("RelatedItemlist",RelatedItemlist);
 			
 			
 		} catch (Exception e) {

@@ -45,27 +45,29 @@
 		transaction-manager="transactionManager" />
 
 
-
+	
 	<!-- ItemDAO -->
+	<!-- 
 	<bean id="ItemSqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
-
+ 	-->
 	<bean id="ItemDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="ItemSqlSession"
+		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.ItemDAO" />
-		
+	
 	
 	<!-- StoreDAO -->
+	<!--
 	<bean id="StoreSqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
 		p:typeAliasesPackage="traffic.bye.vo" />
-	
+ 	-->
 	<bean id="StoreDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="StoreSqlSession"
+		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.StoreDAO" />
 
 	<bean id="SqlSession"
@@ -76,6 +78,13 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.MemberDAO" />
+		
+	<!-- CategoryDAO -->
+	<bean id="CategoryDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="SqlSession"
+		p:mapperInterface="traffic.bye.dao.CategoryDAO" />
 
+	
 
 </beans>
