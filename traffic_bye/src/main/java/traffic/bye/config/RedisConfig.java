@@ -11,10 +11,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @PropertySource("classpath:config/redis.properties")
 public class RedisConfig {
 	@Value("${redis.host}")
-	String host = "redis-10211.c85.us-east-1-2.ec2.cloud.redislabs.com";
+	String host;
 	
 	@Value("${redis.port}")
-	int port = 10211;
+	int port;
+	
+	@Value("${redis.password}")
+	String password;
 	
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
@@ -22,7 +25,7 @@ public class RedisConfig {
 		jedisConnectionFactory.setHostName(host);
 		jedisConnectionFactory.setPort(port);
 		jedisConnectionFactory.setUsePool(false);
-		jedisConnectionFactory.setPassword("wDG4qCTaYXDBd1ttHcI9o8BSw6CYZQtQ");
+		jedisConnectionFactory.setPassword(password);
 		return jedisConnectionFactory;
 	}
 	
