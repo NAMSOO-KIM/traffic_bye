@@ -1925,15 +1925,45 @@ $('.size-box ul li').on('click', function (e) {
 });
 
 $('#cartEffect').on('click', function (e) {
-    if ($("#selectSize .size-box ul").hasClass('selected')) {
-        $('#cartEffect').text("Added to bag ");
-        $('.added-notification').addClass("show");
-        setTimeout(function () {
-            $('.added-notification').removeClass("show");
-        }, 5000);
-    } else {
-        $('#selectSize').addClass('cartMove');
-    }
+    
+	let remain_stock = parseInt($("#remain-stock").attr("data-point"));
+	if (parseInt($("#selected-quantity").val())<=remain_stock){
+		
+		//ajax 로 데이터 넘김
+		$.ajax({ 
+			type : "post", 
+			url : "<c:url value='/classdetail/${lecture.id}/insert'/>", 
+			headers : { "Content-type" : "application/json", "X-HTTP-Method-Override" : "POST" }, 
+			data : JSON.stringify({ content_textVal : content_textVal, user : user }), 
+			success : function (result) { 
+				if (result == "Success") {
+					Swal.fire( '댓글이 등록되었습니다.', '', 'success' ) 
+				}
+				else if(result == "False"){
+					Swal.fire( '수강 신청 필수', '수강 중인 멤버만 댓글 작성이 가능합니다.', 'warning' ) 
+					$("#comment_text").val("");
+					$("#commentbtn").attr('disabled', false);
+					return;
+				}
+				getCommentList(1); 
+				$("#comment_text").val("");  
+				$("#commentbtn").attr('disabled', false);
+			},
+			dataType: "text",
+			contentType: "application/json"
+		});
+		
+		$('#cartEffect').text("Added to bag ");
+		$('.added-notification').addClass("show");
+		setTimeout(function () {
+		    $('.added-notification').removeClass("show");
+		}, 5000);
+		
+		
+    }else{
+		alert("재고 없삼~");
+	}
+    
 });
 
 // modern product box plus effect

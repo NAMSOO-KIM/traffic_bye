@@ -85,7 +85,7 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logos.png"
+                                    <a href="${contextPath}/"><img src="${contextPath}/resources/assets/images/icon/logos.png"
                                             class="img-fluid blur-up lazyload" alt="" style="width: 179px; height: 34px;"></a>
                                 </div>
                             </div>
@@ -439,7 +439,7 @@
                                 </div>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="${contextPath}/resources/assets/images/icon/logos.png"
+                                <a href="${contextPath}/"><img src="${contextPath}/resources/assets/images/icon/logos.png"
                                         class="img-fluid blur-up lazyload" alt="" style="width: 179px; height: 34px;"></a>
                             </div>
                         </div>

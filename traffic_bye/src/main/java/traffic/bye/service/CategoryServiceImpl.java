@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.CategoryDAO;
-import traffic.bye.dao.ItemDAO;
 import traffic.bye.vo.CategoryVO;
-import traffic.bye.vo.ItemVO;
 
 
 @Slf4j
