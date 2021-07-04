@@ -45,12 +45,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(LoginInfo loginInfo) {
+	public String login(LoginInfo loginInfo , HttpSession session) {
 		log.info("아이디 {} 비밀번호 {}", loginInfo.getLoginId(), loginInfo.getPassword());
 		try {
+			session.setAttribute("loginInfo", loginInfo);
 			int res = memberService.login(loginInfo);
 			if(res == 0) throw new Exception();
-			return "redirect:/";
+			return "redirect:/order";
 		} catch(Exception e) {
 			e.printStackTrace();
 			return null;

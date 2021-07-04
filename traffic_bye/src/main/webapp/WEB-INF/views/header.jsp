@@ -849,7 +849,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="buttons"><a href="cart.html" class="view-cart">view
+                                                    <div class="buttons"><a href="order" class="view-cart">view
                                                             cart</a> <a href="#" class="checkout">checkout</a></div>
                                                 </li>
                                             </ul>

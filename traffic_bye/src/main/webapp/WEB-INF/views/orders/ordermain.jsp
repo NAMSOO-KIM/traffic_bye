@@ -146,7 +146,12 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+	<script type="text/javascript">
+
 	
+	</script>
+	
+	<input id="userId" type="hidden" value="${mySession}">
 	
 	<script type="text/javascript">
 	var wsocket;
@@ -165,10 +170,11 @@
 	}
 	function onMessage(evt) {
 		var data = evt.data;
+		console.log(data);
 		if (data.substring(0, 4) == "msg:") {
 			appendMessage(data.substring(4));
 		}
-		console.log(data);
+		
 		$('#myModal').show();
 	}
 	function onClose(evt) {
@@ -178,12 +184,15 @@
 		//흠... 히든으로 닉네임을 가져온다.
 		//주문 들어올때 아이디값 다 넘겨주고
 		//센드 할때 받은 아이디값을 주문상태를 넘겨준다.
-	 
-		var nickname = $('#nickname').val();
+		var userId = $('#userId').val();
 		var msg = "상품준비를 해주세요!"
-		wsocket.send("1" + ":" + msg);
+		wsocket.send("test" + ":" + msg);
 		//닉네임을 현재는 고정한상태
-		$('#message').val("");
+	}
+	
+	function receive(){
+		var msg = "주문이 수락되었습니다.";
+		wsocket.send("test7"+":"+msg);
 	}
 	
 	function appendMessage(msg){
@@ -195,16 +204,15 @@
 	
 	connect();
 	$(document).ready(function(){
-		
-		 
-		$('#message').keypress(function(event){
+		//var sessionInfo = ${sessionScope.loginInfo};
+		console.log('안녕');
+		/* $('#message').keypress(function(event){
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			if(keycode=='13'){
 				send();
 			}
 			event.stopPropagation();
-		});
-		
+		}); */
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
 		$('#exitBtn').click(function(){disconnect();});		
@@ -254,7 +262,7 @@
                 <p><br /></p>
             <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
-                     닫기
+                     <a id="confirmBtn">주문 수락</a>
                 </span>
             </div>
       </div>
@@ -268,7 +276,12 @@
         
       </script>
  
-
+	<script type="text/javascript">
+	$('#confirmBtn').click(function(){
+		receive();
+	});
+	
+	</script>
 
 
 	<div class="popup-container"></div>
