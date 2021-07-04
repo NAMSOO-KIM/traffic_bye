@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="traffic.bye.app">
+	<logger name="traffic.bye">
 		<level value="info" />
 	</logger>
 	

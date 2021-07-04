@@ -1,22 +1,26 @@
 package traffic.bye.vo;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@ToString
-public class MemberVO implements Serializable{
-	private long id;
-	private String passport;
-	private String phone;
-	private String name;
-	private String email;
-	private String birth;
-	private String card;
-	private long cardCvc;
-	private String role;
-	private String authType;
+public class MemberVO {
+	long id;
+	long authId;
+	String loginId;
+	String password;
+	String phone;
+	String passport;
+	String name;
+	String birth;
+	String card;
+	String cardCvc;
+	String cardExpire;
+	ROLE role;
+	AuthType authType;
 }
