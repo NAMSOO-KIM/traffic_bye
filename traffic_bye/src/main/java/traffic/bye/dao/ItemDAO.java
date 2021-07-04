@@ -9,4 +9,6 @@ public interface ItemDAO {
 	//ItemDTO getItem(long itemNO) throws Exception;
 	List<ItemVO> getItemList() throws SQLException;
 	
+	ItemVO getItem(long id) throws SQLException;
+	
 }

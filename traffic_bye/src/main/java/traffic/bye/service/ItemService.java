@@ -11,5 +11,6 @@ public interface ItemService {
 	
 	List<ItemVO> getItemList() throws Exception;
 	
+	ItemVO getItem(long id) throws Exception;
 
 }

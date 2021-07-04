@@ -32,7 +32,21 @@ public class ItemController {
 	@GetMapping(value = "items/{id}")
 	public ModelAndView itemDetail(@PathVariable("id") long id, HttpSession session) throws Exception {
 		
-		return new ModelAndView("productDetail");
+		ModelAndView mav = new ModelAndView();
+		
+		
+		// 특정 아이템 정보만 가져오기
+		try {
+			ItemVO item = itemService.getItem(id);
+			mav.addObject("item",item);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("productDetail");
+		return mav;
 	}
 	
 }
