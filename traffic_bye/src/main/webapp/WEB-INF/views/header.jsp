@@ -85,7 +85,8 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="${contextPath}/"><img src="${contextPath}/resources/assets/images/icon/logos.png"
+
+                                    <a href="${contextPath}"><img src="${contextPath}/resources/assets/images/icon/logos.png"
                                             class="img-fluid blur-up lazyload" alt="" style="width: 179px; height: 34px;"></a>
                                 </div>
                             </div>
@@ -287,8 +288,8 @@
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 My Account
                                 <ul class="onhover-show-div">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">register</a></li>
+                                    <li><a href="${contextPath}/member/login">Login</a></li>
+                                    <li><a href="${contextPath}/member/register/auth">register</a></li>
                                 </ul>
                             </li>
                         </ul>

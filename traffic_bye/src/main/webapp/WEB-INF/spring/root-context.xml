@@ -48,6 +48,7 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:typeAliasesPackage="traffic.bye.vo" />
 
+
 	<!-- ItemDAO -->
 	<bean id="ItemDAO"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"

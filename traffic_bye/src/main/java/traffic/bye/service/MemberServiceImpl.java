@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import traffic.bye.dao.MemberDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
+import traffic.bye.exception.PhoneDuplicateException;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 
@@ -18,14 +19,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int checkPhoneDuplicate(String phone) throws Exception {
 		// TODO Auto-generated method stub
-		return memberDAO.checkPhoneDuplicate(phone);
+		int res = memberDAO.checkPhoneDuplicate(phone);
+		if(res == 1) throw new PhoneDuplicateException("이미 가입한 번호입니다");
+		return res;
 	}
 
 	@Override
 	public int checkIdDuplicate(String loginId) throws Exception {
 		// TODO Auto-generated method stub
 		int res = memberDAO.checkIdDuplicate(loginId);
-		if(res == 1) throw new IDDuplicateException();
+		if(res == 1) throw new IDDuplicateException("이미 가입한 계정입니다");
 		return res;
 	}
 

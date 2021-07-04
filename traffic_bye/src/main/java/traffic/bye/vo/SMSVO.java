@@ -11,18 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MemberVO {
-	Long id;
-	Long authId;
-	String loginId;
-	String password;
-	String phone;
-	String passport;
-	String name;
-	String birth;
-	String card;
-	String cardCvc;
-	String cardExpire;
-	ROLE role;
-	AuthType authType;
+public class SMSVO {
+	private String phone;
+	private String randomNumber;
 }
