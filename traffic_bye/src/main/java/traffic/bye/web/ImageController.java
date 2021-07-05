@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class ImageController {
 
-	// URI : /lectureImage?name=${lecture.name}&image=${lecture.image}
+	
 	// URI : /ItemImage?id=${item.id}&image=${item.real_file_name}
 	@GetMapping(value = "/ItemImage")
 	public void ItemImage(long id, String image, HttpServletResponse response) throws Exception {

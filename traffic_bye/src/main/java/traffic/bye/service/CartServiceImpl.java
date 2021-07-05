@@ -20,8 +20,14 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<CartVO> getCartList(long member_id) throws Exception {
-		// TODO Auto-generated method stub
+
 		return cartDAO.getCartList(member_id);
+	}
+
+	@Override
+	public void insertCart(CartVO cartVO) throws Exception {
+		
+		cartDAO.insertCart(cartVO);
 	}
 
 	

@@ -8,6 +8,6 @@ public interface CartService {
 	
 	List<CartVO> getCartList(long member_id) throws Exception;
 	
-	//CategoryVO getCategory(long id) throws Exception;
+	void insertCart(CartVO cartVO) throws Exception;
 
 }

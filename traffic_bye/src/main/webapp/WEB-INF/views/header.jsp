@@ -815,7 +815,9 @@
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-shopping-cart"></i></div>
                                             <span class="cart_qty_cls">2</span>
-                                            <ul class="show-div shopping-cart">
+                                            <ul class="show-div shopping-cart" id="shopping-cart">
+                                            	<!-- 시작 -->
+                                            	<!-- 
                                                 <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="me-3"
@@ -830,6 +832,8 @@
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times"
                                                                 aria-hidden="true"></i></a></div>
                                                 </li>
+                                                 -->
+                                                <!-- 
                                                 <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="me-3"
@@ -844,6 +848,7 @@
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times"
                                                                 aria-hidden="true"></i></a></div>
                                                 </li>
+                                                -->
                                                 <li>
                                                     <div class="total">
                                                         <h5>subtotal : <span>$299.00</span></h5>
@@ -853,6 +858,7 @@
                                                     <div class="buttons"><a href="cart.html" class="view-cart">view
                                                             cart</a> <a href="#" class="checkout">checkout</a></div>
                                                 </li>
+                                                
                                             </ul>
                                         </li>
                                     </ul>

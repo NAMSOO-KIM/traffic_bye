@@ -14,7 +14,13 @@
 			where c.member_id = #{member_id}
 	]]>
 	</select>
-	 
+	
+	<insert id="insertCart" parameterType="CartVO">
+		insert into
+		team2.cart(member_id, item_id, quantity)
+		VALUES(#{member_id}, #{item_id}, #{quantity})
+	</insert>
+	
 	
 	
 </mapper>

@@ -190,6 +190,8 @@
 
     <script>
         $(window).on('load', function () {
+        	alert("실행");
+        	getCartItemList();
             /* setTimeout(function () {
                 $('#exampleModal').modal('show');
             }, 2500); */
@@ -202,6 +204,90 @@
         function closeSearch() {
             document.getElementById("search-overlay").style.display = "none";
         }
+        
+        
+        // 장바구니 창
+        function getCartItemList() {
+		//let user = '<%=(String) session.getAttribute("id")%>';
+		let id = 1;
+        
+		$.ajax({
+					type : 'POST',
+					url : "cartList",
+					dataType: "text",
+					data : {
+						id : id
+					}, 
+					success : function(data) {
+						alert('오우 성공쓰?');
+						let total_price = 0;
+						var html = "";
+						alert(data);
+						// var startPage = data.startPage;
+						// var endPage = data.endPage;
+						// var commentList = data.commentlist;
+						//let cartList = data.cartList;
+                        //html += "<ul class='show-div shopping-cart'>";
+                        $.each(JSON.parse(data), function(key, value) {            
+                            console.log(key);
+                        	console.log(value);
+                        	total_price += value.price;
+                            html += "<li>";
+                            	html += "<div class='media'>";
+                            		html += "<a href='#'><img alt='' class='me-3' ";
+                            		
+                            		//html += "src='${contextPath}/resources/assets/images/fashion/product/1.jpg'></a>";
+                            		html += "src='${contextPath}/ItemImage?id="
+                            				+ value.store_id
+                            				+"&image="
+                            				+ value.real_file_name
+                            				+"' style='width:68px; height: 90px;'></a>";
+                            		
+                            		//<img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
+                            		
+                            		html += "<div class='media-body'>";
+                            			html += "<a href='#'>";
+                            			html += "<h4>"
+                            				 + value.name
+                            				 + "</h4>";
+                            			html += "</a>";
+                            			html += "<h4><span> $"
+                            				 + value.price
+                            				 + "</span></h4>";
+                            			
+                            		html += "</div>";
+                            	html += "</div>";
+                            	html += "<div class='close-circle'><a href='#'><i class='fa fa-times' ";
+	                            	html += "aria-hidden='true'></i></a></div>";
+                            html += "</li>";
+
+						});
+
+                        
+                        html += "<li>";
+                        html += "<div class='total'>";
+                        html += "<h5>subtotal : <span>$"
+                        	 + total_price 
+                        	 + "</span></h5>";
+                       
+                        html += "</div>";
+                        html += "</li>";
+                        html += "<li>";
+                        html += "<div class='buttons'><a href='cart.html' class='view-cart'>view";
+                        html += "cart</a> <a href='#' class='checkout'>checkout</a></div>";
+                        html += "</li>";
+                        
+
+						$("#shopping-cart").html(html);
+						
+                    },
+					error : function(request, status, error) {
+					}
+				});
+	    }
+        
+        
+        
     </script>
         
     
