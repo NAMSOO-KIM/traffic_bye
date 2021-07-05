@@ -13,10 +13,7 @@ import traffic.bye.vo.LoginInfo;
 public class OrderController {
 	
 	@GetMapping("/order")
-	public String order(HttpSession session , Model model) {
-		LoginInfo mySession =(LoginInfo)session.getAttribute("loginInfo");
-		System.out.println(mySession.getLoginId());
-		model.addAttribute("mySession",mySession.getLoginId());
+	public String order(Model model) {
 		return "orders/ordermain";
 		
 	}
