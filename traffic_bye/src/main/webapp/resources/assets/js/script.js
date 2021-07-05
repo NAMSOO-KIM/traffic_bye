@@ -1924,33 +1924,42 @@ $('.size-box ul li').on('click', function (e) {
     $(this).parent().addClass('selected');
 });
 
+// 카트에 물건 넣기 
 $('#cartEffect').on('click', function (e) {
     
 	let remain_stock = parseInt($("#remain-stock").attr("data-point"));
-	if (parseInt($("#selected-quantity").val())<=remain_stock){
+    let quantity = parseInt($("#selected-quantity").val());
+    let item_id = parseInt($("#item_id").val());
+
+    // let member_id = "${id}"; -> 나중에 세션으로 변경
+	if (quantity<=remain_stock){
 		
+        // member_id , item_id , quantity
+        // var id = "${id}";
 		//ajax 로 데이터 넘김
 		$.ajax({ 
-			type : "post", 
-			url : "<c:url value='/classdetail/${lecture.id}/insert'/>", 
-			headers : { "Content-type" : "application/json", "X-HTTP-Method-Override" : "POST" }, 
-			data : JSON.stringify({ content_textVal : content_textVal, user : user }), 
+			type : 'POST', 
+			url : "../addCart",
+			data : {
+                //member_id : 2 , // 나중에 세션 값으로 변경
+                item_id : item_id,
+                quantity : quantity
+                     },
+            dataType: "text", 
 			success : function (result) { 
-				if (result == "Success") {
-					Swal.fire( '댓글이 등록되었습니다.', '', 'success' ) 
+				if (result) { // 1 성공, 0 이면 실패
+					alert("성공");
+                    getCartItemList();
 				}
-				else if(result == "False"){
-					Swal.fire( '수강 신청 필수', '수강 중인 멤버만 댓글 작성이 가능합니다.', 'warning' ) 
-					$("#comment_text").val("");
-					$("#commentbtn").attr('disabled', false);
-					return;
+				else{
+					alert("실패");
 				}
-				getCommentList(1); 
-				$("#comment_text").val("");  
-				$("#commentbtn").attr('disabled', false);
 			},
-			dataType: "text",
-			contentType: "application/json"
+            error: function(request, status, error) {
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                console.log("실패");
+            }
+			
 		});
 		
 		$('#cartEffect').text("Added to bag ");
@@ -1965,6 +1974,51 @@ $('#cartEffect').on('click', function (e) {
 	}
     
 });
+
+
+function getContextPath() {
+
+    return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+
+}
+
+// 카트에 물건 삭제
+function delCartItem(id) {
+	let location = getContextPath();
+	let item_id = id;
+    //alert(item_id);
+    //alert(typeof(item_id));
+    console.log(location);
+    console.log(item_id);
+    console.log(typeof(item_id));
+    $.ajax({ 
+		type : 'POST', 
+		url : location+"/deleteCart",
+		data : {
+            
+            item_id : item_id
+            
+                 },
+        dataType: "text", 
+		success : function (result) { 
+			if (result) { // 1 성공, 0 이면 실패
+				alert("삭제 되었습니다.");
+                getCartItemList();
+			}
+			else{
+				alert("실패");
+			}
+		},
+        error: function(request, status, error) {
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log("실패");
+        }
+			
+		});
+    //document.getElementById("mySidenav").classList.add('open-side');
+};
+
+
 
 // modern product box plus effect
 $('.add-extent .animated-btn').on('click', function (e) {
