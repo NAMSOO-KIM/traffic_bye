@@ -17,10 +17,30 @@
 	
 	<insert id="insertCart" parameterType="CartVO">
 		insert into
-		team2.cart(member_id, item_id, quantity)
+		cart(member_id, item_id, quantity)
 		VALUES(#{member_id}, #{item_id}, #{quantity})
 	</insert>
 	
+	<delete id="deleteCart" parameterType="CartVO">
+		
+		delete cart
+		where member_id = #{member_id} and item_id = #{item_id}
+		
+	</delete>
 	
+	<select id="findItemCart" parameterType="CartVO" resultType="CartVO">
+	<![CDATA[
+			select *
+			from cart
+			where member_id = #{member_id} and item_id = #{item_id}
+	]]>
+	</select>
+	
+	<update id="updateCart" parameterType="CartVO">
+		update cart
+		set quantity = #{quantity}
+		where member_id = #{member_id} and item_id = #{item_id}
+		
+	</update>
 	
 </mapper>

@@ -190,8 +190,9 @@
 
     <script>
         $(window).on('load', function () {
-        	alert("실행");
+        	
         	getCartItemList();
+        	
             /* setTimeout(function () {
                 $('#exampleModal').modal('show');
             }, 2500); */
@@ -208,58 +209,59 @@
         
         // 장바구니 창
         function getCartItemList() {
+       	console.log("카드 아이템 가져오기 실행");
 		//let user = '<%=(String) session.getAttribute("id")%>';
-		let id = 1;
-        
+		let id = 2; // id = 2 우선 사용
+        console.log("우선 id=2로 지정"+id);
 		$.ajax({
 					type : 'POST',
-					url : "cartList",
+					url : "${contextPath}/cartList",
 					dataType: "text",
 					data : {
 						id : id
 					}, 
 					success : function(data) {
-						alert('오우 성공쓰?');
+						
 						let total_price = 0;
 						var html = "";
-						alert(data);
-						// var startPage = data.startPage;
-						// var endPage = data.endPage;
-						// var commentList = data.commentlist;
-						//let cartList = data.cartList;
-                        //html += "<ul class='show-div shopping-cart'>";
+						console.log(data);
+						
                         $.each(JSON.parse(data), function(key, value) {            
                             console.log(key);
                         	console.log(value);
-                        	total_price += value.price;
+                        	total_price += (value.price * value.quantity);
                             html += "<li>";
-                            	html += "<div class='media'>";
-                            		html += "<a href='#'><img alt='' class='me-3' ";
-                            		
-                            		//html += "src='${contextPath}/resources/assets/images/fashion/product/1.jpg'></a>";
-                            		html += "src='${contextPath}/ItemImage?id="
-                            				+ value.store_id
-                            				+"&image="
-                            				+ value.real_file_name
-                            				+"' style='width:68px; height: 90px;'></a>";
-                            		
-                            		//<img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
-                            		
-                            		html += "<div class='media-body'>";
-                            			html += "<a href='#'>";
-                            			html += "<h4>"
-                            				 + value.name
-                            				 + "</h4>";
-                            			html += "</a>";
-                            			html += "<h4><span> $"
-                            				 + value.price
-                            				 + "</span></h4>";
-                            			
-                            		html += "</div>";
-                            	html += "</div>";
-                            	html += "<div class='close-circle'><a href='#'><i class='fa fa-times' ";
-	                            	html += "aria-hidden='true'></i></a></div>";
-                            html += "</li>";
+                           	html += "<div class='media'>";
+                       		html += "<a href='#'><img alt='' class='me-3' ";
+                           		
+                      		
+                      		html += "src='${contextPath}/ItemImage?id="
+	               		       	+ value.store_id
+	               				+"&image="
+	               				+ value.real_file_name
+	               				+"' style='width:68px; height: 90px;'></a>";
+	               		
+                           		
+                           		html += "<div class='media-body'>";
+                       			html += "<a href='#'>";
+                           		html += "<h4>"
+                           	     	 + value.name
+                           		 	 + "</h4>";
+                           		html += "</a>";
+                           		
+                           		html += "<h4><span> $"
+                           			 + value.price
+                           			 + " x "
+                           			 + value.quantity
+                           			 + "개 </span></h4>";
+                           			
+                           		html += "</div>";
+                           		html += "</div>";
+                           		html += "<div class='close-circle' id='close-circle'><a href='javascript:void(0)' onclick='delCartItem("
+                           			 +	value.item_id
+                           			 + ")'><i class='fa fa-times' ";
+                            	html += "aria-hidden='true'></i></a></div>";
+                            	html += "</li>";
 
 						});
 
@@ -276,12 +278,13 @@
                         html += "<div class='buttons'><a href='cart.html' class='view-cart'>view";
                         html += "cart</a> <a href='#' class='checkout'>checkout</a></div>";
                         html += "</li>";
-                        
 
 						$("#shopping-cart").html(html);
+                        
 						
                     },
 					error : function(request, status, error) {
+						alert("오우 실패쓰");
 					}
 				});
 	    }

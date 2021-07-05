@@ -758,6 +758,7 @@
 	
 
     <script>
+    	
         $(document).ready(function () {
         	
             if ($(window).width() > 991) {
@@ -765,6 +766,7 @@
             }
         	
         });
+    	
 
     </script>
 </body>

@@ -1924,6 +1924,7 @@ $('.size-box ul li').on('click', function (e) {
     $(this).parent().addClass('selected');
 });
 
+// 카트에 물건 넣기 
 $('#cartEffect').on('click', function (e) {
     
 	let remain_stock = parseInt($("#remain-stock").attr("data-point"));
@@ -1937,8 +1938,8 @@ $('#cartEffect').on('click', function (e) {
         // var id = "${id}";
 		//ajax 로 데이터 넘김
 		$.ajax({ 
-			type : "POST", 
-			url : "../../addCart",
+			type : 'POST', 
+			url : "../addCart",
 			data : {
                 //member_id : 2 , // 나중에 세션 값으로 변경
                 item_id : item_id,
@@ -1948,7 +1949,7 @@ $('#cartEffect').on('click', function (e) {
 			success : function (result) { 
 				if (result) { // 1 성공, 0 이면 실패
 					alert("성공");
-                    
+                    getCartItemList();
 				}
 				else{
 					alert("실패");
@@ -1973,6 +1974,51 @@ $('#cartEffect').on('click', function (e) {
 	}
     
 });
+
+
+function getContextPath() {
+
+    return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+
+}
+
+// 카트에 물건 삭제
+function delCartItem(id) {
+	let location = getContextPath();
+	let item_id = id;
+    //alert(item_id);
+    //alert(typeof(item_id));
+    console.log(location);
+    console.log(item_id);
+    console.log(typeof(item_id));
+    $.ajax({ 
+		type : 'POST', 
+		url : location+"/deleteCart",
+		data : {
+            
+            item_id : item_id
+            
+                 },
+        dataType: "text", 
+		success : function (result) { 
+			if (result) { // 1 성공, 0 이면 실패
+				alert("삭제 되었습니다.");
+                getCartItemList();
+			}
+			else{
+				alert("실패");
+			}
+		},
+        error: function(request, status, error) {
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log("실패");
+        }
+			
+		});
+    //document.getElementById("mySidenav").classList.add('open-side');
+};
+
+
 
 // modern product box plus effect
 $('.add-extent .animated-btn').on('click', function (e) {

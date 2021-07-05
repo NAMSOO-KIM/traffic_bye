@@ -46,6 +46,8 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		Logger logger = LoggerFactory.getLogger(this.getClass());
 		logger.info("hi");
+		
+		
 		// 특정 아이템 정보, 해당하는 매장 정보 가져오기
 		try {
 			
