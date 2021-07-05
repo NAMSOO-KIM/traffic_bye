@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
 import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.StoreVO;
 
+@Slf4j
 @Controller
 public class ItemController {
 	
@@ -40,7 +44,8 @@ public class ItemController {
 	public ModelAndView itemDetail(@PathVariable("id") long id, HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		
+		Logger logger = LoggerFactory.getLogger(this.getClass());
+		logger.info("hi");
 		// 특정 아이템 정보, 해당하는 매장 정보 가져오기
 		try {
 			
