@@ -699,7 +699,7 @@
 												<li><a href="#">account</a>
 													<ul>
 														<li><a href="wishlist.html">wishlist</a></li>
-														<li><a href="cart.html">cart</a></li>
+														<li><a href="order">cart</a></li>
 														<li><a href="dashboard.html">Dashboard</a></li>
 														<li><a href="login.html">login</a></li>
 														<li><a href="register.html">register</a></li>

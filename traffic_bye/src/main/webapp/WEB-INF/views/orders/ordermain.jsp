@@ -160,16 +160,17 @@
 	storeList = new Set(storeList);
 	storeList = Array.from(storeList);
 	console.log(storeList);
+	console.log(JSON.stringify(storeList));
 	</script>
-	
+	<script type="text/javascript" src=" https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 	<script type="text/javascript">
 	var wsocket;
-	
+	 
 	function connect() {
-		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
+		wsocket = new SockJS("http://localhost/app/smartOrder.sockjs");
 		wsocket.open = onOpen;
 		wsocket.onmessage = onMessage;
-		wsocket.onclose = onClose;
+		//wsocket.onclose = onClose;
 	}
 	function disconnect() {
 		wsocket.close();
@@ -187,7 +188,7 @@
 		
 		//메세지 보낼 스토어아이디는 
 		var userId = $('#userId').val();
-		wsocket.send("알람가야될 상점 목록:"+storeList);
+		wsocket.send(storeList);
 	}
 	connect();
 	$(document).ready(function(){

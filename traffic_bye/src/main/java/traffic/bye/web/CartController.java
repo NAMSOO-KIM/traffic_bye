@@ -71,7 +71,7 @@ public class CartController {
 		 */
 		// 회원 id, item
 		CartVO cartVO = new CartVO();
-		cartVO.setMember_id(2); // 임시로 id=2 회원 사용
+		cartVO.setMember_id(41); // 임시로 id=41 회원 사용
 		cartVO.setItem_id(item_id);
 		cartVO.setQuantity(quantity);
 		

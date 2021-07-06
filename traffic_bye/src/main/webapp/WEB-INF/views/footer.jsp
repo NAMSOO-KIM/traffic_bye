@@ -275,7 +275,7 @@
                         html += "</div>";
                         html += "</li>";
                         html += "<li>";
-                        html += "<div class='buttons'><a href='cart.html' class='view-cart'>view";
+                        html += "<div class='buttons'><a href='order' class='view-cart'>view";
                         html += "cart</a> <a href='#' class='checkout'>checkout</a></div>";
                         html += "</li>";
 

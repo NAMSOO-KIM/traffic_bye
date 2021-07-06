@@ -1,6 +1,8 @@
 package traffic.bye.handler;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,23 +24,23 @@ import traffic.bye.vo.LoginInfo;
 @Controller
 public class SmartOrderHandler extends TextWebSocketHandler {
 
-	Set<String> sessions = new HashSet<String>();
+	Set<Long> sessions = new HashSet<Long>();
+	HttpSession httpSession;
 
-	private Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
+	private Map<Long, WebSocketSession> users = new ConcurrentHashMap<Long, WebSocketSession>();
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		users.put(session.getId(), session);
-//		Map<String, Object> sessionVal = session.getAttributes();
-//		LoginInfo loginInfo = (LoginInfo) sessionVal.get("loginInfo");
-//		String userLoginId = loginInfo.getLoginId();
-//		System.out.println(userLoginId);
-//		if (users.get(userLoginId) != null) {
-//			users.replace(userLoginId, session);
-//
-//		} else {
-//			users.put(session.getId(), session);
-//		}
+		Map<String, Object> sessionVal = session.getAttributes();
+		LoginInfo loginInfo = (LoginInfo) sessionVal.get("loginInfo");
+		Long storeId = loginInfo.getStoreId();
+		System.out.println(storeId);
+		sessions.add(storeId);
+		if (users.get(storeId) != null) {
+			users.replace(storeId, session);
+		} else {
+			users.put(storeId, session);
+		}
 
 		System.out.println(users.toString());
 		// id -> 상점으로 바꿔야할듯
@@ -46,15 +48,25 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		users.remove(session.getId());
-		sessions.remove(session);
+	
+		
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
+		List<String> storeList = getStoreId(msg);
 		//상점 목록 받기
-		System.out.println(msg);
+		System.out.println("storeId List"+ storeList);
+		
+		for(int i=0;i<storeList.size();i++) {
+			WebSocketSession receiver = users.get(Long.parseLong(storeList.get(i)));
+			if(receiver !=null) {
+				receiver.sendMessage(new TextMessage(storeList.get(i)+"님 주문이 들어왔습니다."));
+			}else {
+				continue;
+			}
+		}
 		
 		
 		//		String receiverId = getUserId(msg);
@@ -74,9 +86,13 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 		System.out.println(session.getId() + "익셉션 발생:" + exception.getMessage());
 	}
 
-	public String getUserId(String msg) {
-		String[] parseData = msg.split(":");
-		return parseData[0];
+	public List<String> getStoreId(String msg) {
+		List<String> arr = new ArrayList<>();
+		String[] parseData = msg.split(",");
+		for(int i=0;i<parseData.length;i++) {
+			arr.add(parseData[i]);
+		}
+		return arr;
 	}
 
 	public String getMsg(String msg) {

@@ -24,9 +24,9 @@
 		select count(*) from member where login_id = #{loginId} and password = #{password}
 	</select>
 	
-	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
-		select member.id id, login_id loginId, password, store.id storeId from member join store on member.id = store.manager_id where login_id = #{loginId}
-	</select>
+	  <select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
+      select member.id id, login_id loginId, password, store.id storeId from member left join store on member.id = store.manager_id where member.login_id = #{loginId} 
+   </select>
 	
 	<select id="getRoleInfo" parameterType="String" resultType="String">
 		select role from member where login_id = #{loginId}
