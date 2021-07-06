@@ -3,64 +3,145 @@
 	pageEncoding="utf-8"%>
 <%@ page session="false"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="memberVO" value="${memberVO}" />
 <!DOCTYPE html>
+
+
+
+
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="multikart">
-<meta name="keywords" content="multikart">
-<meta name="author" content="multikart">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<jsp:include page="../header.jsp"></jsp:include>
+ 
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-<!--Google font-->
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
-	rel="stylesheet">
-<!-- Icons -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
-<!--Slick slider css-->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/slick.css">
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/slick-theme.css">
-<!-- Animate icon -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/animate.css">
-<!-- Themify icon -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/themify-icons.css">
-<!-- Bootstrap css -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/bootstrap.css">
-<!-- Theme css -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/style.css">
-<!-- latest jquery-->
-<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+<!-- 아래 제이쿼리는 1.0이상이면 원하는 버전을 사용하셔도 무방합니다. -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script>
 
-<!-- fly cart ui jquery-->
-<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+ 
+<script>
 
-<!-- exitintent jquery-->
-<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
-<script src="${contextPath}/resources/assets/js/exit.js"></script>
-</head>
+function iamport(){
+	
+	let member_name = document.getElementById('member_name').value;
+	let phone_number = document.getElementById('phone_number').value;
+	let birth = document.getElementById('birth').value;
+	
+	console.log(member_name);
+	console.log(phone_number);
+	console.log(birth);
+	
+	
+	//가맹점 식별코드
+	//IMP.init('imp30146952');
+	IMP.init('imp20966089');
+	
+	IMP.request_pay({
+	    pg : 'kakaopay',
+	    pay_method : 'card',
+	    merchant_uid : 'merchant_' + new Date().getTime(),
+	    name : member_name+'님의 결제',
+	    amount : 1350, // 나중에 수정
+	    //buyer_email : 'iamport@siot.do',
+	    buyer_name : member_name,
+	    buyer_tel : phone_number,
+	    //buyer_addr : '서울특별시 강남구 삼성동',
+	    //buyer_postcode : '123-456'
+	}, function(rsp) {
+	    if ( rsp.success ) {
+	    	//alert("하이");
+	    	console.log(rsp.imp_uid);
+	    	console.log(rsp.merchant_uid);
+	    	console.log(rsp.paid_amount);
+	    	console.log(rsp.apply_num);
+	    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+	    	jQuery.ajax({
+	    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+	    		type: 'POST',
+	    		dataType: 'json',
+	    		data: {
+		    		imp_uid : rsp.imp_uid
+		    		//기타 필요한 데이터가 있으면 추가 전달
+	    		}
+	    	}).done(function(data) {
+	    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+	    		if ( everythings_fine ) {
+	    			var msg = '결제가 완료되었습니다.';
+	    			msg += '\n고유ID : ' + rsp.imp_uid;
+	    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+	    			msg += '\결제 금액 : ' + rsp.paid_amount;
+	    			msg += '카드 승인번호 : ' + rsp.apply_num;
+	    			
+	    			alert(msg);
+	    		} else {
+	    			//[3] 아직 제대로 결제가 되지 않았습니다.
+	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+	    		}
+	    	});
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	        
+	        alert(msg);
+	    }
+	});
+}
+
+function iamport2(){
+	//가맹점 식별코드
+	//IMP.init('imp30146952');
+	IMP.init('imp20966089');
+	
+	IMP.request_pay({
+	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+	    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
+	    name : '주문명:결제테스트',
+	    amount : 1400,
+	    buyer_email : 'iamport@siot.do',
+	    buyer_name : '구매자이름',
+	    buyer_tel : '010-1234-5678', //누락되면 이니시스 결제창에서 오류
+	    buyer_addr : '서울특별시 강남구 삼성동',
+	    buyer_postcode : '123-456'
+	}, function(rsp) {
+	    if ( rsp.success ) {
+	    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+	    	jQuery.ajax({
+	    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+	    		type: 'POST',
+	    		dataType: 'json',
+	    		data: {
+		    		imp_uid : rsp.imp_uid
+		    		//기타 필요한 데이터가 있으면 추가 전달
+	    		}
+	    	}).done(function(data) {
+	    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+	    		if ( everythings_fine ) {
+	    			var msg = '결제가 완료되었습니다.';
+	    			msg += '\n고유ID : ' + rsp.imp_uid;
+	    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+	    			msg += '\n결제 금액 : ' + rsp.paid_amount;
+	    			msg += '카드 승인번호 : ' + rsp.apply_num;
+	    			
+	    			alert(msg);
+	    		} else {
+	    			//[3] 아직 제대로 결제가 되지 않았습니다.
+	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+	    		}
+	    	});
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	        
+	        alert(msg);
+	    }
+	});
+}
+
+</script>
 <body>
-	<jsp:include page="../header.jsp"></jsp:include>
-
+	
 	<!-- 내용 입력해주세요 -->
 	<!--section start-->
 	<section class="cart-section section-b-space">
@@ -139,13 +220,16 @@
 				</div>
 			</div>
 			<div class="row cart-buttons">
-				<div class="col-6">
-					<a href="#" class="btn btn-solid">쇼핑 계속하기</a>
+				<div class="col-6"> 
+					<input type="hidden" id="member_name" value="${memberVO.name}"/>
+					<input type="hidden" id="phone_number" value="${memberVO.phone}"/>
+					<input type="hidden" id="birth" value="${memberVO.birth}"/>
+					<button class="btn btn-solid" onclick="iamport2();">KG이니시스 결제</button>
 				</div>
 				<div class="col-6">
-				<form action="testorder" method="post">
-					<button class="btn btn-solid" id="sendBtn">결제하기</button>
-				</form>
+				
+				<button class="btn btn-solid" onclick="iamport();">카카오페이 결제하기</button>
+				
 				</div>
 			</div>
 		</div>
@@ -205,6 +289,15 @@
 		console.log("준비완료");
 		$('#exitBtn').click(function(){disconnect();});		
 	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </script>
  <style>
         /* The Modal (background) */
@@ -271,10 +364,11 @@
 	
 	</script>
 
-
+	
+    
 	<div class="popup-container"></div>
 
-
+	
 	<!-- 내용 끝 -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
@@ -288,6 +382,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    
 	<!-- Your customer chat code -->
 	<div class="fb-customerchat" attribution=setup_tool
 		page_id="2123438804574660" theme_color="#0084ff"
@@ -295,52 +390,8 @@
 		logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
 	</div>
 	<!-- facebook chat section end -->
-
-
-	<!-- tap to top -->
-	<div class="tap-top top-cls">
-		<div>
-			<i class="fa fa-angle-double-up"></i>
-		</div>
-	</div>
-	<!-- tap to top end -->
-
-
-
-
-	<!-- slick js-->
-	<script src="${contextPath}/resources/assets/js/slick.js"></script>
-
-	<!-- menu js-->
-	<script src="${contextPath}/resources/assets/js/menu.js"></script>
-
-	<!-- lazyload js-->
-	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
-
-	<!-- Bootstrap js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Bootstrap Notification js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
-
-	<!-- Fly cart js-->
-	<script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
-
-	<!-- Theme js-->
-	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
-	<script src="${contextPath}/resources/assets/js/script.js"></script>
-    
-	<script>
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
-
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
-    </script>
+	
+   
 
 </body>
 </html>
