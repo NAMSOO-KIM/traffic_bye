@@ -210,7 +210,7 @@
         // 장바구니 창
         function getCartItemList() {
        	console.log("카드 아이템 가져오기 실행");
-		//let user = '<%=(String) session.getAttribute("id")%>';
+		
 		let id = 41; // id = 2 우선 사용
         console.log("우선 id=41로 지정"+id);
 		$.ajax({
