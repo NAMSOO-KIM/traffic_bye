@@ -138,7 +138,7 @@
                                         <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
                                                 class="btn btn-solid hover-solid btn-animation"><i
                                                     class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to
-                                                cart</a> <a href="#" class="btn btn-solid"><i
+                                                cart</a> <a href="#" class="btn btn-solid" id="addCartBtn"><i
                                                     class="fa fa-bookmark fz-16 me-2"
                                                     aria-hidden="true"></i>wishlist</a></div>
                                         
@@ -750,8 +750,6 @@
     <!-- added to cart notification -->
 
 
-    <!-- timer js-->
-    <script src="${contextPath}/resources/assets/js/timer.js"></script>
 
     <!-- sticky sidebar -->
     <script type="text/javascript" src="${contextPath}/resources/assets/js/sticky-kit.js"></script>

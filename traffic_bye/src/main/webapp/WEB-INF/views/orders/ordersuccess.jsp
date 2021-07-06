@@ -48,6 +48,15 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
+<!-- latest jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+
+<!-- fly cart ui jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+
+<!-- exitintent jquery-->
+<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+<script src="${contextPath}/resources/assets/js/exit.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -218,8 +227,104 @@
     <!--section end-->
     <!-- 내용 시작 -->
   
+  	<script type="text/javascript">
+	var wsocket;
+	
+	function connect() {
+		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
+		wsocket.open = onOpen;
+		wsocket.onmessage = onMessage;
+		wsocket.onclose = onClose;
+	}
+	function disconnect() {
+		wsocket.close();
+	}
+	function onOpen(evt) {
+		appendMessage("연결되었습니다.");
+	}
+	function onMessage(evt) {
+		$('#myModal').show();
+	}
+	function onClose(evt) {
+		console.log("연결을 끊었습니다.");
+	}
+	function send() {
+		//흠... 히든으로 닉네임을 가져온다.
+		//주문 들어올때 아이디값 다 넘겨주고
+		//센드 할때 받은 아이디값을 주문상태를 넘겨준다.
+		var userId = $('#userId').val();
+		var msg = "주문을 수락했습니다.!"
+		wsocket.send("test7" + ":" + msg);
+		//닉네임을 현재는 고정한상태
+	}
+	connect();
+	
+	$(document).ready(function(){
+		//var sessionInfo = ${sessionScope.loginInfo};
+		console.log('안녕');
+		/* $('#message').keypress(function(event){
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if(keycode=='13'){
+				send();
+			}
+			event.stopPropagation();
+		}); */
+		$('#sendBtn').click(function(){send();});
+		console.log("준비완료");
+		$('#exitBtn').click(function(){disconnect();});		
+	});
+</script>
 
-
+<style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */                          
+        }
+ 
+</style>
+ 
+ 
+ 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
+                <p style="text-align: center; line-height: 1.5;"><br /></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 수락되었습니다.</span></p>
+                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
+                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
+                <p style="text-align: center; line-height: 1.5;"><br /></p>
+                <p><br /></p>
+            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;" >
+                     <a id="confirmBtn" href="ordertracking">주문 진행 상황 보기</a>
+                </span>
+            </div>
+      </div>
+    </div>
+        <!--End Modal-->
 
 
 

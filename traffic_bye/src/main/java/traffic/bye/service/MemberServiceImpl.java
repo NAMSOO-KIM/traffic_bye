@@ -52,12 +52,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int login(LoginInfo loginInfo) throws Exception {
-		// TODO Auto-generated method stub
-		return memberDAO.login(loginInfo);
-	}
-
-	@Override
 	public String findIdByKakaoId(Long id) throws Exception {
 		// TODO Auto-generated method stub
 		return memberDAO.findIdByKakaoId(id);
