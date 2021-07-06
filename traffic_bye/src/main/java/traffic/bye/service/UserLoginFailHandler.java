@@ -30,6 +30,8 @@ public class UserLoginFailHandler implements AuthenticationFailureHandler {
 			request.setAttribute("msg", "존재하지 않는 사용자입니다.");
 		} else if(exception instanceof BadCredentialsException) {
 			request.setAttribute("msg", "아이디 또는 비밀번호가 틀립니다.");
+		} else {
+			request.setAttribute("msg", "아이디 또는 비밀번호가 틀립니다.");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/login");
 		dispatcher.forward(request, response);
