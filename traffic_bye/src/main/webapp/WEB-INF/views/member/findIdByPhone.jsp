@@ -81,7 +81,7 @@
 						<label for="phone">휴대폰 번호</label> <input type="text" id="phoneNum"
 							required="required" placeholder="번호를 입력하세요"> <input
 							type="button" id="sendSMS" value="인증번호 전송">
-						<form action="${contextPath}/member/auth/phone/check"
+						<form action="${contextPath}/member/auth/findId/phone/check"
 							id="phoneCheck">
 							<input type="text" name="randomNumber"> <input
 								type="hidden" id="phone" name="phone"> <input
@@ -97,7 +97,7 @@
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 
-	<script src="${contextPath}/resources/js/phoneAuth.js"></script>
+	<script src="${contextPath}/resources/js/findIdByPhone.js"></script>
 
 
 

@@ -22,4 +22,8 @@ public interface MemberDAO {
 	public ArrayList<String> getRoleInfo(String loginId) throws SQLException;
 	
 	public String findIdByKakaoId(Long kakaoId) throws SQLException;
+	
+	public String findIdByPhone(String phone) throws SQLException;
+	
+	public void testUpdate(String pw) throws SQLException;
 }
