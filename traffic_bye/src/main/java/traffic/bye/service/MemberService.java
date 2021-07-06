@@ -13,4 +13,6 @@ public interface MemberService {
 	public int memberRegister(MemberVO memberVO) throws Exception;
 	
 	public int login(LoginInfo loginInfo) throws Exception;
+	
+	public String findIdByKakaoId(Long kakaoId) throws Exception;
 }

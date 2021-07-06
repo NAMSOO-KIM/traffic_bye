@@ -1,6 +1,7 @@
 package traffic.bye.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import traffic.bye.dao.MemberDAO;
@@ -15,6 +16,9 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	MemberDAO memberDAO;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public int checkPhoneDuplicate(String phone) throws Exception {
@@ -43,6 +47,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int memberRegister(MemberVO memberVO) throws Exception {
 		// TODO Auto-generated method stub
+		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
 		return memberDAO.memberRegister(memberVO);
 	}
 
@@ -50,6 +55,12 @@ public class MemberServiceImpl implements MemberService{
 	public int login(LoginInfo loginInfo) throws Exception {
 		// TODO Auto-generated method stub
 		return memberDAO.login(loginInfo);
+	}
+
+	@Override
+	public String findIdByKakaoId(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findIdByKakaoId(id);
 	}
 	
 	

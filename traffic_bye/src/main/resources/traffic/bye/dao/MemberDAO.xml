@@ -23,4 +23,16 @@
 	<select id="login" parameterType="LoginInfo" resultType="int">
 		select count(*) from member where login_id = #{loginId} and password = #{password}
 	</select>
+	
+	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
+		select id, login_id loginId, password from member where login_id = #{loginId}
+	</select>
+	
+	<select id="getRoleInfo" parameterType="String" resultType="String">
+		select role from member where login_id = #{loginId}
+	</select>
+
+	<select id="findIdByKakaoId" parameterType="Long" resultType="String">
+		select login_id loginId from member where auth_id = #{kakaoId}
+	</select>
 </mapper>

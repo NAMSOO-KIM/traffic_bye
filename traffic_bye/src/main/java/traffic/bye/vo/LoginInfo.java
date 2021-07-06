@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LoginInfo {
-	long id;
-	String loginId;
-	String password;
+	private long id;
+	private String loginId;
+	private String password;
 }
