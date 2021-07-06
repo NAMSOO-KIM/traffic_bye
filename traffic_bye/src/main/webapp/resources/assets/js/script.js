@@ -1931,28 +1931,38 @@ $('#cartEffect').on('click', function (e) {
     let quantity = parseInt($("#selected-quantity").val());
     let item_id = parseInt($("#item_id").val());
 
-    // let member_id = "${id}"; -> 나중에 세션으로 변경
 	if (quantity<=remain_stock){
 		
-        // member_id , item_id , quantity
-        // var id = "${id}";
 		//ajax 로 데이터 넘김
 		$.ajax({ 
 			type : 'POST', 
 			url : "../addCart",
 			data : {
-                //member_id : 2 , // 나중에 세션 값으로 변경
+                
                 item_id : item_id,
                 quantity : quantity
-                     },
+                     
+                     }
+                     ,
             dataType: "text", 
 			success : function (result) { 
-				if (result) { // 1 성공, 0 이면 실패
-					alert("성공");
+				if (result == 1) { // 1 성공, 0 이면 실패
+					alert(result);
+					
+					$('#cartEffect').text("Added to bag ");
+					$('.added-notification').addClass("show");
+					
+					setTimeout(function () {
+		    			$('.added-notification').removeClass("show");
+					}, 5000);
+					
                     getCartItemList();
 				}
-				else{
-					alert("실패");
+				else if(result == 0){
+					alert("로그인 부터 하셈");
+				}
+				else if(result == 2){
+					alert("재고 없셈");
 				}
 			},
             error: function(request, status, error) {
@@ -1962,11 +1972,7 @@ $('#cartEffect').on('click', function (e) {
 			
 		});
 		
-		$('#cartEffect').text("Added to bag ");
-		$('.added-notification').addClass("show");
-		setTimeout(function () {
-		    $('.added-notification').removeClass("show");
-		}, 5000);
+		
 		
 		
     }else{
@@ -2001,12 +2007,16 @@ function delCartItem(id) {
                  },
         dataType: "text", 
 		success : function (result) { 
-			if (result) { // 1 성공, 0 이면 실패
+			if (result==1) { // 1 성공, 0 이면 실패
 				alert("삭제 되었습니다.");
                 getCartItemList();
 			}
-			else{
+			else if(result == 0){
 				alert("실패");
+			}
+			
+			else if(result == 2){
+				alert("DB 접근 오류");
 			}
 		},
         error: function(request, status, error) {

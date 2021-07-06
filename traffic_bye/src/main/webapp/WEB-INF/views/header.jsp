@@ -793,6 +793,19 @@
 											<ul class="show-div shopping-cart" id="shopping-cart">
 
 												<!-- ajax 시작 -->
+												<s:authorize access="isAnonymous()">
+												<li>
+							                        <div class="buttons">
+							                        	<!-- <a href="${contextPath}/member/login" class='view-cart'>로그인 후 이용할 수 있습니다.</a> -->
+							                        	<a href="${contextPath}/member/login">로그인 후 이용할 수 있습니다.</a>
+							                        	<!-- 
+							                        	<i class="fa fa-user" aria-hidden="true"></i>
+							                        	 -->
+							                        	<!-- <a href="#" class="checkout">로그인</a> -->
+							                        	
+							                        </div>
+                        						</li>
+												</s:authorize>
 
 											</ul>
 
