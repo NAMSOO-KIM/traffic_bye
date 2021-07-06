@@ -40,4 +40,9 @@
 	<update id="testUpdate" parameterType="String">
 		update member set password = #{pw} where id = 2
 	</update>
+	
+	<select id="getRoleInfo" parameterType="String" resultType="String">
+		select role from member where login_id = #{loginId}
+	</select>
+	
 </mapper>

@@ -1947,7 +1947,7 @@ $('#cartEffect').on('click', function (e) {
             dataType: "text", 
 			success : function (result) { 
 				if (result == 1) { // 1 성공, 0 이면 실패
-					alert(result);
+					//alert(result);
 					
 					$('#cartEffect').text("Added to bag ");
 					$('.added-notification').addClass("show");
