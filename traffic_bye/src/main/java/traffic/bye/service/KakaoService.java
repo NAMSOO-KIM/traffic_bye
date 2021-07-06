@@ -22,13 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class KakaoService {
 
-	@Autowired
-	String kakaoAuthInfo;
 	
 	@Autowired
 	String kakaoLogoutRedirectURI;
 
-	public String getAccessToken(String authorizeCode) throws Exception {
+	public String getAccessToken(String authorizeCode, String action) throws Exception {
 		String access_Token = "";
 		String reqURL = "https://kauth.kakao.com/oauth/token";
 
@@ -42,8 +40,8 @@ public class KakaoService {
 		// POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 		StringBuilder sb = new StringBuilder();
-		System.out.println(kakaoAuthInfo);
-		sb.append(kakaoAuthInfo);
+		System.out.println(action);
+		sb.append(action);
 		sb.append(authorizeCode);
 		bw.write(sb.toString());
 		bw.flush();
