@@ -15,13 +15,17 @@ $('document').ready(()=>{
 		$.ajax({
          url: "/app/member/auth/phone",
          data: {"phoneNum" : phoneNum },
-         method: "GET"
+         method: "GET",
+         statusCode: {
+			409:function(data) {
+				alert("이미 가입된 번호입니다!");
+			}
+		}
       }).done(function (data, textStatus, xhr) {
 			count = 180;
 			$('#phone').val(phoneNum);
 			time = setInterval("timer()", 1000);
       }).fail(function (data, textStatus, xhr){
-		  alert("잠시 후에 다시 시도해주세요!");
       });
 	});
 });

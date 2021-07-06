@@ -57,6 +57,12 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.findIdByKakaoId(id);
 	}
 	
+	@Override
+	public String findIdByPhone(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findIdByPhone(phone);
+	}
+	
 	
 
 }

@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
-		select id, login_id loginId, password from member where login_id = #{loginId}
+		select member.id id, login_id loginId, password, store.id storeId from member join store on member.id = store.manager_id where login_id = #{loginId}
 	</select>
 	
 	<select id="getRoleInfo" parameterType="String" resultType="String">
@@ -35,4 +35,12 @@
 	<select id="findIdByKakaoId" parameterType="Long" resultType="String">
 		select login_id loginId from member where auth_id = #{kakaoId}
 	</select>
+	
+	<select id="findIdByPhone" parameterType="String" resultType="String">
+		select login_id loginId from member where phone = #{phone}
+	</select>
+	
+	<update id="testUpdate" parameterType="String">
+		update member set password = #{pw} where id = 2
+	</update>
 </mapper>
