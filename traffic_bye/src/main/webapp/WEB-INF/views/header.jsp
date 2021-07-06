@@ -123,7 +123,7 @@
 											</li>
 											<li><a href="index.html">Home</a></li>
 											<li><a href="#">매장
-													<div class="lable-nav">new</div>
+													<!-- <div class="lable-nav">new</div> -->
 											</a></li>
 											<li><a href="#">패션</a></li>
 											<li><a href="#">식품</a></li>
@@ -481,9 +481,29 @@
 											</div>
 										</li>
 										<li><a href="index.html">Home</a></li>
-										<li class="mega" id="hover-cls"><a href="#">매장
+										<!-- 
+										<li class="mega" id="hover-cls"><a href="#">매장</a></li>
+										 -->
+												<!-- 
 												<div class="lable-nav">new</div>
-										</a>
+												 -->
+										
+										
+											<li><a href="#">매장</a>
+											<ul>
+												<li><a href="category-page(top-filter).html">담배매장
+														<!--<span class="new-tag">new</span>-->
+												</a></li>
+												<li><a href="category-page(modern).html">전자
+												
+												<!-- 
+												<span class="new-tag">new</span>
+												-->	
+														</a></li>
+												<li><a href="category-page.html">식품</a></li>
+												<li><a href="category-page.html">안내데스크</a></li>
+											</ul>
+											<!-- 
 											<ul class="mega-menu full-mega-menu">
 												<li>
 													<div class="container">
@@ -619,15 +639,22 @@
 														</div>
 													</div>
 												</li>
-											</ul></li>
+											</ul>
+											 -->
+											</li>
 										<li><a href="#">식품</a>
 											<ul>
-												<li><a href="category-page(top-filter).html">top
-														filter<span class="new-tag">new</span>
+												<li><a href="category-page(top-filter).html">건강식품
+														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="category-page(modern).html">modern<span
-														class="new-tag">new</span></a></li>
-												<li><a href="category-page.html">left sidebar</a></li>
+												<li><a href="category-page(modern).html">홍삼/인삼
+												
+												<!-- 
+												<span class="new-tag">new</span>
+												-->	
+														</a></li>
+												<li><a href="category-page.html">가공식품</a></li>
+												<!-- 
 												<li><a href="category-page(right).html">right
 														sidebar</a></li>
 												<li><a href="category-page(no-sidebar).html">no
@@ -643,24 +670,32 @@
 												<li><a href="category-page(6-grid).html">six grid</a></li>
 												<li><a href="category-page(list-view).html">list
 														view</a></li>
+												 -->
 											</ul></li>
 										<li><a href="#">전자</a>
 											<ul>
-												<li><a href="product-page(360-view).html">360 view
-														<span class="new-tag">new</span>
+												<li><a href="product-page(360-view).html">카메라/캠코더
+														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="product-page(video-thumbnail).html">video
-														thumbnail<span class="new-tag">new</span>
+												<li><a href="product-page(video-thumbnail).html">노트북/태블릿
+														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="#">sidebar</a>
+												<li><a href="#">음향기기</a>
+													
+													<!-- 
 													<ul>
 														<li><a href="product-page.html">left sidebar</a></li>
 														<li><a href="product-page(right-sidebar).html">right
 																sidebar</a></li>
 														<li><a href="product-page(no-sidebar).html">no
 																sidebar</a></li>
-													</ul></li>
-												<li><a href="#">thumbnail image</a>
+													</ul>
+													 -->
+													</li>
+													
+													
+												<li><a href="#">리빙용품</a>
+													<!-- 
 													<ul>
 														<li><a href="product-page(left-image).html">left
 																image</a></li>
@@ -668,8 +703,12 @@
 																image</a></li>
 														<li><a href="product-page(image-outside).html">image
 																outside</a></li>
-													</ul></li>
-												<li><a href="#">three column</a>
+													</ul>
+													 -->
+													
+													</li>
+												<li><a href="#">가전제품</a>
+													<!-- 
 													<ul>
 														<li><a href="product-page(3-col-left).html">thumbnail
 																left</a></li>
@@ -677,29 +716,33 @@
 																right</a></li>
 														<li><a href="product-page(3-column).html">thubnail
 																bottom</a></li>
-													</ul></li>
-												<li><a href="product-page(4-image).html">four image</a></li>
-												<li><a href="product-page(sticky).html">sticky</a></li>
-												<li><a href="product-page(accordian).html">accordian</a></li>
+													</ul>
+													 -->
+													</li>
+												<li><a href="product-page(4-image).html">미용기기/도구</a></li>
+												<li><a href="product-page(sticky).html">스마트기기/ACC</a></li>
+												<li><a href="product-page(accordian).html">면도기/칫솔</a></li>
+												<!-- 
 												<li><a href="product-page(bundle).html">bundle</a></li>
 												<li><a href="product-page(image-swatch).html">image
 														swatch </a></li>
 												<li><a href="product-page(vertical-tab).html">vertical
 														tab</a></li>
+												-->
 											</ul></li>
 										<li><a href="#">담배/주류</a>
 											<ul>
-												<li><a href="#">vendor</a>
+												<li><a href="#">국산담배</a>
 													<ul>
-														<li><a href="vendor-dashboard.html">vendor
-																dashboard</a></li>
-														<li><a href="vendor-profile.html">vendor profile</a></li>
-														<li><a href="become-vendor.html">become vendor</a></li>
+														<li><a href="vendor-dashboard.html">디스플러스</a></li>
+														<li><a href="vendor-profile.html">더원</a></li>
+														<li><a href="become-vendor.html">레종</a></li>
 													</ul></li>
-												<li><a href="#">account</a>
+												<li><a href="#">수입담배</a>
 													<ul>
-														<li><a href="wishlist.html">wishlist</a></li>
-														<li><a href="cart.html">cart</a></li>
+														<li><a href="wishlist.html">말보로 레드</a></li>
+														<li><a href="cart.html">메비우스</a></li>
+														<!-- 
 														<li><a href="dashboard.html">Dashboard</a></li>
 														<li><a href="login.html">login</a></li>
 														<li><a href="register.html">register</a></li>
@@ -710,15 +753,17 @@
 														<li><a href="order-success.html">order success</a></li>
 														<li><a href="order-tracking.html">order tracking<span
 																class="new-tag">new</span></a></li>
+													 	-->
+													 	
 													</ul></li>
-												<li><a href="#">portfolio</a>
+												<li><a href="#">주류</a>
 													<ul>
-														<li><a href="">grid</a>
-															<ul>
-																<li><a href="grid-2-col.html">grid 2</a></li>
-																<li><a href="grid-3-col.html">grid 3</a></li>
-																<li><a href="grid-4-col.html">grid 4</a></li>
-															</ul></li>
+														
+														<li><a href="grid-2-col.html">참이슬 30년산</a></li>
+														<li><a href="grid-3-col.html">테라 20년산</a></li>
+														<li><a href="grid-4-col.html">진로 15년산</a></li>
+													
+														<!-- 
 														<li><a href="">masonry</a>
 															<ul>
 																<li><a href="masonary-2-grid.html">grid 2</a></li>
@@ -726,8 +771,11 @@
 																<li><a href="masonary-4-grid.html">grid 4</a></li>
 																<li><a href="masonary-fullwidth.html">full
 																		width</a></li>
+															 
 															</ul></li>
+															-->
 													</ul></li>
+												<!-- 
 												<li><a href="about-page.html">about us</a></li>
 												<li><a href="search.html">search</a></li>
 												<li><a href="review.html">review</a></li>
@@ -742,6 +790,7 @@
 												<li><a href="404.html">404</a></li>
 												<li><a href="coming-soon.html">coming soon</a></li>
 												<li><a href="faq.html">FAQ</a></li>
+												 -->
 											</ul></li>
 									</ul>
 								</nav>
@@ -793,6 +842,19 @@
 											<ul class="show-div shopping-cart" id="shopping-cart">
 
 												<!-- ajax 시작 -->
+												<s:authorize access="isAnonymous()">
+												<li>
+							                        <div class="buttons">
+							                        	<!-- <a href="${contextPath}/member/login" class='view-cart'>로그인 후 이용할 수 있습니다.</a> -->
+							                        	<a href="${contextPath}/member/login">로그인 후 이용할 수 있습니다.</a>
+							                        	<!-- 
+							                        	<i class="fa fa-user" aria-hidden="true"></i>
+							                        	 -->
+							                        	<!-- <a href="#" class="checkout">로그인</a> -->
+							                        	
+							                        </div>
+                        						</li>
+												</s:authorize>
 
 											</ul>
 
