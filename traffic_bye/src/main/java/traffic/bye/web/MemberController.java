@@ -20,6 +20,7 @@ import traffic.bye.dao.RedisDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
 import traffic.bye.exception.PhoneDuplicateException;
+import traffic.bye.exception.SMSMissMatchException;
 import traffic.bye.service.CoolSMSService;
 import traffic.bye.service.KakaoService;
 import traffic.bye.service.MemberService;
@@ -135,6 +136,9 @@ public class MemberController {
 			memberService.checkPhoneDuplicate(phoneNum);
 			coolSMSService.send(phoneNum);
 			return new ResponseEntity<>(HttpStatus.CREATED);
+		} catch(PhoneDuplicateException pde) {
+			pde.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -231,12 +235,37 @@ public class MemberController {
 	
 	@GetMapping("/findId/phone")
 	public String findIdPhone() {
-		return "redirect:" + kakaoFindIdRedirectURI;
+		return "member/findIdByPhone";
 	}
 	
 	@GetMapping("/auth/findId/phone")
-	public String AuthFindIdPhone() {
-		return "redirect:" + kakaoFindIdRedirectURI;
+	public ResponseEntity<String> authFindIdPhone(String phoneNum) {
+		log.info(phoneNum);
+		try {
+			String loginId = memberService.findIdByPhone(phoneNum);
+			if(loginId == null) throw new Exception();
+			coolSMSService.send(phoneNum);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/auth/findId/phone/check")
+	public String authFindIdPhoneCheck(SMSVO smsVO, RedirectAttributes rttr) {
+		try {
+			log.info(smsVO.toString());
+			coolSMSService.checkSMS(smsVO);
+			String loginId = memberService.findIdByPhone(smsVO.getPhone());
+			if(loginId == null) throw new Exception();
+			rttr.addFlashAttribute("msg", String.format("가입하신 아이디는 %s입니다.", loginId));
+		} catch (SMSMissMatchException sme) {
+			sme.printStackTrace();
+			rttr.addFlashAttribute("msg", "번호가 일치하지 않습니다!");
+		} catch (Exception e) {
+			rttr.addFlashAttribute("msg", "가입된 번호가 없습니다!");
+		}
+		return "redirect:/member/result";
 	}
 	
 	@GetMapping("/mypage")

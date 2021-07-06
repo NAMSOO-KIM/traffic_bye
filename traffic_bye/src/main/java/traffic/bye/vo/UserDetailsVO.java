@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsVO implements UserDetails {
 	private Long id;
+	private Long storeId; 
 	private String username;
 	private String password;
 	private List<GrantedAuthority> authorities;
@@ -17,7 +18,11 @@ public class UserDetailsVO implements UserDetails {
 	public void setId(Long id) {
 		this.id= id;
 	}
-
+	
+	public void setStoreId(Long storeId) {
+		this.storeId = storeId;
+	}
+	
 	// setter
 	public void setUsername(String username) {
 		this.username = username;
@@ -48,6 +53,10 @@ public class UserDetailsVO implements UserDetails {
 	
 	public Long getId() {
 		return id;
+	}
+	
+	public Long getStoreId() {
+		return storeId;
 	}
 
 	@Override
