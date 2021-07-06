@@ -57,10 +57,11 @@ public class MemberController {
 	public String login(LoginInfo loginInfo , HttpSession session) {
 		log.info("아이디 {} 비밀번호 {}", loginInfo.getLoginId(), loginInfo.getPassword());
 		try {
-			int res = memberService.login(loginInfo);
-			session.setAttribute("loginInfo", loginInfo);
-			if (res == 0)
+			LoginInfo res = memberService.login(loginInfo);
+			if (res == null)
 				throw new Exception();
+			session.setAttribute("loginInfo", res);
+			log.info(String.valueOf(res.getId()));
 			return "redirect:/order";
 		} catch (Exception e) {
 			e.printStackTrace();

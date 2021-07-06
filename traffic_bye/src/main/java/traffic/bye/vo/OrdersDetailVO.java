@@ -10,6 +10,6 @@ import lombok.ToString;
 public class OrdersDetailVO {
 	private long itemId;
 	private long ordersId;
-	private long storedId;
+	private long storeId;
 	private long quantity;
 }

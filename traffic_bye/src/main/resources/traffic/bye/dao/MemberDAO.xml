@@ -20,7 +20,9 @@
 		insert into member values(member_id_seq.nextval, #{passport}, #{phone, jdbcType=NUMERIC}, #{name}, #{birth}, #{card}, #{cardCvc}, #{cardExpire}, #{role}, #{authType}, #{authId, jdbcType=NUMERIC}, #{loginId}, #{password})
 	</insert>
 	
-	<select id="login" parameterType="LoginInfo" resultType="int">
-		select count(*) from member where login_id = #{loginId} and password = #{password}
+	<select id="login" parameterType="LoginInfo" resultType="LoginInfo">
+		select login_id, password, id from member where login_id = #{loginId} and password = #{password}
 	</select>
+	
+	
 </mapper>

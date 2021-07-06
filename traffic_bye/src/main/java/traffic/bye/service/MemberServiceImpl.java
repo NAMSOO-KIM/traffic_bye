@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int login(LoginInfo loginInfo) throws Exception {
+	public LoginInfo login(LoginInfo loginInfo) throws Exception {
 		// TODO Auto-generated method stub
 		return memberDAO.login(loginInfo);
 	}

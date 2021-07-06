@@ -80,10 +80,12 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="sum" value="0" />
+						<c:forEach items="${cartList}" var="cart">
 							<tr>
 								<td><a href="#"><img src="../assets/images/pro3/2.jpg"
 										alt=""></a></td>
-								<td><a href="#">cotton shirt</a>
+								<td><a href="#">${cart.name}</a>
 									<div class="mobile-cart-content row">
 										<div class="col">
 											<div class="qty-box">
@@ -103,21 +105,23 @@
 										</div>
 									</div></td>
 								<td>
-									<h2>$63.00</h2>
+									<h2>${cart.price}</h2>
 								</td>
 								<td>
 									<div class="qty-box">
 										<div class="input-group">
 											<input type="number" name="quantity"
-												class="form-control input-number" value="1">
+												class="form-control input-number" value="${cart.quantity}">
 										</div>
 									</div>
 								</td>
 								<td><a href="#" class="icon"><i class="ti-close"></i></a></td>
 								<td>
-									<h2 class="td-color">$4539.00</h2>
+									<h2 class="td-color">${cart.quantity*cart.price}</h2>
+									<c:set var="sum" value="${sum + cart.quantity*cart.price}"/>
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					<div class="table-responsive-md">
@@ -126,7 +130,7 @@
 								<tr>
 									<td>total price :</td>
 									<td>
-										<h2>$6935.00</h2>
+										<h2>${sum}</h2>
 									</td>
 								</tr>
 							</tfoot>
@@ -139,7 +143,9 @@
 					<a href="#" class="btn btn-solid">쇼핑 계속하기</a>
 				</div>
 				<div class="col-6">
-					<a href="ordersdetail" class="btn btn-solid" id="sendBtn">스마트오더 주문하기!</a>
+				<form action="orderInsert" method="post">
+					<button class="btn btn-solid" id="sendBtn">스마트오더 주문하기!</button>
+				</form>
 				</div>
 			</div>
 		</div>
@@ -147,11 +153,14 @@
 	<!--section end-->
 	<!-- 내용 시작 -->
 	<script type="text/javascript">
-
-	
+	var storeList = new Array();
+	<c:forEach items="${cartList}" var="storeList">
+	storeList.push("${storeList.store_id}");
+	</c:forEach>
+	storeList = new Set(storeList);
+	Array.from(storeList);
+	console.log(storeList);
 	</script>
-	
-	<input id="userId" type="hidden" value="${mySession}">
 	
 	<script type="text/javascript">
 	var wsocket;
@@ -166,45 +175,24 @@
 		wsocket.close();
 	}
 	function onOpen(evt) {
-		appendMessage("연결되었습니다.");
+		send();
 	}
 	function onMessage(evt) {
-		var data = evt.data;
-		console.log(data);
-		if (data.substring(0, 4) == "msg:") {
-			appendMessage(data.substring(4));
-		}
-		
 		$('#myModal').show();
 	}
 	function onClose(evt) {
-		appendMessage("연결을 끊었습니다.");
+		console.log("연결을 끊었습니다.");
 	}
 	function send() {
-		//흠... 히든으로 닉네임을 가져온다.
-		//주문 들어올때 아이디값 다 넘겨주고
-		//센드 할때 받은 아이디값을 주문상태를 넘겨준다.
+		
+		//메세지 보낼 스토어아이디는 
 		var userId = $('#userId').val();
-		var msg = "상품준비를 해주세요!"
-		wsocket.send("test" + ":" + msg);
-		//닉네임을 현재는 고정한상태
+		wsocket.send("알람가야될 상점 목록:"+storeList);
 	}
-	
-	function receive(){
-		var msg = "주문이 수락되었습니다.";
-		wsocket.send("test7"+":"+msg);
-	}
-	
-	function appendMessage(msg){
-		$('#chatMessageArea').append(msg+"<br>");
-		var chatAreaHeight = $('#chatArea').height();
-		var maxScroll = $('#chatMessageArea').height;
-		$('#chatArea').scrollTop($('#chatArea')[0].scrollHeight);
-	}
-	
 	connect();
 	$(document).ready(function(){
 		//var sessionInfo = ${sessionScope.loginInfo};
+		
 		console.log('안녕');
 		/* $('#message').keypress(function(event){
 			var keycode = (event.keyCode ? event.keyCode : event.which);

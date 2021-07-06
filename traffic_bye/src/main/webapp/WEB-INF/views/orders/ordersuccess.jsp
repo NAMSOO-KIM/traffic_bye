@@ -48,6 +48,15 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
+<!-- latest jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+
+<!-- fly cart ui jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+
+<!-- exitintent jquery-->
+<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+<script src="${contextPath}/resources/assets/js/exit.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -237,7 +246,7 @@
 		$('#myModal').show();
 	}
 	function onClose(evt) {
-		appendMessage("연결을 끊었습니다.");
+		console.log("연결을 끊었습니다.");
 	}
 	function send() {
 		//흠... 히든으로 닉네임을 가져온다.
@@ -248,23 +257,11 @@
 		wsocket.send("test7" + ":" + msg);
 		//닉네임을 현재는 고정한상태
 	}
-	
-	function receive(){
-		var msg = "주문이 수락되었습니다.";
-		wsocket.send("test7"+":"+msg);
-	}
-	
-	function appendMessage(msg){
-		$('#chatMessageArea').append(msg+"<br>");
-		var chatAreaHeight = $('#chatArea').height();
-		var maxScroll = $('#chatMessageArea').height;
-		$('#chatArea').scrollTop($('#chatArea')[0].scrollHeight);
-	}
-	
 	connect();
 	
 	$(document).ready(function(){
 		//var sessionInfo = ${sessionScope.loginInfo};
+		console.log('안녕');
 		/* $('#message').keypress(function(event){
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			if(keycode=='13'){
@@ -272,7 +269,6 @@
 			}
 			event.stopPropagation();
 		}); */
-		
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
 		$('#exitBtn').click(function(){disconnect();});		

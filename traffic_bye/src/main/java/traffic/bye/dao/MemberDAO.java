@@ -14,5 +14,5 @@ public interface MemberDAO {
 	
 	public int memberRegister(MemberVO memberVO) throws SQLException;
 	
-	public int login(LoginInfo loginInfo) throws SQLException;
+	public LoginInfo login(LoginInfo loginInfo) throws SQLException;
 }
