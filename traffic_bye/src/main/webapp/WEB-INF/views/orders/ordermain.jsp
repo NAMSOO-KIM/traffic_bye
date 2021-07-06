@@ -158,7 +158,7 @@
 	storeList.push("${storeList.store_id}");
 	</c:forEach>
 	storeList = new Set(storeList);
-	Array.from(storeList);
+	storeList = Array.from(storeList);
 	console.log(storeList);
 	</script>
 	
