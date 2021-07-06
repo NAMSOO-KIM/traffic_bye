@@ -38,7 +38,7 @@ public class AuthConfig {
 		sb.append("?client_id=");
 		sb.append(kakaoKey);
 		sb.append("&redirect_uri=http://localhost/app/member/auth/kakao");
-		sb.append("&response_type=code");
+		sb.append("&response_type=code&prompt=login");
 		return sb.toString();
 	}
 	
@@ -50,6 +50,50 @@ public class AuthConfig {
 		sb.append(kakaoKey);
 		sb.append("&logout_redirect_uri=http://localhost/app/member/logout/kakao");
 		sb.append("&response_type=code");
+		return sb.toString();
+	}
+	
+	@Bean
+	public String kakaoAuthFindId() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("grant_type=authorization_code");
+		sb.append("&client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/auth/findId/kakao");
+		sb.append("&code=");
+		return sb.toString();
+	}
+	
+	@Bean
+	public String kakaoFindIdRedirectURI() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("https://kauth.kakao.com/oauth/authorize");
+		sb.append("?client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/auth/findId/kakao");
+		sb.append("&response_type=code&prompt=login");
+		return sb.toString();
+	}
+	
+	@Bean
+	public String kakaoAuthFindPw() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("grant_type=authorization_code");
+		sb.append("&client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/auth/findPw/kakao");
+		sb.append("&code=");
+		return sb.toString();
+	}
+	
+	@Bean
+	public String kakaoFindPwRedirectURI() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("https://kauth.kakao.com/oauth/authorize");
+		sb.append("?client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/auth/findPw/kakao");
+		sb.append("&response_type=code&prompt=login");
 		return sb.toString();
 	}
 	

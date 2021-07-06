@@ -5,7 +5,6 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="item" value="${item}" />
 <c:set var="store" value="${store}" />
-<c:set var="RelatedItemlist" value="${RelatedItemlist}" />
 
 
 <!DOCTYPE html>
@@ -63,7 +62,7 @@
                                 <div class="col-lg-6 rtl-text">
                                     <div class="product-right pro_sticky_info" data-sticky_column>
                                         <h2>${item.name}</h2>
-                                        
+                                        <input type="text" id="item_id" value="${item.id}" style= "display:none"/>
                                         <!-- 
                                         <div class="rating-section">
                                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -757,6 +756,7 @@
 	
 
     <script>
+    	
         $(document).ready(function () {
         	
             if ($(window).width() > 991) {
@@ -764,6 +764,7 @@
             }
         	
         });
+    	
 
     </script>
 </body>

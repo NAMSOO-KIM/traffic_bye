@@ -190,6 +190,9 @@
 
     <script>
         $(window).on('load', function () {
+        	
+        	getCartItemList();
+        	
             /* setTimeout(function () {
                 $('#exampleModal').modal('show');
             }, 2500); */
@@ -202,6 +205,92 @@
         function closeSearch() {
             document.getElementById("search-overlay").style.display = "none";
         }
+        
+        
+        // 장바구니 창
+        function getCartItemList() {
+       	console.log("카드 아이템 가져오기 실행");
+		//let user = '<%=(String) session.getAttribute("id")%>';
+		let id = 2; // id = 2 우선 사용
+        console.log("우선 id=2로 지정"+id);
+		$.ajax({
+					type : 'POST',
+					url : "${contextPath}/cartList",
+					dataType: "text",
+					data : {
+						id : id
+					}, 
+					success : function(data) {
+						
+						let total_price = 0;
+						var html = "";
+						console.log(data);
+						
+                        $.each(JSON.parse(data), function(key, value) {            
+                            console.log(key);
+                        	console.log(value);
+                        	total_price += (value.price * value.quantity);
+                            html += "<li>";
+                           	html += "<div class='media'>";
+                       		html += "<a href='#'><img alt='' class='me-3' ";
+                           		
+                      		
+                      		html += "src='${contextPath}/ItemImage?id="
+	               		       	+ value.store_id
+	               				+"&image="
+	               				+ value.real_file_name
+	               				+"' style='width:68px; height: 90px;'></a>";
+	               		
+                           		
+                           		html += "<div class='media-body'>";
+                       			html += "<a href='#'>";
+                           		html += "<h4>"
+                           	     	 + value.name
+                           		 	 + "</h4>";
+                           		html += "</a>";
+                           		
+                           		html += "<h4><span> $"
+                           			 + value.price
+                           			 + " x "
+                           			 + value.quantity
+                           			 + "개 </span></h4>";
+                           			
+                           		html += "</div>";
+                           		html += "</div>";
+                           		html += "<div class='close-circle' id='close-circle'><a href='javascript:void(0)' onclick='delCartItem("
+                           			 +	value.item_id
+                           			 + ")'><i class='fa fa-times' ";
+                            	html += "aria-hidden='true'></i></a></div>";
+                            	html += "</li>";
+
+						});
+
+                        
+                        html += "<li>";
+                        html += "<div class='total'>";
+                        html += "<h5>subtotal : <span>$"
+                        	 + total_price 
+                        	 + "</span></h5>";
+                       
+                        html += "</div>";
+                        html += "</li>";
+                        html += "<li>";
+                        html += "<div class='buttons'><a href='cart.html' class='view-cart'>view";
+                        html += "cart</a> <a href='#' class='checkout'>checkout</a></div>";
+                        html += "</li>";
+
+						$("#shopping-cart").html(html);
+                        
+						
+                    },
+					error : function(request, status, error) {
+						alert("오우 실패쓰");
+					}
+				});
+	    }
+        
+        
+        
     </script>
         
     

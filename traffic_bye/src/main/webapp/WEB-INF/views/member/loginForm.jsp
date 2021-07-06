@@ -101,8 +101,8 @@
 				<div class="col-lg-6">
 					<h3>Login</h3>
 					<div class="theme-card">
-						<form class="theme-form" action="${contextPath}/member/login"
-							method="post">
+						<form class="theme-form"
+							action="${contextPath}/member/loginProcess" method="post">
 							<div class="form-group">
 								<label for="loginId">ID</label> <input type="text"
 									class="form-control" id="loginId" placeholder="Email"
@@ -114,7 +114,9 @@
 									placeholder="Enter your password" required="required"
 									name="password">
 							</div>
-							<input type="submit" class="btn btn-solid" value="로그인">
+							<button type="submit" class="btn btn-solid">로그인</button>
+							<button type="button" class="btn btn-solid" id="findId">아이디 찾기</button> 
+							<button type="button" class="btn btn-solid" id="findPw">비밀번호 찾기</button>
 						</form>
 					</div>
 				</div>
@@ -171,6 +173,8 @@
 	<!-- Theme js-->
 	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
 	<script src="${contextPath}/resources/assets/js/script.js"></script>
+	<script src="${contextPath}/resources/js/loginForm.js"></script>
+	
 
 	<script>
 		function openSearch() {
