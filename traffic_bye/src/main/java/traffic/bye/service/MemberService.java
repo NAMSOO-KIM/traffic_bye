@@ -16,5 +16,10 @@ public interface MemberService {
 	
 	public String findIdByPhone(String phone) throws Exception;
 	
+
+	// 추가 -- 김남수 07.07
+	public MemberVO findMember(Long id) throws Exception;
+
 	public void passwordChange(LoginInfo loginInfo) throws Exception;
+
 }

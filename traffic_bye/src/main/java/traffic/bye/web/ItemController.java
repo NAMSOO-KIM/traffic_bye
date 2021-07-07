@@ -78,4 +78,15 @@ public class ItemController {
 		return mav;
 	}
 	
+	@GetMapping(value = "mm/items/list/{category_id}")
+	public ModelAndView itemList(@PathVariable("category_id") long category_id, HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		Logger logger = LoggerFactory.getLogger(this.getClass());
+		logger.info("hi");
+		
+		mav.setViewName("categoryPage");
+		return mav;
+	}
+	
 }

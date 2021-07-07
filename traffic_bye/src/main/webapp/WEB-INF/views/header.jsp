@@ -125,7 +125,7 @@
 											<li><a href="#">매장
 													<!-- <div class="lable-nav">new</div> -->
 											</a></li>
-											<li><a href="#">패션</a></li>
+											<!-- <li><a href="#">패션</a></li> -->
 											<li><a href="#">식품</a></li>
 											<li><a href="#">전자</a></li>
 											<li><a href="#">담배/주류</a></li>
@@ -489,19 +489,19 @@
 												 -->
 										
 										
-											<li><a href="#">매장</a>
+											<li><a href="${contextPath}/mm/items/list/1">매장</a>
 											<ul>
-												<li><a href="category-page(top-filter).html">담배매장
+												<li><a href="${contextPath}/mm/items/list/1">담배매장
 														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="category-page(modern).html">전자
+												<li><a href="${contextPath}/mm/items/list/1">전자
 												
 												<!-- 
 												<span class="new-tag">new</span>
 												-->	
 														</a></li>
-												<li><a href="category-page.html">식품</a></li>
-												<li><a href="category-page.html">안내데스크</a></li>
+												<li><a href="${contextPath}/mm/items/list/1">식품</a></li>
+												<li><a href="${contextPath}/mm/items/list/1">안내데스크</a></li>
 											</ul>
 											<!-- 
 											<ul class="mega-menu full-mega-menu">
@@ -642,7 +642,7 @@
 											</ul>
 											 -->
 											</li>
-										<li><a href="#">식품</a>
+										<li><a href="${contextPath}/mm/items/list/1">식품</a>
 											<ul>
 												<li><a href="category-page(top-filter).html">건강식품
 														<!--<span class="new-tag">new</span>-->
@@ -672,15 +672,15 @@
 														view</a></li>
 												 -->
 											</ul></li>
-										<li><a href="#">전자</a>
+										<li><a href="${contextPath}/mm/items/list/1">전자</a>
 											<ul>
-												<li><a href="product-page(360-view).html">카메라/캠코더
+												<li><a href="${contextPath}/mm/items/list/1">카메라/캠코더
 														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="product-page(video-thumbnail).html">노트북/태블릿
+												<li><a href="${contextPath}/mm/items/list/1">노트북/태블릿
 														<!--<span class="new-tag">new</span>-->
 												</a></li>
-												<li><a href="#">음향기기</a>
+												<li><a href="${contextPath}/mm/items/list/1">음향기기</a>
 													
 													<!-- 
 													<ul>
@@ -730,7 +730,7 @@
 														tab</a></li>
 												-->
 											</ul></li>
-										<li><a href="#">담배/주류</a>
+										<li><a href="${contextPath}/mm/items/list/1">담배/주류</a>
 											<ul>
 												<li><a href="#">국산담배</a>
 													<ul>
