@@ -80,6 +80,7 @@
                                 </div>
                             </div>
                             <!-- color filter start here -->
+                            <!--  
                             <div class="collection-collapse-block open">
                                 <h3 class="collapse-block-title">colors</h3>
                                 <div class="collection-collapse-block-content">
@@ -96,7 +97,9 @@
                                     </div>
                                 </div>
                             </div>
+                            -->
                             <!-- size filter start here -->
+                            <!-- 
                             <div class="collection-collapse-block border-0 open">
                                 <h3 class="collapse-block-title">size</h3>
                                 <div class="collection-collapse-block-content">
@@ -120,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+                            -->
                             <!-- price filter start here -->
                             <div class="collection-collapse-block border-0 open">
                                 <h3 class="collapse-block-title">price</h3>
@@ -223,16 +227,19 @@
                         </div>
                         <!-- side-bar single product slider end -->
                         <!-- side-bar banner start here -->
+                        <!-- 
                         <div class="collection-sidebar-banner">
                             <a href="#"><img src="${contextPath}/resources/assets/images/side-banner.png" class="img-fluid blur-up lazyload"
                                     alt=""></a>
                         </div>
+                         -->
                         <!-- side-bar banner end here -->
                     </div>
                     <div class="collection-content col">
                         <div class="page-main-content">
                             <div class="row">
                                 <div class="col-sm-12">
+                                	<!-- 
                                     <div class="top-banner-wrapper">
                                         <a href="#"><img src="${contextPath}/resources/assets/images/mega-menu/2.jpg"
                                                 class="img-fluid blur-up lazyload" alt=""></a>
@@ -248,6 +255,7 @@
                                                 heartâs content on Multikart. </p>
                                         </div>
                                     </div>
+                                     -->
                                     <div class="collection-product-wrapper">
                                         <div class="product-top-filter">
                                             <div class="row">
