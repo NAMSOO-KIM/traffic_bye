@@ -127,23 +127,6 @@
 										class="form-control" id="passport" placeholder="여권 번호를 입력하세요"
 										required="required" name="passport">
 								</div>
-							</div>
-							<div class="form-row row">
-								<div class="col-md-6">
-									<label for="card">카드 번호</label> <input type="text"
-										class="form-control" id="card" placeholder="카드 번호를 입력하세요"
-										required="required" name="card">
-								</div>
-								<div class="col-md-6">
-									<label for="cardCvc">cvc번호</label> <input type="text"
-										class="form-control" id="cardCvc" placeholder="cvc번호를 입력하세요"
-										required="required" name="cardCvc">
-								</div>
-								<div class="col-md-6">
-									<label for="cardExpire">유효기간</label> <input type="text"
-										class="form-control" id="cardExpire" placeholder="유효기간을 입력하세요"
-										required="required" name="cardExpire">
-								</div>
 								<div>
 									<input type="submit" class="btn btn-solid w-auto" value="가입하기" />
 								</div>
