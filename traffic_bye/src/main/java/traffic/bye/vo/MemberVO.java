@@ -20,9 +20,6 @@ public class MemberVO {
 	String passport;
 	String name;
 	String birth;
-	String card;
-	String cardCvc;
-	String cardExpire;
 	ROLE role;
 	AuthType authType;
 }
