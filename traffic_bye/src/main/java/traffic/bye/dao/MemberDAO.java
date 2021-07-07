@@ -25,5 +25,10 @@ public interface MemberDAO {
 	
 	public String findIdByPhone(String phone) throws SQLException;
 	
+	public void testUpdate(String pw) throws SQLException;
+	
+	// 추가 -- 김남수 07.07
+	public MemberVO findMember(Long id) throws SQLException;
+	
 	public void passwordChange(LoginInfo loginInfo) throws SQLException;
 }

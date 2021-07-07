@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page session="false"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -159,48 +158,61 @@
 	</c:forEach>
 	storeList = new Set(storeList);
 	storeList = Array.from(storeList);
-	console.log(storeList);
 	</script>
-	
+	<script type="text/javascript" src=" https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 	<script type="text/javascript">
 	var wsocket;
-	
+	var customer = '<c:out value="${loginInfo.loginId}"/>';
+	var auth = '<c:out value="${loginInfo.storeId}"/>';
+	var sendData = {};
+	sendData.customer = customer;
+	sendData.storeList= storeList;
+	sendData.type = "ready";
+	sendData.auth=auth;
+	console.log(sendData);
+	console.log(sendData.customer);
 	function connect() {
 		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.open = onOpen;
+		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 	}
 	function disconnect() {
-		wsocket.close();
+		
 	}
 	function onOpen(evt) {
-		send();
+		
 	}
+	var receiveData ={};
 	function onMessage(evt) {
+		let myData = JSON.parse(evt.data);
+		receiveData.orderType = myData.type;
+		receiveData.customer = myData.customer;
+		receiveData.auth = auth;
+		console.log(receiveData);
 		$('#myModal').show();
+		
+		alert(evt.data+"메세지 도착");
 	}
+	
+	
+	
 	function onClose(evt) {
 		console.log("연결을 끊었습니다.");
 	}
-	function send() {
+	function receive(){
 		
-		//메세지 보낼 스토어아이디는 
-		var userId = $('#userId').val();
-		wsocket.send("알람가야될 상점 목록:"+storeList);
 	}
-	connect();
+	
+	function send() {
+		//메세지 보낼 스토어아이디는 
+		wsocket.send(JSON.stringify(sendData));
+	}
+	
+	
 	$(document).ready(function(){
-		//var sessionInfo = ${sessionScope.loginInfo};
-		
+		connect();
 		console.log('안녕');
-		/* $('#message').keypress(function(event){
-			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if(keycode=='13'){
-				send();
-			}
-			event.stopPropagation();
-		}); */
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
 		$('#exitBtn').click(function(){disconnect();});		
@@ -261,13 +273,17 @@
         function close_pop(flag) {
              $('#myModal').hide();
         };
-        
+   
+			$('#confirmBtn').click(function(){
+		     wsocket.send(JSON.stringify(receiveData));
+		    });
+		
+		
+       
       </script>
  
 	<script type="text/javascript">
-	$('#confirmBtn').click(function(){
-		receive();
-	});
+	
 	
 	</script>
 

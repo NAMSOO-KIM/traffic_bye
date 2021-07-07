@@ -63,6 +63,13 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.findIdByPhone(phone);
 	}
 
+	// 추가 -- 김남수 07.07
+	@Override
+	public MemberVO findMember(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findMember(id);
+	}
+
 	@Override
 	public void passwordChange(LoginInfo loginInfo) throws Exception {
 		// TODO Auto-generated method stub

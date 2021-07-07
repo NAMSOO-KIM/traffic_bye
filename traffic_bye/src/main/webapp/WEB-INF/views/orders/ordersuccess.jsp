@@ -227,12 +227,12 @@
     <!--section end-->
     <!-- 내용 시작 -->
   
-  	<script type="text/javascript">
-	var wsocket;
+  <script type="text/javascript">
+  	var wsocket;
 	
-	function connect() {
+  	function connect() {
 		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.open = onOpen;
+		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 	}
@@ -240,38 +240,27 @@
 		wsocket.close();
 	}
 	function onOpen(evt) {
-		appendMessage("연결되었습니다.");
 	}
 	function onMessage(evt) {
+		alert("야발!!");
 		$('#myModal').show();
 	}
 	function onClose(evt) {
 		console.log("연결을 끊었습니다.");
 	}
 	function send() {
-		//흠... 히든으로 닉네임을 가져온다.
-		//주문 들어올때 아이디값 다 넘겨주고
-		//센드 할때 받은 아이디값을 주문상태를 넘겨준다.
-		var userId = $('#userId').val();
-		var msg = "주문을 수락했습니다.!"
-		wsocket.send("test7" + ":" + msg);
-		//닉네임을 현재는 고정한상태
+		//메세지 보낼 스토어아이디는 
+		/* let sendData = {};
+		sendData.storeList= storeList;
+		sendData.type = "order";
+		alert(sendData);
+		wsocket.send(JSON.stringify(sendData)); */
 	}
-	connect();
+	
+	
 	
 	$(document).ready(function(){
-		//var sessionInfo = ${sessionScope.loginInfo};
-		console.log('안녕');
-		/* $('#message').keypress(function(event){
-			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if(keycode=='13'){
-				send();
-			}
-			event.stopPropagation();
-		}); */
-		$('#sendBtn').click(function(){send();});
-		console.log("준비완료");
-		$('#exitBtn').click(function(){disconnect();});		
+		connect();
 	});
 </script>
 
@@ -319,11 +308,18 @@
                 <p><br /></p>
             <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
-                     <a id="confirmBtn" href="ordertracking">주문 진행 상황 보기</a>
+                     <a id="confirmBtn" href="ordertracking">진행 현황보기</a>
                 </span>
             </div>
       </div>
     </div>
+       <script type="text/javascript">
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+        
+      </script>
         <!--End Modal-->
 
 
@@ -362,16 +358,6 @@
         </div>
     </div>
     <!-- tap to top end -->
-
-
-    <!-- latest jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
-
-    <!-- fly cart ui jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
-
-    <!-- exitintent jquery-->
-    <script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
     <script src="${contextPath}/resources/assets/js/exit.js"></script>
 
     <!-- slick js-->
