@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
-		select member.id id, login_id loginId, password, store.id storeId from member join store on member.id = store.manager_id where login_id = #{loginId}
+		select info.id id, loginId, password, store.id storeId from (select login_id loginId, id, password from member where login_id = #{loginId}) info left join store on info.id = store.manager_id
 	</select>
 	
 	<select id="getRoleInfo" parameterType="String" resultType="String">
@@ -40,7 +40,7 @@
 		select login_id loginId from member where phone = #{phone}
 	</select>
 	
-	<update id="testUpdate" parameterType="String">
-		update member set password = #{pw} where id = 2
+	<update id="passwordChange" parameterType="LoginInfo">
+		update member set password = #{password} where login_id = #{loginId}
 	</update>
 </mapper>

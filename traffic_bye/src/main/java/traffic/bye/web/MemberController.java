@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import traffic.bye.service.KakaoService;
 import traffic.bye.service.MemberService;
 import traffic.bye.vo.AuthInfo;
 import traffic.bye.vo.AuthType;
+import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 import traffic.bye.vo.ROLE;
 import traffic.bye.vo.SMSVO;
@@ -259,6 +261,104 @@ public class MemberController {
 			String loginId = memberService.findIdByPhone(smsVO.getPhone());
 			if(loginId == null) throw new Exception();
 			rttr.addFlashAttribute("msg", String.format("가입하신 아이디는 %s입니다.", loginId));
+		} catch (SMSMissMatchException sme) {
+			sme.printStackTrace();
+			rttr.addFlashAttribute("msg", "번호가 일치하지 않습니다!");
+		} catch (Exception e) {
+			rttr.addFlashAttribute("msg", "가입된 번호가 없습니다!");
+		}
+		return "redirect:/member/result";
+	}
+	
+	@GetMapping("/findPw/kakao")
+	public String findPwKakao() {
+		return "redirect:" + kakaoFindPwRedirectURI;
+	}
+	
+	@GetMapping("/auth/findPw/kakao")
+	public String authFindPwKakao(String code, RedirectAttributes rttr) {
+		try {
+			String accessToken = kakaoService.getAccessToken(code, kakaoAuthFindPw);
+			System.out.println(accessToken);
+			Long id = kakaoService.getUserInfo(accessToken);
+			String loginId = memberService.findIdByKakaoId(id);
+			if(loginId == null) throw new Exception();
+			kakaoService.kakaoLogout(accessToken);
+			rttr.addFlashAttribute("id", id);
+			return "redirect:/member/findPwRequireId";
+		}  catch (Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "존재하지 않는 아이디입니다!");
+			return "member/result";
+		}
+	}
+	
+	@GetMapping("/findPw/RequireId")
+	public String findPwRequireId() {
+		return "member/findPwRequireId";
+	}
+	
+	@GetMapping("/findPw/RequireIdProc")
+	public String findPwRequireIdProc(String loginId, Long id, RedirectAttributes rttr) {
+		try {
+			String findLoginId = memberService.findIdByKakaoId(id);
+			if(findLoginId == null || !findLoginId.equals(loginId)) {
+				throw new Exception();
+			}
+			rttr.addFlashAttribute("loginId", loginId);
+			return "redirect:/member/findAndChangePw";
+		} catch(Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "일치하는 회원이 없습니다!");
+			return "redirect:/member/result";
+		}
+	}
+	
+	@GetMapping("/findAndChangePw")
+	public String findAndchangePwForm() {
+		return "member/findAndChangePw";
+	}
+	
+	@PostMapping("/findAndChangePw")
+	public String findAndchangePw(String loginId, String password, RedirectAttributes rttr) {
+		LoginInfo loginInfo = new LoginInfo(null, null, loginId, password);
+		log.info("비밀번호 찾기 {} {}", loginId, password);
+		try{
+			memberService.passwordChange(loginInfo);
+			rttr.addFlashAttribute("msg", "비밀번호가 변경됐습니다. 다시 로그인 해주세요!");
+			return "redirect:/member/login";
+		} catch(Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "비밀번호 변경에 실패하였습니다!");
+			return "redirect:/member/result";
+		}
+	}
+	
+	@GetMapping("/findPw/phone")
+	public String findPwByPhone() {
+		return "member/findPwByPhone";
+	}
+	
+	@GetMapping("/auth/findPw/phone")
+	public ResponseEntity<String> authFindPwPhone(String phoneNum) {
+		log.info(phoneNum);
+		try {
+			coolSMSService.send(phoneNum);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/auth/findPw/phone/check")
+	public String findPwPhoneCheck(SMSVO smsVO, String loginId, RedirectAttributes rttr) {
+		try {
+			log.info(smsVO.toString());
+			coolSMSService.checkSMS(smsVO);
+			String findLoginId = memberService.findIdByPhone(smsVO.getPhone());
+			if(findLoginId == null) throw new Exception();
+			rttr.addFlashAttribute("loginId", loginId);
+			return "redirect:/member/findAndChangePw"; 
 		} catch (SMSMissMatchException sme) {
 			sme.printStackTrace();
 			rttr.addFlashAttribute("msg", "번호가 일치하지 않습니다!");

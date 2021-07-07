@@ -62,7 +62,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.findIdByPhone(phone);
 	}
-	
-	
 
+	@Override
+	public void passwordChange(LoginInfo loginInfo) throws Exception {
+		// TODO Auto-generated method stub
+		loginInfo.setPassword(passwordEncoder.encode(loginInfo.getPassword()));
+		memberDAO.passwordChange(loginInfo);
+	}
 }

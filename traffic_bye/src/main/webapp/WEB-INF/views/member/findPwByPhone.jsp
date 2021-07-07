@@ -62,6 +62,7 @@
 <body class="theme-color-1">
 
 	<jsp:include page="../header.jsp"></jsp:include>
+
 	<c:choose>
 		<c:when test="${not empty msg}">
 			<script>
@@ -69,23 +70,25 @@
 			</script>
 		</c:when>
 	</c:choose>
+
 	<!--section start-->
 	<section class="register-page section-b-space">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h3>인증방식 선택</h3>
+					<h3>휴대폰 인증</h3>
 					<div class="theme-card">
-						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/phone.png"
-								class="auth_img">
-							<h3 class="auth_type">휴대폰 인증</h3>
-						</div>
-						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/kakao.png"
-								class="auth_img">
-							<h3 class="auth_type">카카오 인증</h3>
-						</div>
+						<label for="phone">휴대폰 번호</label> <input type="text" id="phoneNum"
+							required="required" placeholder="번호를 입력하세요"> <input
+							type="button" id="sendSMS" value="인증번호 전송">
+						<form action="${contextPath}/member/auth/findPw/phone/check"
+							id="phoneCheck">
+							<input type="text" name="loginId" placeholder="비밀번호를 찾을 아이디를 입력하세요">
+							<input type="text" name="randomNumber"> <input
+								type="hidden" id="phone" name="phone"> <input
+								type="submit" value="입력">
+						</form>
+						<p id="certTimer"></p>
 					</div>
 				</div>
 			</div>
@@ -95,51 +98,10 @@
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 
+	<script src="${contextPath}/resources/js/findPwByPhone.js"></script>
 
 
 
-
-	<!-- tap to top start -->
-	<div class="tap-top">
-		<div>
-			<i class="fa fa-angle-double-up"></i>
-		</div>
-	</div>
-	<!-- tap to top end -->
-
-
-	<!-- latest jquery-->
-	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
-
-	<!-- menu js-->
-	<script src="${contextPath}/resources/assets/js/menu.js"></script>
-
-	<!-- lazyload js-->
-	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
-
-	<!-- slick js-->
-	<script src="${contextPath}/resources/assets/js/slick.js"></script>
-
-	<!-- Bootstrap js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Bootstrap Notification js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
-
-	<!-- Theme js-->
-	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
-	<script src="${contextPath}/resources/assets/js/script.js"></script>
-	<script src="${contextPath}/resources/js/findPw.js"></script>
-	<script>
-		function openSearch() {
-			document.getElementById("search-overlay").style.display = "block";
-		}
-
-		function closeSearch() {
-			document.getElementById("search-overlay").style.display = "none";
-		}
-	</script>
 </body>
 </html>
+
