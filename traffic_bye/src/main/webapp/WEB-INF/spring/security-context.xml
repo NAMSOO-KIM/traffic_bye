@@ -24,10 +24,27 @@
 			pattern="/member/login/**" access="isAnonymous()" />
 		<security:intercept-url
 			pattern="/member/register/**" access="isAnonymous()" />
-
+		<security:intercept-url
+			pattern="/member/auth/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/idCheck/*" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findId/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findPw/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findAndChangePw" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/result" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member" access="isAnonymous()" />
+		
+			
+		<security:intercept-url
+			pattern="/member/mypage/**" access="isAuthenticated()" />
 		<!-- 관리자페이지는 관리자만 접근 허용 -->
 		<security:intercept-url pattern="/admin/**"
-			access="hasRole('ADMIN')" />
+			access="hasAuthority('ADMIN')" />
 
 		<!-- 로그인 설정 -->
 		<security:form-login username-parameter="loginId"

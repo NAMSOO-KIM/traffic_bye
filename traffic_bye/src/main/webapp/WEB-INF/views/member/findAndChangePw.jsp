@@ -62,37 +62,57 @@
 <body class="theme-color-1">
 
 	<jsp:include page="../header.jsp"></jsp:include>
-	<c:choose>
-		<c:when test="${not empty msg}">
-			<script>
-				alert("${msg}");
-			</script>
-		</c:when>
-	</c:choose>
-	<!--section start-->
-	<section class="register-page section-b-space">
+	<!-- breadcrumb start -->
+	<div class="breadcrumb-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
-					<h3>인증방식 선택</h3>
-					<div class="theme-card">
-						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/phone.png"
-								class="auth_img">
-							<h3 class="auth_type">휴대폰 인증</h3>
-						</div>
-						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/kakao.png"
-								class="auth_img">
-							<h3 class="auth_type">카카오 인증</h3>
-						</div>
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h2>forget password</h2>
 					</div>
+				</div>
+				<div class="col-sm-6">
+					<nav aria-label="breadcrumb" class="theme-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+							<li class="breadcrumb-item"><a href="login.html">login</a></li>
+							<li class="breadcrumb-item active" aria-current="page">forget
+								password</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- breadcrumb End -->
+
+
+	<!--section start-->
+	<section class="pwd-page section-b-space">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 m-auto">
+					<h2>비밀번호 찾기</h2>
+					<form class="theme-form"
+						action="${contextPath}/member/findAndChangePw" method="post"
+						id="changePw">
+						<div class="form-row row">
+							<div class="col-md-12">
+								<input type="password" class="form-control" name="password"
+									id="password" placeholder="변경하실 비밀번호를 입력하세요!"
+									required="required"> <input type="password"
+									class="form-control" id="passwordCheck" placeholder="비밀번호 확인"
+									required="required"> <input type="hidden" id="id"
+									name="loginId" value="${loginId}">
+							</div>
+							<input type="submit" class="btn btn-solid w-auto" value="찾기">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--Section ends-->
-
 	<jsp:include page="../footer.jsp"></jsp:include>
 
 
@@ -131,7 +151,7 @@
 	<!-- Theme js-->
 	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
 	<script src="${contextPath}/resources/assets/js/script.js"></script>
-	<script src="${contextPath}/resources/js/findPw.js"></script>
+	<script src="${contextPath}/resources/js/findAndChangePw.js"></script>
 	<script>
 		function openSearch() {
 			document.getElementById("search-overlay").style.display = "block";

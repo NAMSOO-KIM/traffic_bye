@@ -1,3 +1,4 @@
+
 package traffic.bye.service;
 
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.MemberDAO;
@@ -31,6 +33,7 @@ public class UserDetailsServiceCustom implements UserDetailsService {
 		LoginInfo userInfo = null;
 		try {
 			userInfo = memberDAO.getLoginInfo(username);
+			log.info(username);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

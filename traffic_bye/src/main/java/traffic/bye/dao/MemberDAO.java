@@ -25,5 +25,5 @@ public interface MemberDAO {
 	
 	public String findIdByPhone(String phone) throws SQLException;
 	
-	public void testUpdate(String pw) throws SQLException;
+	public void passwordChange(LoginInfo loginInfo) throws SQLException;
 }

@@ -8,6 +8,7 @@ import traffic.bye.dao.MemberDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
 import traffic.bye.exception.PhoneDuplicateException;
+import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 
 @Service
@@ -61,7 +62,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.findIdByPhone(phone);
 	}
-	
-	
 
+	@Override
+	public void passwordChange(LoginInfo loginInfo) throws Exception {
+		// TODO Auto-generated method stub
+		loginInfo.setPassword(passwordEncoder.encode(loginInfo.getPassword()));
+		memberDAO.passwordChange(loginInfo);
+	}
 }

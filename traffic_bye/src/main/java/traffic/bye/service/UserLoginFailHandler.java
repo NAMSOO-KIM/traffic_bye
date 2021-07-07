@@ -24,6 +24,7 @@ public class UserLoginFailHandler implements AuthenticationFailureHandler {
 			AuthenticationException exception) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		log.info("로그인 실패 에러 발생!");
+		exception.printStackTrace();
 		if (exception instanceof AuthenticationServiceException) {
 			request.setAttribute("msg", "존재하지 않는 사용자입니다.");
 		} else if(exception instanceof BadCredentialsException) {
