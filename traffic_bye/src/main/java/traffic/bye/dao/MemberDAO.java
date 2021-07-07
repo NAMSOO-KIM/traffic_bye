@@ -30,4 +30,5 @@ public interface MemberDAO {
 	// 추가 -- 김남수 07.07
 	public MemberVO findMember(Long id) throws SQLException;
 	
+	public void passwordChange(LoginInfo loginInfo) throws SQLException;
 }

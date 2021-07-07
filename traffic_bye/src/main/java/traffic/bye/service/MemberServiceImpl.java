@@ -8,6 +8,7 @@ import traffic.bye.dao.MemberDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
 import traffic.bye.exception.PhoneDuplicateException;
+import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 
 @Service
@@ -61,6 +62,7 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.findIdByPhone(phone);
 	}
+
 	// 추가 -- 김남수 07.07
 	@Override
 	public MemberVO findMember(Long id) throws Exception {
@@ -68,4 +70,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.findMember(id);
 	}
 
+	@Override
+	public void passwordChange(LoginInfo loginInfo) throws Exception {
+		// TODO Auto-generated method stub
+		loginInfo.setPassword(passwordEncoder.encode(loginInfo.getPassword()));
+		memberDAO.passwordChange(loginInfo);
+	}
 }

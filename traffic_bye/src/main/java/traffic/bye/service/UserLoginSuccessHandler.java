@@ -40,7 +40,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 			log.info("이전 페이지 있음!! {}", prevPage);
 		}
 		
-		String uri = "/";
+		String uri = "/app";
 		// 있을 경우 URI 등 정보를 가져와서 사용
 		if (savedRequest != null) {
 			uri = savedRequest.getRedirectUrl();
