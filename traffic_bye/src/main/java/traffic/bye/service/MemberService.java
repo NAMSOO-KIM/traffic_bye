@@ -14,4 +14,6 @@ public interface MemberService {
 	public String findIdByKakaoId(Long kakaoId) throws Exception;
 	
 	public String findIdByPhone(String phone) throws Exception;
+	
+	public void passwordChange(LoginInfo loginInfo) throws Exception;
 }
