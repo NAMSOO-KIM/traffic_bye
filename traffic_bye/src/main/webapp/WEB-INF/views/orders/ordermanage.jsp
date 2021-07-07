@@ -336,7 +336,7 @@
                                     <thead>
                                     <tr>
                                         <th>주문번호</th>
-                                        <th>상품 이미지</th>
+                                        <th>상품 명</th>
                                         <th>결제 상태</th>
                                         <th>결제 수단</th>
                                         <th>주문 상태</th>
@@ -359,57 +359,6 @@
                                         <td><span class="badge badge-success">Delivered</span></td>
                                         <td>Dec 10,18</td>
                                         <td>$54671</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#51241</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <img src="${contextPath}/resources/assets/images/electronics/product/12.jpg" alt="" class="img-fluid img-30 me-2 blur-up lazyloaded">
-                                                <img src="${contextPath}/resources/assets/images/electronics/product/3.jpg" alt="" class="img-fluid img-30 blur-up lazyloaded">
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-success">Paid</span></td>
-                                        <td>Master Card</td>
-                                        <td><span class="badge badge-primary">Shipped</span></td>
-                                        <td>Feb 15,18</td>
-                                        <td>$2136</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#51242</td>
-                                        <td><img src="${contextPath}/resources/assets/images/electronics/product/14.jpg" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
-                                        <td><span class="badge badge-warning">Awaiting Authentication</span></td>
-                                        <td>Debit Card</td>
-                                        <td><span class="badge badge-warning">Processing</span></td>
-                                        <td>Mar 27,18</td>
-                                        <td>$8791</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#51243</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <img src="${contextPath}/resources/assets/images/electronics/product/6.jpg" alt="" class="img-fluid img-30 me-2 blur-up lazyloaded">
-                                                <img src="${contextPath}/resources/assets/images/furniture/8.jpg" alt="" class="img-fluid img-30 blur-up lazyloaded">
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-danger">Payment Failed</span></td>
-                                        <td>Master Card</td>
-                                        <td><span class="badge badge-danger">Cancelled</span></td>
-                                        <td>Sep 1,18</td>
-                                        <td>$139</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#51244</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <img src="${contextPath}/resources/assets/images/jewellery/pro/18.jpg" alt="" class="img-fluid img-30 me-2 blur-up lazyloaded">
-                                                <img src="${contextPath}/resources/assets/images/fashion/pro/06.jpg" alt="" class="img-fluid img-30 blur-up lazyloaded">
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-success">Paid</span></td>
-                                        <td>Paypal</td>
-                                        <td><span class="badge badge-primary">Shipped</span></td>
-                                        <td>May 18,18</td>
-                                        <td>$4678</td>
                                     </tr>
                                     </tbody>
                                 </table>
