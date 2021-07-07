@@ -183,22 +183,13 @@
 	function onOpen(evt) {
 		
 	}
+	var receiveData ={};
 	function onMessage(evt) {
 		let myData = JSON.parse(evt.data);
-		let receiveData={};
 		receiveData.orderType = myData.type;
 		receiveData.customer = myData.customer;
 		receiveData.auth = auth;
 		console.log(receiveData);
-	
-		if(receiveData.orderType == "order"){
-			
-			$('#confirmBtn').click(function(){
-		     wsocket.send(JSON.stringify(receiveData));
-		    });
-		
-		}
-		
 		$('#myModal').show();
 		
 		alert(evt.data+"메세지 도착");
@@ -282,7 +273,12 @@
         function close_pop(flag) {
              $('#myModal').hide();
         };
-        
+   
+			$('#confirmBtn').click(function(){
+		     wsocket.send(JSON.stringify(receiveData));
+		    });
+		
+		
        
       </script>
  
