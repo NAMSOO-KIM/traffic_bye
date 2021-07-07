@@ -44,6 +44,7 @@ public class UserDetailsServiceCustom implements UserDetailsService {
 			userDetails.setUsername(userInfo.getLoginId());
 			userDetails.setPassword(userInfo.getPassword());
 			userDetails.setId(userInfo.getId());
+			userDetails.setStoreId(userInfo.getStoreId());
 			log.info("id {} name {} pw {}", new Object[] {userInfo.getId(), userInfo.getLoginId(), userInfo.getPassword()});
 			// 사용자 권한 select해서 받아온 List<String> 객체 주입
 			try {

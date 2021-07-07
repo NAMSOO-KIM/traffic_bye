@@ -31,7 +31,7 @@
 	</parameterMap>
 	<select id="getRelatedItemList" parameterMap="selectRelatedMap" resultType="ItemVO">
 	<![CDATA[
-		select it.id, it.CATEGORY_ID, it.NAME, it.STOCK, it.PRICE, it.DETAIL, it.STORE_ID, im.UPLOAD_FILE_NAME, im.REAL_FILE_NAME
+		select it.id, it.CATEGORY_ID, it.NAME, iWt.STOCK, it.PRICE, it.DETAIL, it.STORE_ID, im.UPLOAD_FILE_NAME, im.REAL_FILE_NAME
 		from ITEM it
 		inner join item_image im
 		on it.ID=im.ITEM_ID

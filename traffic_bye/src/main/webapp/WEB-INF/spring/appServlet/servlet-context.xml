@@ -37,11 +37,9 @@
 	
 	<websocket:handlers>
 		<websocket:mapping handler="smartOrderHandler" path="/smartOrder-ws" />
-		
 		<websocket:handshake-interceptors>
 		<beans:bean class = "org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
 		</websocket:handshake-interceptors>
-		<websocket:sockjs></websocket:sockjs>
 	</websocket:handlers>
 	
 	<beans:bean id="smartOrderHandler" class="traffic.bye.handler.SmartOrderHandler" />
