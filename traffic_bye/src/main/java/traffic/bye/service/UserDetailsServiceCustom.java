@@ -1,3 +1,4 @@
+
 package traffic.bye.service;
 
 import java.sql.SQLException;
@@ -8,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import jdk.internal.org.jline.utils.Log;
+
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.MemberDAO;
 import traffic.bye.vo.LoginInfo;

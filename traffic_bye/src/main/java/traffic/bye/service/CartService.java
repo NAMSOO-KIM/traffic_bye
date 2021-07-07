@@ -1,9 +1,7 @@
 package traffic.bye.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import traffic.bye.dao.CartDAO;
 import traffic.bye.vo.CartVO;
 
 public interface CartService {
