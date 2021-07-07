@@ -1,5 +1,6 @@
 package traffic.bye.service;
 
+import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 
 public interface MemberService {
