@@ -14,4 +14,7 @@ public interface ItemDAO {
 	
 	List<ItemVO> getRelatedItemList(HashMap<String, Object> map) throws SQLException;
 	
+	List<ItemVO> getMainCategoryItemList(long parent_id) throws SQLException;
+	
+	
 }

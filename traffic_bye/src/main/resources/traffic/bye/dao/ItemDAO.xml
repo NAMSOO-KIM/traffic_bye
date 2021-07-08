@@ -8,10 +8,8 @@
 	
 	<select id="getItemList" resultType="ItemVO">
 	<![CDATA[
-		select i.id, i.CATEGORY_ID, i.name, i.stock, i.price, i.detail, i.store_id, im.upload_file_name, im.real_file_name
+		select *
 		from item i
-		join item_image im
-		on i.id = im.item_id
 	]]>
 	</select>
 	
@@ -38,5 +36,20 @@
 		where it.category_id = #{category_id} and it.id != #{id}
 	]]>
 	</select>
+	
+	<select id="getMainCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT *
+		from item
+		where category_id in 
+				(
+   				select id
+   				from category
+   				where parent_id = #{parent_id}
+				)
+	]]>
+	</select>
+	
+
 	
 </mapper>

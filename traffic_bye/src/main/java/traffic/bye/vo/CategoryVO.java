@@ -7,5 +7,5 @@ public class CategoryVO {
 	
 	private long id;
 	private String name;
-	
+	private long parent_id;
 }

@@ -11,13 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
+import traffic.bye.vo.CartVO;
+import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemVO;
+import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.StoreVO;
 
 @Slf4j
@@ -30,6 +36,10 @@ public class ItemController {
 	@Autowired
 	private StoreService storeService;
 	
+	@Autowired
+	private CategoryService categoryService;
+	
+	private LoginInfo loginInfo;
 
 	@RequestMapping(value = "itemList", produces = "application/json; charset=UTF-8")
 	public List<ItemVO> getInstructor() throws Exception {
@@ -88,5 +98,65 @@ public class ItemController {
 		mav.setViewName("categoryPage");
 		return mav;
 	}
+	
+	
+	@PostMapping(value = "/firstMainList")
+	@ResponseBody
+	public List<ItemVO> getFirstMainItemList(HttpSession session) throws Exception {
+	//public List<CartVO> getCartList(Long id, HttpSession session) throws Exception {
+		log.info("firstMainList로 옴");
+		
+		
+		//long id = loginInfo.getId();
+		long first_category = categoryService.getFirstMainCategory();
+		
+		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(first_category);
+		for(ItemVO iv : firstItemList) {
+			log.info("id = "+iv.getId());
+			log.info("Name = "+iv.getName());
+			log.info("Detail = "+iv.getDetail());
+			log.info("Price = "+iv.getPrice());
+			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
+			
+			System.out.println();
+			System.out.println();
+		}
+		
+		return firstItemList;	
+	
+		
+	}
+	
+	@PostMapping(value = "/selectMainList")
+	@ResponseBody
+	public List<ItemVO> getSelectMainItemList(long id,HttpSession session) throws Exception {
+	//public List<CartVO> getCartList(Long id, HttpSession session) throws Exception {
+		log.info("selectMainList로 옴");
+		
+		
+		//long id = loginInfo.getId();
+		
+		//long select_category = categoryService.get();
+		//List<CategoryVO> mediumCategoryList =categoryService.getMediumCategory(id);
+		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
+//		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(id);
+		System.out.println("selectMainItemList 출력");
+		
+		for(ItemVO iv : selectMainItemList) {
+			log.info("id = "+iv.getId());
+			log.info("Name = "+iv.getName());
+			log.info("Detail = "+iv.getDetail());
+			log.info("Price = "+iv.getPrice());
+			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
+			
+			System.out.println();
+			System.out.println();
+		}
+		
+		return selectMainItemList;	
+	
+		
+	}
+	
 	
 }
