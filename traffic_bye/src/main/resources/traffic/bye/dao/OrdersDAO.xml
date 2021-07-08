@@ -14,5 +14,17 @@ values(order_id_seq.nextval, #{memberId}, sysdate, sysdate, 0 , #{amount} , 1,2,
 values(#{itemId}, order_id_seq.currval, #{storeId}, #{quantity})
 	</insert>
 	
+	<select id="getOrderId" resultType="long">
+	select order_id_seq.currval from dual
+	</select>
+	
+	<select id="getOrderList" parameterType="long" resultType="OrdersManageVO">
+	select distinct O.id ordersId, S.id storeId  , O.status status , O.amount amount , M.name memberName , O.payment_date paymentDate
+from orders_detail D , orders O ,store S , member M
+where O.id = D.orders_id
+and D.store_id = S.id
+and M.id = O.member_id
+and S.id = #{storeId}
+	</select>	
 
 </mapper>

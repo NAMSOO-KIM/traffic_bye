@@ -281,16 +281,6 @@
 		
        
       </script>
- 
-	<script type="text/javascript">
-	
-	
-	</script>
-
-
-	<div class="popup-container"></div>
-
-
 	<!-- 내용 끝 -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
