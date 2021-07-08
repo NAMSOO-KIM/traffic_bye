@@ -8,8 +8,10 @@ import traffic.bye.dao.MemberDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
 import traffic.bye.exception.PhoneDuplicateException;
+import traffic.bye.vo.AuthType;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
+import traffic.bye.vo.UpdateMemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -76,4 +78,44 @@ public class MemberServiceImpl implements MemberService{
 		loginInfo.setPassword(passwordEncoder.encode(loginInfo.getPassword()));
 		memberDAO.passwordChange(loginInfo);
 	}
+
+	@Override
+	public void updateMember(UpdateMemberVO updateVO) throws Exception {
+		// TODO Auto-generated method stub
+		MemberVO findMember = memberDAO.findMember(updateVO.getId()); 
+		if(passwordEncoder.matches(updateVO.getPassword(), findMember.getPassword())) {
+			updateVO.setChangePassword(passwordEncoder.encode(updateVO.getChangePassword()));
+			memberDAO.updateMember(updateVO);
+			return;
+		}
+		throw new Exception();
+	}
+	
+	
+	
+	
+
+	@Override
+	public void deleteMember(LoginInfo loginInfo) throws Exception {
+		// TODO Auto-generated method stub
+		memberDAO.deleteMember(loginInfo);
+	}
+
+	@Override
+	public MemberVO passwordCheck(LoginInfo loginInfo) throws Exception {
+		// TODO Auto-generated method stub
+		MemberVO memberVO = memberDAO.findMember(loginInfo.getId());
+		if(!passwordEncoder.matches(loginInfo.getPassword(), memberVO.getPassword())) {
+			throw new Exception();
+		}
+		return memberVO;
+	}
+
+	@Override
+	public Long getAuthId(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.getAuthId(id);
+	}	
+	
+	
 }

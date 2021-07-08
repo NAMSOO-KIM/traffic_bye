@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page session="false"%>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -60,267 +60,318 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-        <!-- thank-you section start -->
-    <section class="section-b-space light-layout">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="success-text">
-                        <div class="checkmark">
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+	<!-- thank-you section start -->
+	<section class="section-b-space light-layout">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="success-text">
+						<div class="checkmark">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="star" height="19" viewBox="0 0 19 19" width="19"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
+									d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
                                 </path>
                             </svg>
-                            <svg class="checkmark__check" height="36" viewBox="0 0 48 36" width="48"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="checkmark__check" height="36" viewBox="0 0 48 36"
+								width="48" xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M47.248 3.9L43.906.667a2.428 2.428 0 0 0-3.344 0l-23.63 23.09-9.554-9.338a2.432 2.432 0 0 0-3.345 0L.692 17.654a2.236 2.236 0 0 0 .002 3.233l14.567 14.175c.926.894 2.42.894 3.342.01L47.248 7.128c.922-.89.922-2.34 0-3.23">
+									d="M47.248 3.9L43.906.667a2.428 2.428 0 0 0-3.344 0l-23.63 23.09-9.554-9.338a2.432 2.432 0 0 0-3.345 0L.692 17.654a2.236 2.236 0 0 0 .002 3.233l14.567 14.175c.926.894 2.42.894 3.342.01L47.248 7.128c.922-.89.922-2.34 0-3.23">
                                 </path>
                             </svg>
-                            <svg class="checkmark__background" height="115" viewBox="0 0 120 115" width="120"
-                                xmlns="http://www.w3.org/2000/svg">
+							<svg class="checkmark__background" height="115"
+								viewBox="0 0 120 115" width="120"
+								xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M107.332 72.938c-1.798 5.557 4.564 15.334 1.21 19.96-3.387 4.674-14.646 1.605-19.298 5.003-4.61 3.368-5.163 15.074-10.695 16.878-5.344 1.743-12.628-7.35-18.545-7.35-5.922 0-13.206 9.088-18.543 7.345-5.538-1.804-6.09-13.515-10.696-16.877-4.657-3.398-15.91-.334-19.297-5.002-3.356-4.627 3.006-14.404 1.208-19.962C10.93 67.576 0 63.442 0 57.5c0-5.943 10.93-10.076 12.668-15.438 1.798-5.557-4.564-15.334-1.21-19.96 3.387-4.674 14.646-1.605 19.298-5.003C35.366 13.73 35.92 2.025 41.45.22c5.344-1.743 12.628 7.35 18.545 7.35 5.922 0 13.206-9.088 18.543-7.345 5.538 1.804 6.09 13.515 10.696 16.877 4.657 3.398 15.91.334 19.297 5.002 3.356 4.627-3.006 14.404-1.208 19.962C109.07 47.424 120 51.562 120 57.5c0 5.943-10.93 10.076-12.668 15.438z">
+									d="M107.332 72.938c-1.798 5.557 4.564 15.334 1.21 19.96-3.387 4.674-14.646 1.605-19.298 5.003-4.61 3.368-5.163 15.074-10.695 16.878-5.344 1.743-12.628-7.35-18.545-7.35-5.922 0-13.206 9.088-18.543 7.345-5.538-1.804-6.09-13.515-10.696-16.877-4.657-3.398-15.91-.334-19.297-5.002-3.356-4.627 3.006-14.404 1.208-19.962C10.93 67.576 0 63.442 0 57.5c0-5.943 10.93-10.076 12.668-15.438 1.798-5.557-4.564-15.334-1.21-19.96 3.387-4.674 14.646-1.605 19.298-5.003C35.366 13.73 35.92 2.025 41.45.22c5.344-1.743 12.628 7.35 18.545 7.35 5.922 0 13.206-9.088 18.543-7.345 5.538 1.804 6.09 13.515 10.696 16.877 4.657 3.398 15.91.334 19.297 5.002 3.356 4.627-3.006 14.404-1.208 19.962C109.07 47.424 120 51.562 120 57.5c0 5.943-10.93 10.076-12.668 15.438z">
                                 </path>
                             </svg>
-                        </div>
-                        <h2>thank you</h2>
-                        <p>Payment is successfully processsed and your order is on the way</p>
-                        <p class="font-weight-bold">Transaction ID:267676GHERT105467</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section ends -->
-<!-- order-detail section start -->
-    <section class="section-b-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="product-order">
-                        <div class="row product-order-detail">
-                            <div class="col-3"><img src="../assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload"></div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>product name</h4>
-                                    <h5>cotton shirt</h5>
-                                </div>
-                            </div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>quantity</h4>
-                                    <h5>1</h5>
-                                </div>
-                            </div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>price</h4>
-                                    <h5>$555.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row product-order-detail">
-                            <div class="col-3"><img src="../assets/images/pro3/35.jpg" alt=""
-                                    class="img-fluid blur-up lazyload"></div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>product name</h4>
-                                    <h5>cotton shirt</h5>
-                                </div>
-                            </div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>quantity</h4>
-                                    <h5>1</h5>
-                                </div>
-                            </div>
-                            <div class="col-3 order_detail">
-                                <div>
-                                    <h4>price</h4>
-                                    <h5>$555.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="total-sec">
-                            <ul>
-                                <li>subtotal <span>$55.00</span></li>
-                                <li>shipping <span>$12.00</span></li>
-                                <li>tax(GST) <span>$10.00</span></li>
-                            </ul>
-                        </div>
-                        <div class="final-total">
-                            <h3>total <span>$77.00</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="order-success-sec">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h4>summery</h4>
-                                <ul class="order-detail">
-                                    <li>order ID: 5563853658932</li>
-                                    <li>Order Date: October 22, 2018</li>
-                                    <li>Order Total: $907.28</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <h4>shipping address</h4>
-                                <ul class="order-detail">
-                                    <li>gerg harvell</li>
-                                    <li>568, suite ave.</li>
-                                    <li>Austrlia, 235153</li>
-                                    <li>Contact No. 987456321</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-12 payment-mode">
-                                <h4>payment method</h4>
-                                <p>Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net banking
-                                    acceptance subject to device availability.</p>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="delivery-sec">
-                                    <h3>expected date of delivery: <span>october 22, 2018</span></h3>
-                                    <a href="order-tracking.html">track order</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--section end-->
-    <!-- 내용 시작 -->
-  
-  <script type="text/javascript">
-  	var wsocket;
-	
-  	function connect() {
-		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.onopen = onOpen;
-		wsocket.onmessage = onMessage;
-		wsocket.onclose = onClose;
-	}
-	function disconnect() {
-		wsocket.close();
-	}
-	function onOpen(evt) {
-	}
-	function onMessage(evt) {
-		alert("야발!!");
-		$('#myModal').show();
-	}
-	function onClose(evt) {
-		console.log("연결을 끊었습니다.");
-	}
-	function send() {
-		//메세지 보낼 스토어아이디는 
-		/* let sendData = {};
-		sendData.storeList= storeList;
-		sendData.type = "order";
-		alert(sendData);
-		wsocket.send(JSON.stringify(sendData)); */
-	}
-	
-	
-	
-	$(document).ready(function(){
-		connect();
-	});
-</script>
+						</div>
+						<h2>thank you</h2>
+						<p>Payment is successfully processsed and your order is on the
+							way</p>
+						<p class="font-weight-bold">Transaction ID:267676GHERT105467</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section ends -->
+	<!-- order-detail section start -->
+	<section class="section-b-space">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="product-order">
+						<div class="row product-order-detail">
+							<div class="col-3">
+								<img src="../assets/images/pro3/27.jpg" alt=""
+									class="img-fluid blur-up lazyload">
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>product name</h4>
+									<h5>cotton shirt</h5>
+								</div>
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>quantity</h4>
+									<h5>1</h5>
+								</div>
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>price</h4>
+									<h5>$555.00</h5>
+								</div>
+							</div>
+						</div>
+						<div class="row product-order-detail">
+							<div class="col-3">
+								<img src="../assets/images/pro3/35.jpg" alt=""
+									class="img-fluid blur-up lazyload">
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>product name</h4>
+									<h5>cotton shirt</h5>
+								</div>
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>quantity</h4>
+									<h5>1</h5>
+								</div>
+							</div>
+							<div class="col-3 order_detail">
+								<div>
+									<h4>price</h4>
+									<h5>$555.00</h5>
+								</div>
+							</div>
+						</div>
+						<div class="total-sec">
+							<ul>
+								<li>subtotal <span>$55.00</span></li>
+								<li>shipping <span>$12.00</span></li>
+								<li>tax(GST) <span>$10.00</span></li>
+							</ul>
+						</div>
+						<div class="final-total">
+							<h3>
+								total <span>$77.00</span>
+							</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="order-success-sec">
+						<div class="row">
+							<div class="col-sm-6">
+								<h4>summery</h4>
+								<ul class="order-detail">
+									<li>order ID: 5563853658932</li>
+									<li>Order Date: October 22, 2018</li>
+									<li>Order Total: $907.28</li>
+								</ul>
+							</div>
+							<div class="col-sm-6">
+								<h4>shipping address</h4>
+								<ul class="order-detail">
+									<li>gerg harvell</li>
+									<li>568, suite ave.</li>
+									<li>Austrlia, 235153</li>
+									<li>Contact No. 987456321</li>
+								</ul>
+							</div>
+							<div class="col-sm-12 payment-mode">
+								<h4>payment method</h4>
+								<p>Pay on Delivery (Cash/Card). Cash on delivery (COD)
+									available. Card/Net banking acceptance subject to device
+									availability.</p>
+							</div>
+							<div class="col-md-12">
+								<div class="delivery-sec">
+									<h3>
+										expected date of delivery: <span>october 22, 2018</span>
+									</h3>
+									<a href="order-tracking.html">track order</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--section end-->
+	<!-- 내용 시작 -->
 
-<style>
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
- 
+	<script type="text/javascript">
+		
+		//웹소켓으로 이값을 전송
+		
+		
+				
+		var wsocket;
+
+		function connect() {
+			wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
+			wsocket.onopen = onOpen;
+			wsocket.onmessage = onMessage;
+			wsocket.onclose = onClose;
+		}
+		function disconnect() {
+			wsocket.close();
+		}
+		function onOpen(evt) {
+			//alert(orderId);
+		}
+		function onMessage(evt) {
+			$('#myModal').show();
+		}
+		function onClose(evt) {
+			console.log("연결을 끊었습니다.");
+		}
+		function send() {
+			//메세지 보낼 스토어아이디는 
+			/* let sendData = {};
+			sendData.storeList= storeList;
+			sendData.type = "order";
+			alert(sendData);
+			wsocket.send(JSON.stringify(sendData)); */
+		}
+
+		$(document).ready(function() {
+			connect();
+			/* var orderId = '<c:out value="${orderId}"/>';
+			var sendData = "orderId="+orderId;
+			let link = "${contextPath}/getOrderId"; */
+			/* $.ajax({
+				url : link ,
+				type:'post' ,
+				data : sendData ,
+				success : function(result){
+					if( result == orderId){
+						console.log("성공");
+					}else{
+						console.log("실패");
+					}
+				}
+			}); */
+			
+		});
+	</script>
+
+	<style>
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
 </style>
- 
- 
- 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 수락되었습니다.</span></p>
-                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >
-                     <a id="confirmBtn" href="ordertracking">진행 현황보기</a>
-                </span>
-            </div>
-      </div>
-    </div>
-       <script type="text/javascript">
-        //팝업 Close 기능
-        function close_pop(flag) {
-             $('#myModal').hide();
-        };
-        
-      </script>
-        <!--End Modal-->
+
+
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<p style="text-align: center;">
+				<span style="font-size: 14pt;"><b><span
+						style="font-size: 24pt;">알림</span></b></span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<br />
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<span style="font-size: 14pt;">주문이 수락되었습니다.</span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<span style="font-size: 14pt;">내용추가</span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<span style="font-size: 14pt;"><br /></span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<span style="font-size: 14pt;">내용추가 </span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<span style="font-size: 14pt;">내용추가</span>
+			</p>
+			<p style="text-align: center; line-height: 1.5;">
+				<br />
+			</p>
+			<p>
+				<br />
+			</p>
+			<div
+				style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
+				onClick="close_pop();">
+				<span class="pop_bt" style="font-size: 13pt;"> <a
+					id="confirmBtn" href="ordertracking">진행 현황보기</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//팝업 Close 기능
+		function close_pop(flag) {
+			$('#myModal').hide();
+		};
+	</script>
+	<!--End Modal-->
 
 
 
@@ -329,68 +380,71 @@
 
 
 
-<!-- 내용 끝 -->
+	<!-- 내용 끝 -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
-	  <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src =
-                'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="2123438804574660" theme_color="#0084ff"
-        logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"
-        logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
-    </div>
-    <!-- facebook chat section end -->
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<!-- Your customer chat code -->
+	<div class="fb-customerchat" attribution=setup_tool
+		page_id="2123438804574660" theme_color="#0084ff"
+		logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"
+		logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
+	</div>
+	<!-- facebook chat section end -->
 
 
-    <!-- tap to top -->
-    <div class="tap-top top-cls">
-        <div>
-            <i class="fa fa-angle-double-up"></i>
-        </div>
-    </div>
-    <!-- tap to top end -->
-    <script src="${contextPath}/resources/assets/js/exit.js"></script>
+	<!-- tap to top -->
+	<div class="tap-top top-cls">
+		<div>
+			<i class="fa fa-angle-double-up"></i>
+		</div>
+	</div>
+	<!-- tap to top end -->
+	<script src="${contextPath}/resources/assets/js/exit.js"></script>
 
-    <!-- slick js-->
-    <script src="${contextPath}/resources/assets/js/slick.js"></script>
+	<!-- slick js-->
+	<script src="${contextPath}/resources/assets/js/slick.js"></script>
 
-    <!-- menu js-->
-    <script src="${contextPath}/resources/assets/js/menu.js"></script>
+	<!-- menu js-->
+	<script src="${contextPath}/resources/assets/js/menu.js"></script>
 
-    <!-- lazyload js-->
-    <script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
+	<!-- lazyload js-->
+	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
 
-    <!-- Bootstrap js-->
-    <script src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap js-->
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap Notification js-->
-    <script src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
+	<!-- Bootstrap Notification js-->
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
 
-    <!-- Fly cart js-->
-    <script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
+	<!-- Fly cart js-->
+	<script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
 
-    <!-- Theme js-->
-    <script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
-    <script src="${contextPath}/resources/assets/js/script.js"></script>
+	<!-- Theme js-->
+	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
+	<script src="${contextPath}/resources/assets/js/script.js"></script>
 
-    <script>
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
+	<script>
+		function openSearch() {
+			document.getElementById("search-overlay").style.display = "block";
+		}
 
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
-    </script>
-	
+		function closeSearch() {
+			document.getElementById("search-overlay").style.display = "none";
+		}
+	</script>
+
 </body>
 </html>
