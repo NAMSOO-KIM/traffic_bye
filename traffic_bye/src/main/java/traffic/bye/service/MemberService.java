@@ -2,6 +2,7 @@ package traffic.bye.service;
 
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
+import traffic.bye.vo.UpdateMemberVO;
 
 public interface MemberService {
 	public int checkPhoneDuplicate(String phone) throws Exception;
@@ -21,5 +22,12 @@ public interface MemberService {
 	public MemberVO findMember(Long id) throws Exception;
 
 	public void passwordChange(LoginInfo loginInfo) throws Exception;
-
+	
+	public void updateMember(UpdateMemberVO updateVO) throws Exception;
+	
+	public MemberVO passwordCheck(LoginInfo loginInfo) throws Exception;
+	
+	public void deleteMember(LoginInfo loginInfo) throws Exception;
+	
+	public Long getAuthId(Long id) throws Exception;
 }

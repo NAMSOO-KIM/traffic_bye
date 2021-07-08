@@ -98,6 +98,28 @@ public class AuthConfig {
 	}
 	
 	@Bean
+	public String kakaoWithdrawalRedirectURI() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("https://kauth.kakao.com/oauth/authorize");
+		sb.append("?client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/withdrawal/authKakao");
+		sb.append("&response_type=code&prompt=login");
+		return sb.toString();
+	}
+	
+	@Bean
+	public String kakaoAuthWithdrawal() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("grant_type=authorization_code");
+		sb.append("&client_id=");
+		sb.append(kakaoKey);
+		sb.append("&redirect_uri=http://localhost/app/member/withdrawal/authKakao");
+		sb.append("&code=");
+		return sb.toString();
+	}
+	
+	@Bean
 	Message coolSMS() {
 		return new Message(coolSMSKey, coolSMSSecret);
 	}
