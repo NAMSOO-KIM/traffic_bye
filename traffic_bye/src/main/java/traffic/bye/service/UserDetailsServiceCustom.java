@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.MemberDAO;
 import traffic.bye.vo.LoginInfo;
