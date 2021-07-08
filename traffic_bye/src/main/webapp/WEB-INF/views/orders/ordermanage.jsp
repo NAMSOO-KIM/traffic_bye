@@ -454,11 +454,17 @@
 										<tbody>
 											<c:forEach items="${ordersList}" var="list">
 												<tr>
-													<td>${list.ordersId}</td>
+													<td id="orderId">${list.ordersId}</td>
 													<td>
 														<div class="d-flex">${list.memberName}</div>
 													</td>
-													<td><span class="badge badge-secondary">${list.status}</span></td>
+													<td><span class="badge badge-secondary">
+												<c:choose>
+												<c:when test="${list.status eq 0}">수락 대기</c:when>
+												<c:when test="${list.status eq 1}">주문 수락</c:when>
+												<c:when test="${list.status eq 2}">준비 완료</c:when>
+												<c:otherwise>수령완료</c:otherwise>
+												</c:choose></span></td>
 													<td><span class="badge badge-success">${list.amount}</span></td>
 													<td>${list.paymentDate}</td>
 												</tr>
@@ -473,17 +479,89 @@
 				<!-- Container-fluid Ends-->
 			</div>
 			<!--------------------------- 내용 시작 ---------------------------->
-			<script type="text/javascript">
+			<script>
+				$("#basic-1 tr").click(function() {
+					var str = ""
+					var tdArr = new Array(); // 배열 선언
+					var tr = $(this);
+					var td = tr.children();
+					td.each(function(i) {
+						tdArr.push(td.eq(i).text());
+					});
+					// td.eq(index)를 통해 값을 가져올 수도 있다.
+					var orderId = td.eq(0).text();
+					console.log(orderId);
+					var sendData = "orderId="+orderId;
+					let link = "${contextPath}/getOrderId";
+					$.ajax({
+						url : link,
+						type : 'post',
+						data : sendData,
+						success : function(result) {
+							console.log(result);
+							
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].memberId+"</p>");
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].orderId+"</p>");
+							for(var i=0;i<result.length;i++){
+								console.log(result[i]);
+								//itemName: ~ VO형식으로 출력
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].itemName+"</p>");
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].price+"</p>");
+							}
+							$('#myModalContent').append("&nbsp<button id='acceptBtn'>주문수락</button>&nbsp");
+							$('#myModalContent').append("&nbsp<button id='readyBtn'>준비완료</button>&nbsp");
+							$('#myModalContent').append("<button id='receiptBtn'>수령완료</button>");
+							$('#orderModal').show();
 
-				
-				var table = document.getElementById('basic-1'),
-				  cells = table.getElementsByTagName('td');
-				for (var i = 0, len = cells.length; i < len; i++) {
-				  cells[i].onclick = function() {
-				    console.log(this.innerHTML);
-				  };
-				}
-				
+							var acceptLink = "${contextPath}/orderAccept";
+							$('#acceptBtn').click(function(){
+								$.ajax({
+									url : acceptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+										console.log('주문 수락되었습니다.');	
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							var readyLink = "${contextPath}/orderReady";
+							$('#readyBtn').click(function(){
+								$.ajax({
+									url : readyLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+										console.log('상품이 준비완료 되었습니다.');	
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							var receiptLink = "${contextPath}/orderReceipt";
+							$('#receiptBtn').click(function(){
+								$.ajax({
+									url : receiptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+										console.log('상품 수령을 완료했습니다.');	
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							
+							
+							
+						}
+					});
+
+				});
 			</script>
 
 			<script type="text/javascript">
@@ -511,6 +589,12 @@
 				}
 				$(document).ready(function() {
 					connect();
+					$('#orderId').click(function() {
+						event.preventDefault();
+						console.log('hi');
+
+					});
+
 				});
 			</script>
 
@@ -538,7 +622,37 @@
 	border: 1px solid #888;
 	width: 30%; /* Could be more or less, depending on screen size */
 }
+
+/* The Modal (background) */
+.myModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.myModal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
 </style>
+<!-- orderModal custom -->
+			<div id="orderModal" class="myModal">
+				<div class="myModal-content" id="myModalContent">
+				</div>
+			</div>
+			
+<!-- orderModal custom -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
 				<div class="modal-content">
@@ -601,7 +715,7 @@
 						url  : link,
 						success
 						
-					})); */ 
+					})); */
 					wsocket.send(JSON.stringify(receiveData));
 				});
 			</script>
@@ -624,7 +738,6 @@
 				</div>
 			</footer>
 			<!-- footer end-->
-
 		</div>
 
 	</div>
