@@ -34,7 +34,7 @@
 	                    	html += "<div class='no-slider row'>";
 	                    	
 	                    	$.each(JSON.parse(result) ,function(key, value) {
-								console.log(value.thumb_file_url);
+							
 	                        	
 	                        	html += "<div class='product-box'>";
 	                        		html += "<div class='img-wrapper'>";
@@ -64,10 +64,16 @@
 	  							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	  							html += "class='fa fa-star'></i></div>";
 	  							html += "<a href='product-page(no-sidebar).html'>";
-		  							html += "<h6>";
-		  							html += value.name;
-		  							html += "</h6>";
+	  							html += "<h6>[";
+	  							html += value.store_name;
+	  							html += "] ";
+	  							html += value.name;
+	  							html += "</h6>";
 	  							html += "</a>";
+	  							
+	  							
+	  							
+	  							
 	  							
 	  							html += "<h4>$";
 	  							html += 	value.price;
@@ -153,7 +159,9 @@
 	      							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	      							html += "class='fa fa-star'></i></div>";
 	      							html += "<a href='product-page(no-sidebar).html'>";
-	    	  							html += "<h6>";
+	    	  							html += "<h6>[";
+	    	  							html += value.store_name;
+	    	  							html += "] ";
 	    	  							html += value.name;
 	    	  							html += "</h6>";
 	      							html += "</a>";
@@ -292,18 +300,7 @@
         <h4>베스트 상품!</h4>
         <h2 class="title-inner1">스마트 오더 인기 제품</h2>
     </div>
-    <!-- 
-    <div class="container">
-        <div class="row">
-        
-            <div class="col-lg-6 offset-lg-3">
-                <div class="product-para">
-                    <p class="text-center">Looking for the latest trends in clothing, shoes and accessories? Welcome to our 'Latest Drops' edit, bringing you all the latest styles from all your fave brands.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
+    
     <!-- Paragraph end -->
 
 
@@ -335,7 +332,7 @@
                                               class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                               class="fa fa-star"></i></div>
                                       <a href="product-page(no-sidebar).html">
-                                          <h6>${itemVar.name}</h6>
+                                          <h6>[${itemVar.store_name}] ${itemVar.name}</h6>
                                       </a>
                                       <h4>$${itemVar.price}</h4>
                                       

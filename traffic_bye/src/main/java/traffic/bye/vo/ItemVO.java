@@ -22,6 +22,6 @@ public class ItemVO {
 	private String origin_file_url;
 	
 	//store 테이블
-	private String s_name;
+	private String store_name;
 	
 }

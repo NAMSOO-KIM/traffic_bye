@@ -51,13 +51,14 @@
                                     <div class="row">
                                         <div class="col-12 product_img_scroll image-scroll" data-sticky_column>
                                             <div>
-                                            	<div><img src="${item.thumb_file_url}" alt=""
+                                            	<div><img src="${item.thumb_file_url}" alt=" "
 	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
                                             	
                                             	<c:forEach items="${itemDetailList}" var="itemDetailVO">
                                             		
-	                                                <div><img src="${itemDetailVO.origin_file_url}" alt=""
-	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+	                                                <div><img src="${itemDetailVO.origin_file_url}" alt=" "
+	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px" onerror="this.style.display='none'"></div>
+	                                                
                                                 </c:forEach>
                                                 
                                             </div>
@@ -295,27 +296,16 @@
                                 <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.thumb_file_url}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
+                            
                         </div>
                         <div class="product-detail">
                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                             <a href="product-page(no-sidebar).html">
-                                <h6>${RelatedItemVar.name}</h6>
+                                <h6>[${RelatedItemVar.store_name}] ${RelatedItemVar.name}</h6>
                             </a>
                             <h4>${RelatedItemVar.price}</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>

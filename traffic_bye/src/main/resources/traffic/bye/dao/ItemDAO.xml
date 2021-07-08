@@ -8,8 +8,10 @@
 	
 	<select id="getItemList" resultType="ItemVO">
 	<![CDATA[
-		select *
-		from item
+		select s.name as store_name , it.*
+		from item it
+		inner join store s
+		on it.store_id = s.id
 	]]>
 	</select>
 	
@@ -30,22 +32,34 @@
 	
 	<select id="getRelatedItemList" parameterMap="selectRelatedMap" resultType="ItemVO">
 	<![CDATA[
-		select *
-		from item
-		where category_id = #{category_id} and id != #{id}
+		
+		select s.name as store_name, A.*
+		FROM 
+		(
+		    select *
+		    from item
+		    where category_id = #{category_id} and id != #{id}
+    	)A
+		inner join store s
+		on s.id = A.store_id
+
 	]]>
 	</select>
 	
 	<select id="getMainCategoryItemList" parameterType="long" resultType="ItemVO">
 	<![CDATA[
-		SELECT *
-		from item
-		where category_id in 
-				(
-   				select id
-   				from category
-   				where parent_id = #{parent_id}
-				)
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
 		
 	]]>
 	</select>

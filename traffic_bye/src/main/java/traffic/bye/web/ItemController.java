@@ -63,16 +63,6 @@ public class ItemController {
 			mav.addObject("itemDetailList",itemDetailList);
 			
 			
-			for(ItemVO iv : itemDetailList) {
-				log.info("id : "+iv.getId());
-				log.info("name : "+iv.getName());
-				log.info("price : "+iv.getPrice());
-				log.info("origin_url : "+iv.getOrigin_file_url());
-				
-			}
-			
-			
-			
 			ItemVO item = itemService.getItem(id);
 			mav.addObject("item",item);
 			
@@ -116,24 +106,11 @@ public class ItemController {
 	@PostMapping(value = "/firstMainList")
 	@ResponseBody
 	public List<ItemVO> getFirstMainItemList(HttpSession session) throws Exception {
-	//public List<CartVO> getCartList(Long id, HttpSession session) throws Exception {
-		log.info("firstMainList로 옴");
-		
-		
-		//long id = loginInfo.getId();
+
 		long first_category = categoryService.getFirstMainCategory();
 		
 		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(first_category);
-		for(ItemVO iv : firstItemList) {
-			log.info("id = "+iv.getId());
-			log.info("Name = "+iv.getName());
-			log.info("Detail = "+iv.getDetail());
-			log.info("Price = "+iv.getPrice());
-			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
-			
-			System.out.println();
-			System.out.println();
-		}
+		
 		
 		return firstItemList;	
 	
@@ -144,24 +121,10 @@ public class ItemController {
 	@ResponseBody
 	public List<ItemVO> getSelectMainItemList(long id,HttpSession session) throws Exception {
 	//public List<CartVO> getCartList(Long id, HttpSession session) throws Exception {
-		log.info("selectMainList로 옴");
-		
+
 		
 		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
 
-		System.out.println("selectMainItemList 출력");
-		
-		for(ItemVO iv : selectMainItemList) {
-			log.info("id = "+iv.getId());
-			log.info("Name = "+iv.getName());
-			log.info("Detail = "+iv.getDetail());
-			log.info("Price = "+iv.getPrice());
-			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
-			
-			System.out.println();
-			System.out.println();
-		}
-		
 		return selectMainItemList;	
 	
 		
