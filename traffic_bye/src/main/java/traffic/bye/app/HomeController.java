@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
+import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemVO;
 
 /**
@@ -27,6 +29,9 @@ public class HomeController {
 
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -42,7 +47,17 @@ public class HomeController {
 		
 		try {
 			List<ItemVO> list = itemService.getItemList();
+
+			// 대분류 카테고리 가져오기
+			List<CategoryVO> mainCategoryList = categoryService.getMainCategory();
+			
+
 			model.addAttribute("itemList",list);
+			model.addAttribute("mainCategoryList",mainCategoryList);
+
+			//model.addAttribute("", mainCategoryList;)
+			// 대분류에 해당하는 아이템 가져오기
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

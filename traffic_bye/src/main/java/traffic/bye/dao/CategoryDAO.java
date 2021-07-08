@@ -12,4 +12,11 @@ public interface CategoryDAO {
 	
 	CategoryVO getCategory(long id) throws SQLException;
 	
+	List<CategoryVO> getMainCategory() throws SQLException;
+	
+	List<CategoryVO> getMediumCategory(long parent_id) throws SQLException;
+	
+	long getFirstMainCategory() throws SQLException;
+	
+	
 }
