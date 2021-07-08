@@ -10,5 +10,7 @@ public interface StoreDAO {
 	List<StoreVO> getStoreList() throws SQLException;
 	
 	StoreVO getStore(long id) throws SQLException;
+
+	List<Long> getStoreCategories(long store_id) throws SQLException;
 	
 }
