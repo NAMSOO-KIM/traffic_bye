@@ -112,11 +112,12 @@ public class ItemController {
 		
 		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(first_category);
 		for(ItemVO iv : firstItemList) {
-			System.out.println(iv.getId());
-			System.out.println(iv.getName());
-			System.out.println(iv.getDetail());
-			System.out.println(iv.getPrice());
-			System.out.println(iv.getThumb_file_url());
+			log.info("id = "+iv.getId());
+			log.info("Name = "+iv.getName());
+			log.info("Detail = "+iv.getDetail());
+			log.info("Price = "+iv.getPrice());
+			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
+			
 			System.out.println();
 			System.out.println();
 		}
@@ -142,11 +143,12 @@ public class ItemController {
 		System.out.println("selectMainItemList 출력");
 		
 		for(ItemVO iv : selectMainItemList) {
-			System.out.println(iv.getId());
-			System.out.println(iv.getName());
-			System.out.println(iv.getDetail());
-			System.out.println(iv.getPrice());
-			System.out.println(iv.getThumb_file_url());
+			log.info("id = "+iv.getId());
+			log.info("Name = "+iv.getName());
+			log.info("Detail = "+iv.getDetail());
+			log.info("Price = "+iv.getPrice());
+			log.info("getThumb_file_url = "+ iv.getThumb_file_url());
+			
 			System.out.println();
 			System.out.println();
 		}
