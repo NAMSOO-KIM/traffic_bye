@@ -16,5 +16,7 @@ public interface ItemDAO {
 	
 	List<ItemVO> getMainCategoryItemList(long parent_id) throws SQLException;
 	
+	List<ItemVO> getItemDetail(long id) throws SQLException; // 이미지 포함
+	
 	
 }

@@ -4,7 +4,9 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="item" value="${item}" />
+<c:set var="itemDetailList" value="${itemDetailList}" />
 <c:set var="store" value="${store}" />
+
 
 
 <!DOCTYPE html>
@@ -49,50 +51,34 @@
                                     <div class="row">
                                         <div class="col-12 product_img_scroll image-scroll" data-sticky_column>
                                             <div>
-                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
-                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
-                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
-                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
-                                                <div><img src="${contextPath}/ItemImage?id=${item.store_id}&image=${item.real_file_name}" alt=""
-                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+                                            	<div><img src="${item.thumb_file_url}" alt=""
+	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+                                            	
+                                            	<c:forEach items="${itemDetailList}" var="itemDetailVO">
+                                            		
+	                                                <div><img src="${itemDetailVO.origin_file_url}" alt=""
+	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
+                                                </c:forEach>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 rtl-text">
                                     <div class="product-right pro_sticky_info" data-sticky_column>
-                                        <h2>${item.name}</h2>
+                                        <h2>[${store.name}] ${item.name}</h2>
                                         <input type="text" id="item_id" value="${item.id}" style= "display:none"/>
-                                        <!-- 
-                                        <div class="rating-section">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <h6>120 ratings</h6>
-                                        </div>
-                                         -->
+                                       
                                          
                                         <div class="label-section">
                                             <span class="badge badge-grey-color">남은 재고 수량</span>
                                             <span class="label-text" id="remain-stock" data-point="${item.stock}">${item.stock}</span>
                                         </div>
                                         <h3 class="price-detail">$${item.price}</h3>
-                                        <!-- 
-                                        <del>$459.00</del><span>55% off</span></h3>
                                         
-                                        <ul class="color-variant">
-                                            <li class="bg-light0 active"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                        --> 
                                         <div id="selectSize"
                                             class="addeffect-section product-description border-product">
-                                            <!-- 
-                                            <h6 class="product-title size-text">select size <span><a href=""
-                                                        data-bs-toggle="modal" data-bs-target="#sizemodal">size
-                                                        chart</a></span></h6>
-                                             -->
+                                           
                                             <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -110,17 +96,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- 
-                                            <h6 class="error-message">please select size</h6>
-                                            <div class="size-box">
-                                                <ul>
-                                                    <li><a href="javascript:void(0)">s</a></li>
-                                                    <li><a href="javascript:void(0)">m</a></li>
-                                                    <li><a href="javascript:void(0)">l</a></li>
-                                                    <li><a href="javascript:void(0)">xl</a></li>
-                                                </ul>
-                                            </div>
-                                            -->
+                                           
                                             <h6 class="product-title">quantity</h6>
                                             <div class="qty-box">
                                                 <div class="input-group"><span class="input-group-prepend"><button
@@ -153,34 +129,18 @@
                                             </ul>
                                         </div>
                                         
-                                        <!-- 
-                                        <div class="border-product">
-                                            <h6 class="product-title">Sales Ends In</h6>
-                                            <div class="timer">
-                                                <p id="demo"></p>
-                                            </div>
-                                        </div>
-                                        -->
                                         <div class="border-product">
                                         	<a href="${contextPath}/store/${store.id}">
                                             	<h6 class="product-title">${store.name}</h6>
                                             </a>
                                             <div class="product-icon">
-                                            
+                                            	
                                             	<!-- 
                                             	<span class="lang" style="color:black">위치 : ${store.detail}</span>
                                             	 -->
                                             	 
-                                            	<h5>위치 : ${store.detail}</h5>
-                                            	<!-- 
-                                                <ul class="product-social">
-                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                                </ul>
-                                                 -->
+                                            	<h5>위치 : 여기 위치정보 있어야 될거 같음</h5>
+                                            	
                                             </div>
                                         </div>
                                          
@@ -196,7 +156,7 @@
     </section>
     <!-- Section ends -->
 
-
+	
     <!-- product-tab starts -->
     <section class="tab-product pt-0 m-0">
         <div class="container">
@@ -208,45 +168,23 @@
                                     class="icofont icofont-ui-home"></i>Details</a>
                             <div class="material-border"></div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"
-                                href="#top-profile" role="tab" aria-selected="false"><i
-                                    class="icofont icofont-man-in-glasses"></i>Specification</a>
-                            <div class="material-border"></div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab"
-                                href="#top-contact" role="tab" aria-selected="false"><i
-                                    class="icofont icofont-contacts"></i>Video</a>
-                            <div class="material-border"></div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" id="review-top-tab" data-bs-toggle="tab"
-                                href="#top-review" role="tab" aria-selected="false"><i
-                                    class="icofont icofont-contacts"></i>Write Review</a>
-                            <div class="material-border"></div>
-                        </li>
+                        
                     </ul>
                     <div class="tab-content nav-material" id="top-tabContent">
                         <div class="tab-pane fade show active" id="top-home" role="tabpanel"
                             aria-labelledby="top-home-tab">
                             <div class="product-tab-discription">
-                                <div class="part">
-                                    <p>여기에 상품 설명 깰꼼하게 넣어버리면 되겠는걸?</p>
-                                </div>
-                                <div class="part">
-                                    <h5 class="inner-title">니코틴 함량:</h5>
-                                    <p>높음. 가성비로 최고 담배</p>
-                                </div>
-                                <div class="part">
-                                    <h5 class="inner-title">하이요</h5>
-                                    <p>상품설명</p>
-                                </div>
+                            	<div class="top-banner-wrapper">
+                                        <a href="${contextPath}/store/${store.id}"><img src="${store.thumb_file_url}"
+                                                class="img-fluid blur-up lazyload" alt=""></a>
+                                        <div class="top-banner-content small-section">
+                                            <h4>${store.name}</h4>
+                                            <p>${store.detail}</p>
+                                        </div>
+                                    </div>
                                 
-                                <div class="part">
-                                    <h5 class="inner-title">하이하이이하이</h5>
-                                    <p>하욤</p>
-                                    <p>ㅎㅎ</p>
-                                    <p>Hand-wash</p>
-                                </div>
                             </div>
+                            
                         </div>
                         <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                             <p>The Model is wearing a white blouse from our stylist's collection, see the image for a
@@ -350,11 +288,11 @@
                     <div class="product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.thumb_file_url}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="back">
-                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${contextPath}/ItemImage?id=${RelatedItemVar.store_id}&image=${RelatedItemVar.real_file_name}"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.thumb_file_url}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="cart-info cart-wrap">
@@ -382,197 +320,6 @@
                     </div>
                 </div>
               </c:forEach>
-                
-                <!-- 
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/35.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/36.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/2.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/1.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/28.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="${contextPath}/resources/assets/images/pro3/27.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                 -->
-                
                 
             </div>
         </div>

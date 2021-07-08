@@ -17,8 +17,11 @@ public class ItemVO {
 	
 	
 	//item_image 테이블
-	//private String upload_file_name;
-	//private String real_file_name;
+	private String upload_file_name;
+	private String real_file_name;
+	private String origin_file_url;
 	
+	//store 테이블
+	private String s_name;
 	
 }

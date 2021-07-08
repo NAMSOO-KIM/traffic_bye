@@ -44,9 +44,7 @@ public class ItemController {
 	@RequestMapping(value = "itemList", produces = "application/json; charset=UTF-8")
 	public List<ItemVO> getInstructor() throws Exception {
 		List<ItemVO> list = itemService.getItemList();
-		//ItemVO itemVO = list.get(0);
 		
-		//System.out.println(itemVO.getDetail());
 		return list;
 	}
 	
@@ -61,21 +59,36 @@ public class ItemController {
 		// 특정 아이템 정보, 해당하는 매장 정보 가져오기
 		try {
 			
+			List<ItemVO> itemDetailList = itemService.getItemDetail(id);
+			mav.addObject("itemDetailList",itemDetailList);
+			
+			
+			for(ItemVO iv : itemDetailList) {
+				log.info("id : "+iv.getId());
+				log.info("name : "+iv.getName());
+				log.info("price : "+iv.getPrice());
+				log.info("origin_url : "+iv.getOrigin_file_url());
+				
+			}
+			
+			
+			
 			ItemVO item = itemService.getItem(id);
 			mav.addObject("item",item);
 			
 			//매장 id 조회
-			long store_id=item.getStore_id();
+			long store_id=itemDetailList.get(0).getStore_id();
 			StoreVO store=storeService.getStore(store_id);
 			mav.addObject("store", store);
 			
 			//관련 상품들 추천(카테고리가 같은 아이템 모두 가져옴)
-			long category_id = item.getCategory_id();
+			long category_id = itemDetailList.get(0).getCategory_id();
 			HashMap<String, Object> map = new HashMap<>();
 			map.put("category_id",category_id);
 			map.put("id",id);
 			
 			List<ItemVO> RelatedItemlist = itemService.getRelatedItemList(map);
+			
 			mav.addObject("RelatedItemlist",RelatedItemlist);
 			
 			
@@ -134,12 +147,8 @@ public class ItemController {
 		log.info("selectMainList로 옴");
 		
 		
-		//long id = loginInfo.getId();
-		
-		//long select_category = categoryService.get();
-		//List<CategoryVO> mediumCategoryList =categoryService.getMediumCategory(id);
 		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
-//		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(id);
+
 		System.out.println("selectMainItemList 출력");
 		
 		for(ItemVO iv : selectMainItemList) {
