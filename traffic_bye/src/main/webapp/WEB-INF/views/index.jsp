@@ -904,12 +904,12 @@
   							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
   							html += "class='fa fa-star'></i></div>";
   							html += "<a href='product-page(no-sidebar).html'>";
-	  							html += "<h6>"
+	  							html += "<h6>";
 	  							html += value.name;
 	  							html += "</h6>";
   							html += "</a>";
   							
-  							html += "<h4>$"
+  							html += "<h4>$";
   							html += 	value.price;
   							html += "</h4>";
   							
@@ -1008,12 +1008,12 @@
       							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
       							html += "class='fa fa-star'></i></div>";
       							html += "<a href='product-page(no-sidebar).html'>";
-    	  							html += "<h6>"
+    	  							html += "<h6>";
     	  							html += value.name;
     	  							html += "</h6>";
       							html += "</a>";
       							
-      							html += "<h4>$"
+      							html += "<h4>$";
       							html += 	value.price;
       							html += "</h4>";
       							
