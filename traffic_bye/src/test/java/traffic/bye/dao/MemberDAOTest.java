@@ -11,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.vo.LoginInfo;
+import traffic.bye.vo.MemberVO;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,7 +26,7 @@ public class MemberDAOTest {
 	
 	@Test
 	public void test() throws Exception{
-		LoginInfo loginInfo = dao.getLoginInfo("test2");
-		log.info(loginInfo.toString());
+		MemberVO memberVO = dao.getMember(61L);
+		log.info(memberVO.toString());
 	}
 }

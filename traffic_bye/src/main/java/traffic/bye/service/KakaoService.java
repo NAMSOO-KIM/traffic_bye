@@ -94,6 +94,7 @@ public class KakaoService {
 		long id = element.getAsJsonObject().get("id").getAsLong();
 		return id;
 	}
+	
 
 	public void kakaoLogout(String accessToken) throws Exception {
 		URL url = new URL(kakaoLogoutRedirectURI);
@@ -101,6 +102,32 @@ public class KakaoService {
 		conn.setRequestMethod("GET");
 		int responseCode = conn.getResponseCode();
 		log.info("responseCode : {}", responseCode);
+	}
+	
+	public long unlinkUser(String accessToken) throws Exception {
+		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+		HashMap<String, Object> userInfo = new HashMap<>();
+		String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+		URL url = new URL(reqURL);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("POST");
+
+		// 요청에 필요한 Header에 포함될 내용
+		conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+		int responseCode = conn.getResponseCode();
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+		String line = "";
+		String result = "";
+
+		while ((line = br.readLine()) != null) {
+			result += line;
+		}
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(result);
+		System.out.println(element.toString());
+		long id = element.getAsJsonObject().get("id").getAsLong();
+		return id;
 	}
 
 }
