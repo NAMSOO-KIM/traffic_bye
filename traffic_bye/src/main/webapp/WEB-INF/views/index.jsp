@@ -832,11 +832,12 @@
 
 	<!-- script -->
 	<!-- latest jquery-->
-	<!-- <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script> -->
+	
+	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script>
-			//$(window).ready(function() {
+			
 			$(document).ready(function(){
-	        	//alert('가자');
+	        	alert('가자');
 	        	FirstMainItemList();
 	        	
 	        });
@@ -844,55 +845,42 @@
 			
 	        function FirstMainItemList() {
 	       	console.log("첫 번째 메인카테고리 아이템 리스트 실행");
-			
-			//let id = 41; // id = 2 우선 사용
-			let id = 1; // 임시로 설정
-	        //console.log("우선 id=41로 지정"+id);
+			let idx = 1;
 			$.ajax({
 						type : 'POST',
 						url : "${contextPath}/firstMainList",
 						dataType: "text",
-						data : {
-							id : id
-						}, 
-						success : function(data) {
+    					data : {
+    						id : idx
+    					}, 
+						success : function(result) {
 							
-							//let total_price = 0;
-							var html = "";
-							console.log(data);
-							//alert('데이터 오는지만 확인');
-	                        //style='display: block;
+							let html = "";
+							console.log(result);
+							alert("받아옴");
 							html += "<div id='tab-0' class='tab-content active default' style='display: block;'> ";
 	                    	html += "<div class='no-slider row'>";
 	                    	
-	                    	
-							//$.each(JSON.parse(data), function(key, value) {            
-								$.each(JSON.parse(data), function(key, value) {
-								console.log("===================================");
-	                        	console.log(value.id);
-	                        	console.log(value.thumb_file_url);
-	                        	console.log(value.name);
-	                        	
-	                        	
-	                        	//html += "<c:forEach items='${itemList}' var='itemVar' >";
-	                        	
+	                    	$.each(JSON.parse(result) ,function(key, value) {
+								
 	                        	
 	                        	html += "<div class='product-box'>";
 	                        		html += "<div class='img-wrapper'>";
 	                        			html += "<div class='front'>";
 	                        	
 	                        			html += "<a href='${contextPath}/items/";
-	                        			html += value.id;
+	                        			html += result.id;
 	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
+	                        			html += result.thumb_file_url;
 	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                        	
 	                       		html += "</div>";
 	                       		
 	                       		html += "<div class='back'>";
 	                       			html += "<a href='product-page(no-sidebar).html'><img src='";
-	                       			html += value.thumb_file_url;
+	                       			html += result.thumb_file_url;
 	                       			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
+	                       			
 	                    		html += "</div>";
 	                    		html += "<div class='cart-info cart-wrap'>";
 	                     		html += "<button data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart'><i class='ti-shopping-cart'></i></button> <a href='javascript:void(0)' title='Add to Wishlist'><i ";
@@ -906,12 +894,12 @@
 	  							html += "class='fa fa-star'></i></div>";
 	  							html += "<a href='product-page(no-sidebar).html'>";
 		  							html += "<h6>";
-		  							html += value.name;
+		  							html += result.name;
 		  							html += "</h6>";
 	  							html += "</a>";
 	  							
 	  							html += "<h4>$";
-	  							html += 	value.price;
+	  							html += 	result.price;
 	  							html += "</h4>";
 	  							
 	  							html += "<ul class='color-variant'>";
@@ -922,9 +910,7 @@
 	  							html += "</div>";
 	  							html += "</div>";
 	  							
-	  							//html += "</c:forEach>";
 	  							
-	 							
 							});
 	
 							html += "</div>";
@@ -942,11 +928,10 @@
 			
 	        
 	        function selectMainItemList(idx) {
-	           	//console.log("첫 번째 메인카테고리 아이템 리스트 실행");
+	           	
 	    		
-	    		//let id = 41; // id = 2 우선 사용
 	    		let tag_idx = idx; 
-	            //console.log("우선 id=41로 지정"+id);
+	            
 	    		$.ajax({
 	    					type : 'POST',
 	    					url : "${contextPath}/selectMainList",
@@ -954,13 +939,13 @@
 	    					data : {
 	    						id : idx
 	    					}, 
-	    					success : function(data) {
+	    					success : function(result) {
 	    						
-	    						//let total_price = 0;
-	    						var html = "";
+	    						
+	    						let html = "";
 	    						console.log("selectMainList");
-	    						console.log(data);
-	    						//alert('데이터 오는지만 확인');
+	    						console.log(result);
+	    						
 	                            
 	    						html += "<div id='tab-";
 	    						html += tag_idx;
@@ -968,17 +953,11 @@
 	                        	html += "<div class='no-slider row'>";
 	                        	
 	                        	
-	    						//$.each(JSON.parse(data), function(key, value) {            
-	    						$.each(JSON.parse(data) ,function(key, value) {
+	    						            
+	    						$.each(JSON.parse(result) ,function(key, value) {
 	    							console.log(key);
 	    							console.log(value);
-	    							//console.log(key);
-	                            	//console.log(value);
-	                            	//console.log(value.id);
-	                            	//console.log(value.thumb_file_url);
-	                            	
-	                            	
-	                            	//html += "<c:forEach items='${itemList}' var='itemVar' >";
+	    							
 	                            	
 	                            	
 	                            	html += "<div class='product-box'>";
@@ -1025,10 +1004,7 @@
 	      							html += "</ul>";
 	      							html += "</div>";
 	      							html += "</div>";
-	      							
-	      							//html += "</c:forEach>";
-	      							
-	     							
+
 	    						});
 	
 	    						html += "</div>";
@@ -1041,12 +1017,9 @@
 	        				}
 	                            
 	    					});
-	    						
-	        	    
+	    					
 	    		}
 	    		
-			
-		
 	</script>
 	
 	
