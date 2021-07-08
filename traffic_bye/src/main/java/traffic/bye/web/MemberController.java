@@ -8,10 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,6 +33,7 @@ import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 import traffic.bye.vo.ROLE;
 import traffic.bye.vo.SMSVO;
+import traffic.bye.vo.UpdateMemberVO;
 import traffic.bye.vo.UserDetailsVO;
 
 @Controller
@@ -60,6 +63,12 @@ public class MemberController {
 	
 	@Autowired
 	String kakaoAuthFindPw;
+	
+	@Autowired
+	String kakaoWithdrawalRedirectURI;
+	
+	@Autowired
+	String kakaoAuthWithdrawal;
 
 	@Autowired
 	CoolSMSService coolSMSService;
@@ -379,5 +388,81 @@ public class MemberController {
 	public String result() {
 		return "member/result";
 	}
-
+	
+	@GetMapping("/mypage/myinfo")
+	String myinfo(Authentication authentication, @ModelAttribute("memberVO") MemberVO memberVO, Model model) {
+		try {
+			UserDetailsVO vo = (UserDetailsVO)authentication.getPrincipal();
+			memberVO = memberService.findMember(vo.getId());
+			if(memberVO == null) throw new Exception();
+			memberVO.setPassword(null);
+			model.addAttribute(memberVO);
+			log.info(memberVO.toString());
+		} catch(Exception e) {
+			return "redirect:/";
+		}
+		return "member/myinfo";
+	}
+	@PostMapping("/{id}")
+	String update(@PathVariable Long id, UpdateMemberVO updateVO, RedirectAttributes rttr) {
+		try {
+			updateVO.setId(id);
+			memberService.updateMember(updateVO);
+			return "redirect:/member/mypage";
+		} catch(Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다!");
+			return "redirect:/member/mypage/myinfo";
+		}
+	}
+	
+	@GetMapping("/mypage/withdrawal")
+	String withdrawalForm() {
+		return "member/withdrawal";
+	}
+	
+	@PostMapping("/mypage/withdrawal")
+	String withdrawal(LoginInfo userInfo, RedirectAttributes rttr) {
+		log.info(userInfo.toString());
+		try {
+			MemberVO memberVO = memberService.passwordCheck(userInfo);
+			if(memberVO.getAuthType() == AuthType.PHONE) {
+				memberService.deleteMember(userInfo);
+				rttr.addFlashAttribute("msg", "탈퇴 처리가 완료되었습니다. 이용해주셔셔 감사합니다!");
+				return "redirect:/";
+			}
+			return "redirect:/member/withdrawal/kakao";
+		} catch(Exception e) {
+			log.info("틀림 ㅋㅋ");
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다!");
+			return "redirect:/member/withdrawal";
+		}
+	}
+	
+	@GetMapping("/withdrawal/kakao")
+	String withdrawalKakao() {
+		return "redirect:" + kakaoWithdrawalRedirectURI;
+	}
+	
+	@GetMapping("/withdrawal/authKakao")
+	String authWithdrawalKakao(HttpSession session, String code, RedirectAttributes rttr) {
+		try {
+			String token = kakaoService.getAccessToken(code, kakaoAuthWithdrawal);
+			long id = kakaoService.unlinkUser(token);
+			LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+			Long findAuthId = memberService.getAuthId(loginInfo.getId());
+			if(id == findAuthId) {
+				memberService.deleteMember(loginInfo);
+				return "redirect:/member/logout";
+			}
+			else {
+				throw new Exception();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "잠시 후에 다시 시도해주세요!");
+			return "redirect:/member/result";
+		}
+	}
 }
