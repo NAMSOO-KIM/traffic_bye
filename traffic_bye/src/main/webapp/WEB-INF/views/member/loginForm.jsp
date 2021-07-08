@@ -99,7 +99,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<h3>Login</h3>
+					<h3>로그인</h3>
 					<div class="theme-card">
 						<form class="theme-form"
 							action="${contextPath}/member/loginProcess" method="post">
@@ -121,13 +121,12 @@
 					</div>
 				</div>
 				<div class="col-lg-6 right-login">
-					<h3>New Customer</h3>
+					<h3>신규 고객</h3>
 					<div class="theme-card authentication-right">
-						<h6 class="title-font">Create A Account</h6>
-						<p>Sign up for a free account at our store. Registration is
-							quick and easy. It allows you to be able to order from our shop.
-							To start shopping click register.</p>
-						<a href="#" class="btn btn-solid">Create an Account</a>
+						<h3>회원가입을 하시고 더욱 편하게 쇼핑하세요</h3>
+						<br>
+						<h3>스마트오더를 통해 쉽고 빠르게 주문이 가능합니다</h3>
+						<a href="${contextPath}/member/register/auth" class="btn btn-solid">Create an Account</a>
 					</div>
 				</div>
 			</div>
