@@ -56,4 +56,9 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.isRelatedItem(map);
 	}
 	
+	@Override
+	public List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException {
+	
+		return itemDAO.getMediumCategoryItemList(category_id);
+	}
 }

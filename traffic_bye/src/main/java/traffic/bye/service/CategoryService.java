@@ -18,4 +18,8 @@ public interface CategoryService {
 	List<CategoryVO> getMediumCategory(long parent_id) throws Exception;
 	
 	long getFirstMainCategory() throws Exception;
+	
+	long checkMainCategory(long id) throws Exception; // 대분류인지 체크. 0이면 중분류
+	
+	long getParentCategory(long id) throws Exception; // 부모 카테고리 반환
 }

@@ -482,7 +482,7 @@
 											<ul>
 												<li><a href="${contextPath}/mm/items/list/1">담배매장
 													</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">전자
+												<li><a href="${contextPath}/mm/items/list/3">전자
 													</a></li>
 												<li><a href="${contextPath}/mm/items/list/1">식품</a></li>
 												<li><a href="${contextPath}/mm/items/list/1">안내데스크</a></li>
@@ -497,7 +497,7 @@
 												<li><a href="category-page.html">가공식품</a></li>
 											</ul>
 										</li>
-										<li><a href="${contextPath}/mm/items/list/1">전자</a>
+										<li><a href="${contextPath}/mm/items/list/3">전자</a>
 											<ul>
 												<li><a href="${contextPath}/mm/items/list/1">카메라/캠코더
 

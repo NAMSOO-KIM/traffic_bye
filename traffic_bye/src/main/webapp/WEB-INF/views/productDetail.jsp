@@ -9,6 +9,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,9 +57,9 @@
                                             	
                                             	<c:forEach items="${itemDetailList}" var="itemDetailVO">
                                             		
-	                                                <div><img src="${itemDetailVO.origin_file_url}" alt=" "
+	                                                <div><img src="${itemDetailVO.name}" alt=" "
 	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px" onerror="this.style.display='none'"></div>
-	                                                
+
                                                 </c:forEach>
                                                 
                                             </div>

@@ -87,6 +87,19 @@
 	]]>
 	</select>
 	
+	<select id="getMediumCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where it.category_id = #{category_id}
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+	]]>
+	</select>
+	
+	
 	
 	
 </mapper>

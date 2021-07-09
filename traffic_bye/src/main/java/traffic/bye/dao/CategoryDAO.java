@@ -18,5 +18,7 @@ public interface CategoryDAO {
 	
 	long getFirstMainCategory() throws SQLException;
 	
+	long checkMainCategory(long id) throws SQLException; // 대분류인지 체크. 0이면 중분류
 	
+	long getParentCategory(long id) throws SQLException;
 }
