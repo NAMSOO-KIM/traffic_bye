@@ -53,40 +53,39 @@ public class ItemController {
 		
 		ModelAndView mav = new ModelAndView();
 		Logger logger = LoggerFactory.getLogger(this.getClass());
-		logger.info("hi");
-		
 		
 		// 특정 아이템 정보, 해당하는 매장 정보 가져오기
-		try {
-			
-			List<ItemVO> itemDetailList = itemService.getItemDetail(id);
-			mav.addObject("itemDetailList",itemDetailList);
-			
-			
-			ItemVO item = itemService.getItem(id);
-			mav.addObject("item",item);
-			
-			//매장 id 조회
-			long store_id=itemDetailList.get(0).getStore_id();
-			StoreVO store=storeService.getStore(store_id);
-			mav.addObject("store", store);
-			
-			//관련 상품들 추천(카테고리가 같은 아이템 모두 가져옴)
-			long category_id = itemDetailList.get(0).getCategory_id();
-			HashMap<String, Object> map = new HashMap<>();
-			map.put("category_id",category_id);
-			map.put("id",id);
-			
-			List<ItemVO> RelatedItemlist = itemService.getRelatedItemList(map);
-			
-			mav.addObject("RelatedItemlist",RelatedItemlist);
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+		List<ItemVO> itemDetailList = itemService.getItemDetail(id);
+		
+		mav.addObject("itemDetailList",itemDetailList);
+		
+		
+		ItemVO item = itemService.getItem(id);
+		mav.addObject("item",item);
+		
+		// 매장 id 조회
+		long store_id=itemDetailList.get(0).getStore_id();
+		
+		StoreVO store=storeService.getStore(store_id);
+		mav.addObject("store", store);
+		
+		// 관련 상품들 추천(카테고리가 같은 아이템 모두 가져옴)
+		long category_id = itemDetailList.get(0).getCategory_id();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("category_id",category_id);
+		map.put("id",id);
+		
+		// 관련된 상품이 있으면 관련상품 목록 모두 가져옴
+		
+		// int check = itemService.isRelatedItem(map);
+		// if (check >= 1) {
+		
+		List<ItemVO> RelatedItemlist = itemService.getRelatedItemList(map);
+		mav.addObject("RelatedItemlist",RelatedItemlist);	
+		
+		// }
+	
 		mav.setViewName("productDetail");
 		return mav;
 	}

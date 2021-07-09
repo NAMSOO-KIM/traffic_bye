@@ -46,8 +46,14 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<ItemVO> getItemDetail(long id) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return itemDAO.getItemDetail(id);
+	}
+	
+	@Override
+	public int isRelatedItem(HashMap<String, Object> map) throws Exception {
+
+		return itemDAO.isRelatedItem(map);
 	}
 	
 }

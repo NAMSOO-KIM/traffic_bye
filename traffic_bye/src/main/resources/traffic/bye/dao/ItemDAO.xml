@@ -19,7 +19,7 @@
 	<![CDATA[
 		select *
 		from ITEM it
-		inner join item_image im
+		left join item_image im
 		on it.ID = im.ITEM_ID
 		where it.id = #{id}
 	]]>
@@ -71,5 +71,22 @@
 		where id = #{id}
 	]]>
 	</select>
+	
+	<parameterMap type="java.util.HashMap" id="isRelatedMap">
+		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="isRelatedItem" parameterMap="isRelatedMap" resultType="int">
+	<![CDATA[
+		
+		select count(*)
+		from team2.item
+		where category_id = #{category_id} and id != #{id}
+
+	]]>
+	</select>
+	
+	
 	
 </mapper>
