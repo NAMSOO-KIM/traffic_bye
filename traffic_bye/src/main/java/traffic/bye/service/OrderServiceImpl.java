@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.OrdersDAO;
+import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersVO;
@@ -39,6 +40,27 @@ public class OrderServiceImpl implements OrdersService{
 	public long getOrderId() throws Exception {
 		return ordersDAO.getOrderId();
 	}
+
+	@Override
+	public List<OrdersDetailListVO> getOrdersDetailList(long orderId) throws Exception {
+		return ordersDAO.getOrdersDetailList(orderId);
+	}
+
+	@Override
+	public void orderAccept(long orderId) throws Exception {
+		  ordersDAO.orderAccept(orderId);
+	}
+
+	@Override
+	public void orderReady(long orderId) throws Exception {
+		 ordersDAO.orderReady(orderId);
+	}
+
+	@Override
+	public void orderReceipt(long orderId) throws Exception {
+		 ordersDAO.orderReceipt(orderId);
+	}
+
 	
 	
 	

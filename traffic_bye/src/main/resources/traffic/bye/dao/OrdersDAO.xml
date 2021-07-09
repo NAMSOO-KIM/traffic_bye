@@ -5,26 +5,64 @@
 
 <mapper namespace="traffic.bye.dao.OrdersDAO">
 	<insert id="insertOrders" parameterType="OrdersVO">
-	insert into orders(id, member_id , departure_date, payment_date, status , amount , destination_id, cigarette_amount, drink_amount, perfume_amount)
-values(order_id_seq.nextval, #{memberId}, sysdate, sysdate, 0 , #{amount} , 1,2,0,0)
+		insert into orders(id,
+		member_id , departure_date, payment_date, status ,
+		amount ,
+		destination_id, cigarette_amount, drink_amount,
+		perfume_amount)
+		values(order_id_seq.nextval, #{memberId}, sysdate, sysdate, 0 ,
+		#{amount} , 1,2,0,0)
 	</insert>
-	
+
 	<insert id="insertOrdersDetail" parameterType="OrdersDetailVO">
-	insert into orders_detail(item_id, orders_id , store_id, quantity )
-values(#{itemId}, order_id_seq.currval, #{storeId}, #{quantity})
+		insert into
+		orders_detail(item_id, orders_id , store_id, quantity )
+		values(#{itemId}, order_id_seq.currval, #{storeId}, #{quantity})
 	</insert>
-	
+
 	<select id="getOrderId" resultType="long">
-	select order_id_seq.currval from dual
+		select order_id_seq.currval
+		from dual
 	</select>
-	
-	<select id="getOrderList" parameterType="long" resultType="OrdersManageVO">
-	select distinct O.id ordersId, S.id storeId  , O.status status , O.amount amount , M.name memberName , O.payment_date paymentDate
-from orders_detail D , orders O ,store S , member M
-where O.id = D.orders_id
-and D.store_id = S.id
-and M.id = O.member_id
-and S.id = #{storeId}
-	</select>	
+
+	<select id="getOrderList" parameterType="long"
+		resultType="OrdersManageVO">
+		select distinct O.id ordersId, S.id storeId , O.status
+		status , O.amount
+		amount , M.name memberName , O.payment_date
+		paymentDate
+		from orders_detail D , orders O ,store S , member M
+		where
+		O.id = D.orders_id
+		and D.store_id = S.id
+		and M.id = O.member_id
+		and S.id
+		= #{storeId}
+	</select>
+
+	<select id="getOrdersDetailList" parameterType="long"
+		resultType="OrdersDetailListVO">
+		select I.name itemName , I.price price, O.member_id
+		memberId ,O.id orderId , M.name memberName 
+        from orders_detail D , orders O , item I , member M
+		where
+		D.orders_id = O.id
+		and I.id = D.item_id
+        and M.id = O.member_id
+		and O.id = #{orderId}
+	</select>
+
+	<update id="orderAccept" parameterType="long">
+		update orders set status =1 where id=#{orderId}
+	</update>
+
+	<update id="orderReady" parameterType="long">
+		update orders set status=2 where id=#{orderId}
+	</update>
+
+	<update id="orderReceipt" parameterType="long">
+		update orders set status=3 where id=#{orderId}
+	</update>
+
 
 </mapper>
