@@ -3,6 +3,7 @@ package traffic.bye.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersVO;
@@ -17,4 +18,12 @@ public interface OrdersDAO {
 	
 	long getOrderId() throws SQLException; 
 	
+	List<OrdersDetailListVO> getOrdersDetailList(long orderId) throws SQLException;
+
+	void orderAccept(long orderId) throws SQLException;
+
+	void orderReady(long orderId) throws SQLException;
+
+	void orderReceipt(long orderId) throws SQLException;
+
 }

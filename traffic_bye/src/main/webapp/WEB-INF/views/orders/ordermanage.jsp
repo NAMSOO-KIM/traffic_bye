@@ -458,7 +458,13 @@
 													<td>
 														<div class="d-flex">${list.memberName}</div>
 													</td>
-													<td><span class="badge badge-secondary">${list.status}</span></td>
+													<td><span class="badge badge-secondary">
+												<c:choose>
+												<c:when test="${list.status eq 0}">수락 대기</c:when>
+												<c:when test="${list.status eq 1}">주문 수락</c:when>
+												<c:when test="${list.status eq 2}">준비 완료</c:when>
+												<c:otherwise>수령완료</c:otherwise>
+												</c:choose></span></td>
 													<td><span class="badge badge-success">${list.amount}</span></td>
 													<td>${list.paymentDate}</td>
 												</tr>
@@ -473,20 +479,35 @@
 				<!-- Container-fluid Ends-->
 			</div>
 			<!--------------------------- 내용 시작 ---------------------------->
-			<script type="text/javascript">
+		<!-- 모달 세트  시작 -->
+<style>
+#modal-open{ position:absolute; top:50%; left:50%;
+  width:120px; height:30px; margin-top:-15px; margin-left:-60px;
+  line-height:15px; cursor:pointer;
+}
 
-				
-				var table = document.getElementById('basic-1'),
-				  cells = table.getElementsByTagName('td');
-				for (var i = 0, len = cells.length; i < len; i++) {
-				  cells[i].onclick = function() {
-				    console.log(this.innerHTML);
-				  };
-				}
-				
-			</script>
+.modal{ 
+  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
+}
 
-			<script type="text/javascript">
+.modal-content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:absolute; top:10%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
+}
+</style>
+<div class="modal">
+  <div id="modal-content" class="modal-content" 
+       title="클릭하면 창이 닫힙니다."><br>
+  </div>
+</div>
+<!-- 모달 세트  끝 -->
+			<!--------------------------- 소켓 시작 ---------------------------->
+				<script type="text/javascript">
 				var wsocket;
 				var auth = '<c:out value="${loginInfo.storeId}"/>';
 
@@ -497,22 +518,146 @@
 				}
 
 				var receiveData = {};
+				
 				function onMessage(evt) {
-					let myData = JSON.parse(evt.data);
-					receiveData.orderType = myData.type;
-					receiveData.customer = myData.customer;
-					receiveData.auth = auth;
-					console.log(receiveData);
-					$('#myModal').show();
-					alert(evt.data + "메세지 도착");
+					$('.modal-content').empty();
+					$('.modal-content').append(evt.data);
+					$(function(){ 
+					    $(".modal").fadeIn()
+						  $(".modal-content").click(function(){
+						    $(".modal").fadeOut();
+						  });
+						});
 				}
 				function onClose(evt) {
 					console.log("연결을 끊었습니다.");
 				}
+				
 				$(document).ready(function() {
 					connect();
+					$('#orderId').click(function() {
+						console.log('hi');
+
+					});
+					
+
 				});
 			</script>
+			
+			<!--------------------------- 소켓 끝 ---------------------------->
+			
+			<script>
+				
+				$("#basic-1 tr").click(function() {
+					$('#myModalContent').empty();
+					var str = ""
+					var tdArr = new Array(); // 배열 선언
+					var tr = $(this);
+					var td = tr.children();
+					td.each(function(i) {
+						tdArr.push(td.eq(i).text());
+					});
+					// td.eq(index)를 통해 값을 가져올 수도 있다.
+					var orderId = td.eq(0).text();
+					var sendData = "orderId="+orderId;
+					let link = "${contextPath}/getOrderId";
+					$.ajax({
+						url : link,
+						type : 'post',
+						data : sendData,
+						success : function(result) {
+							console.log(result);
+							var memberName = result[0].memberName;
+							
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].memberId+"</p>");
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].orderId+"</p>");
+							for(var i=0;i<result.length;i++){
+								//itemName: ~ VO형식으로 출력
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].itemName+"</p>");
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].price+"</p>");
+							}
+							$('#myModalContent').append("&nbsp<button id='acceptBtn'>주문수락</button>&nbsp");
+							$('#myModalContent').append("&nbsp<button id='readyBtn'>준비완료</button>&nbsp");
+							$('#myModalContent').append("<button id='receiptBtn'>수령완료</button><br><br>");
+							$('#myModalContent').append("<button id='closeBtn'>닫기</button>");
+							$('#orderModal').show();
+							
+							$('#closeBtn').click(function(){
+								$('#orderModal').hide();
+								
+							});
+							
+							var acceptLink = "${contextPath}/orderAccept";
+							$('#acceptBtn').click(function(){
+								console.log(memberName);
+								$.ajax({
+									url : acceptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+										console.log('주문 수락되었습니다.');
+										console.log(result);
+											receiveData.type="accept";
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											console.log(receiveData);
+											wsocket.send(JSON.stringify(receiveData));
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							var readyLink = "${contextPath}/orderReady";
+							$('#readyBtn').click(function(){
+								$.ajax({
+									url : readyLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="ready";
+											wsocket.send(JSON.stringify(receiveData));
+										    console.log('상품이 준비완료 되었습니다.');	
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							var receiptLink = "${contextPath}/orderReceipt";
+							$('#receiptBtn').click(function(){
+								$.ajax({
+									url : receiptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="receipt";
+											wsocket.send(JSON.stringify(receiveData));
+											console.log('상품 수령을 완료했습니다.');	
+											location.reload();
+											$('#orderModal').hide();
+									}
+									
+								});
+							});
+							
+							
+							
+						}
+					});
+
+				});
+				
+				
+			
+				
+			</script>
+
+		
 
 			<!-- The Modal -->
 			<style>
@@ -538,7 +683,37 @@
 	border: 1px solid #888;
 	width: 30%; /* Could be more or less, depending on screen size */
 }
+
+/* The Modal (background) */
+.myModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.myModal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
 </style>
+<!-- orderModal custom -->
+			<div id="orderModal" class="myModal">
+				<div class="myModal-content" id="myModalContent">
+				</div>
+			</div>
+			
+<!-- orderModal custom -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
 				<div class="modal-content">
@@ -596,13 +771,7 @@
 				};
 				let link = "${contextPath}/getOrderId";
 				$('#confirmBtn').click(function() {
-					/* $.ajax({
-						type : 'get',
-						url  : link,
-						success
-						
-					})); */ 
-					wsocket.send(JSON.stringify(receiveData));
+					
 				});
 			</script>
 
@@ -624,7 +793,6 @@
 				</div>
 			</footer>
 			<!-- footer end-->
-
 		</div>
 
 	</div>
