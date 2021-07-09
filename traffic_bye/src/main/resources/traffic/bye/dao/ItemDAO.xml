@@ -87,6 +87,20 @@
 	]]>
 	</select>
 	
+	<insert id="addItem" parameterType="ItemAddVO">
+		insert into item values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })
 	
+	
+		<selectKey keyProperty="id" resultType="Long" order="AFTER">
+			select item_id_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="addItemImages" parameterType="java.util.List">
+		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+			 into item_image 
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
+		</foreach>
+	</insert>
 	
 </mapper>

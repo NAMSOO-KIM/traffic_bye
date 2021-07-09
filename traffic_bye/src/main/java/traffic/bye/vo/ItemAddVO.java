@@ -13,12 +13,14 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ItemAddVO {
+	private Long id;
 	private String name;
 	private Integer bigCategory;
 	private Integer midCategory;
 	private Integer stock;
 	private Integer price;
-	private Integer detail;
-	private Integer storeId;
+	private String detail;
+	private Long storeId;
 	private String repreFile;
+	private String thumbFileURL;
 }

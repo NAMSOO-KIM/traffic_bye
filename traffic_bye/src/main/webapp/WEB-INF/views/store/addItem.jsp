@@ -434,40 +434,37 @@
 								</div>
 								<div class="card-body">
 									<div class="digital-add needs-validation">
-										<form id="productForm" enctype="multipart/form-data"
-											method="post" action="${contextPath}/store/1/addProduct">
-											<div class="form-group">
-												<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
-													상품명</label> <input class="form-control" id="validationCustom01"
-													type="text" required="required" name="name">
+										<div class="form-group">
+											<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+												상품명</label> <input class="form-control" id="name" type="text"
+												required="required" name="name">
+										</div>
+										<div class="form-group" id="categories">
+											<label class="col-form-label"><span>*</span> 카테고리</label> <select
+												class="custom-select form-control" required="required"
+												name="bigCategory" id="bigCategory">
+												<option value="">대분류</option>
+												<c:forEach var="item" items="${bigCategories}">
+												    <option value="${item.id}">${item.name}</option>
+												</c:forEach>
+											</select> <select class="custom-select form-control"
+												required="required" name="midCategory" id="midCategory">
+												<option value="">중분류</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label class="col-xl-3 col-sm-4 mb-0">재고 :</label>
+											<div class="input-group">
+												<input class="touchspin" type="text" value="1"
+													style="text-align: center;" name="stock" id="stock">
 											</div>
-											<div class="form-group" id="categories">
-												<label class="col-form-label"><span>*</span> 카테고리</label> 
-												<select
-													class="custom-select form-control" required="required"
-													name="bigCategory" id="bigCategory">
-													<option value="">대분류</option>
-												</select>
-												<select
-													class="custom-select form-control" required="required"
-													name="midCategory" id="midCategory">
-													<option value="">중분류</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="col-xl-3 col-sm-4 mb-0">재고 :</label>
-												<div class="input-group">
-													<input class="touchspin" type="text" value="1"
-														style="text-align: center;" name="stock">
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="validationCustom02" class="col-form-label"><span>*</span>
-													가격</label> <input class="form-control" id="validationCustom02"
-													type="text" required="required" name="price">
-											</div>
+										</div>
+										<div class="form-group">
+											<label for="validationCustom02" class="col-form-label"><span>*</span>
+												가격</label> <input class="form-control" id="price" type="text"
+												required="required" name="price">
+										</div>
 
-										</form>
 										<label class="col-form-label pt-0"> 대표 이미지</label>
 										<form class="dropzone digits" id="repreFileUpload" action="">
 											<div class="dz-message needsclick">
@@ -589,7 +586,7 @@
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
-	<script src="${contextPath}/resources/js/addProduct.js"></script>
+	<script src="${contextPath}/resources/js/addItem.js"></script>
 
 </body>
 </html>
