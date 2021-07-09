@@ -122,7 +122,7 @@
 												</div>
 											</li>
 											<li><a href="index.html">Home</a></li>
-											<li><a href="#">매장
+											<li><a href="${contextPath}/store">매장
 													<!-- <div class="lable-nav">new</div> -->
 											</a></li>
 											<!-- <li><a href="#">패션</a></li> -->
@@ -489,7 +489,7 @@
 												 -->
 										
 										
-											<li><a href="${contextPath}/mm/items/list/1">매장</a>
+											<li><a href="${contextPath}/store">매장</a>
 											<ul>
 												<li><a href="${contextPath}/mm/items/list/1">담배매장
 														<!--<span class="new-tag">new</span>-->

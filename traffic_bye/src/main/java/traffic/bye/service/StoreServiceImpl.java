@@ -28,5 +28,10 @@ public class StoreServiceImpl implements StoreService {
 
 		return storeDAO.getStore(id);
 	}
+
+	@Override
+	public List<Long> getStoreCategories(long store_id) throws Exception {
+		return storeDAO.getStoreCategories(store_id);
+	}
 	
 }

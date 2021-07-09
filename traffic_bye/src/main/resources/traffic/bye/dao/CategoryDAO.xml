@@ -37,8 +37,13 @@
 	]]>
 	</select>
 	
-	
-	
-	
-	
+
+	<select id="getCategoryList" resultType="CategoryVO">
+	<![CDATA[
+			select id, name
+			from category
+			order by id
+	]]>
+	</select>
+
 </mapper>
