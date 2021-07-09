@@ -28,7 +28,9 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="traffic.bye" />
+		base-package="traffic.bye.web" />
+	<context:component-scan
+		base-package="traffic.bye.app" />
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

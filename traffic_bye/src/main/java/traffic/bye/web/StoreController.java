@@ -1,22 +1,35 @@
 package traffic.bye.web;
 
-import java.util.HashMap;
-import java.util.List;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.service.CategoryService;
+import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
 import traffic.bye.vo.CategoryVO;
+import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.StoreVO;
+
+
 
 @Slf4j
 @Controller
@@ -27,6 +40,9 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService storeService;
+	
+	@Autowired
+	private ItemService itemService;
 	
 	
 	@RequestMapping(value = "storeList", produces = "application/json; charset=UTF-8")
@@ -44,6 +60,23 @@ public class StoreController {
 		return mav;
 	}
 	
+	@GetMapping("/store/{id}/addItem")
+	public String addItem(Model model) {
+		try {
+			model.addAttribute("bigCategories", categoryService.getMainCategory());
+			return "store/addItem";
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "redirect:/";
+		}
+	}
+	
+	@PostMapping("/store/{id}/addItem")
+	public String addItemProc(@PathVariable Long id, String items, MultipartHttpServletRequest mreq) throws Exception{
+		long itemId = itemService.addItem(id, items, mreq);
+		log.info(String.valueOf(itemId));
+		return "redirect:/";
+	}
 	@RequestMapping(value="store")
 	public ModelAndView storeMain(HttpSession session) throws Exception{
 		log.info("store main 들어옴");
@@ -71,5 +104,4 @@ public class StoreController {
 		mav.setViewName("store/storeMain");
 		return mav;
 	}
-	
 }
