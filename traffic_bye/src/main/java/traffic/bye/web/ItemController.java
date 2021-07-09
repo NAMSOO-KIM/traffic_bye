@@ -108,41 +108,37 @@ public class ItemController {
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
 			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(category_id);
 			List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(category_id); // 대분류의 아이템 리스트
+			CategoryVO mainCategoryVO = categoryService.getCategory(category_id);
 			
+			
+			mav.addObject("mainCategoryVO",mainCategoryVO);
 			mav.addObject("mediumCategoryList",mediumCategoryList);
 			mav.addObject("newProductList",newProductList);
 			mav.addObject("selectMainItemList",selectMainItemList);	
 			
-			
-
 		}
 		else { // 0 이면
 			// 특정 카테고리 중분류 아이템들만 가져옴
 			// 대분류를 카테고리 구해서 뿌려줘야 함
-			long parent_category_id = categoryService.getParentCategory(category_id);
+			long parent_category_id = categoryService.getCategory(category_id).getParent_id();
 			
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(parent_category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
 			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(parent_category_id);
 			List<ItemVO> selectMainItemList = itemService.getMediumCategoryItemList(category_id); //중분류의 아이템 리스트
 			
+			CategoryVO mainCategoryVO = categoryService.getCategory(parent_category_id);
 			
+			//String mainCategoryName = categoryService.getCategory(parent_category_id).getName();
+			
+			mav.addObject("mainCategoryVO",mainCategoryVO);
 			mav.addObject("mediumCategoryList",mediumCategoryList);
 			mav.addObject("newProductList",newProductList);
 			mav.addObject("selectMainItemList",selectMainItemList);
 			
-			
-			
-			
-			
-			
-				
-				
 		}
 		
-		
-		
-		
-		
+		String selectCategoryName = categoryService.getCategory(category_id).getName();
+		mav.addObject("selectCategoryName",selectCategoryName);
 		
 		mav.setViewName("categoryPage");
 		return mav;

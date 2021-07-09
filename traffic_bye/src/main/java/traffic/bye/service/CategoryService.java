@@ -21,5 +21,5 @@ public interface CategoryService {
 	
 	long checkMainCategory(long id) throws Exception; // 대분류인지 체크. 0이면 중분류
 	
-	long getParentCategory(long id) throws Exception; // 부모 카테고리 반환
+//	long getParentCategory(long id) throws Exception; // 부모 카테고리 반환
 }

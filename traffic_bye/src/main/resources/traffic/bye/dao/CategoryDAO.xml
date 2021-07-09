@@ -54,13 +54,15 @@
 	]]>
 	</select>
 	
-	<select id="getParentCategory" parameterType="long" resultType="long">
+	<select id="getCategory" parameterType="long" resultType="CategoryVO">
 	<![CDATA[
-			select parent_id
+			select *
 			from category
 			where id = #{id}
 	]]>
 	</select>
+	
+	
 	
 	
 	

@@ -5,6 +5,8 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="mediumCategoryList" value="${mediumCategoryList}" />
 <c:set var="selectMainItemList" value="${selectMainItemList}" />
+<c:set var="mainCategoryVO" value="${mainCategoryVO}" />
+<c:set var="selectCategoryName" value="${selectCategoryName}" />
 
 
 <!DOCTYPE html>
@@ -26,15 +28,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="page-title">
-                        <h2>collection</h2>
+                    <div class="page-title" style="padding: 0 30px;">
+                        <h2>${selectCategoryName}</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">collection</li>
+                        	
+                            <li class="breadcrumb-item"><a href="${contextPath}/">home</a></li>
+                            
+                            <li class="breadcrumb-item active" aria-current="page">
+	                            <a href="${contextPath}/mm/items/list/${mainCategoryVO.id}">
+	                            	${mainCategoryVO.name}
+	                            </a>            
+                            </li>
+                            	
                         </ol>
                     </nav>
                 </div>
@@ -56,7 +65,7 @@
                             <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
                                         aria-hidden="true"></i> back</span></div>
                             <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">카테고리</h3>
+                                <h3 class="collapse-block-title">${mainCategoryVO.name}</h3>
                                 <div class="collection-collapse-block-content">
                                 
                                     <div class="collection-brand-filter">
@@ -133,9 +142,11 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="product-filter-content">
+                                                    	 
                                                         <div class="search-count">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5>
+                                                            <h5>맞춤 보기 설정</h5>
                                                         </div>
+                                                         
                                                         <div class="collection-view">
                                                             <ul>
                                                                 <li><i class="fa fa-th grid-layout-view"></i></li>
@@ -156,17 +167,17 @@
                                                         </div>
                                                         <div class="product-page-per-view">
                                                             <select>
-                                                                <option value="High to low">24 Products Par Page
+                                                                <option value="High to low">24 개씩 보기
                                                                 </option>
-                                                                <option value="Low to High">50 Products Par Page
+                                                                <option value="Low to High">50 개씩 보기
                                                                 </option>
-                                                                <option value="Low to High">100 Products Par Page
+                                                                <option value="Low to High">100 개씩 보기
                                                                 </option>
                                                             </select>
                                                         </div>
                                                         <div class="product-page-filter">
                                                             <select>
-                                                                <option value="High to low">Sorting items</option>
+                                                                <option value="High to low">정렬하기</option>
                                                                 <option value="Low to High">50 Products</option>
                                                                 <option value="Low to High">100 Products</option>
                                                             </select>
@@ -254,11 +265,13 @@
                                                             </ul>
                                                         </nav>
                                                     </div>
+                                                    <!-- 
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <div class="product-search-count-bottom">
                                                             <h5>Showing Products 1-24 of 10 Result</h5>
                                                         </div>
                                                     </div>
+                                                     -->
                                                 </div>
                                             </div>
                                         </div>

@@ -54,9 +54,11 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.checkMainCategory(id);
 	}
 	
+	/*
 	@Override
 	public long getParentCategory(long id) throws Exception {
 
 		return categoryDAO.getParentCategory(id);
 	}
+	*/
 }
