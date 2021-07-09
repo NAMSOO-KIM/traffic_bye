@@ -9,7 +9,187 @@
 <html lang="en">
 
 <head>
+<!-- latest jquery-->
+	
+	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+	<script>
+			
+			$(document).ready(function(){
+	        	
+	        	FirstMainItemList();
+	        	
+	        });
+			
+			
+	        function FirstMainItemList() {
+	       	
+			// let idx = 1;
+			$.ajax({
+						type : 'POST',
+						url : "${contextPath}/firstMainList",
+						dataType: "text",
+						success : function(result) {
+							let html = "";
+							html += "<div id='tab-0' class='tab-content active default' style='display: block;'> ";
+	                    	html += "<div class='no-slider row'>";
+	                    	
+	                    	$.each(JSON.parse(result) ,function(key, value) {
+							
+	                        	
+	                        	html += "<div class='product-box'>";
+	                        		html += "<div class='img-wrapper'>";
+	                        			html += "<div class='front'>";
+	                        	
+	                        			html += "<a href='${contextPath}/items/";
+	                        			html += value.id;
+	                        			html += "' ><img src='";
+	                        			html += value.thumb_file_url;
+	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
+	                        	
+	                       		html += "</div>";
+	                       		
+	                       		html += "<div class='back'>";
+		                       		html += "<a href='${contextPath}/items/";
+	                    			html += value.id;
+	                    			html += "' ><img src='";
+	                    			html += value.thumb_file_url;
+	                    			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
+	                       			
+	                    		html += "</div>";
+	                    		
+	                    		
+	  							html += "</div>";
+	  							html += "<div class='product-detail'>";
+	  							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
+	  							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
+	  							html += "class='fa fa-star'></i></div>";
+	  							html += "<a href='product-page(no-sidebar).html'>";
+	  							html += "<h6>[";
+	  							html += value.store_name;
+	  							html += "] ";
+	  							html += value.name;
+	  							html += "</h6>";
+	  							html += "</a>";
+	  							
+	  							
+	  							
+	  							
+	  							
+	  							html += "<h4>$";
+	  							html += 	value.price;
+	  							html += "</h4>";
+	  							
+	  							html += "</div>";
+	  							html += "</div>";
+	  							
+	  							
+							});
+	
+							html += "</div>";
+							html += "</div>";
+							
+							$("#tab-content-cls").html(html);
+						},
+	    				error : function(request, status, error) {
+	    						alert("오우 실패쓰");
+	    				}
+	                        
+						});
+	    	    
+			}
+			
+	        
+	        function selectMainItemList(idx) {
+	           	
+	    		
+	    		let tag_idx = idx; 
+	            
+	    		$.ajax({
+	    					type : 'POST',
+	    					url : "${contextPath}/selectMainList",
+	    					dataType: "text",
+	    					data : {
+	    						id : idx
+	    					}, 
+	    					success : function(result) {
+	    						
+	    						
+	    						let html = "";
+	    						console.log("selectMainList");
+	    						console.log(result);
+	    						
+	                            
+	    						html += "<div id='tab-";
+	    						html += tag_idx;
+	    						html += " ' class='tab-content active default' style='display: block;'>";
+	                        	html += "<div class='no-slider row'>";
+	                        	
+	                        	
+	    						            
+	    						$.each(JSON.parse(result) ,function(key, value) {
+	    							console.log(key);
+	    							console.log(value);
+	    							
+	                            	
+	                            	
+	                            	html += "<div class='product-box'>";
+	                            		html += "<div class='img-wrapper'>";
+	                            			html += "<div class='front'>";
+	                            	
+	                            			html += "<a href='${contextPath}/items/";
+	                            			html += value.id;
+	                            			html += "' ><img src='";
+	                            			html += value.thumb_file_url;
+	                            			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
+	                            	
+	                           		html += "</div>";
+	                           		
+	                           		html += "<div class='back'>";
+		                           		html += "<a href='${contextPath}/items/";
+	                        			html += value.id;
+	                        			html += "' ><img src='";
+	                        			html += value.thumb_file_url;
+	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
+	                        		html += "</div>";
+	                        		
+	                        		
+	      							html += "</div>";
+	      							html += "<div class='product-detail'>";
+	      							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
+	      							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
+	      							html += "class='fa fa-star'></i></div>";
+	      							html += "<a href='product-page(no-sidebar).html'>";
+	    	  							html += "<h6>[";
+	    	  							html += value.store_name;
+	    	  							html += "] ";
+	    	  							html += value.name;
+	    	  							html += "</h6>";
+	      							html += "</a>";
+	      							
+	      							html += "<h4>$";
+	      							html += 	value.price;
+	      							html += "</h4>";
+	      							
+	      							
+	      							html += "</div>";
+	      							html += "</div>";
 
+	    						});
+	
+	    						html += "</div>";
+	    						html += "</div>";
+	    						
+	    						$("#tab-content-cls").html(html);
+	    					},
+	        				error : function(request, status, error) {
+	        						alert("오우 실패쓰");
+	        				}
+	                            
+	    					});
+	    					
+	    		}
+	    		
+	</script>
 </head>
  
 <body class="theme-color-1">
@@ -120,18 +300,7 @@
         <h4>베스트 상품!</h4>
         <h2 class="title-inner1">스마트 오더 인기 제품</h2>
     </div>
-    <!-- 
-    <div class="container">
-        <div class="row">
-        
-            <div class="col-lg-6 offset-lg-3">
-                <div class="product-para">
-                    <p class="text-center">Looking for the latest trends in clothing, shoes and accessories? Welcome to our 'Latest Drops' edit, bringing you all the latest styles from all your fave brands.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
+    
     <!-- Paragraph end -->
 
 
@@ -156,30 +325,17 @@
                                                   src="${itemVar.thumb_file_url}"
                                                   class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                       </div>
-                                      <div class="cart-info cart-wrap">
-                                          <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                              title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                              href="javascript:void(0)" title="Add to Wishlist"><i
-                                                  class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                              data-bs-toggle="modal" data-bs-target="#quick-view"
-                                              title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                          <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                  aria-hidden="true"></i></a>
-                                      </div>
+                                      
                                   </div>
                                   <div class="product-detail">
                                       <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                               class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                               class="fa fa-star"></i></div>
                                       <a href="product-page(no-sidebar).html">
-                                          <h6>${itemVar.name}</h6>
+                                          <h6>[${itemVar.store_name}] ${itemVar.name}</h6>
                                       </a>
                                       <h4>$${itemVar.price}</h4>
-                                      <ul class="color-variant">
-                                          <li class="bg-light0"></li>
-                                          <li class="bg-light1"></li>
-                                          <li class="bg-light2"></li>
-                                      </ul>
+                                      
                                   </div>
                               </div>
                               </c:forEach>
@@ -242,151 +398,7 @@
                         </ul>
                         <div class="tab-content-cls" id="tab-content-cls">
                         	<!-- ajax 쏴주기 -->
-                        	<!-- 
-                            <div id="tab-${j.index}" class="tab-content active default">
-                                <div class="no-slider row">
-                                <c:forEach items="${itemList}" var="itemVar" >
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="${contextPath}/items/${itemVar.id}"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>${itemVar.name}</h6>
-                                            </a>
-                                            <h4>$${itemVar.price}</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                            
-                            </div>
-                         
-                             -->
-                            <!-- 
-                            <div id="tab-5" class="tab-content">
-                            	
-                                <div class="no-slider row">
-                                	
-                                    <c:forEach items="${itemList}" var="itemVar">
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="${contextPath}/items/${itemVar.id}"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="${contextPath}/items/${itemVar.id}"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>${itemVar.name}</h6>
-                                            </a>
-                                            <h4>$${itemVar.price}</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    </c:forEach>
-                                    
-                                    </div>
                                 </div>
-                            </div>
-                            
-                            
-                            <div id="tab-6" class="tab-content">
-                                <div class="no-slider row">
-                                <c:forEach items="${itemList}" var="itemVar">
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="${contextPath}/items/${itemVar.id}"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="${contextPath}/items/${itemVar.id}"><img
-                                                        src="${itemVar.thumb_file_url}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                    title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
-                                                <a href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>${itemVar.name}</h6>
-                                            </a>
-                                            <h4>$${itemVar.price}</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    </c:forEach>
-                                    </div>
-                                    -->
-                                </div>
-                   
                             </div>
                         </div>
                     </div>
@@ -551,9 +563,6 @@
                                     <p>2021년에도 현백면과 더 행복합시다</p>
                                 </a>
                                 <hr class="style1">
-                                <!-- 
-                                <h6>by: John Dio , 2 Comment</h6>
-                                 -->
                             </div>
                         </div>
                         
@@ -672,11 +681,7 @@
                             <div class="product-right">
                                 <h2>Women Pink Shirt</h2>
                                 <h3>$32.96</h3>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
+                                
                                 <div class="border-product">
                                     <h6 class="product-title">product details</h6>
                                     <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
@@ -833,223 +838,7 @@
     <!-- tap to top end -->
 
 	<!-- script -->
-	<!-- latest jquery-->
-	<!-- <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script> -->
-	<script>
-			//$(window).ready(function() {
-			$(document).ready(function(){
-	        	//alert('가자');
-	        	FirstMainItemList();
-	        	
-	        });
-			
-			
-	        function FirstMainItemList() {
-	       	console.log("첫 번째 메인카테고리 아이템 리스트 실행");
-			
-			//let id = 41; // id = 2 우선 사용
-			let id = 1; // 임시로 설정
-	        //console.log("우선 id=41로 지정"+id);
-			$.ajax({
-						type : 'POST',
-						url : "${contextPath}/firstMainList",
-						dataType: "text",
-						data : {
-							id : id
-						}, 
-						success : function(data) {
-							
-							//let total_price = 0;
-							var html = "";
-							console.log(data);
-							//alert('데이터 오는지만 확인');
-	                        //style='display: block;
-							html += "<div id='tab-0' class='tab-content active default' style='display: block;'> ";
-	                    	html += "<div class='no-slider row'>";
-	                    	
-	                    	
-							//$.each(JSON.parse(data), function(key, value) {            
-								$.each(JSON.parse(data), function(key, value) {
-								console.log("===================================");
-	                        	console.log(value.id);
-	                        	console.log(value.thumb_file_url);
-	                        	console.log(value.name);
-	                        	
-	                        	
-	                        	//html += "<c:forEach items='${itemList}' var='itemVar' >";
-	                        	
-	                        	
-	                        	html += "<div class='product-box'>";
-	                        		html += "<div class='img-wrapper'>";
-	                        			html += "<div class='front'>";
-	                        	
-	                        			html += "<a href='${contextPath}/items/";
-	                        			html += value.id;
-	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
-	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
-	                        	
-	                       		html += "</div>";
-	                       		
-	                       		html += "<div class='back'>";
-	                       			html += "<a href='product-page(no-sidebar).html'><img src='";
-	                       			html += value.thumb_file_url;
-	                       			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
-	                    		html += "</div>";
-	                    		html += "<div class='cart-info cart-wrap'>";
-	                     		html += "<button data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart'><i class='ti-shopping-cart'></i></button> <a href='javascript:void(0)' title='Add to Wishlist'><i ";
-	              				html += "class='ti-heart' aria-hidden='true'></i></a> <a href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View'><i class='ti-search' aria-hidden='true'></i></a>";
-	              				html += "<a href='compare.html' title='Compare'><i class='ti-reload' aria-hidden='true'></i></a>";
-	  							html += "</div>";
-	  							html += "</div>";
-	  							html += "<div class='product-detail'>";
-	  							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
-	  							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
-	  							html += "class='fa fa-star'></i></div>";
-	  							html += "<a href='product-page(no-sidebar).html'>";
-		  							html += "<h6>";
-		  							html += value.name;
-		  							html += "</h6>";
-	  							html += "</a>";
-	  							
-	  							html += "<h4>$";
-	  							html += 	value.price;
-	  							html += "</h4>";
-	  							
-	  							html += "<ul class='color-variant'>";
-	  							html += "<li class='bg-light0'></li>";
-	  							html += "<li class='bg-light1'></li>";
-	  							html += "<li class='bg-light2'></li>";
-	  							html += "</ul>";
-	  							html += "</div>";
-	  							html += "</div>";
-	  							
-	  							//html += "</c:forEach>";
-	  							
-	 							
-							});
 	
-							html += "</div>";
-							html += "</div>";
-							
-							$("#tab-content-cls").html(html);
-						},
-	    				error : function(request, status, error) {
-	    						alert("오우 실패쓰");
-	    				}
-	                        
-						});
-	    	    
-			}
-			
-	        
-	        function selectMainItemList(idx) {
-	           	//console.log("첫 번째 메인카테고리 아이템 리스트 실행");
-	    		
-	    		//let id = 41; // id = 2 우선 사용
-	    		let tag_idx = idx; 
-	            //console.log("우선 id=41로 지정"+id);
-	    		$.ajax({
-	    					type : 'POST',
-	    					url : "${contextPath}/selectMainList",
-	    					dataType: "text",
-	    					data : {
-	    						id : idx
-	    					}, 
-	    					success : function(data) {
-	    						
-	    						//let total_price = 0;
-	    						var html = "";
-	    						console.log("selectMainList");
-	    						console.log(data);
-	    						//alert('데이터 오는지만 확인');
-	                            
-	    						html += "<div id='tab-";
-	    						html += tag_idx;
-	    						html += " ' class='tab-content active default' style='display: block;'>";
-	                        	html += "<div class='no-slider row'>";
-	                        	
-	                        	
-	    						//$.each(JSON.parse(data), function(key, value) {            
-	    						$.each(JSON.parse(data) ,function(key, value) {
-	    							console.log(key);
-	    							console.log(value);
-	    							//console.log(key);
-	                            	//console.log(value);
-	                            	//console.log(value.id);
-	                            	//console.log(value.thumb_file_url);
-	                            	
-	                            	
-	                            	//html += "<c:forEach items='${itemList}' var='itemVar' >";
-	                            	
-	                            	
-	                            	html += "<div class='product-box'>";
-	                            		html += "<div class='img-wrapper'>";
-	                            			html += "<div class='front'>";
-	                            	
-	                            			html += "<a href='${contextPath}/items/";
-	                            			html += value.id;
-	                            			html += "' ><img src='";
-	                            			html += value.thumb_file_url;
-	                            			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
-	                            	
-	                           		html += "</div>";
-	                           		
-	                           		html += "<div class='back'>";
-	                           			html += "<a href='product-page(no-sidebar).html'><img src='";
-	                           			html += value.thumb_file_url;
-	                           			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
-	                        		html += "</div>";
-	                        		html += "<div class='cart-info cart-wrap'>";
-	                         		html += "<button data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart'><i class='ti-shopping-cart'></i></button> <a href='javascript:void(0)' title='Add to Wishlist'><i ";
-	                  				html += "class='ti-heart' aria-hidden='true'></i></a> <a href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View'><i class='ti-search' aria-hidden='true'></i></a>";
-	                  				html += "<a href='compare.html' title='Compare'><i class='ti-reload' aria-hidden='true'></i></a>";
-	      							html += "</div>";
-	      							html += "</div>";
-	      							html += "<div class='product-detail'>";
-	      							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
-	      							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
-	      							html += "class='fa fa-star'></i></div>";
-	      							html += "<a href='product-page(no-sidebar).html'>";
-	    	  							html += "<h6>";
-	    	  							html += value.name;
-	    	  							html += "</h6>";
-	      							html += "</a>";
-	      							
-	      							html += "<h4>$";
-	      							html += 	value.price;
-	      							html += "</h4>";
-	      							
-	      							html += "<ul class='color-variant'>";
-	      							html += "<li class='bg-light0'></li>";
-	      							html += "<li class='bg-light1'></li>";
-	      							html += "<li class='bg-light2'></li>";
-	      							html += "</ul>";
-	      							html += "</div>";
-	      							html += "</div>";
-	      							
-	      							//html += "</c:forEach>";
-	      							
-	     							
-	    						});
-	
-	    						html += "</div>";
-	    						html += "</div>";
-	    						
-	    						$("#tab-content-cls").html(html);
-	    					},
-	        				error : function(request, status, error) {
-	        						alert("오우 실패쓰");
-	        				}
-	                            
-	    					});
-	    						
-	        	    
-	    		}
-	    		
-			
-		
-	</script>
 	
 	
 </body>

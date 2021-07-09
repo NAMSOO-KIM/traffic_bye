@@ -54,10 +54,7 @@ public class HomeController {
 
 			model.addAttribute("itemList",list);
 			model.addAttribute("mainCategoryList",mainCategoryList);
-
-			//model.addAttribute("", mainCategoryList;)
-			// 대분류에 해당하는 아이템 가져오기
-			
+		
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

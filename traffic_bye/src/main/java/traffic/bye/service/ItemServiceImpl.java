@@ -42,5 +42,12 @@ public class ItemServiceImpl implements ItemService {
 		
 		return itemDAO.getMainCategoryItemList(parent_id);
 	}
+
+
+	@Override
+	public List<ItemVO> getItemDetail(long id) throws SQLException {
+		// TODO Auto-generated method stub
+		return itemDAO.getItemDetail(id);
+	}
 	
 }

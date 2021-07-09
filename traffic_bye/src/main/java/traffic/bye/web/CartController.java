@@ -82,7 +82,7 @@ public class CartController {
 			
 			CartVO new_cartVO = cartService.findItemCart(cartVO);
 			
-			ItemVO itemVO=itemService.getItem(item_id);
+			ItemVO itemVO= itemService.getItem(item_id);
 			long possible_quantity = itemVO.getStock();
 			
 			// insert

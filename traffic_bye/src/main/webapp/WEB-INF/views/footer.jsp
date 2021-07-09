@@ -211,22 +211,19 @@
         function getCartItemList() {
        	console.log("카드 아이템 가져오기 실행");
 		
-		let id = 41; // id = 2 우선 사용
-        console.log("우선 id=41로 지정"+id);
+		//let id = 41; // id = 2 우선 사용
+        //console.log("우선 id=41로 지정"+id);
 		$.ajax({
 					type : 'POST',
 					url : "${contextPath}/cartList",
 					dataType: "text",
-					data : {
-						id : id
-					}, 
-					success : function(data) {
+					success : function(result) {
 						
 						let total_price = 0;
 						var html = "";
-						console.log(data);
+						console.log(result);
 						
-                        $.each(JSON.parse(data), function(key, value) {            
+                        $.each(JSON.parse(result), function(key, value) {            
                             console.log(key);
                         	console.log(value);
                         	total_price += (value.price * value.quantity);
@@ -235,30 +232,27 @@
                        		html += "<a href='#'><img alt='' class='me-3' ";
                            		
                       		
-                      		html += "src='${contextPath}/ItemImage?id="
-	               		       	+ value.store_id
-	               				+"&image="
-	               				+ value.real_file_name
-	               				+"' style='width:68px; height: 90px;'></a>";
-	               		
-                           		
+                      		html += "src='";
+	               		    html += result.thumb_file_url;
+	               			html +="' style='width:68px; height: 90px;'></a>";
+
                            		html += "<div class='media-body'>";
                        			html += "<a href='#'>";
                            		html += "<h4>"
-                           	     	 + value.name
+                           	     	 + result.name
                            		 	 + "</h4>";
                            		html += "</a>";
                            		
                            		html += "<h4><span> $"
-                           			 + value.price
+                           			 + result.price
                            			 + " x "
-                           			 + value.quantity
+                           			 + result.quantity
                            			 + "개 </span></h4>";
                            			
                            		html += "</div>";
                            		html += "</div>";
                            		html += "<div class='close-circle' id='close-circle'><a href='javascript:void(0)' onclick='delCartItem("
-                           			 +	value.item_id
+                           			 +	result.item_id
                            			 + ")'><i class='fa fa-times' ";
                             	html += "aria-hidden='true'></i></a></div>";
                             	html += "</li>";
