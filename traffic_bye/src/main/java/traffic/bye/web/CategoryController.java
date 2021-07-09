@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import traffic.bye.service.CategoryService;
 import traffic.bye.vo.CategoryVO;
@@ -22,6 +24,16 @@ public class CategoryController {
 		return list;
 	}
 	
-	
+
+	@GetMapping("/midCategory")
+	@ResponseBody
+	public List<CategoryVO> getMidCategories(long id) {
+		try {
+			return categoryService.getMediumCategory(id);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }
