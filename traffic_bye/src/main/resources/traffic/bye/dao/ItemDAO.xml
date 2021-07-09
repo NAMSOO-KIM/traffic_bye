@@ -87,9 +87,23 @@
 	]]>
 	</select>
 	
-	<insert id="addItem" parameterType="ItemAddVO">
-		insert into item values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })
+
+	<select id="getMediumCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where it.category_id = #{category_id}
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+	]]>
+	</select>
 	
+	
+
+	<insert id="addItem" parameterType="ItemAddVO">
+		insert into item values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })	
 	
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			select item_id_seq.currval from dual
@@ -102,5 +116,23 @@
 			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
 		</foreach>
 	</insert>
+	
+	<select id="getMainCategoryNewItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		order by A.id desc
+	]]>
+	</select>
 	
 </mapper>

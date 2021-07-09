@@ -24,7 +24,7 @@ public class CategoryController {
 		return list;
 	}
 	
-	
+
 	@GetMapping("/midCategory")
 	@ResponseBody
 	public List<CategoryVO> getMidCategories(long id) {

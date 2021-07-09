@@ -58,6 +58,7 @@ public class ItemController {
 		
 		List<ItemVO> itemDetailList = itemService.getItemDetail(id);
 		
+		
 		mav.addObject("itemDetailList",itemDetailList);
 		
 		
@@ -77,7 +78,8 @@ public class ItemController {
 		map.put("id",id);
 		
 		// 관련된 상품이 있으면 관련상품 목록 모두 가져옴
-		
+		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
+
 		// int check = itemService.isRelatedItem(map);
 		// if (check >= 1) {
 		
@@ -90,18 +92,60 @@ public class ItemController {
 		return mav;
 	}
 	
+	// 대분류 카테고리 부분
 	@GetMapping(value = "mm/items/list/{category_id}")
 	public ModelAndView itemList(@PathVariable("category_id") long category_id, HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
 		Logger logger = LoggerFactory.getLogger(this.getClass());
-		logger.info("hi");
+		
+		// 0이면 중분류, 1 이면 대분류
+		long isCheckMain = categoryService.checkMainCategory(category_id);
+		
+		// if 대분류이면
+		// 대분류의 중분류 가져와서 해당하는 아이템 전부 뽑기
+		if(isCheckMain == 1) { // 대분류이면
+			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
+			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(category_id);
+			List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(category_id); // 대분류의 아이템 리스트
+			CategoryVO mainCategoryVO = categoryService.getCategory(category_id);
+			
+			
+			mav.addObject("mainCategoryVO",mainCategoryVO);
+			mav.addObject("mediumCategoryList",mediumCategoryList);
+			mav.addObject("newProductList",newProductList);
+			mav.addObject("selectMainItemList",selectMainItemList);	
+			
+		}
+		else { // 0 이면
+			// 특정 카테고리 중분류 아이템들만 가져옴
+			// 대분류를 카테고리 구해서 뿌려줘야 함
+			long parent_category_id = categoryService.getCategory(category_id).getParent_id();
+			
+			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(parent_category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
+			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(parent_category_id);
+			List<ItemVO> selectMainItemList = itemService.getMediumCategoryItemList(category_id); //중분류의 아이템 리스트
+			
+			CategoryVO mainCategoryVO = categoryService.getCategory(parent_category_id);
+			
+			//String mainCategoryName = categoryService.getCategory(parent_category_id).getName();
+			
+			mav.addObject("mainCategoryVO",mainCategoryVO);
+			mav.addObject("mediumCategoryList",mediumCategoryList);
+			mav.addObject("newProductList",newProductList);
+			mav.addObject("selectMainItemList",selectMainItemList);
+			
+		}
+		
+		String selectCategoryName = categoryService.getCategory(category_id).getName();
+		mav.addObject("selectCategoryName",selectCategoryName);
 		
 		mav.setViewName("categoryPage");
 		return mav;
 	}
 	
 	
+
 	@PostMapping(value = "/firstMainList")
 	@ResponseBody
 	public List<ItemVO> getFirstMainItemList(HttpSession session) throws Exception {
@@ -119,15 +163,17 @@ public class ItemController {
 	@PostMapping(value = "/selectMainList")
 	@ResponseBody
 	public List<ItemVO> getSelectMainItemList(long id,HttpSession session) throws Exception {
-	//public List<CartVO> getCartList(Long id, HttpSession session) throws Exception {
 
-		
 		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
 
 		return selectMainItemList;	
 	
 		
 	}
+	
+	
+	// 선택된 카테고리 + 가격 조건으로 검색
+	
 	
 	
 }

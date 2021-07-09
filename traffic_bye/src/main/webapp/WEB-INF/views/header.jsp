@@ -126,8 +126,8 @@
 													<!-- <div class="lable-nav">new</div> -->
 											</a></li>
 											<!-- <li><a href="#">패션</a></li> -->
+											<li><a href="#">전자/리빙</a></li>
 											<li><a href="#">식품</a></li>
-											<li><a href="#">전자</a></li>
 											<li><a href="#">담배/주류</a></li>
 										</ul>
 									</nav>
@@ -482,62 +482,51 @@
 											<ul>
 												<li><a href="${contextPath}/mm/items/list/1">담배매장
 													</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">전자
+												<li><a href="${contextPath}/mm/items/list/3">전자
 													</a></li>
 												<li><a href="${contextPath}/mm/items/list/1">식품</a></li>
 												<li><a href="${contextPath}/mm/items/list/1">안내데스크</a></li>
 											</ul>
 											</li>
-										<li><a href="${contextPath}/mm/items/list/1">식품</a>
+											
+										<li><a href="${contextPath}/mm/items/list/3">전자/리빙</a>
 											<ul>
-												<li><a href="category-page(top-filter).html">건강식품
-													</a></li>
-												<li><a href="category-page(modern).html">홍삼/인삼
-													</a></li>
-												<li><a href="category-page.html">가공식품</a></li>
-											</ul>
-										</li>
-										<li><a href="${contextPath}/mm/items/list/1">전자</a>
-											<ul>
-												<li><a href="${contextPath}/mm/items/list/1">카메라/캠코더
+												<li><a href="${contextPath}/mm/items/list/6">카메라/캠코더
 
 												</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">노트북/태블릿
+												<li><a href="${contextPath}/mm/items/list/7">음향기기
 
 												</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">음향기기</a>
+												<li><a href="${contextPath}/mm/items/list/8">가전제품</a>
 												</li>
 													
 													
-												<li><a href="#">리빙용품</a>
+												<li><a href="${contextPath}/mm/items/list/9">스마트기기/ACC</a>
 													</li>
-												<li><a href="#">가전제품</a>
+												<li><a href="${contextPath}/mm/items/list/10">노트북/태블릿</a>
 													</li>
-												<li><a href="product-page(4-image).html">미용기기/도구</a></li>
-												<li><a href="product-page(sticky).html">스마트기기/ACC</a></li>
-												<li><a href="product-page(accordian).html">면도기/칫솔</a></li>
+												<li><a href="${contextPath}/mm/items/list/11">리빙용품</a></li>
+												<li><a href="${contextPath}/mm/items/list/12">미용기기/도구</a></li>
+												<li><a href="${contextPath}/mm/items/list/13">면도기/칫솔</a></li>
 											</ul></li>
-										<li><a href="${contextPath}/mm/items/list/1">담배/주류</a>
+											
+										<li><a href="${contextPath}/mm/items/list/4">식품</a>
 											<ul>
-												<li><a href="#">국산담배</a>
-													<ul>
-														<li><a href="vendor-dashboard.html">디스플러스</a></li>
-														<li><a href="vendor-profile.html">더원</a></li>
-														<li><a href="become-vendor.html">레종</a></li>
-													</ul></li>
-												<li><a href="#">수입담배</a>
-													<ul>
-														<li><a href="wishlist.html">말보로 레드</a></li>
-														<li><a href="cart.html">메비우스</a></li>
-													 	
-													</ul></li>
-												<li><a href="#">주류</a>
-													<ul>
-														
-														<li><a href="grid-2-col.html">참이슬 30년산</a></li>
-														<li><a href="grid-3-col.html">테라 20년산</a></li>
-														<li><a href="grid-4-col.html">진로 15년산</a></li>
-													</ul></li>
+												<li><a href="${contextPath}/mm/items/list/14">건강식품
+													</a></li>
+												<li><a href="${contextPath}/mm/items/list/15">홍삼/인삼
+													</a></li>
+												<li><a href="${contextPath}/mm/items/list/16">가공식품</a></li>
+											</ul>
+										</li>
+										
+										<li><a href="${contextPath}/mm/items/list/5">담배/주류</a>
+											<ul>
+												<li><a href="${contextPath}/mm/items/list/1">담배</a>
+													</li>
+												
+												<li><a href="${contextPath}/mm/items/list/2">주류</a>
+													</li>
 											</ul></li>
 									</ul>
 								</nav>

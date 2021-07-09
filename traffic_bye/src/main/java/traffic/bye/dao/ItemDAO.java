@@ -22,7 +22,12 @@ public interface ItemDAO {
 	
 	int isRelatedItem(HashMap<String, Object> map) throws SQLException;
 	
+	List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException;
+
 	Long addItem(ItemAddVO itemAddVO) throws SQLException;
 	
 	int addItemImages(List<ImageVO> list) throws SQLException;
+	
+	List<ItemVO> getMainCategoryNewItemList(long parent_id) throws SQLException;
+
 }
