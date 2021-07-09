@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemVO;
 
 
@@ -20,4 +23,8 @@ public interface ItemService {
 	List<ItemVO> getMainCategoryItemList(long parent_id) throws SQLException;
 	
 	List<ItemVO> getItemDetail(long id) throws Exception;
+	
+	int isRelatedItem(HashMap<String, Object> map) throws Exception;
+	
+	Long addItem(Long storeId, String items, MultipartHttpServletRequest mreq) throws Exception;
 }

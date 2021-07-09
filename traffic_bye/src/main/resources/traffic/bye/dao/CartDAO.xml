@@ -7,11 +7,13 @@
 	
 	<select id="getCartList" parameterType="long" resultType="CartVO">
 	<![CDATA[
-			select c.member_id, c.item_id, c.quantity, i.category_id, i.name, i.stock ,i.price, i.detail, i.store_id ,im.upload_file_name, im.real_file_name
+	
+			select s.name as store_name ,c.member_id, c.item_id, c.quantity, i.category_id, i.name, i.stock ,i.price, i.detail, i.store_id , i.THUMB_FILE_URL
 			from item i
-			inner join item_image im on im.item_id = i.id
 			inner join cart c on c.item_id = i.id
+            inner join store s on s.id = i.store_id
 			where c.member_id = #{member_id}
+			
 	]]>
 	</select>
 	

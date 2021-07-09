@@ -19,7 +19,7 @@
 	<![CDATA[
 		select *
 		from ITEM it
-		inner join item_image im
+		left join item_image im
 		on it.ID = im.ITEM_ID
 		where it.id = #{id}
 	]]>
@@ -71,5 +71,36 @@
 		where id = #{id}
 	]]>
 	</select>
+	
+	<parameterMap type="java.util.HashMap" id="isRelatedMap">
+		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="isRelatedItem" parameterMap="isRelatedMap" resultType="int">
+	<![CDATA[
+		
+		select count(*)
+		from team2.item
+		where category_id = #{category_id} and id != #{id}
+
+	]]>
+	</select>
+	
+	<insert id="addItem" parameterType="ItemAddVO">
+		insert into item values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })
+	
+	
+		<selectKey keyProperty="id" resultType="Long" order="AFTER">
+			select item_id_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="addItemImages" parameterType="java.util.List">
+		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+			 into item_image 
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
+		</foreach>
+	</insert>
 	
 </mapper>
