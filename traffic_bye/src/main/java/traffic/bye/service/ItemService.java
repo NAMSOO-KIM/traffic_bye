@@ -1,5 +1,6 @@
 package traffic.bye.service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface ItemService {
 	ItemVO getItem(long id) throws Exception;
 
 	List<ItemVO> getRelatedItemList(HashMap<String, Object> map) throws Exception; 
+	
+	List<ItemVO> getMainCategoryItemList(long parent_id) throws SQLException;
+	
+	List<ItemVO> getItemDetail(long id) throws Exception;
 }

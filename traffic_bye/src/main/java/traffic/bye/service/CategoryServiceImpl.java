@@ -30,5 +30,21 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.getCategory(id);
 	}
 
+	@Override
+	public List<CategoryVO> getMainCategory() throws Exception {
+
+		return categoryDAO.getMainCategory();
+	}
 	
+	@Override
+	public List<CategoryVO> getMediumCategory(long parent_id) throws Exception {
+
+		return categoryDAO.getMediumCategory(parent_id);	
+	}
+	
+	@Override
+	public long getFirstMainCategory() throws Exception {
+		
+		return categoryDAO.getFirstMainCategory();
+	}
 }

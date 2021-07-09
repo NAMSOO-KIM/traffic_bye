@@ -5,6 +5,39 @@
 
 <mapper namespace="traffic.bye.dao.CategoryDAO">
 	
+	<select id="getMainCategory" resultType="CategoryVO">
+	<![CDATA[
+			select *
+			from category
+			where parent_id is null
+			order by id
+	]]>
+	</select>
+	
+	<select id="getMediumCategory" parameterType="long" resultType="CategoryVO">
+	<![CDATA[
+			select *
+    		from category
+    		where parent_id =#{parent_id}
+			order by id
+	]]>
+	</select>
+	
+	<select id="getFirstMainCategory" resultType="long">
+	<![CDATA[
+			select *
+			from 
+			(
+			    select id
+			    from category
+			    where parent_id is null
+			    order by id
+			)
+			where rownum =1
+	]]>
+	</select>
+	
+
 	<select id="getCategoryList" resultType="CategoryVO">
 	<![CDATA[
 			select id, name
@@ -12,4 +45,5 @@
 			order by id
 	]]>
 	</select>
+
 </mapper>
