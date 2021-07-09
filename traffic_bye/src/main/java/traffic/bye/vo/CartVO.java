@@ -10,7 +10,7 @@ public class CartVO {
 	private long item_id;
 	private long quantity;
 	
-	// item, item_image와 join
+	// item 과 join
 	
 	private long category_id;
 	private String name;
@@ -19,11 +19,9 @@ public class CartVO {
 	private String detail;
 	private long store_id;
 	
-	//item_image 테이블
-	private String upload_file_name;
-	private String real_file_name;
-	
-	//나중에 추가
 	private String origin_file_url;
 	private String thumb_file_url;
+	
+	// store 과 join
+	private String store_name;
 }

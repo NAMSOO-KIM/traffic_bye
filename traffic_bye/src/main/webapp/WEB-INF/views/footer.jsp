@@ -229,30 +229,35 @@
                         	total_price += (value.price * value.quantity);
                             html += "<li>";
                            	html += "<div class='media'>";
-                       		html += "<a href='#'><img alt='' class='me-3' ";
-                           		
-                      		
+                       		html += "<a href='${contextPath}/items/";
+                       		html += value.item_id;
+                			html += "' >";
+                       		html += "<img alt='' class='me-3' ";
                       		html += "src='";
-	               		    html += result.thumb_file_url;
+	               		    html += value.thumb_file_url;
 	               			html +="' style='width:68px; height: 90px;'></a>";
 
-                           		html += "<div class='media-body'>";
-                       			html += "<a href='#'>";
-                           		html += "<h4>"
-                           	     	 + result.name
+                           		html += "<div class='media-body' style='margin: 0px 20px 0px 0px;'>";
+                           		html += "<a href='${contextPath}/items/";
+                           		html += value.item_id;
+                    			html += "' >";
+                           		html += "<h4 style='font-size: 14px'>["
+                           			 + value.store_name
+                           			 + "] "
+                           	     	 + value.name
                            		 	 + "</h4>";
                            		html += "</a>";
                            		
                            		html += "<h4><span> $"
-                           			 + result.price
+                           			 + value.price
                            			 + " x "
-                           			 + result.quantity
+                           			 + value.quantity
                            			 + "개 </span></h4>";
                            			
                            		html += "</div>";
                            		html += "</div>";
                            		html += "<div class='close-circle' id='close-circle'><a href='javascript:void(0)' onclick='delCartItem("
-                           			 +	result.item_id
+                           			 +	value.item_id
                            			 + ")'><i class='fa fa-times' ";
                             	html += "aria-hidden='true'></i></a></div>";
                             	html += "</li>";
