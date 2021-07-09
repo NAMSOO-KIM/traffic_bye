@@ -8,19 +8,19 @@
 	
 	<select id="getItemList" resultType="ItemVO">
 	<![CDATA[
-		select i.id, i.CATEGORY_ID, i.name, i.stock, i.price, i.detail, i.store_id, im.upload_file_name, im.real_file_name
-		from item i
-		join item_image im
-		on i.id = im.item_id
+		select s.name as store_name , it.*
+		from item it
+		inner join store s
+		on it.store_id = s.id
 	]]>
 	</select>
 	
-	<select id="getItem" parameterType="long" resultType="ItemVO">
+	<select id="getItemDetail" parameterType="long" resultType="ItemVO">
 	<![CDATA[
-		select it.id, it.CATEGORY_ID, it.NAME, it.STOCK, it.PRICE, it.DETAIL, it.STORE_ID, im.UPLOAD_FILE_NAME, im.REAL_FILE_NAME
+		select *
 		from ITEM it
-		inner join item_image im
-		on it.ID=im.ITEM_ID
+		left join item_image im
+		on it.ID = im.ITEM_ID
 		where it.id = #{id}
 	]]>
 	</select>
@@ -29,14 +29,64 @@
 		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
 		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
 	</parameterMap>
+	
 	<select id="getRelatedItemList" parameterMap="selectRelatedMap" resultType="ItemVO">
 	<![CDATA[
-		select it.id, it.CATEGORY_ID, it.NAME, it.STOCK, it.PRICE, it.DETAIL, it.STORE_ID, im.UPLOAD_FILE_NAME, im.REAL_FILE_NAME
-		from ITEM it
-		inner join item_image im
-		on it.ID=im.ITEM_ID
-		where it.category_id = #{category_id} and it.id != #{id}
+		
+		select s.name as store_name, A.*
+		FROM 
+		(
+		    select *
+		    from item
+		    where category_id = #{category_id} and id != #{id}
+    	)A
+		inner join store s
+		on s.id = A.store_id
+
 	]]>
 	</select>
+	
+	<select id="getMainCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		
+	]]>
+	</select>
+	
+	<select id="getItem" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from ITEM
+		where id = #{id}
+	]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="isRelatedMap">
+		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="isRelatedItem" parameterMap="isRelatedMap" resultType="int">
+	<![CDATA[
+		
+		select count(*)
+		from team2.item
+		where category_id = #{category_id} and id != #{id}
+
+	]]>
+	</select>
+	
+	
 	
 </mapper>

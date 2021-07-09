@@ -151,6 +151,29 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+	<script src="${contextPath}/resources/js/jquery.bpopup-0.1.1.min.js"></script>
+	<style>
+#element_to_pop_up { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:400px;
+    min-height: 180px;
+}
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+</style>
+<!-- Button that triggers the popup -->
+
+	<div id="element_to_pop_up">
+    <a class="b-close">닫기<a/>
+	</div>
 	<script type="text/javascript">
 	var storeList = new Array();
 	<c:forEach items="${cartList}" var="storeList">
@@ -163,11 +186,12 @@
 	<script type="text/javascript">
 	var wsocket;
 	var customer = '<c:out value="${loginInfo.loginId}"/>';
+	var memberId = '<c:out value="${loginInfo.id}"/>';
 	var auth = '<c:out value="${loginInfo.storeId}"/>';
 	var sendData = {};
 	sendData.customer = customer;
 	sendData.storeList= storeList;
-	sendData.type = "ready";
+	sendData.type = "order";
 	sendData.auth=auth;
 	console.log(sendData);
 	console.log(sendData.customer);
@@ -177,35 +201,28 @@
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 	}
-	function disconnect() {
-		
-	}
-	function onOpen(evt) {
-		
-	}
-	var receiveData ={};
 	function onMessage(evt) {
-		let myData = JSON.parse(evt.data);
-		receiveData.orderType = myData.type;
-		receiveData.customer = myData.customer;
-		receiveData.auth = auth;
-		console.log(receiveData);
-		$('#myModal').show();
-		
+		$('#element_to_pop_up').append(evt.data);
+		 ;(function($) {
+		        $(function() {
+		            $('#my-button').bind('click', function(e) {
+		                e.preventDefault();
+		                $('#element_to_pop_up').bPopup({
+		                   });
+		            });
+		            
+		         });
+		     })(jQuery);
 		alert(evt.data+"메세지 도착");
 	}
-	
-	
+	function onOpen(){
+		console.log('hi');
+	}
 	
 	function onClose(evt) {
 		console.log("연결을 끊었습니다.");
 	}
-	function receive(){
-		
-	}
-	
 	function send() {
-		//메세지 보낼 스토어아이디는 
 		wsocket.send(JSON.stringify(sendData));
 	}
 	
@@ -268,19 +285,6 @@
       </div>
     </div>
         <!--End Modal-->
-    <script type="text/javascript">
-        //팝업 Close 기능
-        function close_pop(flag) {
-             $('#myModal').hide();
-        };
-   
-			$('#confirmBtn').click(function(){
-		     wsocket.send(JSON.stringify(receiveData));
-		    });
-		
-		
-       
-      </script>
 	<!-- 내용 끝 -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>

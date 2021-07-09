@@ -1,15 +1,11 @@
 package traffic.bye.handler;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -35,7 +31,6 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 			users.put(loginInfo.getLoginId(), session);
 			System.out.println(users.toString());
 			System.out.println(managers.toString());
-			
 			return;
 		}
 		managers.put(storeId, session);
@@ -60,24 +55,34 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 		JSONObject myJson = getJsonDataFormMsg(msg);
 		String customer = (String)myJson.get("customer");
 		String auth = (String)myJson.get("auth");
-		if(auth != "") {
+		String type = (String)myJson.get("type");
+		System.out.println("type: "+type);
+		if(auth != "" &&  type.equals("accept")) {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("수락되었습니다."));
+			receiver.sendMessage(new TextMessage("주문이 수락되었습니다."));
+		}else if(auth !="" && type.equals("ready")) {
+			WebSocketSession receiver = users.get(customer);
+			System.out.println("소비자 : "+receiver);
+			if(receiver == null) return;
+			receiver.sendMessage(new TextMessage("상품이 준비되었습니다."));
+		}else if(auth !="" && type.equals("receipt")) {
+			WebSocketSession receiver = users.get(customer);
+			System.out.println("소비자 : "+receiver);
+			if(receiver == null) return;
+			receiver.sendMessage(new TextMessage("이용해주셔서 감사합니다! 즐거운 시간 되셨나요?"));
 		}else {
 			JSONObject json = getJsonDataFormMsg(msg);
 			ArrayList<String> stores = (ArrayList<String>)json.get("storeList");
 			//상점 목록 받기
-			System.out.println("storeId LWist"+stores.toString());
 			for(String storeId : stores) {
 				WebSocketSession receiver = managers.get(Long.parseLong(storeId));
-				JSONObject sendData = new JSONObject();
-				sendData.put("customer", customer);
-				sendData.put("type", "order");
-				sendData.put("auth", auth);
-				receiver.sendMessage(new TextMessage(sendData.toJSONString()));
-				System.out.println(storeId+ "님 주문이 들어왔습니다.");
+				//JSONObject sendData = new JSONObject();
+//				sendData.put("customer", customer);
+//				sendData.put("auth", auth);
+//				sendData.put("type", type);
+				receiver.sendMessage(new TextMessage(storeId+ "님 주문이 들어왔습니다."));
 			}
 		}
 		
@@ -86,15 +91,6 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
 		System.out.println(session.getId() + "익셉션 발생:" + exception.getMessage());
-	}
-
-	public String getUser(String msg) {
-		String[] parseData = msg.split(":");
-		return parseData[1];
-	}
-	public String accept(String msg) {
-		String[] parseData = msg.split(":");
-		return parseData[0];
 	}
 	
 	private JSONObject getJsonDataFormMsg(String msg) throws Exception{

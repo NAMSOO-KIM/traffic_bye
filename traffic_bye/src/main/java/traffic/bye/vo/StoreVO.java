@@ -1,5 +1,7 @@
 package traffic.bye.vo;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -19,5 +21,6 @@ public class StoreVO {
 	private String origin_file_name;
 	private String thumb_file_url;
 	
-	
+	private String contact;
+	private List<Long> categories;
 }

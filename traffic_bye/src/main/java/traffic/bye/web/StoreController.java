@@ -1,5 +1,6 @@
 package traffic.bye.web;
 
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,16 +18,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
+import traffic.bye.service.CategoryService;
 import traffic.bye.service.StoreService;
+import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.StoreVO;
 
-@Controller
+
+
 @Slf4j
+@Controller
 public class StoreController {
 	
-	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@Autowired
 	private StoreService storeService;
@@ -62,6 +67,33 @@ public class StoreController {
 			log.info("파라미터명 : {}, 파일 이름 : {}, 파일 크기 : {}", new Object[] {fileName, files.get(fileName).getOriginalFilename(), files.get(fileName).getSize()});
 		}
 		return "";
+	}
+	@RequestMapping(value="store")
+	public ModelAndView storeMain(HttpSession session) throws Exception{
+		log.info("store main 들어옴");
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			List<CategoryVO> categories = categoryService.getCategoryList();
+			List<StoreVO> stores = storeService.getStoreList();
+
+			for(StoreVO store : stores) {
+				List<Long> storeCategories = storeService.getStoreCategories(store.getId());
+				store.setCategories(storeCategories);
+				log.info("store num : " + store.getName() + " list : " + storeCategories.toString());
+			}
+			
+			mav.addObject("categoryList", categories);
+			mav.addObject("storeList", stores);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("store/storeMain");
+		return mav;
 	}
 	
 }

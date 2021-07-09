@@ -211,40 +211,39 @@
         function getCartItemList() {
        	console.log("카드 아이템 가져오기 실행");
 		
-		let id = 41; // id = 2 우선 사용
-        console.log("우선 id=41로 지정"+id);
+		//let id = 41; // id = 2 우선 사용
+        //console.log("우선 id=41로 지정"+id);
 		$.ajax({
 					type : 'POST',
 					url : "${contextPath}/cartList",
 					dataType: "text",
-					data : {
-						id : id
-					}, 
-					success : function(data) {
+					success : function(result) {
 						
 						let total_price = 0;
 						var html = "";
-						console.log(data);
+						console.log(result);
 						
-                        $.each(JSON.parse(data), function(key, value) {            
+                        $.each(JSON.parse(result), function(key, value) {            
                             console.log(key);
                         	console.log(value);
                         	total_price += (value.price * value.quantity);
                             html += "<li>";
                            	html += "<div class='media'>";
-                       		html += "<a href='#'><img alt='' class='me-3' ";
-                           		
-                      		
-                      		html += "src='${contextPath}/ItemImage?id="
-	               		       	+ value.store_id
-	               				+"&image="
-	               				+ value.real_file_name
-	               				+"' style='width:68px; height: 90px;'></a>";
-	               		
-                           		
-                           		html += "<div class='media-body'>";
-                       			html += "<a href='#'>";
-                           		html += "<h4>"
+                       		html += "<a href='${contextPath}/items/";
+                       		html += value.item_id;
+                			html += "' >";
+                       		html += "<img alt='' class='me-3' ";
+                      		html += "src='";
+	               		    html += value.thumb_file_url;
+	               			html +="' style='width:68px; height: 90px;'></a>";
+
+                           		html += "<div class='media-body' style='margin: 0px 20px 0px 0px;'>";
+                           		html += "<a href='${contextPath}/items/";
+                           		html += value.item_id;
+                    			html += "' >";
+                           		html += "<h4 style='font-size: 14px'>["
+                           			 + value.store_name
+                           			 + "] "
                            	     	 + value.name
                            		 	 + "</h4>";
                            		html += "</a>";

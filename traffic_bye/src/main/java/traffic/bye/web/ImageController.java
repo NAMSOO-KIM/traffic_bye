@@ -18,6 +18,7 @@ public class ImageController {
 
 	
 	// URI : /ItemImage?id=${item.id}&image=${item.real_file_name}
+	/*
 	@GetMapping(value = "/ItemImage")
 	public void ItemImage(long id, String image, HttpServletResponse response) throws Exception {
 		System.out.println(id + " " + image);
@@ -39,6 +40,7 @@ public class ImageController {
 			e.printStackTrace();
 		}
 	}
+	*/
 
 	
 }
