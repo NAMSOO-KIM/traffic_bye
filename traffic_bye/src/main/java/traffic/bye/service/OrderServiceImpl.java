@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.OrdersDAO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
+import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
+import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.OrdersVO;
 
 @Slf4j
@@ -59,6 +61,16 @@ public class OrderServiceImpl implements OrdersService{
 	@Override
 	public void orderReceipt(long orderId) throws Exception {
 		 ordersDAO.orderReceipt(orderId);
+	}
+
+	@Override
+	public List<OrdersListVO> getOrdersList(long memberId) throws Exception {
+		return ordersDAO.getOrdersList(memberId);
+	}
+
+	@Override
+	public OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception {
+		return ordersDAO.getOrderTrackingList(orderId);
 	}
 
 	
