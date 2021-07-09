@@ -58,6 +58,7 @@ public class ItemController {
 		
 		List<ItemVO> itemDetailList = itemService.getItemDetail(id);
 		
+		
 		mav.addObject("itemDetailList",itemDetailList);
 		
 		
@@ -105,10 +106,14 @@ public class ItemController {
 		// 대분류의 중분류 가져와서 해당하는 아이템 전부 뽑기
 		if(isCheckMain == 1) { // 대분류이면
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
+			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(category_id);
+			List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(category_id); // 대분류의 아이템 리스트
 			
-			List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(category_id);
-			mav.addObject("selectMainItemList",selectMainItemList);	
 			mav.addObject("mediumCategoryList",mediumCategoryList);
+			mav.addObject("newProductList",newProductList);
+			mav.addObject("selectMainItemList",selectMainItemList);	
+			
+			
 
 		}
 		else { // 0 이면
@@ -117,20 +122,34 @@ public class ItemController {
 			long parent_category_id = categoryService.getParentCategory(category_id);
 			
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(parent_category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
+			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(parent_category_id);
+			List<ItemVO> selectMainItemList = itemService.getMediumCategoryItemList(category_id); //중분류의 아이템 리스트
+			
+			
 			mav.addObject("mediumCategoryList",mediumCategoryList);
+			mav.addObject("newProductList",newProductList);
+			mav.addObject("selectMainItemList",selectMainItemList);
 			
 			
-			List<ItemVO> selectMainItemList = itemService.getMediumCategoryItemList(category_id);
 			
-			mav.addObject("selectMainItemList",selectMainItemList);	
+			
+			
+			
+				
 				
 		}
+		
+		
+		
+		
+		
 		
 		mav.setViewName("categoryPage");
 		return mav;
 	}
 	
 	
+
 	@PostMapping(value = "/firstMainList")
 	@ResponseBody
 	public List<ItemVO> getFirstMainItemList(HttpSession session) throws Exception {

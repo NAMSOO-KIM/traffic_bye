@@ -107,4 +107,10 @@ public class ItemServiceImpl implements ItemService {
 		return id;
 
 	}
+	
+	@Override
+	public List<ItemVO> getMainCategoryNewItemList(long category_id) throws SQLException {
+
+		return itemDAO.getMainCategoryNewItemList(category_id);
+	}
 }

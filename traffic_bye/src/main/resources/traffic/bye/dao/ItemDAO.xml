@@ -117,4 +117,22 @@
 		</foreach>
 	</insert>
 	
+	<select id="getMainCategoryNewItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		order by A.id desc
+	]]>
+	</select>
+	
 </mapper>

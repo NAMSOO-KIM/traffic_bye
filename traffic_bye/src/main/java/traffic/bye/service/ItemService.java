@@ -30,4 +30,6 @@ public interface ItemService {
 
 	Long addItem(Long storeId, String items, MultipartHttpServletRequest mreq) throws Exception;
 
+	List<ItemVO> getMainCategoryNewItemList(long category_id) throws SQLException;
+
 }

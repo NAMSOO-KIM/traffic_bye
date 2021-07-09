@@ -57,7 +57,7 @@
                                             	
                                             	<c:forEach items="${itemDetailList}" var="itemDetailVO">
                                             		
-	                                                <div><img src="${itemDetailVO.name}" alt=" "
+	                                                <div><img src="${itemDetailVO.origin_file_url}" alt=" "
 	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px" onerror="this.style.display='none'"></div>
 
                                                 </c:forEach>

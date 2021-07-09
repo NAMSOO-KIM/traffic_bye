@@ -27,5 +27,7 @@ public interface ItemDAO {
 	Long addItem(ItemAddVO itemAddVO) throws SQLException;
 	
 	int addItemImages(List<ImageVO> list) throws SQLException;
+	
+	List<ItemVO> getMainCategoryNewItemList(long parent_id) throws SQLException;
 
 }

@@ -86,90 +86,31 @@
                         <div class="theme-card">
                             <h5 class="title-border">new product</h5> 
                             <div class="offer-slider slide-1">
+                            	
                             	<!-- 이중 for 문으로 처리 -->
+                            	<c:forEach items="${newProductList}" var="newProductVO" step="3" varStatus="idx">
+                            	
                                 <div>
+                                	
+                                	<c:forEach var="j" begin="${idx.index}" end="${idx.index+2}">
+                                	
                                     <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/1.jpg" alt=""></a>
+                                        <a href="${contextPath}/items/${newProductList[j].id}"><img class="img-fluid blur-up lazyload"
+                                                src="${newProductList[j].thumb_file_url}" alt=""></a>
                                         <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>1</h6>
+                                        
+                                            <a href="${contextPath}/items/${newProductList[j].id}">
+                                                <h6>${newProductList[j].name}</h6>
                                             </a>
-                                            <h4>$500.00</h4>
+                                            <h4>$${newProductList[j].price}</h4>
                                         </div>
                                     </div>
+
+                                    </c:forEach>
                                     
-                                    <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/011.jpg" alt=""></a>
-                                        <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>2</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/16.jpg" alt=""></a>
-                                        <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>3</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div>
-                                    <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/001.jpg" alt=""></a>
-                                        <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>4</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/4.jpg" alt=""></a>
-                                        <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>5</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a href=""><img class="img-fluid blur-up lazyload"
-                                                src="${contextPath}/resources/assets/images/fashion/pro/19.jpg" alt=""></a>
-                                        <div class="media-body align-self-center">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div><a
-                                                href="product-page(no-sidebar).html">
-                                                <h6>6</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
+                                
                             </div>
                         </div>
                        
