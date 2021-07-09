@@ -23,4 +23,12 @@
 	]]>
 	</select>
 	
+	<select id="getStoreCategories" parameterType="long" resultType="long">
+	<![CDATA[
+		select category_id
+		from item
+		where store_id = #{store_id}
+		group by category_id
+	]]>
+	</select>
 </mapper>

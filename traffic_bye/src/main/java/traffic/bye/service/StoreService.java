@@ -13,4 +13,6 @@ public interface StoreService {
 	
 	StoreVO getStore(long id) throws Exception;
 
+	List<Long> getStoreCategories(long store_id) throws Exception;
+
 }

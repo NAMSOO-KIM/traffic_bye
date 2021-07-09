@@ -1,5 +1,6 @@
 package traffic.bye.service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,5 +37,17 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.getRelatedItemList(map);
 	}
 	
+	@Override
+	public List<ItemVO> getMainCategoryItemList(long parent_id) throws SQLException {
+		
+		return itemDAO.getMainCategoryItemList(parent_id);
+	}
+
+
+	@Override
+	public List<ItemVO> getItemDetail(long id) throws SQLException {
+		// TODO Auto-generated method stub
+		return itemDAO.getItemDetail(id);
+	}
 	
 }
