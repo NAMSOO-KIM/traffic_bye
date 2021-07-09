@@ -44,8 +44,8 @@
 		    data : formData,
 		    url : "",
 		    type : 'post',
-		    success : function(){
-			
+		    success : function(data){
+				location.href = "/app/store/1/item/" + data;
 			},
 			fail : function(){
 				console.log("실패 ㅠ");
@@ -65,7 +65,6 @@
 			    success : function(data){
 					let midCategory = $('#midCategory');
 					let midData = "";
-					alert(data.length);
 					midCategory.html("");
 					for(let i = 0; i < data.length; i++){
 						midCategory.append(`<option value=${data[i].id}>${data[i].name}<option>`);

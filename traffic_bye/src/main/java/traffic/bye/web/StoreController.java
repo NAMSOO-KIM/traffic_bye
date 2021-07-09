@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,11 +74,23 @@ public class StoreController {
 	}
 	
 	@PostMapping("/store/{id}/addItem")
-	public String addItemProc(@PathVariable Long id, String items, MultipartHttpServletRequest mreq) throws Exception{
-		long itemId = itemService.addItem(id, items, mreq);
-		log.info(String.valueOf(itemId));
-		return "redirect:/";
+	public ResponseEntity<Long> addItemProc(@PathVariable Long id, String items, MultipartHttpServletRequest mreq) {
+		try {
+			Long itemId = itemService.addItem(id, items, mreq);
+			return new ResponseEntity<Long>(itemId, HttpStatus.CREATED);
+		} catch(Exception e) {
+			return new ResponseEntity<Long>(HttpStatus.BAD_GATEWAY);
+		}
 	}
+	
+	@GetMapping("/store/{id}/updateItem/{itemId}")
+	public String updateItem(@PathVariable Long id, @PathVariable Long itemId) {
+		
+		
+		return "store/updateItem";
+	}
+	
+	
 	@RequestMapping(value="store")
 	public ModelAndView storeMain(HttpSession session) throws Exception{
 		log.info("store main 들어옴");
