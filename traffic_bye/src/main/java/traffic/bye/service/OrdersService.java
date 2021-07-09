@@ -25,4 +25,5 @@ public interface OrdersService {
 	void orderReady(long orderId) throws Exception;
 
 	void orderReceipt(long orderId) throws Exception;
+
 }

@@ -13,5 +13,5 @@ public class OrdersDetailListVO {
 	private long price;
 	private long memberId;
 	private long orderId;
-	
+	private String memberName;
 }

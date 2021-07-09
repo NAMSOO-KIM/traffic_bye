@@ -25,4 +25,5 @@ public interface OrdersDAO {
 	void orderReady(long orderId) throws SQLException;
 
 	void orderReceipt(long orderId) throws SQLException;
+
 }

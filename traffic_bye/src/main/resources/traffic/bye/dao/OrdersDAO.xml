@@ -43,23 +43,26 @@
 	<select id="getOrdersDetailList" parameterType="long"
 		resultType="OrdersDetailListVO">
 		select I.name itemName , I.price price, O.member_id
-		memberId ,O.id orderId from orders_detail D , orders O , item I
+		memberId ,O.id orderId , M.name memberName 
+        from orders_detail D , orders O , item I , member M
 		where
 		D.orders_id = O.id
 		and I.id = D.item_id
+        and M.id = O.member_id
 		and O.id = #{orderId}
 	</select>
 
 	<update id="orderAccept" parameterType="long">
-	update orders set status =1 where id=#{orderId}
+		update orders set status =1 where id=#{orderId}
 	</update>
-	
+
 	<update id="orderReady" parameterType="long">
-	update orders set status=2 where id=#{orderId}
+		update orders set status=2 where id=#{orderId}
 	</update>
-	
+
 	<update id="orderReceipt" parameterType="long">
-	update orders set status=3 where id=#{orderId}
+		update orders set status=3 where id=#{orderId}
 	</update>
-	
+
+
 </mapper>

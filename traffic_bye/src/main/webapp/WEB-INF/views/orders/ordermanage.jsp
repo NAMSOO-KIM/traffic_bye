@@ -454,7 +454,7 @@
 										<tbody>
 											<c:forEach items="${ordersList}" var="list">
 												<tr>
-													<td id="orderId">${list.ordersId}</td>
+													<td>${list.ordersId}</td>
 													<td>
 														<div class="d-flex">${list.memberName}</div>
 													</td>
@@ -479,8 +479,77 @@
 				<!-- Container-fluid Ends-->
 			</div>
 			<!--------------------------- 내용 시작 ---------------------------->
+		<!-- 모달 세트  시작 -->
+<style>
+#modal-open{ position:absolute; top:50%; left:50%;
+  width:120px; height:30px; margin-top:-15px; margin-left:-60px;
+  line-height:15px; cursor:pointer;
+}
+
+.modal{ 
+  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
+}
+
+.modal-content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:absolute; top:10%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
+}
+</style>
+<div class="modal">
+  <div id="modal-content" class="modal-content" 
+       title="클릭하면 창이 닫힙니다."><br>
+  </div>
+</div>
+<!-- 모달 세트  끝 -->
+			<!--------------------------- 소켓 시작 ---------------------------->
+				<script type="text/javascript">
+				var wsocket;
+				var auth = '<c:out value="${loginInfo.storeId}"/>';
+
+				function connect() {
+					wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
+					wsocket.onmessage = onMessage;
+					wsocket.onclose = onClose;
+				}
+
+				var receiveData = {};
+				
+				function onMessage(evt) {
+					$('.modal-content').empty();
+					$('.modal-content').append(evt.data);
+					$(function(){ 
+					    $(".modal").fadeIn()
+						  $(".modal-content").click(function(){
+						    $(".modal").fadeOut();
+						  });
+						});
+				}
+				function onClose(evt) {
+					console.log("연결을 끊었습니다.");
+				}
+				
+				$(document).ready(function() {
+					connect();
+					$('#orderId').click(function() {
+						console.log('hi');
+
+					});
+					
+
+				});
+			</script>
+			
+			<!--------------------------- 소켓 끝 ---------------------------->
+			
 			<script>
+				
 				$("#basic-1 tr").click(function() {
+					$('#myModalContent').empty();
 					var str = ""
 					var tdArr = new Array(); // 배열 선언
 					var tr = $(this);
@@ -490,7 +559,6 @@
 					});
 					// td.eq(index)를 통해 값을 가져올 수도 있다.
 					var orderId = td.eq(0).text();
-					console.log(orderId);
 					var sendData = "orderId="+orderId;
 					let link = "${contextPath}/getOrderId";
 					$.ajax({
@@ -499,28 +567,41 @@
 						data : sendData,
 						success : function(result) {
 							console.log(result);
+							var memberName = result[0].memberName;
 							
 							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].memberId+"</p>");
 							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].orderId+"</p>");
 							for(var i=0;i<result.length;i++){
-								console.log(result[i]);
 								//itemName: ~ VO형식으로 출력
 								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].itemName+"</p>");
 								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].price+"</p>");
 							}
 							$('#myModalContent').append("&nbsp<button id='acceptBtn'>주문수락</button>&nbsp");
 							$('#myModalContent').append("&nbsp<button id='readyBtn'>준비완료</button>&nbsp");
-							$('#myModalContent').append("<button id='receiptBtn'>수령완료</button>");
+							$('#myModalContent').append("<button id='receiptBtn'>수령완료</button><br><br>");
+							$('#myModalContent').append("<button id='closeBtn'>닫기</button>");
 							$('#orderModal').show();
-
+							
+							$('#closeBtn').click(function(){
+								$('#orderModal').hide();
+								
+							});
+							
 							var acceptLink = "${contextPath}/orderAccept";
 							$('#acceptBtn').click(function(){
+								console.log(memberName);
 								$.ajax({
 									url : acceptLink,
 									type : 'post',
 									data : sendData,
 									success : function(){
-										console.log('주문 수락되었습니다.');	
+										console.log('주문 수락되었습니다.');
+										console.log(result);
+											receiveData.type="accept";
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											console.log(receiveData);
+											wsocket.send(JSON.stringify(receiveData));
 										location.reload();
 										$('#orderModal').hide();
 									}
@@ -534,7 +615,11 @@
 									type : 'post',
 									data : sendData,
 									success : function(){
-										console.log('상품이 준비완료 되었습니다.');	
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="ready";
+											wsocket.send(JSON.stringify(receiveData));
+										    console.log('상품이 준비완료 되었습니다.');	
 										location.reload();
 										$('#orderModal').hide();
 									}
@@ -548,9 +633,13 @@
 									type : 'post',
 									data : sendData,
 									success : function(){
-										console.log('상품 수령을 완료했습니다.');	
-										location.reload();
-										$('#orderModal').hide();
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="receipt";
+											wsocket.send(JSON.stringify(receiveData));
+											console.log('상품 수령을 완료했습니다.');	
+											location.reload();
+											$('#orderModal').hide();
 									}
 									
 								});
@@ -562,41 +651,13 @@
 					});
 
 				});
+				
+				
+			
+				
 			</script>
 
-			<script type="text/javascript">
-				var wsocket;
-				var auth = '<c:out value="${loginInfo.storeId}"/>';
-
-				function connect() {
-					wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-					wsocket.onmessage = onMessage;
-					wsocket.onclose = onClose;
-				}
-
-				var receiveData = {};
-				function onMessage(evt) {
-					let myData = JSON.parse(evt.data);
-					receiveData.orderType = myData.type;
-					receiveData.customer = myData.customer;
-					receiveData.auth = auth;
-					console.log(receiveData);
-					$('#myModal').show();
-					alert(evt.data + "메세지 도착");
-				}
-				function onClose(evt) {
-					console.log("연결을 끊었습니다.");
-				}
-				$(document).ready(function() {
-					connect();
-					$('#orderId').click(function() {
-						event.preventDefault();
-						console.log('hi');
-
-					});
-
-				});
-			</script>
+		
 
 			<!-- The Modal -->
 			<style>
@@ -710,13 +771,7 @@
 				};
 				let link = "${contextPath}/getOrderId";
 				$('#confirmBtn').click(function() {
-					/* $.ajax({
-						type : 'get',
-						url  : link,
-						success
-						
-					})); */
-					wsocket.send(JSON.stringify(receiveData));
+					
 				});
 			</script>
 

@@ -20,6 +20,49 @@
 	type="image/x-icon">
 <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
+
+	<!-- latest jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/animate.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/jquery.modal.css" />
+
+<script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/jquery.modal.js"></script>
+
+<script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/modal.js"></script>
+
+<!-- fly cart ui jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+<!-- exitintent jquery-->
+<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+	<!-- tap to top end -->
+	<script src="${contextPath}/resources/assets/js/exit.js"></script>
+
+	<!-- slick js-->
+	<script src="${contextPath}/resources/assets/js/slick.js"></script>
+
+	<!-- menu js-->
+	<script src="${contextPath}/resources/assets/js/menu.js"></script>
+
+	<!-- lazyload js-->
+	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
+
+	
+	<!-- Bootstrap js-->
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Bootstrap Notification js-->
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
+		
+
+	<!-- Fly cart js-->
+	<script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
+
+	<!-- Theme js-->
+	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
+	<script src="${contextPath}/resources/assets/js/script.js"></script>
+
 <!--Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
@@ -48,14 +91,9 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
-<!-- latest jquery-->
-<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
-<!-- fly cart ui jquery-->
-<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
 
-<!-- exitintent jquery-->
-<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+
 <script src="${contextPath}/resources/assets/js/exit.js"></script>
 </head>
 <body>
@@ -237,13 +275,37 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+<!-- Button that triggers the popup -->
+<!-- 모달 세트  시작 -->
+<style>
+#modal-open{ position:absolute; top:50%; left:50%;
+  width:120px; height:30px; margin-top:-15px; margin-left:-60px;
+  line-height:15px; cursor:pointer;
+}
 
+.modal{ 
+  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
+}
+
+.modal-content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:relative; top:50%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
+}
+</style>
+<div class="modal">
+  <div id="modal-content" class="modal-content" 
+       title="클릭하면 창이 닫힙니다."><br>
+  </div>
+</div>
+<!-- 모달 세트  끝 -->
 	<script type="text/javascript">
-		
-		//웹소켓으로 이값을 전송
-		
-		
-				
+	
+		//웹소켓으로 이값을 전송		
 		var wsocket;
 
 		function connect() {
@@ -252,131 +314,28 @@
 			wsocket.onmessage = onMessage;
 			wsocket.onclose = onClose;
 		}
-		function disconnect() {
-			wsocket.close();
-		}
-		function onOpen(evt) {
-			//alert(orderId);
-		}
 		function onMessage(evt) {
-			$('#myModal').show();
+			console.log("메세지 도착");
+			$('.modal-content').empty();
+			$('.modal-content').append(evt.data);
+			$(function(){ 
+			    $(".modal").fadeIn()
+				  $(".modal-content").click(function(){
+				    $(".modal").fadeOut();
+				  });
+				});
+			
+		}
+		function onOpen(){
+			console.log('hi');
 		}
 		function onClose(evt) {
 			console.log("연결을 끊었습니다.");
 		}
-		function send() {
-			//메세지 보낼 스토어아이디는 
-			/* let sendData = {};
-			sendData.storeList= storeList;
-			sendData.type = "order";
-			alert(sendData);
-			wsocket.send(JSON.stringify(sendData)); */
-		}
-
 		$(document).ready(function() {
 			connect();
-			/* var orderId = '<c:out value="${orderId}"/>';
-			var sendData = "orderId="+orderId;
-			let link = "${contextPath}/getOrderId"; */
-			/* $.ajax({
-				url : link ,
-				type:'post' ,
-				data : sendData ,
-				success : function(result){
-					if( result == orderId){
-						console.log("성공");
-					}else{
-						console.log("실패");
-					}
-				}
-			}); */
-			
 		});
 	</script>
-
-	<style>
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 30%; /* Could be more or less, depending on screen size */
-}
-</style>
-
-
-
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<p style="text-align: center;">
-				<span style="font-size: 14pt;"><b><span
-						style="font-size: 24pt;">알림</span></b></span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<br />
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<span style="font-size: 14pt;">주문이 수락되었습니다.</span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<span style="font-size: 14pt;">내용추가</span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<span style="font-size: 14pt;"><br /></span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<span style="font-size: 14pt;">내용추가 </span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<span style="font-size: 14pt;">내용추가</span>
-			</p>
-			<p style="text-align: center; line-height: 1.5;">
-				<br />
-			</p>
-			<p>
-				<br />
-			</p>
-			<div
-				style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
-				onClick="close_pop();">
-				<span class="pop_bt" style="font-size: 13pt;"> <a
-					id="confirmBtn" href="ordertracking">진행 현황보기</a>
-				</span>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		//팝업 Close 기능
-		function close_pop(flag) {
-			$('#myModal').hide();
-		};
-	</script>
-	<!--End Modal-->
-
-
-
-
-
 
 
 
@@ -409,32 +368,8 @@
 			<i class="fa fa-angle-double-up"></i>
 		</div>
 	</div>
-	<!-- tap to top end -->
-	<script src="${contextPath}/resources/assets/js/exit.js"></script>
+	
 
-	<!-- slick js-->
-	<script src="${contextPath}/resources/assets/js/slick.js"></script>
-
-	<!-- menu js-->
-	<script src="${contextPath}/resources/assets/js/menu.js"></script>
-
-	<!-- lazyload js-->
-	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
-
-	<!-- Bootstrap js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Bootstrap Notification js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap-notify.min.js"></script>
-
-	<!-- Fly cart js-->
-	<script src="${contextPath}/resources/assets/js/fly-cart.js"></script>
-
-	<!-- Theme js-->
-	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
-	<script src="${contextPath}/resources/assets/js/script.js"></script>
 
 	<script>
 		function openSearch() {
@@ -445,6 +380,6 @@
 			document.getElementById("search-overlay").style.display = "none";
 		}
 	</script>
-
 </body>
+
 </html>

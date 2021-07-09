@@ -48,18 +48,19 @@ public class OrderServiceImpl implements OrdersService{
 
 	@Override
 	public void orderAccept(long orderId) throws Exception {
-		 ordersDAO.orderAccept(orderId);
+		  ordersDAO.orderAccept(orderId);
 	}
 
 	@Override
 	public void orderReady(long orderId) throws Exception {
-		ordersDAO.orderReady(orderId);
+		 ordersDAO.orderReady(orderId);
 	}
 
 	@Override
 	public void orderReceipt(long orderId) throws Exception {
-		ordersDAO.orderReceipt(orderId);
+		 ordersDAO.orderReceipt(orderId);
 	}
+
 	
 	
 	
