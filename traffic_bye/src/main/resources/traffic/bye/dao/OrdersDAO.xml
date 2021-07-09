@@ -63,6 +63,19 @@
 	<update id="orderReceipt" parameterType="long">
 		update orders set status=3 where id=#{orderId}
 	</update>
+	
+	<select id="getOrdersList" parameterType="long" resultType="OrdersListVO">
+	select M.id memberId , O.id orderId, departure_date departureDate , payment_date paymentDate , status status, amount amount from orders O, member M
+where M.id=O.member_id and
+member_id = #{memberId}
+	</select>
+	
+	<select id="getOrderTrackingList" parameterType="long" resultType="OrdersTrackingVO">
+	select O.id orderId ,M.name memberName , payment_date paymentDate, O.amount amount, status
+from orders O, member M
+where O.member_id = M.id
+and O.id = #{id}
+	</select>
 
 
 </mapper>
