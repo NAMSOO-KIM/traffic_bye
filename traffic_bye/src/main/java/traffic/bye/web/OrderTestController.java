@@ -98,6 +98,11 @@ public class OrderTestController {
 		return mav;
 	}
 	
+	@GetMapping(value = "testSearch")
+	public String getteTest(HttpSession session) throws Exception {
+		
+		return "testView/testSearch";
+	}
 	
 	/*
 	@GetMapping("/ordersdetail")

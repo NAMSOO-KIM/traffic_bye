@@ -15,9 +15,28 @@
 <body class="theme-color-1">
 	<!-- header start -->
 	
-	<!-- Price range icon -->
-	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/price-range.css">
 	
+	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+	    $('#filterText').keyup(function(event) {
+	        var temp = $(this).val();
+	        console.log(temp);
+	        if (temp == "") {
+	        	
+	            $('.col-grid-box').show();
+	            
+	        } else {
+	            
+	        	$('.col-grid-box').hide();
+	        	$(".col-grid-box h6:contains('"+temp+"')").parents('.col-grid-box').show();
+
+	        }
+	    });
+	});
+	</script>
 	<jsp:include page="header.jsp"></jsp:include>
 	
     <!-- header end -->
@@ -109,7 +128,7 @@
                                         <div class="media-body align-self-center">
                                         
                                             <a href="${contextPath}/items/${newProductList[j].id}">
-                                                <h6>${newProductList[j].name}</h6>
+                                                <h6 >${newProductList[j].name}</h6>
                                             </a>
                                             <h4>$${newProductList[j].price}</h4>
                                         </div>
@@ -141,13 +160,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
+                                                
                                                     <div class="product-filter-content">
                                                     	 
                                                         <div class="search-count">
-                                                            <h5>맞춤 보기 설정</h5>
+                                                        	
+                                                            <input id="filterText" class="form-control"
+																				placeholder="상품 검색하기">
+															
                                                         </div>
-                                                         
+                                                        
                                                         <div class="collection-view">
+                                                        
                                                             <ul>
                                                                 <li><i class="fa fa-th grid-layout-view"></i></li>
                                                                 <li><i class="fa fa-list-ul list-layout-view"></i></li>
@@ -222,15 +246,7 @@
                                                                 <a href="product-page(no-sidebar).html">
                                                                     <h6>[${selectItemVO.store_name}] ${selectItemVO.name}</h6>
                                                                 </a>
-                                                                <!-- 
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and
-                                                                    typesetting industry. Lorem Ipsum has been the
-                                                                    industry's standard dummy text ever since the 1500s,
-                                                                    when an unknown printer took a galley
-                                                                    of type and scrambled it to make a type specimen
-                                                                    book
-                                                                </p>
-                                                                 -->
+                                                                
                                                                 <h4>$${selectItemVO.price}</h4>
                                                             </div>
                                                         </div>
@@ -265,13 +281,7 @@
                                                             </ul>
                                                         </nav>
                                                     </div>
-                                                    <!-- 
-                                                    <div class="col-xl-6 col-md-6 col-sm-12">
-                                                        <div class="product-search-count-bottom">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5>
-                                                        </div>
-                                                    </div>
-                                                     -->
+                                                    
                                                 </div>
                                             </div>
                                         </div>
