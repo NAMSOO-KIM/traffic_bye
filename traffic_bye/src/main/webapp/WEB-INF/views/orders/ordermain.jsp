@@ -202,18 +202,12 @@
 		wsocket.onclose = onClose;
 	}
 	function onMessage(evt) {
-		$('#element_to_pop_up').append(evt.data);
-		 ;(function($) {
-		        $(function() {
-		            $('#my-button').bind('click', function(e) {
-		                e.preventDefault();
-		                $('#element_to_pop_up').bPopup({
-		                   });
-		            });
-		            
-		         });
-		     })(jQuery);
-		alert(evt.data+"메세지 도착");
+		console.log("메세지 도착");
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>제목</h2>');
+		$('.content-modal').append(evt.data);
+		   modal.style.display = "flex";
 	}
 	function onOpen(){
 		console.log('hi');
@@ -232,59 +226,115 @@
 		console.log('안녕');
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
-		$('#exitBtn').click(function(){disconnect();});		
 	});
+	
 </script>
- <style>
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
- 
+	<!-- 모달 세트  시작 -->
+	<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: rgba(69, 139, 197, 0.70);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
 </style>
- 
- 
- 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 도착했습니다.</span></p>
-                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >
-                     <a id="confirmBtn">주문 수락</a>
-                </span>
-            </div>
-      </div>
-    </div>
-        <!--End Modal-->
+	<div id="container">
+		<div id="lorem-ipsum"></div>
+	</div>
+	<div id="modal" class="modal-overlay">
+		<div class="modal-window">
+			<div class="title-modal">
+			</div>
+			<div class="close-area">X</div>
+			<div class="content-modal">
+			</div>
+		</div>
+	</div>
+	<script>
+   
+    </script>
+
+	<script type="text/javascript">
+	var modal = document.getElementById("modal");
+	
+	const closeBtn = modal.querySelector(".close-area");
+	closeBtn.addEventListener("click", e => {
+	    modal.style.display = "none"
+	});
+	
+	modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal-overlay")) {
+        modal.style.display = "none"
+    }
+});
+
+window.addEventListener("keyup", e => {
+    if(modal.style.display === "flex" && e.key === "Escape") {
+        modal.style.display = "none"
+    }
+});
+	function isModalOn() {
+    return modal.style.display === "flex"
+}
+	</script>
+
+	<!-- 모달 세트  끝 -->
+
+
+
 	<!-- 내용 끝 -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
