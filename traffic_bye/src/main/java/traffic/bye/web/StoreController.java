@@ -79,6 +79,7 @@ public class StoreController {
 			Long itemId = itemService.addItem(id, items, mreq);
 			return new ResponseEntity<Long>(itemId, HttpStatus.CREATED);
 		} catch(Exception e) {
+			e.printStackTrace();
 			return new ResponseEntity<Long>(HttpStatus.BAD_GATEWAY);
 		}
 	}

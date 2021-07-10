@@ -6,6 +6,7 @@ import java.util.List;
 
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
 
 public interface ItemDAO {
@@ -29,5 +30,6 @@ public interface ItemDAO {
 	int addItemImages(List<ImageVO> list) throws SQLException;
 	
 	List<ItemVO> getMainCategoryNewItemList(long parent_id) throws SQLException;
-
+	
+	ItemDetailVO getItemDetail(Long id) throws SQLException;
 }

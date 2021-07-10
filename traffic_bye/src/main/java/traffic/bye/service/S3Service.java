@@ -27,5 +27,7 @@ public interface S3Service {
 	// 파일 URL
 	public String getFileURL(String bucketName, String fileName);
 	
-	public ImageVO processImage(MultipartFile file) throws Exception;
+	public ImageVO processItemImage(MultipartFile file) throws Exception;
+	
+	public ImageVO processStoreImage(MultipartFile file) throws Exception;
 }

@@ -16,4 +16,5 @@ public class ImageVO {
 	private String uploadFileName;
 	private String realFileName;
 	private String originFileURL;
+	private String thumbFileURL;
 }
