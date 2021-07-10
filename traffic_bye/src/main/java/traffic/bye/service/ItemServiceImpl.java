@@ -72,6 +72,11 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.isRelatedItem(map);
 	}
 
+
+	@Override
+	public List<ItemVO> getItemFromStore(long store_id) throws Exception {
+		return itemDAO.getItemFromStore(store_id);
+	}
 	
 	@Override
 	public List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException {
@@ -106,6 +111,7 @@ public class ItemServiceImpl implements ItemService {
 		}
 		itemDAO.addItemImages(images);
 		return id;
+
 
 	}
 	
