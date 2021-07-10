@@ -22,7 +22,10 @@ public interface ItemDAO {
 	List<ItemVO> getItemDetail(long id) throws SQLException; // 이미지 포함
 	
 	int isRelatedItem(HashMap<String, Object> map) throws SQLException;
-	
+
+
+	List<ItemVO> getItemFromStore(long store_id) throws SQLException;
+
 	List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException;
 
 	Long addItem(ItemAddVO itemAddVO) throws SQLException;
@@ -32,4 +35,5 @@ public interface ItemDAO {
 	List<ItemVO> getMainCategoryNewItemList(long parent_id) throws SQLException;
 	
 	ItemDetailVO getItemDetail(Long id) throws SQLException;
+
 }

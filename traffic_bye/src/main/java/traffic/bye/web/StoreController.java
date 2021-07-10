@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +30,7 @@ import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
 import traffic.bye.vo.CategoryVO;
+import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.StoreVO;
 
@@ -56,9 +59,24 @@ public class StoreController {
 	//to-do 링크만 따뒀음
 	@GetMapping(value = "store/{id}")
 	public ModelAndView itemDetail(@PathVariable("id") long id, HttpSession session) throws Exception {
-		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("storeDetail");
+		
+		try {
+			StoreVO storeInfo = storeService.getStore(id);
+			List<ItemVO> itemList = itemService.getItemFromStore(id);
+			
+			log.info(itemList.toString());
+			
+			log.info(storeInfo.toString());
+			
+			mav.addObject("itemList", itemList);
+			mav.addObject("store", storeInfo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("store/storeDetail");
 		return mav;
 	}
 	
@@ -104,12 +122,10 @@ public class StoreController {
 			for(StoreVO store : stores) {
 				List<Long> storeCategories = storeService.getStoreCategories(store.getId());
 				store.setCategories(storeCategories);
-				log.info("store num : " + store.getName() + " list : " + storeCategories.toString());
 			}
 			
 			mav.addObject("categoryList", categories);
 			mav.addObject("storeList", stores);
-			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

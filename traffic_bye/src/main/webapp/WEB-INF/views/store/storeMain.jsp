@@ -86,6 +86,9 @@
 	border-left: 3px solid #ff4c3b;
 	color: #ff4c3b;
 }
+.store-row:hover{
+	cursor: pointer;
+}
 </style>
 
 </head>
@@ -102,7 +105,47 @@
 			</script>
 		</c:when>
 	</c:choose>
-
+	
+	<!--Modal: modalVM-->
+	<div class="modal fade" id="modalVM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	  aria-hidden="true">
+	  <div class="modal-dialog modal-xl" role="document">
+	
+	    <!--Content-->
+	    <div class="modal-content">
+	    	
+	    	<div>
+	    		<p class="modal-title" style="font-size: 20px; font-weight: 700; color: black; text-align: center; padding-top: 20px;">매장 이름</p>
+	    	</div>
+	
+	      	<!--Body-->
+	    	<div class="modal-body">
+	
+		        <div class="" id="modal-video" style="text-align: center;">
+		        	<img src="http://175.205.200.40:8080/store/1/video" />
+		        </div>
+		        
+		        <div>
+		        	<span class="modal-capacity" style="font-size: 15px; font-weight: 500; color: black; text-align: center; padding-top: 20px;">혼잡도 : </span>
+		        	<span class="json-data" style="font-size: 15px; font-weight: 500; color: black; text-align: center; padding-top: 20px;">-</span>
+		        </div>
+	
+	      	</div>
+	
+	      <!--Footer-->
+	      <div class="modal-footer justify-content-center flex-column flex-md-row">
+	      	<button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+	          data-dismiss="modal" id="modal-detail-btn">상세</button>
+	        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+	          data-dismiss="modal" id="modal-close-btn">닫기</button>
+	      </div>
+	
+	    </div>
+	    <!--/.Content-->
+	
+	  </div>
+	</div>
+	<!--Modal: modalVM-->
 
 	<!-- breadcrumb start -->
 	<div class="breadcrumb-section" style="padding-bottom: 0px;">
@@ -183,7 +226,7 @@
 		<div class="container" id="store-body" style="display: none; padding-top: 30px;">
 			<p>※ 입점 브랜드는 당사 사정에 따라 변동될 수 있습니다.</p>
 			<br />
-			<h3 style=" margin-bottom: 40px; color: black;">입점 브랜드</h3>
+			<h3 style="color: black;">입점 브랜드</h3>
 			
 			<section class="section-b-space container element-page">
 		        <div class="row">
@@ -210,7 +253,7 @@
 		            <div class="col-lg-9 content component-col">
 		                <div class="product-wrapper-grid list-view">
 								<c:forEach items="${storeList}" var="store">
-									<div class="row store-row category-0" id="store-${store.id}" style="border: 0.3px solid #ababab; margin-bottom: 10px; border-radius: 5px; ">
+									<div class="row store-row category-0" id="store-${store.id}" style="border: 0.3px solid #ababab; margin-bottom: 10px; border-radius: 5px;" data-storeid="${store.id}" data-storename="${store.name}" data-storecapacity="${store.capacity}">
 										<div class="col-3" style="display: table;">
 											<div class="image-wrapper" style=" padding-bottom: 10px; padding-top: 10px;  display: table-cell; text-align-center; vertical-align: middle;">
 												<c:if test="${empty store.thumb_file_url}">
@@ -322,12 +365,60 @@
 	<script src="../assets/js/feather.min.js"></script>
 
 	<script>
+		var timer;
+		var storeCapacity;
 		function openSearch() {
 			document.getElementById("search-overlay").style.display = "block";
 		}
 
 		function closeSearch() {
 			document.getElementById("search-overlay").style.display = "none";
+		}
+		
+		function getCapacity(duration){
+			timer = duration * 3600;
+			
+			var interval = setInterval(function(){
+				
+				$.ajax({
+					url: "http://175.205.200.40:8080/store1.txt",
+					method: "GET",
+					dataType: "json",
+					success : function(data){
+						console.log(data.objects);
+						var personCnt = 0;
+						for(var i = 0; i < data.objects.length; i++){
+							if(data.objects[i].name === 'person'){
+								personCnt++;
+							}
+						}
+						
+						console.log('person cnt : ' + personCnt);
+						
+						var percent = parseInt((personCnt / storeCapacity) * 100);
+						console.log('percent : ' + percent + '%');
+						
+						if(percent < 60){
+							$('.json-data').html('원활');
+						} else if(60 < percent && percent < 80){
+							$('.json-data').html('혼잡');
+						} else if(percent <= 100){
+							$('.json-data').html('포화');
+						}
+						
+					},
+					complete : function(){
+						console.log("complete");
+					}
+				});
+				
+			
+				
+			if(--timer < 0){
+				timer = 0;
+				clearInterval(interval);
+			}
+			}, 1000);
 		}
 		
 		$(document).ready(function(){
@@ -365,12 +456,37 @@
 				$('.store-row').css('display', 'none');
 				$('.category-' + $(this).data('categoryid')).css('display', '');
 			});
+			$('.store-row').click(function(){
+				console.log($(this).data('storeid'));
+				$('#modalVM').modal('show');
+				
+				var name = $(this).data('storename');
+				$('.modal-title').text(name);
+				$('.modal-title').attr('data-storeid', $(this).data('storeid'));
+				
+				storeCapacity = parseInt($(this).data('storecapacity'));
+				
+				getCapacity(3);
+			});
 			
 			<c:forEach items="${storeList}" var="store">
 				<c:forEach items="${store.categories}" var="storeCategory">
 					$('#store-${store.id}').addClass('category-${storeCategory}');
 				</c:forEach>
 			</c:forEach>
+			
+			$('#modal-close-btn').click(function(){
+				$('#modalVM').modal('hide');
+			});
+			$('#modal-detail-btn').click(function(){
+				var storenum = $('.modal-title').data('storeid');
+				window.location.href = '/app/store/' + storenum;
+			});
+			
+			$('#modalVM').on('hidden.bs.modal', function () {
+				timer = 0;
+			});
+			
 		});
 	</script>
 </body>
