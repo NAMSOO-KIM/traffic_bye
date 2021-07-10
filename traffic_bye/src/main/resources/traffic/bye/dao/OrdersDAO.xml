@@ -76,6 +76,19 @@ from orders O, member M
 where O.member_id = M.id
 and O.id = #{id}
 	</select>
+	
+	<update id="changeQuantity" parameterType="CartChangeQuantityVO">
+	update cart set quantity=#{currentQuantity}
+where 
+item_id=#{currentItemId} and 
+member_id = #{currentMemberId}
+	
+	</update>
+	
+	<delete id="deleteQuantity" parameterType="DeleteQuantityVO">
+	delete from cart 
+where item_id = #{itemId} and member_id = #{memberId}
+	</delete>
 
 
 </mapper>

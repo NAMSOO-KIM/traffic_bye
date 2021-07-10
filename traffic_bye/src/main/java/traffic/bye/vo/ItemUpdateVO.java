@@ -1,5 +1,7 @@
 package traffic.bye.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ItemAddVO {
+public class ItemUpdateVO {
 	private Long id;
 	private String name;
 	private Integer bigCategory;
@@ -25,4 +27,5 @@ public class ItemAddVO {
 	private String thumbFileURL;
 	private String repreFileURL;
 	private Long repreFileSize;
+	private List<String> deletedImgs;
 }

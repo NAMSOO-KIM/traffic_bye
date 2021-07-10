@@ -111,7 +111,7 @@
 	
 
 	<insert id="addItem" parameterType="ItemAddVO">
-		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })	
+		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url, repre_file_size, repre_file_url ) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR }, #{repreFileSize}, #{repreFileURL})	
 	
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			select item_id_seq.currval from dual
@@ -121,7 +121,7 @@
 	<insert id="addItemImages" parameterType="java.util.List">
 		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
 			 into item_image 
-			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL}, #{image.thumbFileURL}, #{image.fileSize})			
 		</foreach>
 	</insert>
 	
@@ -142,5 +142,37 @@
 		order by A.id desc
 	]]>
 	</select>
+	
+	<select id="getItemDetailWithoutImage" resultType="ItemDetailVO" parameterType="Long">
+		select item.id id, item.name, stock, price, detail, repre_file repreFile, thumb_file_URL thumbFileURL, category.id categoryId, category.parent_id parentCategoryId, repre_file_size repreFileSize, repre_file_url repreFileURL from item join category on item.id = #{id} and item.category_id = category.id
+	</select>
+	
+	<select id="getImage" resultType="ImageVO" parameterType="Long">
+		select item_id itemId, upload_file_name uploadFileName, real_file_name realFileName, origin_file_url originFileURL, thumb_file_url thumbFileURL, file_size fileSize from item_image where item_id = #{id}
+	</select>
+	
+	<update id="updateItem" parameterType="ItemUpdateVO">
+		update 
+		item 
+		set
+		category_id = #{midCategory},
+		name = #{name},
+		stock = #{stock},
+		price = #{price},
+		detail = #{detail},
+		repre_file = case when #{repreFile, jdbcType=VARCHAR} is null then repre_file else #{repreFile, jdbcType=VARCHAR} end,
+		thumb_file_url = case when #{thumbFileURL, jdbcType=VARCHAR} is null then thumb_file_url else #{thumbFileURL, jdbcType=VARCHAR} end,
+		repre_file_size = case when #{repreFileSize, jdbcType=NUMERIC} is null then repre_file_size else #{repreFileSize, jdbcType=NUMERIC} end,
+		repre_file_url = case when #{repreFileURL, jdbcType=VARCHAR} is null then repre_file else #{repreFileURL, jdbcType=VARCHAR} end
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteItemImages" parameterType="ImageDeleteVO">
+		delete from item_image where item_id = #{id} and 
+			real_file_name in 
+			<foreach collection="list" item="item" separator="," index="index" open="(" close=")">
+				#{item}
+			</foreach>
+	</delete>
 	
 </mapper>

@@ -1,21 +1,29 @@
 package traffic.bye.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import traffic.bye.service.CartService;
 import traffic.bye.service.OrdersService;
+import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.CartVO;
+import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
@@ -101,6 +109,40 @@ public class OrderController {
 		ordersService.orderReceipt(orderId);
 	}
 	
+	@PostMapping(value ="/changeQuantity")
+	@ResponseBody
+	public Map<String, Object> changeQuantity(String data) throws Exception{
+		System.out.println(data);
+		JSONObject json = getJsonDataFormMsg(data);
+		long currentQuantity = Long.parseLong((String) json.get("currentQuantity"));
+		long currentMemberId = Long.parseLong((String) json.get("currentMemberId"));
+		long currentItemId = Long.parseLong((String) json.get("currentItemId"));
+		CartChangeQuantityVO vo = new CartChangeQuantityVO();
+		vo.setCurrentQuantity(currentQuantity);
+		vo.setCurrentMemberId(currentMemberId);
+		vo.setCurrentItemId(currentItemId);
+		System.out.println(vo);
+		ordersService.changeQuantity(vo);
+		return null;
+		
+	}
+	
+	@PostMapping(value ="/deleteQuantity")
+	@ResponseBody
+	public Map<String, Object> deleteQuantity(String itemId ,HttpSession session) throws Exception{
+		System.out.println(itemId);
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long memberId = loginSession.getId();
+		DeleteQuantityVO vo = new DeleteQuantityVO();
+		vo.setItemId(Long.parseLong(itemId));
+		vo.setMemberId(memberId);
+		System.out.println(vo);
+		ordersService.deleteQuantity(vo);
+		return null;
+		
+	}
+	
+	
 	
 	@GetMapping(value="order/orderlist")
 	public String ordersList(HttpSession session, Model model) throws Exception{
@@ -132,11 +174,9 @@ public class OrderController {
 		return "orders/ordermanage";
 	}
 	
-
-//	@PostMapping("/statusChange")
-//	public String statusChange() {
-//		
-//		
-//	}
-
+	private JSONObject getJsonDataFormMsg(String data) throws Exception{
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(data);
+		return (JSONObject)obj;
+	}
 }

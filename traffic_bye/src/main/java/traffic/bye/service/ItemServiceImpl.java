@@ -15,8 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.ItemDAO;
 import traffic.bye.util.Util;
+import traffic.bye.vo.ImageDeleteVO;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDetailVO;
+import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -99,17 +102,18 @@ public class ItemServiceImpl implements ItemService {
 		ImageVO repreImage = s3Service.processItemImage(repreFile);
 		itemAddVO.setRepreFile(repreImage.getRealFileName());
 		itemAddVO.setThumbFileURL(repreImage.getThumbFileURL());
+		itemAddVO.setRepreFileSize(repreImage.getFileSize());
+		itemAddVO.setRepreFileURL(repreImage.getOriginFileURL());
 		itemDAO.addItem(itemAddVO);
 		Long id = itemAddVO.getId();
 		repreImage.setItemId(id);
-		images.add(repreImage);
 		for(String anotherFileParam : anotherParams) {
 			MultipartFile anotherFile = files.get(anotherFileParam);
 			ImageVO imageVO = s3Service.processItemImage(anotherFile);
 			imageVO.setItemId(id);
 			images.add(imageVO);
 		}
-		itemDAO.addItemImages(images);
+		if(images.size() > 0) itemDAO.addItemImages(images);
 		return id;
 
 
@@ -120,4 +124,51 @@ public class ItemServiceImpl implements ItemService {
 
 		return itemDAO.getMainCategoryNewItemList(category_id);
 	}
+
+	@Override
+	public ItemDetailVO getItemDetailWithImage(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		ItemDetailVO vo = itemDAO.getItemDetailWithoutImage(id);
+		vo.setImages(itemDAO.getImage(id));
+		return vo;
+	}
+
+	@Override
+	@Transactional(rollbackFor=Exception.class)
+	public void updateItem(Long itemId, String items, MultipartHttpServletRequest mreq) throws Exception {
+		// TODO Auto-generated method stub
+		ObjectMapper objectMapper = new ObjectMapper();
+		ItemUpdateVO itemUpdateVO = objectMapper.readValue(items, ItemUpdateVO.class);
+		Map<String, MultipartFile> files = mreq.getFileMap();
+		MultipartFile repreFile = files.get("repreFile");
+		itemUpdateVO.setId(itemId);
+		if(repreFile != null) { // 대표 사진에 변경이 발생한 경우
+			files.remove("repreFile"); // 새로 업로드를 해주고 기존에 있던 파일 정보 또한 업데이트 시켜준다.
+			ImageVO repreImage = s3Service.processItemImage(repreFile);
+			itemUpdateVO.setRepreFile(repreImage.getRealFileName());
+			itemUpdateVO.setThumbFileURL(repreImage.getThumbFileURL());
+			itemUpdateVO.setRepreFileSize(repreImage.getFileSize());
+			itemUpdateVO.setRepreFileURL(repreImage.getOriginFileURL());
+		}
+		if(itemUpdateVO.getDeletedImgs().size() > 0) {
+			ImageDeleteVO imageDeleteVO = new ImageDeleteVO();
+			imageDeleteVO.setList(itemUpdateVO.getDeletedImgs());
+			imageDeleteVO.setId(itemId);
+			itemDAO.deleteItemImages(imageDeleteVO);
+		}
+		itemDAO.updateItem(itemUpdateVO);
+		Set<String> anotherParams = files.keySet();
+		List<ImageVO> images = new ArrayList<ImageVO>();
+		for(String anotherFileParam : anotherParams) {
+			MultipartFile anotherFile = files.get(anotherFileParam);
+			ImageVO imageVO = s3Service.processItemImage(anotherFile);
+			imageVO.setItemId(itemId);
+			images.add(imageVO);
+		}
+		if(images.size() > 0) itemDAO.addItemImages(images);
+	}
+	
+	
+	
+	
 }
