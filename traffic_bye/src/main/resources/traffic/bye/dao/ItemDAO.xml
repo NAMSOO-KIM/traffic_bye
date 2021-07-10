@@ -174,5 +174,4 @@
 				#{item}
 			</foreach>
 	</delete>
-	
 </mapper>

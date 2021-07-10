@@ -480,6 +480,7 @@
 						imgTime = 0;
 						clearInterval(imgInterval);
 					}
+					
 				}, 1000);
 			});
 			
