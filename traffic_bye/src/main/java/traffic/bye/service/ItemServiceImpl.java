@@ -91,15 +91,16 @@ public class ItemServiceImpl implements ItemService {
 		files.remove("repreFile");
 		Set<String> anotherParams = files.keySet();
 		List<ImageVO> images = new ArrayList<ImageVO>();
-		ImageVO repreImage = s3Service.processImage(repreFile);
+		ImageVO repreImage = s3Service.processItemImage(repreFile);
 		itemAddVO.setRepreFile(repreImage.getRealFileName());
+		itemAddVO.setThumbFileURL(repreImage.getThumbFileURL());
 		itemDAO.addItem(itemAddVO);
 		Long id = itemAddVO.getId();
 		repreImage.setItemId(id);
 		images.add(repreImage);
 		for(String anotherFileParam : anotherParams) {
 			MultipartFile anotherFile = files.get(anotherFileParam);
-			ImageVO imageVO = s3Service.processImage(anotherFile);
+			ImageVO imageVO = s3Service.processItemImage(anotherFile);
 			imageVO.setItemId(id);
 			images.add(imageVO);
 		}
