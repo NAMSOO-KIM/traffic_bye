@@ -83,6 +83,7 @@ public class S3ServiceImpl implements S3Service {
 		fileUpload("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName(),
 				Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
 		imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
+		imageVO.setFileSize(file.getSize());
 		return imageVO;
 	}
 

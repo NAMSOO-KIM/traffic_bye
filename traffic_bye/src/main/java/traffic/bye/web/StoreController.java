@@ -33,6 +33,7 @@ import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemDetailVO;
+import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.StoreVO;
 
 
@@ -121,14 +122,14 @@ public class StoreController {
 	}
 
 	@PostMapping("/store/{id}/updateItem/{itemId}")
-	public String UpdateItemProc(@PathVariable Long id, @PathVariable Long itemId, String items, MultipartHttpServletRequest mreq) {		 
-		log.info("HI");
-		Map<String, MultipartFile> fileMap = mreq.getFileMap();
-		Set<String> keySet = fileMap.keySet();
-		for(String key : keySet) {
-			log.info("key {} , fileName {}", key, fileMap.get(key).getOriginalFilename());
+	public ResponseEntity<Void> UpdateItemProc(@PathVariable Long id, @PathVariable Long itemId, String items, MultipartHttpServletRequest mreq) {		 
+		try {
+			itemService.updateItem(itemId, items, mreq);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.BAD_GATEWAY);
 		}
-		return null;
 	}
 	
 	
