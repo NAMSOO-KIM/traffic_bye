@@ -502,8 +502,9 @@
 </style>
 <div class="modal">
   <div id="modal-content" class="modal-content" 
-       title="클릭하면 창이 닫힙니다."><br>
+       title="클릭하면 창이 닫힙니다."><br><br><br><br><br><br><br>
   </div>
+  
 </div>
 <!-- 모달 세트  끝 -->
 			<!--------------------------- 소켓 시작 ---------------------------->
@@ -522,6 +523,7 @@
 				function onMessage(evt) {
 					$('.modal-content').empty();
 					$('.modal-content').append(evt.data);
+					$('.modal-content').append('<br><br><br><br><div><a href="${contextPath}/ordermanage">관리 페이지 이동</a></div>');
 					$(function(){ 
 					    $(".modal").fadeIn()
 						  $(".modal-content").click(function(){

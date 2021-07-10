@@ -3,6 +3,7 @@ package traffic.bye.service;
 
 import java.util.List;
 
+import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
@@ -31,5 +32,8 @@ public interface OrdersService {
 	List<OrdersListVO> getOrdersList(long memberId) throws Exception;
 
 	OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception;
+
+	void changeQuantity(CartChangeQuantityVO vo) throws Exception;
+
 
 }

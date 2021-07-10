@@ -80,23 +80,20 @@
 						</thead>
 						<tbody>
 						<c:set var="sum" value="0" />
-						<c:forEach items="${cartList}" var="cart">
+						<c:forEach items="${cartList}" var="cart" varStatus="status">
 							<tr>
 								<td><a href="#"><img src="../assets/images/pro3/2.jpg"
 										alt=""></a></td>
-								<td><a href="#">${cart.name}</a>
+								<td><a href="#">${cart.name}<input type="hidden" name="itemid${status.index}" class="current-item-id" value="${cart.item_id}"/></a>
 									<div class="mobile-cart-content row">
 										<div class="col">
 											<div class="qty-box">
 												<div class="input-group">
 													<input type="text" name="quantity"
-														class="form-control input-number" value="1">
+														class="form-control input-number" value="${cart.quantity}">
 												</div>
 											</div>
-										</div>
-										<div class="col">
-											<h2 class="td-color">$63.00</h2>
-										</div>
+										</div> 
 										<div class="col">
 											<h2 class="td-color">
 												<a href="#" class="icon"><i class="ti-close"></i></a>
@@ -109,8 +106,9 @@
 								<td>
 									<div class="qty-box">
 										<div class="input-group">
-											<input type="number" name="quantity"
+											<input type="number" name="quantity" id="cart-quantity${cart.item_id}"
 												class="form-control input-number" value="${cart.quantity}">
+												<button class="change-quantity-btn" onclick="updateQuantity('${cart.item_id}')">확인</button>
 										</div>
 									</div>
 								</td>
@@ -151,7 +149,6 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
-	<script src="${contextPath}/resources/js/jquery.bpopup-0.1.1.min.js"></script>
 	<style>
 #element_to_pop_up { 
     background-color:#fff;
@@ -170,6 +167,54 @@
 }
 </style>
 <!-- Button that triggers the popup -->
+	<script type="text/javascript">
+	
+	function updateQuantity(itemId) {
+		var elId = 'cart-quantity'+itemId;
+		
+		var currentQuantity = document.getElementById(elId).value;
+		//memberId 세션 있음
+		var currentMemberId = '<c:out value="${loginInfo.id}"/>';
+		var currentItemId = itemId;
+		console.log(currentItemId);
+		let currentlink = "${contextPath}/changeQuantity";
+		var currentSendData = {"currentMemberId" : currentMemberId,
+							    "currentQuantity" : currentQuantity,
+							    "currentItemId" : currentItemId};
+		console.log(currentSendData);
+		
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>정말로 변경하시겠습니까?</h2>');
+		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
+		   modal.style.display = "flex";
+		
+		   $('#yes-btn').click(function(){
+				$.ajax({
+					url : currentlink,
+					type : 'post',
+					data:{
+						data : JSON.stringify(currentSendData)
+					},
+					success : function(){
+						location.reload();
+						console.log('수정 완료');
+					}
+					
+				});
+		   });
+		   
+		   
+		   $('#no-btn').click(function(){
+			   modal.style.display = "none"
+		   });
+
+		
+		console.log(currentQuantity);
+		
+	}
+	</script>
+
 
 	<div id="element_to_pop_up">
     <a class="b-close">닫기<a/>
@@ -332,6 +377,8 @@ window.addEventListener("keyup", e => {
 	</script>
 
 	<!-- 모달 세트  끝 -->
+
+	
 
 
 
