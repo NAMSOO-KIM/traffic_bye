@@ -26,6 +26,10 @@ public interface ItemService {
 	List<ItemVO> getItemDetail(long id) throws Exception;
 	
 	int isRelatedItem(HashMap<String, Object> map) throws Exception;
+
+
+	List<ItemVO> getItemFromStore(long id) throws Exception;
+
 	
 	List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException;
 

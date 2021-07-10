@@ -88,6 +88,14 @@
 	</select>
 	
 
+	<select id="getItemFromStore" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select id, category_id, name, stock, price, detail, thumb_file_url
+		from team2.item
+		where store_id = #{store_id}
+	]]>
+	</select>
+
 	<select id="getMediumCategoryItemList" parameterType="long" resultType="ItemVO">
 	<![CDATA[
 		SELECT s.name as store_name , A.*
@@ -132,6 +140,7 @@
 		INNER JOIN STORE s 
 		on s.id = A.store_id
 		order by A.id desc
+
 	]]>
 	</select>
 	

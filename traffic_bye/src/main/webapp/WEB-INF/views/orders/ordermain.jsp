@@ -80,26 +80,23 @@
 						</thead>
 						<tbody>
 						<c:set var="sum" value="0" />
-						<c:forEach items="${cartList}" var="cart">
+						<c:forEach items="${cartList}" var="cart" varStatus="status">
 							<tr>
 								<td><a href="#"><img src="../assets/images/pro3/2.jpg"
 										alt=""></a></td>
-								<td><a href="#">${cart.name}</a>
+								<td><a href="#">${cart.name}<input type="hidden" name="itemid${status.index}" class="current-item-id" value="${cart.item_id}"/></a>
 									<div class="mobile-cart-content row">
 										<div class="col">
 											<div class="qty-box">
 												<div class="input-group">
 													<input type="text" name="quantity"
-														class="form-control input-number" value="1">
+														class="form-control input-number" value="${cart.quantity}">
 												</div>
 											</div>
-										</div>
-										<div class="col">
-											<h2 class="td-color">$63.00</h2>
-										</div>
+										</div> 
 										<div class="col">
 											<h2 class="td-color">
-												<a href="#" class="icon"><i class="ti-close"></i></a>
+												<a href="#" class="icon"><i class="ti-close" onclick="deleteQuantity('${cart.item_id}')"></i></a>
 											</h2>
 										</div>
 									</div></td>
@@ -109,12 +106,13 @@
 								<td>
 									<div class="qty-box">
 										<div class="input-group">
-											<input type="number" name="quantity"
+											<input type="number" name="quantity" id="cart-quantity${cart.item_id}"
 												class="form-control input-number" value="${cart.quantity}">
+												<button class="change-quantity-btn" onclick="updateQuantity('${cart.item_id}')">확인</button>
 										</div>
 									</div>
 								</td>
-								<td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+								<td><a href="#" class="icon"><i class="ti-close" onclick="deleteQuantity('${cart.item_id}')"></i></a></td>
 								<td>
 									<h2 class="td-color">${cart.quantity*cart.price}</h2>
 									<c:set var="sum" value="${sum + cart.quantity*cart.price}"/>
@@ -151,7 +149,6 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
-	<script src="${contextPath}/resources/js/jquery.bpopup-0.1.1.min.js"></script>
 	<style>
 #element_to_pop_up { 
     background-color:#fff;
@@ -170,6 +167,85 @@
 }
 </style>
 <!-- Button that triggers the popup -->
+	<script type="text/javascript">
+	
+	function deleteQuantity(itemId){
+		let deleteData = "itemId="+itemId;
+		let deletelink = "${contextPath}/deleteQuantity";
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>장바구니에서 삭제하시겠습니까?</h2>');
+		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
+		   modal.style.display = "flex";
+		   $('#yes-btn').click(function(){
+				$.ajax({
+					url : deletelink,
+					type : 'post',
+					data: deleteData ,
+					success : function(){
+						location.reload();
+						console.log('삭제 완료');
+					}
+					
+				});
+		   });
+		   
+		   $('#no-btn').click(function(){
+			   modal.style.display = "none"
+		   });
+	}
+	
+	</script>
+
+
+	<script type="text/javascript">
+	
+	function updateQuantity(itemId) {
+		var elId = 'cart-quantity'+itemId;
+		
+		var currentQuantity = document.getElementById(elId).value;
+		//memberId 세션 있음
+		var currentMemberId = '<c:out value="${loginInfo.id}"/>';
+		var currentItemId = itemId;
+		console.log(currentItemId);
+		let currentlink = "${contextPath}/changeQuantity";
+		var currentSendData = {"currentMemberId" : currentMemberId,
+							    "currentQuantity" : currentQuantity,
+							    "currentItemId" : currentItemId};
+		console.log(currentSendData);
+		
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>정말로 변경하시겠습니까?</h2>');
+		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
+		   modal.style.display = "flex";
+		
+		   $('#yes-btn').click(function(){
+				$.ajax({
+					url : currentlink,
+					type : 'post',
+					data:{
+						data : JSON.stringify(currentSendData)
+					},
+					success : function(){
+						location.reload();
+						console.log('수정 완료');
+					}
+					
+				});
+		   });
+		   
+		   
+		   $('#no-btn').click(function(){
+			   modal.style.display = "none"
+		   });
+
+		
+		console.log(currentQuantity);
+		
+	}
+	</script>
+
 
 	<div id="element_to_pop_up">
     <a class="b-close">닫기<a/>
@@ -202,18 +278,12 @@
 		wsocket.onclose = onClose;
 	}
 	function onMessage(evt) {
-		$('#element_to_pop_up').append(evt.data);
-		 ;(function($) {
-		        $(function() {
-		            $('#my-button').bind('click', function(e) {
-		                e.preventDefault();
-		                $('#element_to_pop_up').bPopup({
-		                   });
-		            });
-		            
-		         });
-		     })(jQuery);
-		alert(evt.data+"메세지 도착");
+		console.log("메세지 도착");
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>제목</h2>');
+		$('.content-modal').append(evt.data);
+		   modal.style.display = "flex";
 	}
 	function onOpen(){
 		console.log('hi');
@@ -232,59 +302,117 @@
 		console.log('안녕');
 		$('#sendBtn').click(function(){send();});
 		console.log("준비완료");
-		$('#exitBtn').click(function(){disconnect();});		
 	});
+	
 </script>
- <style>
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
- 
+	<!-- 모달 세트  시작 -->
+	<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: rgba(69, 139, 197, 0.70);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
 </style>
- 
- 
- 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 도착했습니다.</span></p>
-                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >
-                     <a id="confirmBtn">주문 수락</a>
-                </span>
-            </div>
-      </div>
-    </div>
-        <!--End Modal-->
+	<div id="container">
+		<div id="lorem-ipsum"></div>
+	</div>
+	<div id="modal" class="modal-overlay">
+		<div class="modal-window">
+			<div class="title-modal">
+			</div>
+			<div class="close-area">X</div>
+			<div class="content-modal">
+			</div>
+		</div>
+	</div>
+	<script>
+   
+    </script>
+
+	<script type="text/javascript">
+	var modal = document.getElementById("modal");
+	
+	const closeBtn = modal.querySelector(".close-area");
+	closeBtn.addEventListener("click", e => {
+	    modal.style.display = "none"
+	});
+	
+	modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal-overlay")) {
+        modal.style.display = "none"
+    }
+});
+
+window.addEventListener("keyup", e => {
+    if(modal.style.display === "flex" && e.key === "Escape") {
+        modal.style.display = "none"
+    }
+});
+	function isModalOn() {
+    return modal.style.display === "flex"
+}
+	</script>
+
+	<!-- 모달 세트  끝 -->
+
+	
+
+
+
 	<!-- 내용 끝 -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
