@@ -32,6 +32,7 @@ import traffic.bye.service.StoreService;
 import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.StoreVO;
 
 
@@ -103,10 +104,31 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/{id}/updateItem/{itemId}")
-	public String updateItem(@PathVariable Long id, @PathVariable Long itemId) {
-		
-		
-		return "store/updateItem";
+	public String updateItem(@PathVariable Long id, @PathVariable Long itemId, Model model) {
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			ItemDetailVO itemDetailVO = itemService.getItemDetailWithImage(itemId);
+			log.info(itemDetailVO.toString());
+			String data = objectMapper.writeValueAsString(itemDetailVO);
+			model.addAttribute("bigCategories", categoryService.getMainCategory());
+			model.addAttribute("midCategories", categoryService.getMediumCategory(itemDetailVO.getParentCategoryId()));
+			model.addAttribute("itemDetailVO", data);
+			return "store/updateItem";
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "redirect:/";
+		}
+	}
+
+	@PostMapping("/store/{id}/updateItem/{itemId}")
+	public String UpdateItemProc(@PathVariable Long id, @PathVariable Long itemId, String items, MultipartHttpServletRequest mreq) {		 
+		log.info("HI");
+		Map<String, MultipartFile> fileMap = mreq.getFileMap();
+		Set<String> keySet = fileMap.keySet();
+		for(String key : keySet) {
+			log.info("key {} , fileName {}", key, fileMap.get(key).getOriginalFilename());
+		}
+		return null;
 	}
 	
 	

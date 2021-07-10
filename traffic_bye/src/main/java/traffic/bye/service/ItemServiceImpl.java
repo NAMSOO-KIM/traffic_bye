@@ -17,6 +17,7 @@ import traffic.bye.dao.ItemDAO;
 import traffic.bye.util.Util;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -102,7 +103,6 @@ public class ItemServiceImpl implements ItemService {
 		itemDAO.addItem(itemAddVO);
 		Long id = itemAddVO.getId();
 		repreImage.setItemId(id);
-		images.add(repreImage);
 		for(String anotherFileParam : anotherParams) {
 			MultipartFile anotherFile = files.get(anotherFileParam);
 			ImageVO imageVO = s3Service.processItemImage(anotherFile);
@@ -120,4 +120,14 @@ public class ItemServiceImpl implements ItemService {
 
 		return itemDAO.getMainCategoryNewItemList(category_id);
 	}
+
+	@Override
+	public ItemDetailVO getItemDetailWithImage(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		ItemDetailVO vo = itemDAO.getItemDetailWithoutImage(id);
+		vo.setImages(itemDAO.getImage(id));
+		return vo;
+	}
+	
+	
 }
