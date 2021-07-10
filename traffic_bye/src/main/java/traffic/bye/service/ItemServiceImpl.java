@@ -55,5 +55,10 @@ public class ItemServiceImpl implements ItemService {
 
 		return itemDAO.isRelatedItem(map);
 	}
+
+	@Override
+	public List<ItemVO> getItemFromStore(long store_id) throws Exception {
+		return itemDAO.getItemFromStore(store_id);
+	}
 	
 }

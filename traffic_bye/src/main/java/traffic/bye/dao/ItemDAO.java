@@ -19,4 +19,6 @@ public interface ItemDAO {
 	List<ItemVO> getItemDetail(long id) throws SQLException; // 이미지 포함
 	
 	int isRelatedItem(HashMap<String, Object> map) throws SQLException;
+
+	List<ItemVO> getItemFromStore(long store_id) throws SQLException;
 }
