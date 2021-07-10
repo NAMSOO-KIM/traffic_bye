@@ -96,7 +96,7 @@
 										</div> 
 										<div class="col">
 											<h2 class="td-color">
-												<a href="#" class="icon"><i class="ti-close"></i></a>
+												<a href="#" class="icon"><i class="ti-close" onclick="deleteQuantity('${cart.item_id}')"></i></a>
 											</h2>
 										</div>
 									</div></td>
@@ -112,7 +112,7 @@
 										</div>
 									</div>
 								</td>
-								<td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+								<td><a href="#" class="icon"><i class="ti-close" onclick="deleteQuantity('${cart.item_id}')"></i></a></td>
 								<td>
 									<h2 class="td-color">${cart.quantity*cart.price}</h2>
 									<c:set var="sum" value="${sum + cart.quantity*cart.price}"/>
@@ -167,6 +167,37 @@
 }
 </style>
 <!-- Button that triggers the popup -->
+	<script type="text/javascript">
+	
+	function deleteQuantity(itemId){
+		let deleteData = "itemId="+itemId;
+		let deletelink = "${contextPath}/deleteQuantity";
+		$('.title-modal').empty();
+		$('.content-modal').empty();
+		$('.title-modal').append('<h2>장바구니에서 삭제하시겠습니까?</h2>');
+		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
+		   modal.style.display = "flex";
+		   $('#yes-btn').click(function(){
+				$.ajax({
+					url : deletelink,
+					type : 'post',
+					data: deleteData ,
+					success : function(){
+						location.reload();
+						console.log('삭제 완료');
+					}
+					
+				});
+		   });
+		   
+		   $('#no-btn').click(function(){
+			   modal.style.display = "none"
+		   });
+	}
+	
+	</script>
+
+
 	<script type="text/javascript">
 	
 	function updateQuantity(itemId) {

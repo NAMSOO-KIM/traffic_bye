@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.OrdersDAO;
 import traffic.bye.vo.CartChangeQuantityVO;
+import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
@@ -77,6 +78,11 @@ public class OrderServiceImpl implements OrdersService{
 	@Override
 	public void changeQuantity(CartChangeQuantityVO vo) throws Exception {
 		ordersDAO.changeQuantity(vo);
+	}
+
+	@Override
+	public void deleteQuantity(DeleteQuantityVO vo) throws Exception {
+		ordersDAO.deleteQuantity(vo);
 	}
 
 	

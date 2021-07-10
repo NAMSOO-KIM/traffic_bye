@@ -84,6 +84,11 @@ item_id=#{currentItemId} and
 member_id = #{currentMemberId}
 	
 	</update>
+	
+	<delete id="deleteQuantity" parameterType="DeleteQuantityVO">
+	delete from cart 
+where item_id = #{itemId} and member_id = #{memberId}
+	</delete>
 
 
 </mapper>

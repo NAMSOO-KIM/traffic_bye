@@ -23,6 +23,7 @@ import traffic.bye.service.CartService;
 import traffic.bye.service.OrdersService;
 import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.CartVO;
+import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
@@ -125,6 +126,22 @@ public class OrderController {
 		return null;
 		
 	}
+	
+	@PostMapping(value ="/deleteQuantity")
+	@ResponseBody
+	public Map<String, Object> deleteQuantity(String itemId ,HttpSession session) throws Exception{
+		System.out.println(itemId);
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long memberId = loginSession.getId();
+		DeleteQuantityVO vo = new DeleteQuantityVO();
+		vo.setItemId(Long.parseLong(itemId));
+		vo.setMemberId(memberId);
+		System.out.println(vo);
+		ordersService.deleteQuantity(vo);
+		return null;
+		
+	}
+	
 	
 	
 	@GetMapping(value="order/orderlist")

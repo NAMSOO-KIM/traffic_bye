@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import traffic.bye.vo.CartChangeQuantityVO;
+import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
@@ -34,5 +35,7 @@ public interface OrdersDAO {
 	OrdersTrackingVO getOrderTrackingList(long orderId) throws SQLException;
 
 	void changeQuantity(CartChangeQuantityVO vo) throws SQLException;
+
+	void deleteQuantity(DeleteQuantityVO vo) throws SQLException;
 
 }
