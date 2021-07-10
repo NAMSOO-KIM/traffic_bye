@@ -26,4 +26,5 @@ public class ItemDetailVO {
 	private List<ImageVO> images;
 	private Long categoryId;
 	private Long parentCategoryId;
+	private Long repreFileSize;
 }

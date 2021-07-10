@@ -506,7 +506,7 @@
 										<div class="form-group">
 											<div class="product-buttons text-center">
 												<button type="button" class="btn btn-primary"
-													id="addProduct">등록</button>
+													id="updateItem">등록</button>
 												<button type="button" class="btn btn-light">취소</button>
 											</div>
 										</div>

@@ -27,13 +27,13 @@ public interface ItemService {
 	
 	int isRelatedItem(HashMap<String, Object> map) throws Exception;
 
-
 	List<ItemVO> getItemFromStore(long id) throws Exception;
 
-	
 	List<ItemVO> getMediumCategoryItemList(long category_id) throws SQLException;
 
 	Long addItem(Long storeId, String items, MultipartHttpServletRequest mreq) throws Exception;
+	
+	void updateItem(Long itemId, String items, MultipartHttpServletRequest mreq) throws Exception;
 
 	List<ItemVO> getMainCategoryNewItemList(long category_id) throws SQLException;
 	
