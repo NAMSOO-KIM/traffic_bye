@@ -50,7 +50,10 @@ function iamport(){
 	    //buyer_postcode : '123-456'
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	    	//alert("하이");
+	    	
+	    	alert("하이");
+	    	$('#myForm').submit();
+	    	
 	    	console.log(rsp.imp_uid);
 	    	console.log(rsp.merchant_uid);
 	    	console.log(rsp.paid_amount);
@@ -94,7 +97,7 @@ function iamport2(){
 	IMP.init('imp20966089');
 	
 	IMP.request_pay({
-	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+		pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
 	    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
 	    name : '주문명:결제테스트',
@@ -116,6 +119,7 @@ function iamport2(){
 		    		//기타 필요한 데이터가 있으면 추가 전달
 	    		}
 	    	}).done(function(data) {
+	    		
 	    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
 	    		if ( everythings_fine ) {
 	    			var msg = '결제가 완료되었습니다.';
@@ -140,6 +144,7 @@ function iamport2(){
 }
 
 </script>
+
 <body>
 	
 	<!-- 내용 입력해주세요 -->
@@ -227,11 +232,16 @@ function iamport2(){
 					<button class="btn btn-solid" onclick="iamport2();">KG이니시스 결제</button>
 				</div>
 				<div class="col-6">
-				
+				<button class="btn btn-solid" onclick="open_modal();">스마트오더 주문하기</button>
 				<button class="btn btn-solid" onclick="iamport();">카카오페이 결제하기</button>
 				
 				</div>
+				<form action="orderInsert" method="post" id="myForm">
+					<!-- <button class="btn btn-solid" id="sendBtn" type="hidden">스마트오더 주문하기!</button>  -->
+					<!-- <input type="hidden" id="sendBtn"> -->
+				</form>
 			</div>
+			
 		</div>
 	</section>
 	<!--section end-->
@@ -243,51 +253,62 @@ function iamport2(){
 	</c:forEach>
 	storeList = new Set(storeList);
 	storeList = Array.from(storeList);
-	console.log(storeList);
 	</script>
-	
+	<script type="text/javascript" src=" https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 	<script type="text/javascript">
 	var wsocket;
-	
+	var customer = '<c:out value="${loginInfo.loginId}"/>';
+	var memberId = '<c:out value="${loginInfo.id}"/>';
+	var auth = '<c:out value="${loginInfo.storeId}"/>';
+	var sendData = {};
+	sendData.customer = customer;
+	sendData.storeList= storeList;
+	sendData.type = "order";
+	sendData.auth=auth;
+	console.log(sendData);
+	console.log(sendData.customer);
 	function connect() {
 		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.open = onOpen;
+		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 	}
-	function disconnect() {
-		wsocket.close();
-	}
-	function onOpen(evt) {
-		send();
-	}
 	function onMessage(evt) {
-		$('#myModal').show();
+		$('#element_to_pop_up').append(evt.data);
+		 ;(function($) {
+		        $(function() {
+		            $('#my-button').bind('click', function(e) {
+		                e.preventDefault();
+		                $('#element_to_pop_up').bPopup({
+		                   });
+		            });
+		            
+		         });
+		     })(jQuery);
+		alert(evt.data+"메세지 도착");
 	}
+	function onOpen(){
+		console.log('hi');
+	}
+	
 	function onClose(evt) {
 		console.log("연결을 끊었습니다.");
 	}
 	function send() {
 		
-		//메세지 보낼 스토어아이디는 
-		var userId = $('#userId').val();
-		wsocket.send("알람가야될 상점 목록:"+storeList);
+		wsocket.send(JSON.stringify(sendData));
 	}
 	connect();
 	$(document).ready(function(){
 		//var sessionInfo = ${sessionScope.loginInfo};
 		
+		connect();
 		console.log('안녕');
-		/* $('#message').keypress(function(event){
-			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if(keycode=='13'){
-				send();
-			}
-			event.stopPropagation();
-		}); */
-		$('#sendBtn').click(function(){send();});
+		// $('#sendBtn').click(function(){send();});
+		send();
 		console.log("준비완료");
-		$('#exitBtn').click(function(){disconnect();});		
+		
+		$('#exitBtn').click(function(){disconnect();});	
 	});
 	
 	
@@ -300,20 +321,30 @@ function iamport2(){
 	
 </script>
  <style>
+ 			
         /* The Modal (background) */
+        /* Hidden by default */
+        /* Stay in place */
+        /* Sit on top */
+        /* Full width */
+        /* Full height */
+        /* Enable scroll if needed */
+        /* Fallback color */
+        /* Black w/ opacity */
+        
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
         }
-    
+    	
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
@@ -322,7 +353,7 @@ function iamport2(){
             border: 1px solid #888;
             width: 30%; /* Could be more or less, depending on screen size */                          
         }
- 
+ 	
 </style>
  
  
@@ -331,30 +362,34 @@ function iamport2(){
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">알림</span></b></span></p>
+                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">결제 방법 선택</span></b></span></p>
                 <p style="text-align: center; line-height: 1.5;"><br /></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">주문이 도착했습니다.</span></p>
-                <p style="text-align: center; line-height: 1.5;"><b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><br /></span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가 </span></p>
-                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">내용추가</span></p>
                 <p style="text-align: center; line-height: 1.5;"><br /></p>
+                
+                <button class="btn btn-solid" onclick="iamport2();">KG이니시스 결제</button>
+                <br>
+                <br>
+				
+                <button class="btn btn-solid" onclick="iamport();">카카오페이 결제하기</button>
                 <p><br /></p>
             <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
-                     <a id="confirmBtn">주문 수락</a>
+                     <a id="confirmBtn">닫기</a>
                 </span>
             </div>
       </div>
     </div>
-        <!--End Modal-->
+    <!--End Modal-->
+    
     <script type="text/javascript">
         //팝업 Close 기능
         function close_pop(flag) {
              $('#myModal').hide();
         };
         
+        function open_modal() {
+            $('#myModal').show();
+       };
       </script>
  
 	<script type="text/javascript">
