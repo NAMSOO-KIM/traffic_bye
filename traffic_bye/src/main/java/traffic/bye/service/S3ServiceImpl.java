@@ -68,16 +68,46 @@ public class S3ServiceImpl implements S3Service{
 	}
 
 	@Override
-	public ImageVO processImage(MultipartFile file) throws Exception {
+	public ImageVO processItemImage(MultipartFile file) throws Exception {
 		// TODO Auto-generated method stub
 		log.info(file.getOriginalFilename());
+		log.info(file.getName());
 		ImageVO imageVO = new ImageVO();
 		imageVO.setUploadFileName(file.getOriginalFilename());
-		imageVO.setRealFileName(Util.originItemFolder + Util.getCurrentUploadPath() + Util.makeFileName(file));
-		fileUpload("kosateam2", imageVO.getRealFileName(), file.getBytes());
-		imageVO.setOriginFileURL(getFileURL("kosateam2", imageVO.getRealFileName()));
+		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
+		fileUpload("kosateam2", Util.originItemFolder + imageVO.getRealFileName(), file.getBytes());
+		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originItemFolder + imageVO.getRealFileName()));
+		if(file.getName().equals("repreFile")) {
+			fileUpload("kosateam2", 
+					Util.thumbItemFolder + imageVO.getRealFileName(), 
+					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), 
+					imageVO.getOriginFileURL()));
+					imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
+		}
+		log.info(imageVO.getThumbFileURL());
 		return imageVO;
 	}
+
+	@Override
+	public ImageVO processStoreImage(MultipartFile file) throws Exception {
+		// TODO Auto-generated method stub
+		ImageVO imageVO = new ImageVO();
+		imageVO.setUploadFileName(file.getOriginalFilename());
+		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
+		fileUpload("kosateam2", Util.originStoreFolder + imageVO.getRealFileName(), file.getBytes());
+		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originStoreFolder + imageVO.getRealFileName()));
+		if(file.getName().equals("repreFile")) {
+			fileUpload("kosateam2", 
+					Util.thumbStoreFolder + imageVO.getRealFileName(), 
+					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), 
+					imageVO.getOriginFileURL()));
+					imageVO.setThumbFileURL(null);
+			imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
+		}
+		return imageVO;
+	}
+	
+	
 	
 	
 }

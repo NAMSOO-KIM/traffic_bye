@@ -103,7 +103,7 @@
 	
 
 	<insert id="addItem" parameterType="ItemAddVO">
-		insert into item values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })	
+		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })	
 	
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			select item_id_seq.currval from dual
