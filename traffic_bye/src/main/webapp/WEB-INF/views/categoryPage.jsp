@@ -15,8 +15,7 @@
 <body class="theme-color-1">
 	<!-- header start -->
 	
-	<!-- Price range icon -->
-	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/price-range.css">
+	
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 	
@@ -282,13 +281,7 @@
                                                             </ul>
                                                         </nav>
                                                     </div>
-                                                    <!-- 
-                                                    <div class="col-xl-6 col-md-6 col-sm-12">
-                                                        <div class="product-search-count-bottom">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5>
-                                                        </div>
-                                                    </div>
-                                                     -->
+                                                    
                                                 </div>
                                             </div>
                                         </div>
