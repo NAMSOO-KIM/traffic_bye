@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +19,9 @@ import traffic.bye.vo.CartVO;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
+import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
+import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.OrdersVO;
 
 @Controller
@@ -34,7 +37,6 @@ public class OrderController {
 	public String getInstructor(HttpSession session, Model model) throws Exception {
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
 		long id = loginSession.getId();
-		System.out.println(id);
 		List<CartVO> cartList = cartService.getCartList(id);
 		System.out.println(cartList.toString());
 		model.addAttribute("cartList", cartList);
@@ -100,15 +102,26 @@ public class OrderController {
 	}
 	
 	
-	
-
-	
-	@GetMapping("/member/mypage/order")
-	public String orderTracking() {
-		return "orders/ordertracking";
+	@GetMapping(value="order/orderlist")
+	public String ordersList(HttpSession session, Model model) throws Exception{
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long memberId = loginSession.getId();
+		List<OrdersListVO> ordersList = ordersService.getOrdersList(memberId);
+		model.addAttribute("ordersList", ordersList);
+		return "orders/orderlist";
 	}
+	
+	@GetMapping(value ="order/orderlist/{memberId}/{id}")
+	public String orderTracking(@PathVariable long memberId, @PathVariable long id ,Model model) throws Exception {
+		OrdersTrackingVO trackingList = ordersService.getOrderTrackingList(id);
+		model.addAttribute("list",trackingList);
+		System.out.println("트래킹 리스트:"+trackingList.toString());
+		return "orders/ordertracking";
+		
+	}
+	
 
-	@GetMapping("/ordermanage")
+	@GetMapping("ordermanage")
 	public String orderManage(HttpSession session, Model model) throws Exception {
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		long storeId = loginInfo.getStoreId();

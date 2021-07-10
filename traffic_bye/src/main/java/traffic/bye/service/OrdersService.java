@@ -5,7 +5,9 @@ import java.util.List;
 
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
+import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
+import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.OrdersVO;
 
 public interface OrdersService {
@@ -25,5 +27,9 @@ public interface OrdersService {
 	void orderReady(long orderId) throws Exception;
 
 	void orderReceipt(long orderId) throws Exception;
+
+	List<OrdersListVO> getOrdersList(long memberId) throws Exception;
+
+	OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception;
 
 }

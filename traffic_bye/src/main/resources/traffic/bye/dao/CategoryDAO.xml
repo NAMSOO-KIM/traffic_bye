@@ -45,5 +45,28 @@
 			order by id
 	]]>
 	</select>
+	
+	<select id="checkMainCategory" parameterType="long" resultType="long">
+	<![CDATA[
+			select count(*)
+			from category
+			where id = #{id} and parent_id is null
+	]]>
+	</select>
+	
+	<select id="getCategory" parameterType="long" resultType="CategoryVO">
+	<![CDATA[
+			select *
+			from category
+			where id = #{id}
+	]]>
+	</select>
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>

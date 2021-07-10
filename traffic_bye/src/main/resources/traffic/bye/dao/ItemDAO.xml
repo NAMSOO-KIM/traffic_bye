@@ -87,11 +87,60 @@
 	]]>
 	</select>
 	
+
 	<select id="getItemFromStore" parameterType="long" resultType="ItemVO">
 	<![CDATA[
 		select id, category_id, name, stock, price, detail, thumb_file_url
 		from team2.item
 		where store_id = #{store_id}
+	]]>
+	</select>
+
+	<select id="getMediumCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where it.category_id = #{category_id}
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+	]]>
+	</select>
+	
+	
+
+	<insert id="addItem" parameterType="ItemAddVO">
+		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR })	
+	
+		<selectKey keyProperty="id" resultType="Long" order="AFTER">
+			select item_id_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="addItemImages" parameterType="java.util.List">
+		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+			 into item_image 
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
+		</foreach>
+	</insert>
+	
+	<select id="getMainCategoryNewItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		order by A.id desc
+
 	]]>
 	</select>
 	

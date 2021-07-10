@@ -478,3 +478,8 @@
       height: 58px;
       left: 50%;
       margin-left: -27px; }
+      
+      .dz-progress {
+  /* progress bar covers file name */
+  	 display: none !important;
+	 }

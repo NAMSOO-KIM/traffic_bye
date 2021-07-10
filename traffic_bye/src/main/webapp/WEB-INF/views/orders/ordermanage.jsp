@@ -597,6 +597,7 @@
 									success : function(){
 										console.log('주문 수락되었습니다.');
 										console.log(result);
+											
 											receiveData.type="accept";
 											receiveData.customer = memberName;
 											receiveData.auth = auth;
