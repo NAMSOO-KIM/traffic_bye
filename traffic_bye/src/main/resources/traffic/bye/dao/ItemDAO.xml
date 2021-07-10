@@ -113,7 +113,7 @@
 	<insert id="addItemImages" parameterType="java.util.List">
 		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
 			 into item_image 
-			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL})			
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL}, #{image.thumbFileURL})			
 		</foreach>
 	</insert>
 	
@@ -133,6 +133,14 @@
 		on s.id = A.store_id
 		order by A.id desc
 	]]>
+	</select>
+	
+	<select id="getItemDetailWithoutImage" resultType="ItemDetailVO" parameterType="Long">
+		select item.id id, item.name, stock, price, detail, repre_file repreFile, thumb_file_URL thumbFileURL, category.id categoryId, category.parent_id parentCategoryId from item join category on item.id = #{id} and item.category_id = category.id
+	</select>
+	
+	<select id="getImage" resultType="ImageVO" parameterType="Long">
+		select item_id itemId, upload_file_name uploadFileName, real_file_name realFileName, origin_file_url originFileURL from item_image where item_id = #{id}
 	</select>
 	
 </mapper>

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
 
 
@@ -31,5 +32,6 @@ public interface ItemService {
 	Long addItem(Long storeId, String items, MultipartHttpServletRequest mreq) throws Exception;
 
 	List<ItemVO> getMainCategoryNewItemList(long category_id) throws SQLException;
-
+	
+	ItemDetailVO getItemDetailWithImage(Long id) throws Exception;
 }
