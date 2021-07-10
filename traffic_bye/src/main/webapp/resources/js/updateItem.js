@@ -13,8 +13,8 @@
     $("#bigCategory").val(itemDetailVO.parentCategoryId).prop("selected", true);
     $("#midCategory").val(itemDetailVO.categoryId).prop("selected", true);
     let anotherImages = itemDetailVO.images;
-    anotherFiles.options.thumbnailWidth = 250;
-	anotherFiles.options.thumbnailHeight = 250;
+    anotherFiles.options.thumbnailWidth = 120;
+	anotherFiles.options.thumbnailHeight = 120;
 	let deletedMock = [];
 	let rePreFileDeleted = false;
     for(let i = 0; i < anotherImages.length; i++){
