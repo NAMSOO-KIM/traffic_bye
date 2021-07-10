@@ -104,7 +104,7 @@
 								<div class="brand-logo">
 
 									<a href="${contextPath}"><img
-										src="${contextPath}/resources/assets/images/icon/logos.png"
+										src="${contextPath}/resources/assets/images/icon/logos2.png"
 										class="img-fluid blur-up lazyload" alt=""
 										style="width: 179px; height: 34px;"></a>
 								</div>
@@ -459,7 +459,7 @@
 							</div>
 							<div class="brand-logo">
 								<a href="${contextPath}/"><img
-									src="${contextPath}/resources/assets/images/icon/logos.png"
+									src="${contextPath}/resources/assets/images/icon/logos2.png"
 									class="img-fluid blur-up lazyload" alt=""
 									style="width: 179px; height: 34px;"></a>
 							</div>
