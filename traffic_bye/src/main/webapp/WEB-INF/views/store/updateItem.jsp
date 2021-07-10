@@ -49,6 +49,9 @@
 <!-- App css-->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
+<script>
+	itemDetailVO = ${itemDetailVO};
+</script>
 </head>
 <body>
 
@@ -450,6 +453,9 @@
 											</select> <select class="custom-select form-control"
 												required="required" name="midCategory" id="midCategory">
 												<option value="">중분류</option>
+												<c:forEach var="item" items="${midCategories}">
+												    <option value="${item.id}">${item.name}</option>
+												</c:forEach>
 											</select>
 										</div>
 										<div class="form-group">
