@@ -5,11 +5,13 @@ import java.util.List;
 
 import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.DeleteQuantityVO;
+import traffic.bye.vo.OrdersDetailListParmVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
+import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
 
 public interface OrdersService {
@@ -22,13 +24,13 @@ public interface OrdersService {
 	
 	long getOrderId() throws Exception;
 	
-	List<OrdersDetailListVO> getOrdersDetailList(long orderId) throws Exception;
+	List<OrdersDetailListVO> getOrdersDetailList(OrdersDetailListParmVO vo) throws Exception;
 
-	void orderAccept(long orderId) throws Exception;
+	void orderAccept(OrdersUpdateParamVO vo) throws Exception;
 
-	void orderReady(long orderId) throws Exception;
+	void orderReady(OrdersUpdateParamVO vo) throws Exception;
 
-	void orderReceipt(long orderId) throws Exception;
+	void orderReceipt(OrdersUpdateParamVO vo) throws Exception;
 
 	List<OrdersListVO> getOrdersList(long memberId) throws Exception;
 
@@ -37,6 +39,7 @@ public interface OrdersService {
 	void changeQuantity(CartChangeQuantityVO vo) throws Exception;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws Exception;
+
 
 
 }

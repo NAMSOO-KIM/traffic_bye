@@ -42,6 +42,16 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
 
+<!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/icofont.css">
+
+    <!-- Prism css-->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/prism.css">
+
+    <!-- Chartist css -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/chartist.css">
+
+
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/vendors/flag-icon.css">
@@ -412,6 +422,63 @@
 				<div class="container-fluid">
 					<div class="page-header">
 						<div class="row">
+							    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-warning card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="navigation" class="font-warning"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">수락 대기</span>
+                                        <h3 class="mb-0"><span class="counter">6659건</span><small>7월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden  widget-cards">
+                            <div class="bg-secondary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">주문 수락</span>
+                                        <h3 class="mb-0"><span class="counter">9856건</span><small>7월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-primary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">준비 완료</span>
+                                        <h3 class="mb-0"> <span class="counter">893건</span><small>7월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-danger card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">수령 완료</span>
+                                        <h3 class="mb-0"><span class="counter">45631건</span><small> 7월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+							
 							<div class="col-lg-6">
 								<div class="page-header-left">
 									<h3>
