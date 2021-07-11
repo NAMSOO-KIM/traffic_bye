@@ -10,19 +10,22 @@ import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.OrdersDAO;
 import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.DeleteQuantityVO;
+import traffic.bye.vo.OrdersDetailListParmVO;
 import traffic.bye.vo.OrdersDetailListVO;
+import traffic.bye.vo.OrdersDetailStatusParamVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
+import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
 
 @Slf4j
 @Service
-public class OrderServiceImpl implements OrdersService{
-	
+public class OrderServiceImpl implements OrdersService {
+
 	@Autowired
-	@Qualifier(value="ordersDAO")
+	@Qualifier(value = "ordersDAO")
 	private OrdersDAO ordersDAO;
 
 	@Override
@@ -46,23 +49,37 @@ public class OrderServiceImpl implements OrdersService{
 	}
 
 	@Override
-	public List<OrdersDetailListVO> getOrdersDetailList(long orderId) throws Exception {
-		return ordersDAO.getOrdersDetailList(orderId);
+	public List<OrdersDetailListVO> getOrdersDetailList(OrdersDetailListParmVO vo) throws Exception {
+		return ordersDAO.getOrdersDetailList(vo);
 	}
 
 	@Override
-	public void orderAccept(long orderId) throws Exception {
-		  ordersDAO.orderAccept(orderId);
+	public void orderAccept(OrdersUpdateParamVO vo) throws Exception {
+		OrdersDetailStatusParamVO paramVO = new OrdersDetailStatusParamVO();
+		paramVO.setDetailStatus(0);
+		paramVO.setOrderId(vo.getOrderId());
+		ordersDAO.orderAccept(vo);
+		ordersDAO.customerStatus(vo.getOrderId());
+
 	}
 
 	@Override
-	public void orderReady(long orderId) throws Exception {
-		 ordersDAO.orderReady(orderId);
+	public void orderReady(OrdersUpdateParamVO vo) throws Exception {
+		OrdersDetailStatusParamVO paramVO = new OrdersDetailStatusParamVO();
+		paramVO.setDetailStatus(1);
+		paramVO.setOrderId(vo.getOrderId());
+		ordersDAO.orderReady(vo);
+		ordersDAO.customerStatus(vo.getOrderId());
 	}
 
 	@Override
-	public void orderReceipt(long orderId) throws Exception {
-		 ordersDAO.orderReceipt(orderId);
+	public void orderReceipt(OrdersUpdateParamVO vo) throws Exception {
+		OrdersDetailStatusParamVO paramVO = new OrdersDetailStatusParamVO();
+		paramVO.setDetailStatus(2);
+		paramVO.setOrderId(vo.getOrderId());
+		ordersDAO.orderReceipt(vo);
+		ordersDAO.customerStatus(vo.getOrderId());
+
 	}
 
 	@Override
@@ -85,8 +102,4 @@ public class OrderServiceImpl implements OrdersService{
 		ordersDAO.deleteQuantity(vo);
 	}
 
-	
-	
-	
-	
 }

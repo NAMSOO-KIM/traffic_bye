@@ -5,11 +5,14 @@ import java.util.List;
 
 import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.DeleteQuantityVO;
+import traffic.bye.vo.OrdersDetailListParmVO;
 import traffic.bye.vo.OrdersDetailListVO;
+import traffic.bye.vo.OrdersDetailStatusParamVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
+import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
 
 public interface OrdersDAO {
@@ -22,13 +25,13 @@ public interface OrdersDAO {
 	
 	long getOrderId() throws SQLException; 
 	
-	List<OrdersDetailListVO> getOrdersDetailList(long orderId) throws SQLException;
+	List<OrdersDetailListVO> getOrdersDetailList(OrdersDetailListParmVO vo) throws SQLException;
 
-	void orderAccept(long orderId) throws SQLException;
+	void orderAccept(OrdersUpdateParamVO vo) throws SQLException;
 
-	void orderReady(long orderId) throws SQLException;
+	void orderReady(OrdersUpdateParamVO vo) throws SQLException;
 
-	void orderReceipt(long orderId) throws SQLException;
+	void orderReceipt(OrdersUpdateParamVO vo) throws SQLException;
 
 	List<OrdersListVO> getOrdersList(long memberId) throws SQLException;
 
@@ -37,5 +40,9 @@ public interface OrdersDAO {
 	void changeQuantity(CartChangeQuantityVO vo) throws SQLException;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws SQLException;
+	
+	long customerStatus(Long id) throws SQLException;
+	
+	
 
 }

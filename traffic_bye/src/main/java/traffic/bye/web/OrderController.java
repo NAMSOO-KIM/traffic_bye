@@ -22,11 +22,13 @@ import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.CartVO;
 import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.LoginInfo;
+import traffic.bye.vo.OrdersDetailListParmVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.OrdersListVO;
 import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
+import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
 
 @Controller
@@ -82,28 +84,49 @@ public class OrderController {
 
 	@PostMapping(value = "/getOrderId")
 	@ResponseBody
-	public List<OrdersDetailListVO> orderSuccess(long orderId) throws Exception {
+	public List<OrdersDetailListVO> orderSuccess(long orderId , HttpSession session) throws Exception {
 		System.out.println("받아온 order 번호 : " + orderId);
-		List<OrdersDetailListVO> detailList = ordersService.getOrdersDetailList(orderId);
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long storeId = loginSession.getStoreId();
+		OrdersDetailListParmVO vo = new OrdersDetailListParmVO();
+		vo.setOrderId(orderId);
+		vo.setStoreId(storeId);
+		
+		List<OrdersDetailListVO> detailList = ordersService.getOrdersDetailList(vo);
 		return detailList;
 	}
 	
 	@PostMapping(value = "/orderAccept")
 	@ResponseBody
-	public void orderAccept(long orderId) throws Exception {
+	public void orderAccept(long orderId , HttpSession session) throws Exception {
 		System.out.println("받아온 order 번호 : " + orderId);
-		ordersService.orderAccept(orderId);
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long storeId = loginSession.getStoreId();
+		OrdersUpdateParamVO vo = new OrdersUpdateParamVO();
+		vo.setOrderId(orderId);
+		vo.setStoreId(storeId);
+		ordersService.orderAccept(vo);
 	}
 	@PostMapping(value ="/orderReady")
 	@ResponseBody
-	public void orderReady(long orderId) throws Exception{
-		ordersService.orderReady(orderId);
+	public void orderReady(long orderId , HttpSession session) throws Exception{
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long storeId = loginSession.getStoreId();
+		OrdersUpdateParamVO vo = new OrdersUpdateParamVO();
+		vo.setOrderId(orderId);
+		vo.setStoreId(storeId);
+		ordersService.orderReady(vo);
 	}
 	
 	@PostMapping(value ="/orderReceipt")
 	@ResponseBody
-	public void orderReceipt(long orderId) throws Exception{
-		ordersService.orderReceipt(orderId);
+	public void orderReceipt(long orderId , HttpSession session) throws Exception{
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long storeId = loginSession.getStoreId();
+		OrdersUpdateParamVO vo = new OrdersUpdateParamVO();
+		vo.setOrderId(orderId);
+		vo.setStoreId(storeId);
+		ordersService.orderReceipt(vo);
 	}
 	
 	@PostMapping(value ="/changeQuantity")
