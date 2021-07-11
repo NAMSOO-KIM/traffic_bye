@@ -140,7 +140,6 @@
 		INNER JOIN STORE s 
 		on s.id = A.store_id
 		order by A.id desc
-
 	]]>
 	</select>
 	
@@ -175,5 +174,4 @@
 				#{item}
 			</foreach>
 	</delete>
-	
 </mapper>
