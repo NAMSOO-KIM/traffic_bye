@@ -13,7 +13,9 @@
         insertItem: function(insertingClient) {
             this.clients.push(insertingClient);
         },
-        updateItem: function(updatingClient) { },
+        updateItem: function(updatingClient) {
+			console.log(updatingClient);
+	 	},
 
         deleteItem: function(deletingClient) {
             var clientIndex = $.inArray(deletingClient, this.clients);
@@ -33,63 +35,63 @@
     ];
     db.clients = [
         {
-            "Id": "21",
+            "상품번호": "21",
             "Product": "../assets/images/digital-product/web-dev.jpg",
             "Product Title": "Websites",
             "Entry Type": "Add",
             "Quantity": "5",
         },
         {
-            "Id": "172",
+            "상품번호": "172",
             "Product": "../assets/images/digital-product/3d-design.jpg",
             "Product Title": "3D Impact",
             "Entry Type": "Destroy",
             "Quantity": "11",
         },
         {
-            "Id": "124",
+            "상품번호": "124",
             "Product": "../assets/images/digital-product/graphic-design.png",
             "Product Title": "Graphic Design",
             "Entry Type": "Destroy",
             "Quantity": "154",
         },
         {
-            "Id": "37",
+            "상품번호": "37",
             "Product": "../assets/images/digital-product/logo.jpg",
             "Product Title": "Company Logo",
             "Entry Type": "Destroy",
             "Quantity": "1",
         },
         {
-            "Id": "67",
+            "상품번호": "67",
             "Product": "../assets/images/digital-product/application.jpg",
             "Product Title": "Application",
             "Entry Type": "Add",
             "Quantity": "24",
         },
         {
-            "Id": "74",
+            "상품번호": "74",
             "Product": "../assets/images/digital-product/php.png",
             "Product Title": "Php",
             "Entry Type": "Destroy",
             "Quantity": "1",
         },
         {
-            "Id": "427",
+            "상품번호": "427",
             "Product": "../assets/images/digital-product/html.png",
             "Product Title": "Html",
             "Entry Type": "Destroy",
             "Quantity": "27",
         },
         {
-            "Id": "142",
+            "상품번호": "142",
             "Product": "../assets/images/digital-product/css.jpg",
             "Product Title": "Css",
             "Entry Type": "Add",
             "Quantity": "2",
         },
         {
-            "Id": "58",
+            "상품번호": "58",
             "Product": "../assets/images/digital-product/ebooks.png",
             "Product Title": "Ebooks",
             "Entry Type": "Add",

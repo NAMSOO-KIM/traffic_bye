@@ -313,7 +313,7 @@
 										<li><a href="${contextPath}/member/mypage">마이페이지</a></li>
 									</s:authorize>
 									<s:authorize access="hasAuthority('ADMIN')">
-										<li><a href="${contextPath}/admin">매장관리</a></li>
+										<li><a href="${contextPath}/admin/${loginInfo.storeId}">매장관리</a></li>
 									</s:authorize>
 								</ul></li>
 						</ul>

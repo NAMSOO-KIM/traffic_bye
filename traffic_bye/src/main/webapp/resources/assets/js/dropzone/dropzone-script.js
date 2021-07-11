@@ -12,7 +12,6 @@ var DropzoneExample = function () {
           		'Cache-Control': null,
           		'X-Requested-With': null,
             },
-            url : "addProduct",
             parallelUploads: 10,
             uploadMultiple : true
         };
@@ -28,7 +27,6 @@ var DropzoneExample = function () {
           		'Cache-Control': null,
           		'X-Requested-With': null,
             },
-            url : "addProduct",
             parallelUploads : 10,
             uploadMultiple : true
         };
