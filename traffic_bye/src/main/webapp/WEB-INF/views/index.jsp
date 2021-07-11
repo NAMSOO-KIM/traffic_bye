@@ -26,7 +26,7 @@
 			// let idx = 1;
 			$.ajax({
 						type : 'POST',
-						url : "${contextPath}/firstMainList",
+						url : "${contextPath}/firstMainOutOfStockList",
 						dataType: "text",
 						success : function(result) {
 							let html = "";
@@ -106,7 +106,7 @@
 	            
 	    		$.ajax({
 	    					type : 'POST',
-	    					url : "${contextPath}/selectMainList",
+	    					url : "${contextPath}/selectMainOutOfStockList",
 	    					dataType: "text",
 	    					data : {
 	    						id : idx
@@ -115,7 +115,7 @@
 	    						
 	    						
 	    						let html = "";
-	    						console.log("selectMainList");
+	    						console.log("selectMainOutOfStockList");
 	    						console.log(result);
 	    						
 	                            

@@ -178,4 +178,16 @@ public class ItemServiceImpl implements ItemService {
 
 		return itemDAO.getPagingItemList(map);
 	}
+	
+	@Override
+	public List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException {
+		// 첫 번째 메인 카테고리에 재고가 없는 순으로 8개 가져옴.(100이하일 경우만)
+		return itemDAO.getMainOutOfStockList(parent_id);
+	}
+	
+	@Override
+	public List<ItemVO> getFrequentSmartOrderItems() throws SQLException {
+
+		return itemDAO.getFrequentSmartOrderItems();
+	}
 }

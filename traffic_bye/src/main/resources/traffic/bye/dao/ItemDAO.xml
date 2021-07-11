@@ -245,4 +245,53 @@
 		update item set deleted = 1 where id = #{itemId} and store_id = #{storeId}
 	</update>
 	
+	<select id="getMainOutOfStockList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from 
+		(
+		SELECT s.name as store_name , A.*
+				FROM (SELECT *
+		    		from item it
+		    		where category_id in 
+		       		(
+		        		select id
+		        		from category
+		        		where parent_id = #{parent_id}
+		        	)
+		    		)A
+				INNER JOIN STORE s 
+				on s.id = A.store_id
+		        where A.stock <= 100
+		        order by A.stock ASC
+		)
+		where rownum <= 8
+		
+	]]>
+	</select>
+	
+	<select id="getFrequentSmartOrderItems" resultType="ItemVO">
+	<![CDATA[
+		SELECT * 
+		FROM (
+		    select s.name as store_name , it.*, A.cnt
+		    from item it
+		    inner join store s on it.store_id = s.id
+		    inner join (
+		                select item_id, count(*) as cnt
+		                from orders_detail 
+		                where detail_status = 3
+		                group by item_id
+		                )A 
+		
+		    on A.item_id = it.id
+		    order by A.cnt desc
+		    )
+		where ROWNUM <= 8
+
+	]]>
+	</select>
+	
+	
+	
 </mapper>
