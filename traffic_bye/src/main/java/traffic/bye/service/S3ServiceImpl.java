@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +19,12 @@ import traffic.bye.vo.ImageVO;
 
 @Service
 @Slf4j
-public class S3ServiceImpl implements S3Service{
+public class S3ServiceImpl implements S3Service {
 	@Autowired
 	AmazonS3 S3Client;
 	
+	private final String cloudFront = "https://d2ghndrbr1wz3k.cloudfront.net/";
+
 	@Override
 	public List<Bucket> getBucketList() {
 		return S3Client.listBuckets();
@@ -38,16 +39,18 @@ public class S3ServiceImpl implements S3Service{
 	// 폴더 생성 (폴더는 파일명 뒤에 "/"를 붙여야한다.)
 	@Override
 	public void createFolder(String bucketName, String folderName) {
-		S3Client.putObject(bucketName, "imgs/" + folderName, new ByteArrayInputStream(new byte[0]), new ObjectMetadata());
+		S3Client.putObject(bucketName, "imgs/" + folderName, new ByteArrayInputStream(new byte[0]),
+				new ObjectMetadata());
 	}
 
 	// 파일 업로드
 	@Override
 	public void fileUpload(String bucketName, String fileName, byte[] fileData) throws FileNotFoundException {
-		String filePath = (fileName).replace(File.separatorChar, '/'); // 파일 구별자를 `/`로 설정(\->/) 이게 기존에 / 였어도 넘어오면서 \로 바뀌는 거같다.
+		String filePath = (fileName).replace(File.separatorChar, '/'); // 파일 구별자를 `/`로 설정(\->/) 이게 기존에 / 였어도 넘어오면서 \로
+																		// 바뀌는 거같다.
 		ObjectMetadata metaData = new ObjectMetadata();
-		metaData.setContentLength(fileData.length);   //메타데이터 설정 -->원래는 128kB까지 업로드 가능했으나 파일크기만큼 버퍼를 설정시켰다.
-	    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileData); //파일 넣음
+		metaData.setContentLength(fileData.length); // 메타데이터 설정 -->원래는 128kB까지 업로드 가능했으나 파일크기만큼 버퍼를 설정시켰다.
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileData); // 파일 넣음
 		S3Client.putObject(bucketName, filePath, byteArrayInputStream, metaData);
 	}
 
@@ -61,10 +64,12 @@ public class S3ServiceImpl implements S3Service{
 
 	// 파일 URL
 	@Override
-	public String getFileURL(String bucketName, String fileName) { //filename이 경로
-		System.out.println("넘어오는 파일명 : "+fileName);
+	public String getFileURL(String bucketName, String fileName) { // filename이 경로
+//		System.out.println("넘어오는 파일명 : "+fileName);
 		String imgName = (fileName).replace(File.separatorChar, '/');
-		return S3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
+//		return S3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
+		//return S3Client.getUrl(bucketName, imgName).toString();
+		return cloudFront + imgName;
 	}
 
 	@Override
@@ -77,14 +82,10 @@ public class S3ServiceImpl implements S3Service{
 		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
 		fileUpload("kosateam2", Util.originItemFolder + imageVO.getRealFileName(), file.getBytes());
 		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originItemFolder + imageVO.getRealFileName()));
-		if(file.getName().equals("repreFile")) {
-			fileUpload("kosateam2", 
-					Util.thumbItemFolder + imageVO.getRealFileName(), 
-					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), 
-					imageVO.getOriginFileURL()));
-					imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
-		}
-		log.info(imageVO.getThumbFileURL());
+		fileUpload("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName(),
+				Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
+		imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
+		imageVO.setFileSize(file.getSize());
 		return imageVO;
 	}
 
@@ -96,18 +97,13 @@ public class S3ServiceImpl implements S3Service{
 		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
 		fileUpload("kosateam2", Util.originStoreFolder + imageVO.getRealFileName(), file.getBytes());
 		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originStoreFolder + imageVO.getRealFileName()));
-		if(file.getName().equals("repreFile")) {
-			fileUpload("kosateam2", 
-					Util.thumbStoreFolder + imageVO.getRealFileName(), 
-					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), 
-					imageVO.getOriginFileURL()));
-					imageVO.setThumbFileURL(null);
+		if (file.getName().equals("repreFile")) {
+			fileUpload("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName(),
+					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
+			imageVO.setThumbFileURL(null);
 			imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
 		}
 		return imageVO;
 	}
-	
-	
-	
-	
+
 }

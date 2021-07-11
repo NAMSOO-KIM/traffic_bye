@@ -2,10 +2,7 @@ package traffic.bye.web;
 
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,8 +24,8 @@ import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
 import traffic.bye.vo.CategoryVO;
+import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
-import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.StoreVO;
 
 
@@ -103,10 +97,31 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/{id}/updateItem/{itemId}")
-	public String updateItem(@PathVariable Long id, @PathVariable Long itemId) {
-		
-		
-		return "store/updateItem";
+	public String updateItem(@PathVariable Long id, @PathVariable Long itemId, Model model) {
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			ItemDetailVO itemDetailVO = itemService.getItemDetailWithImage(itemId);
+			log.info(itemDetailVO.toString());
+			String data = objectMapper.writeValueAsString(itemDetailVO);
+			model.addAttribute("bigCategories", categoryService.getMainCategory());
+			model.addAttribute("midCategories", categoryService.getMediumCategory(itemDetailVO.getParentCategoryId()));
+			model.addAttribute("itemDetailVO", data);
+			return "store/updateItem";
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "redirect:/";
+		}
+	}
+
+	@PostMapping("/store/{id}/updateItem/{itemId}")
+	public ResponseEntity<Void> UpdateItemProc(@PathVariable Long id, @PathVariable Long itemId, String items, MultipartHttpServletRequest mreq) {		 
+		try {
+			itemService.updateItem(itemId, items, mreq);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.BAD_GATEWAY);
+		}
 	}
 	
 	
@@ -134,5 +149,10 @@ public class StoreController {
 		
 		mav.setViewName("store/storeMain");
 		return mav;
+	}
+	
+	@GetMapping("/store/{id}/update")
+	public String storeUpdate(@PathVariable Long id) {
+		return null;
 	}
 }

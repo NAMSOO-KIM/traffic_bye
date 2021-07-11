@@ -721,38 +721,12 @@
 
 
     <!-- cart start -->
-    <div class="addcart_btm_popup" id="fixed_cart_icon">
-        <a href="#" class="fixed_cart">
-            <i class="ti-shopping-cart"></i>
-        </a>
-    </div>
+    
     <!-- cart end -->
 
 
     <!-- theme setting -->
     
-    <div class="theme-settings">
-        <ul>
-        	<!-- 
-            <li class="demo-li">
-                <a href="javascript:void(0)" onclick="openSetting()">
-                    <div class="setting-sidebar" id="setting-icon">
-                        <h5>50+ <br>demo</h5>
-                    </div>
-                </a>
-            </li>
-             -->
-            <li>
-                <div class="dark-btn">Dark</div>
-            </li>
-            <li>
-                <div class="rtl-btn">RTL</div>
-            </li>
-            <li class="input-picker">
-                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
-            </li>
-        </ul>
-    </div>
     <div class="scroll-setting-box">
         <div id="setting_box" class="setting-box">
             <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
@@ -771,6 +745,7 @@
 
 
     <!-- exit modal popup start-->
+    <!-- 
     <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -805,6 +780,7 @@
             </div>
         </div>
     </div>
+    -->
     <!-- Add to cart modal popup end-->
 
 

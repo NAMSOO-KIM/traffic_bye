@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.maven.model.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,10 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
 import traffic.bye.service.StoreService;
-import traffic.bye.vo.CartVO;
 import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.LoginInfo;
+import traffic.bye.vo.PagingVO;
 import traffic.bye.vo.StoreVO;
 
 @Slf4j
@@ -92,22 +94,48 @@ public class ItemController {
 		return mav;
 	}
 	
-	// 대분류 카테고리 부분
-	@GetMapping(value = "mm/items/list/{category_id}")
-	public ModelAndView itemList(@PathVariable("category_id") long category_id, HttpSession session) throws Exception {
+	@GetMapping("mm/items/list/{category_id}")
+	public ModelAndView boardList(PagingVO vo, Model model
+			, @PathVariable("category_id") long category_id
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		Logger logger = LoggerFactory.getLogger(this.getClass());
+		
+		// 특정 카테고리의 count 개수
+		int total = itemService.countItem(category_id);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "12";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "12";
+		}
+		
+		
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+
+		mav.addObject("paging",vo);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("start", vo.getStart());
+		map.put("end", vo.getEnd());
+		map.put("parent_id", category_id);
 		
 		// 0이면 중분류, 1 이면 대분류
 		long isCheckMain = categoryService.checkMainCategory(category_id);
 		
-		// if 대분류이면
 		// 대분류의 중분류 가져와서 해당하는 아이템 전부 뽑기
 		if(isCheckMain == 1) { // 대분류이면
+			
+			
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
 			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(category_id);
-			List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(category_id); // 대분류의 아이템 리스트
+			List<ItemVO> selectMainItemList = itemService.getPagingItemList(map);
 			CategoryVO mainCategoryVO = categoryService.getCategory(category_id);
 			
 			
@@ -119,16 +147,13 @@ public class ItemController {
 		}
 		else { // 0 이면
 			// 특정 카테고리 중분류 아이템들만 가져옴
-			// 대분류를 카테고리 구해서 뿌려줘야 함
+			
 			long parent_category_id = categoryService.getCategory(category_id).getParent_id();
 			
 			List<CategoryVO> mediumCategoryList = categoryService.getMediumCategory(parent_category_id); // 대분류 id값 넣으면 중분류들 아이템 나옴
 			List<ItemVO> newProductList = itemService.getMainCategoryNewItemList(parent_category_id);
-			List<ItemVO> selectMainItemList = itemService.getMediumCategoryItemList(category_id); //중분류의 아이템 리스트
-			
+			List<ItemVO> selectMainItemList = itemService.getPagingItemList(map);
 			CategoryVO mainCategoryVO = categoryService.getCategory(parent_category_id);
-			
-			//String mainCategoryName = categoryService.getCategory(parent_category_id).getName();
 			
 			mav.addObject("mainCategoryVO",mainCategoryVO);
 			mav.addObject("mediumCategoryList",mediumCategoryList);
@@ -137,14 +162,11 @@ public class ItemController {
 			
 		}
 		
-		String selectCategoryName = categoryService.getCategory(category_id).getName();
-		mav.addObject("selectCategoryName",selectCategoryName);
-		
 		mav.setViewName("categoryPage");
 		return mav;
 	}
 	
-	
+
 
 	@PostMapping(value = "/firstMainList")
 	@ResponseBody
@@ -170,9 +192,6 @@ public class ItemController {
 	
 		
 	}
-	
-	
-	// 선택된 카테고리 + 가격 조건으로 검색
 	
 	
 	
