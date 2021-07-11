@@ -8,7 +8,6 @@ import traffic.bye.dao.MemberDAO;
 import traffic.bye.exception.IDDuplicateException;
 import traffic.bye.exception.KakaoDuplicateException;
 import traffic.bye.exception.PhoneDuplicateException;
-import traffic.bye.vo.AuthType;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
 import traffic.bye.vo.UpdateMemberVO;
