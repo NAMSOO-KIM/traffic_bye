@@ -1,21 +1,20 @@
 (function($) {
     "use strict";
     $("#basicScenario").jsGrid({
+		editButton: false,
         width: "100%",
         filtering: true,
-        editing: true,
-        inserting: true,
         sorting: true,
         paging: true,
         autoload: true,
         pActionSize: 15,
         pActionButtonCount: 5,
-        deleteConfirm: "Do you really want to delete the client?",
+        deleteConfirm: "정말 삭제하시겠습니까?",
         controller: db,
         fields: [
-            { name: "Id", type: "number", width: 30},
+            { name: "상품번호", type: "number", width: 30},
             {
-                name: "Product",
+                name: "이미지",
                 itemTemplate: function(val, item) {
                     return $("<img>").attr("src", val).css({ height: 50, width: 50 }).on("click", function() {
                         $("#imagePreview").attr("src", item.Img);
@@ -32,9 +31,9 @@
                 align: "center",
                 width: 50
             },
-            { name: "Product Title", type: "text", width: 100},
-            { name: "Entry Type", type: "text", width: 50},
-            { name: "Quantity", type: "number", width: 50},
+            { name: "상품명", type: "text", width: 100},
+            { name: "카테고리", type: "text", width: 50},
+            { name: "재고", type: "number", width: 50},
         { type: "control" }
         ]
     });

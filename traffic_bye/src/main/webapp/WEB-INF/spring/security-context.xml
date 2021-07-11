@@ -40,11 +40,26 @@
 			pattern="/member" access="isAnonymous()" />
 		
 			
+		<!-- <security:intercept-url
+			pattern="/member/mypage/**" access="isAuthenticated()" /> -->
+			
+			
+		<!-- 마이페이지는 해당하는 회원만 접근 가능 -->
+			
 		<security:intercept-url
-			pattern="/member/mypage/**" access="isAuthenticated()" />
+			pattern="/member/mypage/{userId}/**" access="isAuthenticated()" />
+			
+		<security:intercept-url
+			pattern="/member/mypage/{userId}/**" access="@webSecurity.checkUserId(authentication,#userId)" />
+			
+			
 		<!-- 관리자페이지는 관리자만 접근 허용 -->
-		<security:intercept-url pattern="/admin/**"
+			
+		<security:intercept-url pattern="/admin/{storeId}/**"
 			access="hasAuthority('ADMIN')" />
+			
+		<security:intercept-url pattern="/admin/{storeId}/**"
+			access="@webSecurity.checkAdminId(authentication,#storeId)" />
 
 		<!-- 로그인 설정 -->
 		<security:form-login username-parameter="loginId"

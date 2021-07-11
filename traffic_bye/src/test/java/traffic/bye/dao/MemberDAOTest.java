@@ -24,6 +24,7 @@ public class MemberDAOTest {
 	
 	@Test
 	public void test() throws Exception{
-		
+		//LoginInfo loginInfo = new LoginInfo(null, null, "admin2", passwordEncoder.encode("1"));
+		//dao.passwordChange(loginInfo);
 	}
 }
