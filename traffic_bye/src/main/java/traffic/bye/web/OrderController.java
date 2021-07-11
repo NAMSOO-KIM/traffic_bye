@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import traffic.bye.service.CartService;
+import traffic.bye.service.MemberService;
 import traffic.bye.service.OrdersService;
 import traffic.bye.vo.CartChangeQuantityVO;
 import traffic.bye.vo.CartVO;
 import traffic.bye.vo.DeleteQuantityVO;
 import traffic.bye.vo.LoginInfo;
+import traffic.bye.vo.MemberVO;
 import traffic.bye.vo.OrdersDetailListParmVO;
 import traffic.bye.vo.OrdersDetailListVO;
 import traffic.bye.vo.OrdersDetailVO;
@@ -40,6 +42,9 @@ public class OrderController {
 	@Autowired
 	private OrdersService ordersService;
 
+	@Autowired
+	private MemberService memberService;
+	
 	@GetMapping(value = "order")
 	public String getInstructor(HttpSession session, Model model) throws Exception {
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
@@ -47,7 +52,8 @@ public class OrderController {
 		List<CartVO> cartList = cartService.getCartList(id);
 		System.out.println(cartList.toString());
 		model.addAttribute("cartList", cartList);
-		return "orders/ordermain";
+		// return "orders/ordermain";
+		return "orders/ordermainTest";
 	}
 
 	@PostMapping(value = "orderInsert")
@@ -198,5 +204,19 @@ public class OrderController {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(data);
 		return (JSONObject)obj;
+	}
+	
+	@GetMapping(value = "ordertest")
+	public String getOrderTest(HttpSession session, Model model) throws Exception {
+		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+		long id = loginSession.getId();
+		MemberVO memberVO = memberService.findMember(id);
+		model.addAttribute("memberVO",memberVO);
+		
+		List<CartVO> cartList = cartService.getCartList(id);
+		System.out.println(cartList.toString());
+		model.addAttribute("cartList", cartList);
+		// return "orders/ordermain";
+		return "orders/ordermainTest";
 	}
 }

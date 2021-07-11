@@ -3,9 +3,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
+<!-- 
 <!DOCTYPE html>
 <html>
+ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -599,6 +600,3 @@
 		</div>
 	</header>
 	<!-- header end -->
-
-</body>
-</html>
