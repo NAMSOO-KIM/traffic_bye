@@ -138,12 +138,11 @@ function iamport(){
 	console.log(phone_number);
 	console.log(birth);
 	let total_price = ${sum};
-	let final_price = total_price * 1000;
-	console.log(final_price);
+	
 	
 	
 	// 가맹점 식별코드
-	// IMP.init('imp30146952');
+	
 	IMP.init('imp20966089');
 	
 	IMP.request_pay({
@@ -151,12 +150,10 @@ function iamport(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : member_name+'님의 결제',
-	    amount : final_price, // 나중에 수정
-	    // buyer_email : 'iamport@siot.do',
+	    amount : total_price, // 나중에 수정
 	    buyer_name : member_name,
 	    buyer_tel : phone_number,
-	    // buyer_addr : '서울특별시 강남구 삼성동',
-	    // buyer_postcode : '123-456'
+	    
 	}, function(rsp) {
 	    if ( rsp.success ) {
 	    	
@@ -321,13 +318,6 @@ function iamport2(){
 	});
 	
 	
-	
-	
-	
-	
-	
-	
-	
 </script>
  <style>
  			
@@ -427,14 +417,6 @@ function iamport2(){
         }(document, 'script', 'facebook-jssdk'));
     </script>
     
-	<!-- Your customer chat code -->
-	<div class="fb-customerchat" attribution=setup_tool
-		page_id="2123438804574660" theme_color="#0084ff"
-		logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"
-		logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
-	</div>
-	<!-- facebook chat section end -->
-	
    
 
 </body>
