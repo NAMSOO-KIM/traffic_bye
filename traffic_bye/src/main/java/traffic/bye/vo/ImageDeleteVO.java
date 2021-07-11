@@ -1,5 +1,7 @@
 package traffic.bye.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,11 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ImageVO {
-	private Long itemId;
-	private String uploadFileName;
-	private String realFileName;
-	private String originFileURL;
-	private String thumbFileURL;
-	private Long fileSize;
+public class ImageDeleteVO {
+	Long id;
+	List<String> list;
 }

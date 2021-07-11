@@ -13,19 +13,19 @@
     $("#bigCategory").val(itemDetailVO.parentCategoryId).prop("selected", true);
     $("#midCategory").val(itemDetailVO.categoryId).prop("selected", true);
     let anotherImages = itemDetailVO.images;
-    anotherFiles.options.thumbnailWidth = 250;
-	anotherFiles.options.thumbnailHeight = 250;
+    anotherFiles.options.thumbnailWidth = 120;
+	anotherFiles.options.thumbnailHeight = 120;
 	let deletedMock = [];
 	let rePreFileDeleted = false;
     for(let i = 0; i < anotherImages.length; i++){
-		var mockFile = { name : anotherImages[i].realFileName, size: 12345, mock : true};
+		var mockFile = { name : anotherImages[i].realFileName, size: anotherImages[i].fileSize, mock : true};
 		console.log(anotherImages[i].originFileURL);
   		anotherFiles.options.addedfile.call(anotherFiles, mockFile);
- 		anotherFiles.options.thumbnail.call(anotherFiles, mockFile, anotherImages[i].originFileURL);
+ 		anotherFiles.options.thumbnail.call(anotherFiles, mockFile, anotherImages[i].thumbFileURL);
 	}
-	let preMock = { name : itemDetailVO.repreFile, size: 12345, mock : true}; 
-	anotherFiles.options.addedfile.call(repreFile, preMock);
- 	anotherFiles.options.thumbnail.call(repreFile, preMock, itemDetailVO.thumbFileURL);
+	let preMock = { name : itemDetailVO.repreFile, size: itemDetailVO.repreFileSize, mock : true}; 
+	repreFile.options.addedfile.call(repreFile, preMock);
+ 	repreFile.options.thumbnail.call(repreFile, preMock, itemDetailVO.thumbFileURL);
     anotherFiles.on("removedfile", function(file){
 		if(file.mock){
 			console.log(file);
@@ -44,7 +44,7 @@
 			this.removeFile(file);
 		}
 	});
-    $('#addProduct').on('click', function(){
+    $('#updateItem').on('click', function(){
 		var detail = CKEDITOR.instances.editor1.getData();
 		let formData = new FormData();
 		let repre = repreFile.getAcceptedFiles();
@@ -59,7 +59,8 @@
 			"bigCategory" : $('#bigCategory').val(),
 			"midCategory" : $('#midCategory').val(),
 			"stock" : $('#stock').val(),
-			"price" : $('#price').val()
+			"price" : $('#price').val(),
+			"deletedImgs" : deletedMock 
 		};
 		if(!checkIt(otherData)){
 			alert("입력되지 않은 정보가 있습니다!");

@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import traffic.bye.vo.ImageDeleteVO;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemDetailVO;
+import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
 
 public interface ItemDAO {
@@ -39,5 +41,8 @@ public interface ItemDAO {
 	List<ImageVO> getImage(Long id) throws SQLException;
 	
 	ItemDetailVO getItemDetail(Long id) throws SQLException;
-
+	
+	Long updateItem(ItemUpdateVO itemUpdateVO) throws SQLException;
+	
+	Long deleteItemImages(ImageDeleteVO imageDeleteVO) throws SQLException;
 }

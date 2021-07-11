@@ -23,6 +23,8 @@ import traffic.bye.vo.ImageVO;
 public class S3ServiceImpl implements S3Service {
 	@Autowired
 	AmazonS3 S3Client;
+	
+	private final String cloudFront = "https://d2ghndrbr1wz3k.cloudfront.net/";
 
 	@Override
 	public List<Bucket> getBucketList() {
@@ -67,7 +69,8 @@ public class S3ServiceImpl implements S3Service {
 //		System.out.println("넘어오는 파일명 : "+fileName);
 		String imgName = (fileName).replace(File.separatorChar, '/');
 //		return S3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
-		return S3Client.getUrl(bucketName, imgName).toString();
+		//return S3Client.getUrl(bucketName, imgName).toString();
+		return cloudFront + imgName;
 	}
 
 	@Override
@@ -83,6 +86,7 @@ public class S3ServiceImpl implements S3Service {
 		fileUpload("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName(),
 				Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
 		imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
+		imageVO.setFileSize(file.getSize());
 		return imageVO;
 	}
 
