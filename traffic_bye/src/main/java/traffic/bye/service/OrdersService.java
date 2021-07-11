@@ -13,6 +13,7 @@ import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
+import traffic.bye.vo.StoreStatusVO;
 
 public interface OrdersService {
 	
@@ -39,7 +40,4 @@ public interface OrdersService {
 	void changeQuantity(CartChangeQuantityVO vo) throws Exception;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws Exception;
-
-
-
 }

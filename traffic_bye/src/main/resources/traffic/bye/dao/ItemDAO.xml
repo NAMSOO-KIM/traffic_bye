@@ -237,4 +237,12 @@
 	
 	</select>
 	
+	<select id="getStoreItems" resultType="StoreItemVO" parameterType="Long">
+		select item.id id, item.name name, stock, price, store.id storeId, item.repre_file repreFile, item.thumb_file_url thumbFileURL, category.id categoryId, category.name category from store join item on store.id = #{storeId} and store.id = item.store_id join category on item.category_id = category.id where item.deleted = 0	
+	</select>
+	
+	<update id="deleteItem" parameterType="ItemDeleteVO">
+		update item set deleted = 1 where id = #{itemId} and store_id = #{storeId}
+	</update>
+	
 </mapper>

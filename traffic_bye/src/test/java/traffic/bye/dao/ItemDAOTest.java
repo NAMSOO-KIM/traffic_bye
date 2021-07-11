@@ -19,8 +19,7 @@ public class ItemDAOTest {
 	
 	@Test
 	public void test() throws Exception {
-		log.info(itemDAO.getImage(47L).toString());
-		
+		log.info(itemDAO.getStoreItems(1L).toString());
 	}
 	
 }
