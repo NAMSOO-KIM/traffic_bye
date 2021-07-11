@@ -140,7 +140,6 @@
 		INNER JOIN STORE s 
 		on s.id = A.store_id
 		order by A.id desc
-
 	]]>
 	</select>
 	
@@ -175,5 +174,67 @@
 				#{item}
 			</foreach>
 	</delete>
+	
+	<select id="countItem" resultType="int">
+	<![CDATA[
+		select count(*)
+		from item it
+		inner join category c
+		on it.category_id = c.id 
+		where (c.id = #{id} or c.parent_id = #{id}) and (c.parent_id is not null)
+	]]>
+	</select>
+	
+	<select id="getPagingItem" resultType="ItemVO">
+	<![CDATA[
+	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM team2.item
+						ORDER BY id DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+	]]>
+	</select>
+	
+	
+	<parameterMap type="java.util.HashMap" id="isPagingItemMap">
+		<parameter property="parent_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="start" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="end" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="getPagingItemList" parameterMap="isPagingItemMap" resultType="ItemVO">
+	
+	<![CDATA[
+		
+			SELECT * 
+				FROM (
+					SELECT ROWNUM RN, B.* 
+						FROM (
+								SELECT s.name as store_name , A.*
+				                FROM (SELECT *
+		    		            from item it
+		    		            where category_id in 
+		       		            (
+		                        select id
+		                        from category c
+		                        where (c.parent_id = #{parent_id} or c.id = #{parent_id})
+		                        )
+		                        )A
+		                        INNER JOIN STORE s 
+				                on s.id = A.store_id
+		                        where A.id is not null
+		                        ORDER BY A.id desc
+						) B
+		        	)
+			WHERE RN BETWEEN #{start} AND #{end}
+		
+	]]>
+	
+	</select>
 	
 </mapper>

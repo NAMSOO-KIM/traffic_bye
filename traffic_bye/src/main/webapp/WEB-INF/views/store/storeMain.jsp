@@ -122,7 +122,7 @@
 	    	<div class="modal-body">
 	
 		        <div class="" id="modal-video" style="text-align: center;">
-		        	<img src="http://175.205.200.40:8080/store/1/video" />
+					<img src="" width="640" height="480" id="mjpeg-stream"/>
 		        </div>
 		        
 		        <div>
@@ -422,6 +422,7 @@
 		}
 		
 		$(document).ready(function(){
+			var imgTime = 3600 * 3;
 			$('#intro').data('selected', 'true');
 			$('#store').data('selected', 'false');
 			$('#intro').css('background-color', '#2b2b2b');
@@ -467,6 +468,20 @@
 				storeCapacity = parseInt($(this).data('storecapacity'));
 				
 				getCapacity(3);
+				imgTime = 3600*3;
+				var imgInterval = setInterval(function(){
+					var url = 'http://175.205.200.40:8080/store/1/video?frame=' + imgTime;
+					
+					$('#mjpeg-stream').attr('src', url);
+					
+					console.log('img time : ' + imgTime);
+					
+					if(--imgTime < 0){
+						imgTime = 0;
+						clearInterval(imgInterval);
+					}
+					
+				}, 1000);
 			});
 			
 			<c:forEach items="${storeList}" var="store">
@@ -485,7 +500,10 @@
 			
 			$('#modalVM').on('hidden.bs.modal', function () {
 				timer = 0;
+				imgTime = 0;
 			});
+			
+			
 			
 		});
 	</script>

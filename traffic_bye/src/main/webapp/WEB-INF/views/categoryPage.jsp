@@ -36,7 +36,15 @@
 	        }
 	    });
 	});
+	
+	
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="${contextPath}/mm/items/list/${category_id}?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+	
 	</script>
+	
 	<jsp:include page="header.jsp"></jsp:include>
 	
     <!-- header end -->
@@ -190,13 +198,14 @@
                                                             </ul>
                                                         </div>
                                                         <div class="product-page-per-view">
-                                                            <select>
-                                                                <option value="High to low">24 개씩 보기
-                                                                </option>
-                                                                <option value="Low to High">50 개씩 보기
-                                                                </option>
-                                                                <option value="Low to High">100 개씩 보기
-                                                                </option>
+                                                            <select id="cntPerPage" name="sel" onchange="selChange()">
+                                                                <option value="12"
+																	<c:if test="${paging.cntPerPage == 12}">selected</c:if>>12개씩 보기</option>
+																<option value="24"
+																	<c:if test="${paging.cntPerPage == 24}">selected</c:if>>24개씩 보기</option>
+																<option value="50"
+																	<c:if test="${paging.cntPerPage == 50}">selected</c:if>>50개씩 보기</option>
+																
                                                             </select>
                                                         </div>
                                                         <div class="product-page-filter">
@@ -261,27 +270,47 @@
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <nav aria-label="Page navigation">
                                                             <ul class="pagination">
-                                                                <li class="page-item"><a class="page-link" href="#"
-                                                                        aria-label="Previous"><span
-                                                                            aria-hidden="true"><i
-                                                                                class="fa fa-chevron-left"
-                                                                                aria-hidden="true"></i></span> <span
-                                                                            class="sr-only">Previous</span></a></li>
-                                                                <li class="page-item active"><a class="page-link"
-                                                                        href="#">1</a></li>
-                                                                <li class="page-item"><a class="page-link"
-                                                                        href="#">2</a></li>
-                                                                <li class="page-item"><a class="page-link"
-                                                                        href="#">3</a></li>
-                                                                <li class="page-item"><a class="page-link" href="#"
-                                                                        aria-label="Next"><span aria-hidden="true"><i
-                                                                                class="fa fa-chevron-right"
-                                                                                aria-hidden="true"></i></span> <span
-                                                                            class="sr-only">Next</span></a></li>
+                                                            <!-- 
+                                                            <c:if test="${paging.startPage != 1 }">
+																<a href="/boardList?no`wPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
+															</c:if>
+															 -->
+                                                                <li class="page-item">
+                                                                	<c:if test="${paging.startPage != 1 }">
+	                                                                <a class="page-link" href="${contextPath}/mm/items/list/${category_id}?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+	                                                                	<span aria-hidden="true">
+	                                                                		<i class="fa fa-chevron-left" aria-hidden="true">
+	                                                                		</i>
+	                                                                	</span> 
+		                                                                <span class="sr-only">Previous
+		                                                                </span>
+	                                                                </a>
+	                                                                </c:if>
+                                                                </li> 
+                                                                <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+                                                                	<c:choose>
+                                                                		<c:when test="${p == paging.nowPage }">
+                                                                			<li class="page-item active"><a class="page-link"
+		                                                                        href="#">${p }</a>
+		                                                                    </li>
+																		</c:when>
+		                                                                <c:when test="${p != paging.nowPage }">
+		                                                                	<li class="page-item"><a class="page-link"
+		                                                                        href="${contextPath}/mm/items/list/${category_id}?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+																		</c:when>
+                                                                	</c:choose>
+                                                                </c:forEach>
+                                                                <c:if test="${paging.endPage != paging.lastPage}">
+	                                                                <li class="page-item"><a class="page-link" href="${contextPath}/mm/items/list/${category_id}?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" 
+	                                                                	aria-label="Next"><span aria-hidden="true">
+	                                                                	<i class="fa fa-chevron-right" aria-hidden="true">
+	                                                                	</i></span> 
+	                                                                	<span class="sr-only">Next</span></a>
+	                                                                </li>
+                                                               	</c:if>
                                                             </ul>
                                                         </nav>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
                                         </div>

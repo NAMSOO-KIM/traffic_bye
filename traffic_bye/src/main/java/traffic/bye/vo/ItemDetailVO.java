@@ -1,6 +1,5 @@
 package traffic.bye.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
