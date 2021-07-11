@@ -45,5 +45,9 @@ public interface ItemService {
 	// 페이징 된 아이템 목록(상점, 아이템)들 조회
 	List<ItemVO> getPagingItemList(HashMap<String, Object> map) throws SQLException;
 
+	int countStoreItem(long store_id) throws Exception;
+
+	List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws Exception;
+
 	
 }

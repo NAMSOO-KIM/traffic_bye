@@ -58,4 +58,8 @@ public interface ItemDAO {
 	List<StoreItemVO> getStoreItems(Long storeId) throws SQLException;
 	
 	int deleteItem (ItemDeleteVO itemDeleteVO) throws SQLException;
+
+	int countStoreItem(long store_id) throws SQLException;
+
+	List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws SQLException;
 }

@@ -1,6 +1,7 @@
 package traffic.bye.web;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,6 +28,7 @@ import traffic.bye.service.StoreService;
 import traffic.bye.vo.CategoryVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
+import traffic.bye.vo.PagingVO;
 import traffic.bye.vo.StoreVO;
 
 
@@ -52,18 +55,44 @@ public class StoreController {
 	
 	//to-do 링크만 따뒀음
 	@GetMapping(value = "store/{id}")
-	public ModelAndView itemDetail(@PathVariable("id") long id, HttpSession session) throws Exception {
+	public ModelAndView itemDetail(PagingVO vo, Model model
+			, @PathVariable("id") long id
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		
+		
 		
 		try {
 			StoreVO storeInfo = storeService.getStore(id);
-			List<ItemVO> itemList = itemService.getItemFromStore(id);
+
+			// 특정 카테고리의 count 개수
+			int total = itemService.countStoreItem(id);
 			
-			log.info(itemList.toString());
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "12";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) { 
+				cntPerPage = "12";
+			}
 			
-			log.info(storeInfo.toString());
 			
-			mav.addObject("itemList", itemList);
+			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+
+			mav.addObject("paging",vo);
+			
+			HashMap<String, Object> map = new HashMap<>();
+			
+			map.put("start", vo.getStart());
+			map.put("end", vo.getEnd());
+			map.put("store_id", id);
+			
+			List<ItemVO> selectMainItemList = itemService.getPagingStoreItemList(map);
+			mav.addObject("selectMainItemList",selectMainItemList);
+			
 			mav.addObject("store", storeInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
