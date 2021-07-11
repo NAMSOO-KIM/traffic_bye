@@ -1,13 +1,5 @@
 package traffic.bye.web;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;

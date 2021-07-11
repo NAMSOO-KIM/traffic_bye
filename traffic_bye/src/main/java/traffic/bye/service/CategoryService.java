@@ -1,7 +1,6 @@
 package traffic.bye.service;
 
 
-import java.sql.SQLException;
 import java.util.List;
 
 import traffic.bye.vo.CategoryVO;

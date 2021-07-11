@@ -9,23 +9,21 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.ItemDAO;
-import traffic.bye.util.Util;
 import traffic.bye.vo.ImageDeleteVO;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
-
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import traffic.bye.vo.PagingVO;
 
 
 @Slf4j
@@ -169,6 +167,15 @@ public class ItemServiceImpl implements ItemService {
 	}
 	
 	
+	@Override
+	public int countItem(long id) throws Exception {
+
+		return itemDAO.countItem(id);
+	}
 	
-	
+	@Override
+	public List<ItemVO> getPagingItemList(HashMap<String, Object> map) throws SQLException {
+
+		return itemDAO.getPagingItemList(map);
+	}
 }

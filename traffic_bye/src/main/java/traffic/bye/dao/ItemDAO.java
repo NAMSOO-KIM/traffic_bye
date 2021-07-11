@@ -10,6 +10,7 @@ import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
+import traffic.bye.vo.PagingVO;
 
 public interface ItemDAO {
 	//ItemDTO getItem(long itemNO) throws Exception;
@@ -45,4 +46,10 @@ public interface ItemDAO {
 	Long updateItem(ItemUpdateVO itemUpdateVO) throws SQLException;
 	
 	Long deleteItemImages(ImageDeleteVO imageDeleteVO) throws SQLException;
+	
+	// 특정 카테고리 아이템 전체 개수 반환
+	int countItem(long id) throws SQLException;
+	
+	// 페이징 된 아이템(상점명, 아이템)들 조회
+	List<ItemVO> getPagingItemList(HashMap<String, Object> map) throws SQLException;
 }
