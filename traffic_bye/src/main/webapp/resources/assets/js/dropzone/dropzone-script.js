@@ -1,6 +1,7 @@
 var DropzoneExample = function () {
     var DropzoneDemos = function () {
         Dropzone.options.repreFileUpload = {
+			url : "updateItem",
             maxFiles: 10,
             maxFilesize: 10,
             autoProcessQueue: false,
@@ -16,6 +17,7 @@ var DropzoneExample = function () {
             uploadMultiple : true
         };
         Dropzone.options.anotherFileUpload = {
+			url : "updateItem",
             maxFiles: 10,
             maxFilesize: 10,
             autoProcessQueue: false,

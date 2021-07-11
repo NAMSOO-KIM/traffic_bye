@@ -31,4 +31,22 @@
 		group by category_id
 	]]>
 	</select>
+	
+	<select id="getStoreStatus" parameterType="Long" resultType="StoreStatusVO">
+	<![CDATA[
+		select 
+		lv status, nvl(cnt,0) cnt
+		from
+		(select (level - 1) lv from dual connect by level <= 4) info1
+			left join
+		(select detail_status, count(detail_status) cnt
+		from 
+		store join orders_detail od on store.id = #{storeId} and store.id = od.store_id 
+		join orders on od.orders_id = orders.id
+		where substr(payment_date,0,5) = to_char(sysdate + (1/24) * 9, 'YY/MM')
+		group by detail_status) info2
+		on lv = detail_status
+		order by lv
+	]]>	
+	</select>
 </mapper>

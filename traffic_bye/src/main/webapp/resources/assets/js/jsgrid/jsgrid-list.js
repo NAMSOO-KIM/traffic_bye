@@ -1,7 +1,7 @@
 (function($) {
     "use strict";
     $("#basicScenario").jsGrid({
-		editButton: false,
+		editButton: true,
         width: "100%",
         filtering: true,
         sorting: true,

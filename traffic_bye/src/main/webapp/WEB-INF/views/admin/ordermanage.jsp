@@ -43,16 +43,13 @@
 	href="${contextPath}/resources/assets/css/vendors/fontawesome.css">
 
 <!-- ico-font-->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/icofont.css">
 
-<!-- Prism css-->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/prism.css">
+    <!-- Prism css-->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/prism.css">
 
-<!-- Chartist css -->
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/resources/assets/css/vendors/chartist.css">
+    <!-- Chartist css -->
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/chartist.css">
 
 
 <!-- Flag icon-->
@@ -72,7 +69,7 @@
 	href="${contextPath}/resources/assets/css/admin.css">
 </head>
 <body>
-	<script src="${contextPath}/resources/js/itemList.js"></script>
+
 	<!-- page-wrapper Start-->
 	<div class="page-wrapper">
 
@@ -421,6 +418,85 @@
 
 			<div class="page-body">
 
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="page-header">
+						<div class="row">
+							    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-warning card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="navigation" class="font-warning"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">수락 대기</span>
+                                        <h3 class="mb-0"><span class="counter">${storeStatus[0].cnt}건</span><small class="monthDate">${month}월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden  widget-cards">
+                            <div class="bg-secondary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">주문 수락</span>
+                                        <h3 class="mb-0"><span class="counter">${storeStatus[1].cnt}건</span><small class="monthDate">${month}월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-primary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">준비 완료</span>
+                                        <h3 class="mb-0"> <span class="counter">${storeStatus[2].cnt}건</span><small class="monthDate">${month}월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-danger card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">수령 완료</span>
+                                        <h3 class="mb-0"><span class="counter">${storeStatus[3].cnt}건</span><small class="monthDate">${month}월</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+							
+							<div class="col-lg-6">
+								<div class="page-header-left">
+									<h3>
+										Orders <small>Multikart Admin panel</small>
+									</h3>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<ol class="breadcrumb pull-right">
+									<li class="breadcrumb-item"><a href="index.html"><i
+											data-feather="home"></i></a></li>
+									<li class="breadcrumb-item">Sales</li>
+									<li class="breadcrumb-item active">Orders</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- Container-fluid Ends-->
 
 				<!-- Container-fluid starts-->
@@ -429,33 +505,35 @@
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>상품 목록</h5>
+									<h5>Manage Order</h5>
 								</div>
 								<div class="card-body order-datatable">
 									<table class="display" id="basic-1">
 										<thead>
 											<tr>
-												<th>상품번호</th>
-												<th>카테고리</th>
-												<th>상품사진</th>
-												<th>상품명</th>
-												<th>재고</th>
-												<th>가격</th>
-												<th></th>
+												<th>주문번호</th>
+												<th>주문자 명</th>
+												<th>주문 상태</th>
+												<th>총 가격</th>
+												<th>날짜</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${itemList}" var="item">
+											<c:forEach items="${ordersList}" var="list">
 												<tr>
-													<td class="itemId">${item.id}</td>
-													<td>${item.category}</td>
+													<td>${list.ordersId}</td>
 													<td>
-														<img src="${item.thumbFileURL}" width="120" height="120">
+														<div class="d-flex">${list.memberName}</div>
 													</td>
-													<td>${item.name}</td>
-													<td>${item.stock }</td>
-													<td>${item.price}</td>
-													<td><button class="updateItem">수정</button><button class="deleteItem">삭제</button></td>
+													<td><span class="badge badge-secondary">
+												<c:choose>
+												<c:when test="${list.status eq 0}">수락 대기</c:when>
+												<c:when test="${list.status eq 1}">주문 수락</c:when>
+												<c:when test="${list.status eq 2}">준비 완료</c:when>
+												<c:otherwise>수령완료</c:otherwise>
+												</c:choose></span></td>
+													<td><span class="badge badge-success">${list.amount}</span></td>
+													<td>${list.paymentDate}</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -468,62 +546,36 @@
 				<!-- Container-fluid Ends-->
 			</div>
 			<!--------------------------- 내용 시작 ---------------------------->
-			<!-- 모달 세트  시작 -->
-			<style>
-#modal-open {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 120px;
-	height: 30px;
-	margin-top: -15px;
-	margin-left: -60px;
-	line-height: 15px;
-	cursor: pointer;
+		<!-- 모달 세트  시작 -->
+<style>
+#modal-open{ position:absolute; top:50%; left:50%;
+  width:120px; height:30px; margin-top:-15px; margin-left:-60px;
+  line-height:15px; cursor:pointer;
 }
 
-.modal {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-	top: 0;
-	left: 0;
-	display: none;
+.modal{ 
+  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
 }
 
-.modal-content {
-	width: 400px;
-	height: 200px;
-	background: #fff;
-	border-radius: 10px;
-	position: absolute;
-	top: 10%;
-	left: 50%;
-	margin-top: -100px;
-	margin-left: -200px;
-	text-align: center;
-	box-sizing: border-box;
-	padding: 74px 0;
-	line-height: 23px;
-	cursor: pointer;
+.modal-content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:absolute; top:10%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
 }
 </style>
-			<div class="modal">
-				<div id="modal-content" class="modal-content" title="클릭하면 창이 닫힙니다.">
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
-
-			</div>
-			<!-- 모달 세트  끝 -->
+<div class="modal">
+  <div id="modal-content" class="modal-content" 
+       title="클릭하면 창이 닫힙니다."><br><br><br><br><br><br><br>
+  </div>
+  
+</div>
+<!-- 모달 세트  끝 -->
 			<!--------------------------- 소켓 시작 ---------------------------->
-			<script type="text/javascript">
+				<script type="text/javascript">
 				var wsocket;
 				var auth = '<c:out value="${loginInfo.storeId}"/>';
 
@@ -534,203 +586,148 @@
 				}
 
 				var receiveData = {};
-
+				
 				function onMessage(evt) {
 					$('.modal-content').empty();
 					$('.modal-content').append(evt.data);
-					$('.modal-content')
-							.append(
-									'<br><br><br><br><div><a href="${contextPath}/ordermanage">관리 페이지 이동</a></div>');
-					$(function() {
-						$(".modal").fadeIn()
-						$(".modal-content").click(function() {
-							$(".modal").fadeOut();
+					$('.modal-content').append('<br><br><br><br><div><a href="${contextPath}/ordermanage">관리 페이지 이동</a></div>');
+					$(function(){ 
+					    $(".modal").fadeIn()
+						  $(".modal-content").click(function(){
+						    $(".modal").fadeOut();
+						  });
 						});
-					});
 				}
 				function onClose(evt) {
 					console.log("연결을 끊었습니다.");
 				}
-
+				
 				$(document).ready(function() {
 					connect();
 					$('#orderId').click(function() {
 						console.log('hi');
 
 					});
+					
 
 				});
 			</script>
-
+			
 			<!--------------------------- 소켓 끝 ---------------------------->
-
+			
 			<script>
-				$("#basic-1 tr")
-						.click(
-								function() {
-									$('#myModalContent').empty();
-									var str = ""
-									var tdArr = new Array(); // 배열 선언
-									var tr = $(this);
-									var td = tr.children();
-									td.each(function(i) {
-										tdArr.push(td.eq(i).text());
-									});
-									// td.eq(index)를 통해 값을 가져올 수도 있다.
-									var orderId = td.eq(0).text();
-									var sendData = "orderId=" + orderId;
-									let link = "${contextPath}/getOrderId";
-									$
-											.ajax({
-												url : link,
-												type : 'post',
-												data : sendData,
-												success : function(result) {
-													console.log(result);
-													var memberName = result[0].memberName;
-
-													$('#myModalContent')
-															.append(
-																	"<p style='text-align: center;'>"
-																			+ result[0].memberId
-																			+ "</p>");
-													$('#myModalContent')
-															.append(
-																	"<p style='text-align: center;'>"
-																			+ result[0].orderId
-																			+ "</p>");
-													for (var i = 0; i < result.length; i++) {
-														//itemName: ~ VO형식으로 출력
-														$('#myModalContent')
-																.append(
-																		"<p style='text-align: center;'>"
-																				+ result[i].itemName
-																				+ "</p>");
-														$('#myModalContent')
-																.append(
-																		"<p style='text-align: center;'>"
-																				+ result[i].price
-																				+ "</p>");
-													}
-													$('#myModalContent')
-															.append(
-																	"&nbsp<button id='acceptBtn'>주문수락</button>&nbsp");
-													$('#myModalContent')
-															.append(
-																	"&nbsp<button id='readyBtn'>준비완료</button>&nbsp");
-													$('#myModalContent')
-															.append(
-																	"<button id='receiptBtn'>수령완료</button><br><br>");
-													$('#myModalContent')
-															.append(
-																	"<button id='closeBtn'>닫기</button>");
-													$('#orderModal').show();
-
-													$('#closeBtn')
-															.click(
-																	function() {
-																		$(
-																				'#orderModal')
-																				.hide();
-
-																	});
-
-													var acceptLink = "${contextPath}/orderAccept";
-													$('#acceptBtn')
-															.click(
-																	function() {
-																		console
-																				.log(memberName);
-																		$
-																				.ajax({
-																					url : acceptLink,
-																					type : 'post',
-																					data : sendData,
-																					success : function() {
-																						console
-																								.log('주문 수락되었습니다.');
-																						console
-																								.log(result);
-
-																						receiveData.type = "accept";
-																						receiveData.customer = memberName;
-																						receiveData.auth = auth;
-																						console
-																								.log(receiveData);
-																						wsocket
-																								.send(JSON
-																										.stringify(receiveData));
-																						location
-																								.reload();
-																						$(
-																								'#orderModal')
-																								.hide();
-																					}
-
-																				});
-																	});
-													var readyLink = "${contextPath}/orderReady";
-													$('#readyBtn')
-															.click(
-																	function() {
-																		$
-																				.ajax({
-																					url : readyLink,
-																					type : 'post',
-																					data : sendData,
-																					success : function() {
-																						receiveData.customer = memberName;
-																						receiveData.auth = auth;
-																						receiveData.type = "ready";
-																						wsocket
-																								.send(JSON
-																										.stringify(receiveData));
-																						console
-																								.log('상품이 준비완료 되었습니다.');
-																						location
-																								.reload();
-																						$(
-																								'#orderModal')
-																								.hide();
-																					}
-
-																				});
-																	});
-													var receiptLink = "${contextPath}/orderReceipt";
-													$('#receiptBtn')
-															.click(
-																	function() {
-																		$
-																				.ajax({
-																					url : receiptLink,
-																					type : 'post',
-																					data : sendData,
-																					success : function() {
-																						receiveData.customer = memberName;
-																						receiveData.auth = auth;
-																						receiveData.type = "receipt";
-																						wsocket
-																								.send(JSON
-																										.stringify(receiveData));
-																						console
-																								.log('상품 수령을 완료했습니다.');
-																						location
-																								.reload();
-																						$(
-																								'#orderModal')
-																								.hide();
-																					}
-
-																				});
-																	});
-
-												}
-											});
-
+				
+				$("#basic-1 tr").click(function() {
+					$('#myModalContent').empty();
+					var str = ""
+					var tdArr = new Array(); // 배열 선언
+					var tr = $(this);
+					var td = tr.children();
+					td.each(function(i) {
+						tdArr.push(td.eq(i).text());
+					});
+					// td.eq(index)를 통해 값을 가져올 수도 있다.
+					var orderId = td.eq(0).text();
+					var sendData = "orderId="+orderId;
+					let link = "${contextPath}/getOrderId";
+					$.ajax({
+						url : link,
+						type : 'post',
+						data : sendData,
+						success : function(result) {
+							console.log(result);
+							var memberName = result[0].memberName;
+							
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].memberId+"</p>");
+							$('#myModalContent').append("<p style='text-align: center;'>"+result[0].orderId+"</p>");
+							for(var i=0;i<result.length;i++){
+								//itemName: ~ VO형식으로 출력
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].itemName+"</p>");
+								$('#myModalContent').append("<p style='text-align: center;'>"+result[i].price+"</p>");
+							}
+							$('#myModalContent').append("&nbsp<button id='acceptBtn'>주문수락</button>&nbsp");
+							$('#myModalContent').append("&nbsp<button id='readyBtn'>준비완료</button>&nbsp");
+							$('#myModalContent').append("<button id='receiptBtn'>수령완료</button><br><br>");
+							$('#myModalContent').append("<button id='closeBtn'>닫기</button>");
+							$('#orderModal').show();
+							
+							$('#closeBtn').click(function(){
+								$('#orderModal').hide();
+								
+							});
+							
+							var acceptLink = "${contextPath}/orderAccept";
+							$('#acceptBtn').click(function(){
+								console.log(memberName);
+								$.ajax({
+									url : acceptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+										console.log('주문 수락되었습니다.');
+										console.log(result);
+											
+											receiveData.type="accept";
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											console.log(receiveData);
+											wsocket.send(JSON.stringify(receiveData));
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
 								});
+							});
+							var readyLink = "${contextPath}/orderReady";
+							$('#readyBtn').click(function(){
+								$.ajax({
+									url : readyLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="ready";
+											wsocket.send(JSON.stringify(receiveData));
+										    console.log('상품이 준비완료 되었습니다.');	
+										location.reload();
+										$('#orderModal').hide();
+									}
+									
+								});
+							});
+							var receiptLink = "${contextPath}/orderReceipt";
+							$('#receiptBtn').click(function(){
+								$.ajax({
+									url : receiptLink,
+									type : 'post',
+									data : sendData,
+									success : function(){
+											receiveData.customer = memberName;
+											receiveData.auth = auth;
+											receiveData.type="receipt";
+											wsocket.send(JSON.stringify(receiveData));
+											console.log('상품 수령을 완료했습니다.');	
+											location.reload();
+											$('#orderModal').hide();
+									}
+									
+								});
+							});
+							
+							
+							
+						}
+					});
+
+				});
+				
+				
+			
+				
 			</script>
 
-
+		
 
 			<!-- The Modal -->
 			<style>
@@ -780,12 +777,13 @@
 	width: 30%; /* Could be more or less, depending on screen size */
 }
 </style>
-			<!-- orderModal custom -->
+<!-- orderModal custom -->
 			<div id="orderModal" class="myModal">
-				<div class="myModal-content" id="myModalContent"></div>
+				<div class="myModal-content" id="myModalContent">
+				</div>
 			</div>
-
-			<!-- orderModal custom -->
+			
+<!-- orderModal custom -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
 				<div class="modal-content">
@@ -843,7 +841,7 @@
 				};
 				let link = "${contextPath}/getOrderId";
 				$('#confirmBtn').click(function() {
-
+					
 				});
 			</script>
 

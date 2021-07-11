@@ -10,7 +10,7 @@
 		amount ,
 		destination_id, cigarette_amount, drink_amount,
 		perfume_amount)
-		values(order_id_seq.nextval, #{memberId}, sysdate, sysdate, 0 ,
+		values(order_id_seq.nextval, #{memberId}, sysdate + (1/24) * 9, sysdate + (1/24) * 9, 0 ,
 		#{amount} , 1,2,0,0)
 	</insert>
 
