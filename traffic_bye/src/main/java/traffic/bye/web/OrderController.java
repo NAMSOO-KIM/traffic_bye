@@ -45,15 +45,19 @@ public class OrderController {
 	@Autowired
 	private MemberService memberService;
 	
+	
 	@GetMapping(value = "order")
-	public String getInstructor(HttpSession session, Model model) throws Exception {
+	public String getOrder(HttpSession session, Model model) throws Exception {
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
 		long id = loginSession.getId();
+		MemberVO memberVO = memberService.findMember(id); // 추가된 부분 - 김남수 
+		model.addAttribute("memberVO", memberVO); // 추가된 부분
+		
 		List<CartVO> cartList = cartService.getCartList(id);
 		System.out.println(cartList.toString());
 		model.addAttribute("cartList", cartList);
 		// return "orders/ordermain";
-		return "orders/ordermainTest";
+		return "orders/ordermainTest";  // 정상적으로 작동하면 orders/ordermainTest.jsp 파일을 ordermain.jsp에 복붙 후 사용 (ordermainTest.jsp 삭제)
 	}
 
 	@PostMapping(value = "orderInsert")
@@ -205,7 +209,7 @@ public class OrderController {
 		Object obj = parser.parse(data);
 		return (JSONObject)obj;
 	}
-	
+	/*
 	@GetMapping(value = "ordertest")
 	public String getOrderTest(HttpSession session, Model model) throws Exception {
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
@@ -216,7 +220,8 @@ public class OrderController {
 		List<CartVO> cartList = cartService.getCartList(id);
 		System.out.println(cartList.toString());
 		model.addAttribute("cartList", cartList);
-		// return "orders/ordermain";
+
 		return "orders/ordermainTest";
 	}
+	*/
 }
