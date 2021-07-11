@@ -46,15 +46,19 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		try {
-			List<ItemVO> list = itemService.getItemList();
+			// 스마트 오더 인기 제품
+			
+			// List<ItemVO> list = itemService.getItemList();
+			List<ItemVO> list = itemService.getFrequentSmartOrderItems();
 
 			// 대분류 카테고리 가져오기
 			List<CategoryVO> mainCategoryList = categoryService.getMainCategory();
 			
-
+			
+			
 			model.addAttribute("itemList",list);
 			model.addAttribute("mainCategoryList",mainCategoryList);
-		
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
