@@ -24,8 +24,8 @@
  		anotherFiles.options.thumbnail.call(anotherFiles, mockFile, anotherImages[i].thumbFileURL);
 	}
 	let preMock = { name : itemDetailVO.repreFile, size: itemDetailVO.repreFileSize, mock : true}; 
-	anotherFiles.options.addedfile.call(repreFile, preMock);
- 	anotherFiles.options.thumbnail.call(repreFile, preMock, itemDetailVO.thumbFileURL);
+	repreFile.options.addedfile.call(repreFile, preMock);
+ 	repreFile.options.thumbnail.call(repreFile, preMock, itemDetailVO.thumbFileURL);
     anotherFiles.on("removedfile", function(file){
 		if(file.mock){
 			console.log(file);

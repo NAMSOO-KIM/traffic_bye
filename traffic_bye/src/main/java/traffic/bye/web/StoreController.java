@@ -158,4 +158,9 @@ public class StoreController {
 		mav.setViewName("store/storeMain");
 		return mav;
 	}
+	
+	@GetMapping("/store/{id}/update")
+	public String storeUpdate(@PathVariable Long id) {
+		return null;
+	}
 }
