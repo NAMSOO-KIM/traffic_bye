@@ -28,6 +28,7 @@
     <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
+            
                 <div class="col-sm-6">
                     <div class="page-title">
                         <h2>${store.name}</h2>
