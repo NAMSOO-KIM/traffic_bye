@@ -58,6 +58,10 @@ public interface ItemDAO {
 	List<StoreItemVO> getStoreItems(Long storeId) throws SQLException;
 	
 	int deleteItem (ItemDeleteVO itemDeleteVO) throws SQLException;
+
+	int countStoreItem(long store_id) throws SQLException;
+
+	List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws SQLException;
 	
 	// 메인 카테고리에 재고가 없는 순으로 8개 가져옴.(100이하일 경우만)
 	List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException;

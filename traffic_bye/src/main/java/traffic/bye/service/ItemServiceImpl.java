@@ -178,6 +178,15 @@ public class ItemServiceImpl implements ItemService {
 
 		return itemDAO.getPagingItemList(map);
 	}
+
+	@Override
+	public int countStoreItem(long store_id) throws Exception {
+		return itemDAO.countStoreItem(store_id);
+	}
+
+	@Override
+	public List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws Exception {
+		return itemDAO.getPagingStoreItemList(map);
 	
 	@Override
 	public List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException {

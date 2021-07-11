@@ -4,13 +4,38 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <body class="theme-color-1">
 	<!-- header start -->
+	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
 	
-	<!-- Price range icon -->
-	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/vendors/price-range.css">
+	$(document).ready(function(){
+
+	    $('#filterText').keyup(function(event) {
+	        var temp = $(this).val();
+	        console.log(temp);
+	        if (temp == "") {
+	        	
+	            $('.col-grid-box').show();
+	            
+	        } else {
+	            
+	        	$('.col-grid-box').hide();
+	        	$(".col-grid-box h6:contains('"+temp+"')").parents('.col-grid-box').show();
+
+	        }
+	    });
+	});
+	
+	
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="${contextPath}/mm/items/list/${category_id}?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+	
+	</script>
 	
 	<jsp:include page="../header.jsp"></jsp:include>
 	
@@ -83,7 +108,7 @@
     <!-- product-tab ends -->
     
     <div class="container">
-    	<div class="collection-content col">
+    <div class="collection-content col">
                         <div class="page-main-content">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -99,13 +124,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
+                                                
                                                     <div class="product-filter-content">
                                                     	 
                                                         <div class="search-count">
-                                                            <h5>맞춤 보기 설정</h5>
+                                                        	
+                                                            <input id="filterText" class="form-control"
+																				placeholder="상품 검색하기">
+															
                                                         </div>
-                                                         
+                                                        
                                                         <div class="collection-view">
+                                                        
                                                             <ul>
                                                                 <li><i class="fa fa-th grid-layout-view"></i></li>
                                                                 <li><i class="fa fa-list-ul list-layout-view"></i></li>
@@ -124,13 +154,14 @@
                                                             </ul>
                                                         </div>
                                                         <div class="product-page-per-view">
-                                                            <select>
-                                                                <option value="High to low">24 개씩 보기
-                                                                </option>
-                                                                <option value="Low to High">50 개씩 보기
-                                                                </option>
-                                                                <option value="Low to High">100 개씩 보기
-                                                                </option>
+                                                            <select id="cntPerPage" name="sel" onchange="selChange()">
+                                                                <option value="12"
+																	<c:if test="${paging.cntPerPage == 12}">selected</c:if>>12개씩 보기</option>
+																<option value="24"
+																	<c:if test="${paging.cntPerPage == 24}">selected</c:if>>24개씩 보기</option>
+																<option value="50"
+																	<c:if test="${paging.cntPerPage == 50}">selected</c:if>>50개씩 보기</option>
+																
                                                             </select>
                                                         </div>
                                                         <div class="product-page-filter">
@@ -147,18 +178,18 @@
                                         <div class="product-wrapper-grid">
                                             <div class="row margin-res">
                                             <!-- 상품 입력 부분 -->
-                                                <c:forEach items="${itemList}" var="item">
+                                                <c:forEach items="${selectMainItemList}" var="selectItemVO">
                                                 <div class="col-xl-3 col-6 col-grid-box">
                                                     <div class="product-box">
                                                         <div class="img-wrapper">
                                                             <div class="front">
-                                                                <a href="${contextPath}/items/${item.id}"><img src="${item.thumb_file_url}"
-                                                                        class="img-fluid  "
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                        class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="${contextPath}/items/${item.id}"><img src="${item.thumb_file_url}"
-                                                                        class="img-fluid   "
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                        class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="cart-info cart-wrap">
@@ -178,18 +209,10 @@
                                                             <div>
                                                                 
                                                                 <a href="product-page(no-sidebar).html">
-                                                                    <h6>[${store.name}] ${item.name}</h6>
+                                                                    <h6>[${selectItemVO.store_name}] ${selectItemVO.name}</h6>
                                                                 </a>
-                                                                <!-- 
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and
-                                                                    typesetting industry. Lorem Ipsum has been the
-                                                                    industry's standard dummy text ever since the 1500s,
-                                                                    when an unknown printer took a galley
-                                                                    of type and scrambled it to make a type specimen
-                                                                    book
-                                                                </p>
-                                                                 -->
-                                                                <h4>$${item.price}</h4>
+                                                                
+                                                                <h4>$${selectItemVO.price}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,33 +226,47 @@
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <nav aria-label="Page navigation">
                                                             <ul class="pagination">
-                                                                <li class="page-item"><a class="page-link" href="#"
-                                                                        aria-label="Previous"><span
-                                                                            aria-hidden="true"><i
-                                                                                class="fa fa-chevron-left"
-                                                                                aria-hidden="true"></i></span> <span
-                                                                            class="sr-only">Previous</span></a></li>
-                                                                <li class="page-item active"><a class="page-link"
-                                                                        href="#">1</a></li>
-                                                                <li class="page-item"><a class="page-link"
-                                                                        href="#">2</a></li>
-                                                                <li class="page-item"><a class="page-link"
-                                                                        href="#">3</a></li>
-                                                                <li class="page-item"><a class="page-link" href="#"
-                                                                        aria-label="Next"><span aria-hidden="true"><i
-                                                                                class="fa fa-chevron-right"
-                                                                                aria-hidden="true"></i></span> <span
-                                                                            class="sr-only">Next</span></a></li>
+                                                            <!-- 
+                                                            <c:if test="${paging.startPage != 1 }">
+																<a href="/boardList?no`wPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
+															</c:if>
+															 -->
+                                                                <li class="page-item">
+                                                                	<c:if test="${paging.startPage != 1 }">
+	                                                                <a class="page-link" href="${contextPath}/store/${store.id}?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+	                                                                	<span aria-hidden="true">
+	                                                                		<i class="fa fa-chevron-left" aria-hidden="true">
+	                                                                		</i>
+	                                                                	</span> 
+		                                                                <span class="sr-only">Previous
+		                                                                </span>
+	                                                                </a>
+	                                                                </c:if>
+                                                                </li> 
+                                                                <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+                                                                	<c:choose>
+                                                                		<c:when test="${p == paging.nowPage }">
+                                                                			<li class="page-item active"><a class="page-link"
+		                                                                        href="#">${p}</a>
+		                                                                    </li>
+																		</c:when>
+		                                                                <c:when test="${p != paging.nowPage }">
+		                                                                	<li class="page-item"><a class="page-link"
+		                                                                        href="${contextPath}/store/${store.id}?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+																		</c:when>
+                                                                	</c:choose>
+                                                                </c:forEach>
+                                                                <c:if test="${paging.endPage != paging.lastPage}">
+	                                                                <li class="page-item"><a class="page-link" href="${contextPath}/store/${store.id}?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" 
+	                                                                	aria-label="Next"><span aria-hidden="true">
+	                                                                	<i class="fa fa-chevron-right" aria-hidden="true">
+	                                                                	</i></span> 
+	                                                                	<span class="sr-only">Next</span></a>
+	                                                                </li>
+                                                               	</c:if>
                                                             </ul>
                                                         </nav>
                                                     </div>
-                                                    <!-- 
-                                                    <div class="col-xl-6 col-md-6 col-sm-12">
-                                                        <div class="product-search-count-bottom">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5>
-                                                        </div>
-                                                    </div>
-                                                     -->
                                                 </div>
                                             </div>
                                         </div>
@@ -238,8 +275,7 @@
                             </div>
                         </div>
                     </div>
-    </div>
-     
+     </div>
 
 	<!-- footer start -->
     <jsp:include page="../footer.jsp"></jsp:include>
