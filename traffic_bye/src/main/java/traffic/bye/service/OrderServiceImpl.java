@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import traffic.bye.dao.ItemDAO;
 import traffic.bye.dao.OrdersDAO;
 import traffic.bye.dao.StoreDAO;
 import traffic.bye.vo.CartChangeQuantityVO;
@@ -29,9 +31,32 @@ public class OrderServiceImpl implements OrdersService {
 	@Autowired
 	@Qualifier(value = "ordersDAO")
 	private OrdersDAO ordersDAO;
+	
+	@Autowired
+	private ItemDAO itemDAO;
+	
+
+
+	@Transactional
+	@Override
+	public int makeOrder(OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception {
+		// TODO Auto-generated method stub
+		int row = 0;
+		for(OrdersDetailVO ordersDetailVO : ordersDetails) {
+			row += itemDAO.updateStock(ordersDetailVO);
+		}
+		if(row != ordersDetails.size()) throw new Exception();
+		int orderId =  ordersDAO.insertOrders(ordersVO);
+		for(OrdersDetailVO ordersDetailVO : ordersDetails) {
+			ordersDetailVO.setOrdersId(orderId);
+			ordersDAO.insertOrdersDetail(ordersDetailVO);
+		}
+		return orderId;
+	}
 
 	@Override
 	public int insertOrders(OrdersVO ordersVO) throws Exception {
+		
 		return ordersDAO.insertOrders(ordersVO);
 	}
 

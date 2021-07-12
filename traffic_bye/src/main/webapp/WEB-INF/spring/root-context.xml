@@ -88,5 +88,10 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="SqlSession"
 		p:mapperInterface="traffic.bye.dao.CartDAO" />
+		
+	<bean id="testDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="SqlSession"
+		p:mapperInterface="traffic.bye.dao.TestDAO" />
 
 </beans>

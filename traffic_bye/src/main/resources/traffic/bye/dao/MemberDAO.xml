@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
-		select info.id id, loginId, password, store.id storeId from (select login_id loginId, id, password from member where login_id = #{loginId}) info left join store on info.id = store.manager_id
+		select info.id id, loginId, password, store.id storeId, info.name memberName, store.name storeName from (select login_id loginId, id, password, name from member where login_id = #{loginId}) info left join store on info.id = store.manager_id
 	</select>
 	
 	<select id="getRoleInfo" parameterType="String" resultType="String">

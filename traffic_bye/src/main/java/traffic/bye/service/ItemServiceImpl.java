@@ -102,6 +102,7 @@ public class ItemServiceImpl implements ItemService {
 		itemAddVO.setThumbFileURL(repreImage.getThumbFileURL());
 		itemAddVO.setRepreFileSize(repreImage.getFileSize());
 		itemAddVO.setRepreFileURL(repreImage.getOriginFileURL());
+		itemAddVO.setMainThumbFileURL(repreImage.getMainThumbFileURL());
 		itemDAO.addItem(itemAddVO);
 		Long id = itemAddVO.getId();
 		repreImage.setItemId(id);
