@@ -165,30 +165,29 @@ public class ItemController {
 		mav.setViewName("categoryPage");
 		return mav;
 	}
-	
-
-
-	@PostMapping(value = "/firstMainList")
+		
+	@PostMapping(value = "/firstMainOutOfStockList")
 	@ResponseBody
-	public List<ItemVO> getFirstMainItemList(HttpSession session) throws Exception {
+	public List<ItemVO> getFirstMainOutOfStockList(HttpSession session) throws Exception {
 
 		long first_category = categoryService.getFirstMainCategory();
 		
-		List<ItemVO> firstItemList = itemService.getMainCategoryItemList(first_category);
 		
+		List<ItemVO> firstItemList = itemService.getMainOutOfStockList(first_category);
 		
 		return firstItemList;	
 	
 		
 	}
 	
-	@PostMapping(value = "/selectMainList")
+	@PostMapping(value = "/selectMainOutOfStockList")
 	@ResponseBody
-	public List<ItemVO> getSelectMainItemList(long id,HttpSession session) throws Exception {
+	public List<ItemVO> getSelectMainOutOfStockList(long id,HttpSession session) throws Exception {
 
-		List<ItemVO> selectMainItemList = itemService.getMainCategoryItemList(id);
+		
+		List<ItemVO> selectMainItemList = itemService.getMainOutOfStockList(id);
 
-		return selectMainItemList;	
+		return selectMainItemList;
 	
 		
 	}

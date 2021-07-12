@@ -7,10 +7,12 @@ import java.util.List;
 import traffic.bye.vo.ImageDeleteVO;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemAddVO;
+import traffic.bye.vo.ItemDeleteVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.PagingVO;
+import traffic.bye.vo.StoreItemVO;
 
 public interface ItemDAO {
 	//ItemDTO getItem(long itemNO) throws Exception;
@@ -52,4 +54,18 @@ public interface ItemDAO {
 	
 	// 페이징 된 아이템(상점명, 아이템)들 조회
 	List<ItemVO> getPagingItemList(HashMap<String, Object> map) throws SQLException;
+	
+	List<StoreItemVO> getStoreItems(Long storeId) throws SQLException;
+	
+	int deleteItem (ItemDeleteVO itemDeleteVO) throws SQLException;
+
+	int countStoreItem(long store_id) throws SQLException;
+
+	List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws SQLException;
+	
+	// 메인 카테고리에 재고가 없는 순으로 8개 가져옴.(100이하일 경우만)
+	List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException;
+	
+	// 스마트 오더 인기제품 (주문 기준 내림차순)
+	List<ItemVO> getFrequentSmartOrderItems() throws SQLException;
 }

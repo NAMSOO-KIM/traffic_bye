@@ -1,10 +1,16 @@
 package traffic.bye.web;
 
+import java.util.Calendar;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +22,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.service.CategoryService;
 import traffic.bye.service.ItemService;
+import traffic.bye.service.OrdersService;
 import traffic.bye.service.StoreService;
+import traffic.bye.vo.ItemDeleteVO;
 import traffic.bye.vo.ItemDetailVO;
+import traffic.bye.vo.LoginInfo;
+import traffic.bye.vo.OrdersManageVO;
 
 @Slf4j
 @RequestMapping("admin/{id}")
@@ -31,6 +41,23 @@ public class AdminController {
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private OrdersService ordersService;
+	
+	@GetMapping("")
+	public String orderManage(HttpSession session, Model model) throws Exception {
+		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		long storeId = loginInfo.getStoreId();
+		List<OrdersManageVO> ordersList = ordersService.getOrderList(storeId);
+		Calendar cal = Calendar.getInstance();
+		int month = cal.get(Calendar.MONTH) + 1;
+		System.out.println(ordersList.toString());
+		model.addAttribute("ordersList", ordersList);
+		model.addAttribute("storeStatus", storeService.getStoreStatus(storeId));
+		model.addAttribute("month", month);
+		return "admin/ordermanage";
+	}
 	
 	@GetMapping("/addItem")
 	public String addItem(Model model) {
@@ -84,6 +111,23 @@ public class AdminController {
 	
 	@GetMapping("/items")
 	public String getItems(@PathVariable Long id, Model model) {
+		try {
+			model.addAttribute("itemList", storeService.getStoreItems(id));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "admin/itemList";
+	}
+	
+	@DeleteMapping("/items/{itemId}")
+	public ResponseEntity<Void> deleteItem(@PathVariable Long id, @PathVariable Long itemId){
+		log.info("HI");
+		try {
+			storeService.deleteItem(new ItemDeleteVO(itemId, id));
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		} catch(Exception e) {
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			
+		}
 	}
 }

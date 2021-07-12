@@ -17,6 +17,47 @@
 
 <body class="theme-color-1">
 
+	<!--Modal: modalVM-->
+	<div class="modal fade" id="modalVM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	  aria-hidden="true">
+	  <div class="modal-dialog modal-xl" role="document">
+	
+	    <!--Content-->
+	    <div class="modal-content">
+	    	
+	    	<div>
+	    		<p class="modal-title" style="font-size: 20px; font-weight: 700; color: black; text-align: center; padding-top: 20px;">매장 이름</p>
+	    	</div>
+	
+	      	<!--Body-->
+	    	<div class="modal-body">
+	
+		        <div class="" id="modal-video" style="text-align: center;">
+					<img src="" width="640" height="480" id="mjpeg-stream"/>
+		        </div>
+		        
+		        <div>
+		        	<span class="modal-capacity" style="font-size: 15px; font-weight: 500; color: black; text-align: center; padding-top: 20px;">혼잡도 : </span>
+		        	<span class="json-data" style="font-size: 15px; font-weight: 500; color: black; text-align: center; padding-top: 20px;">-</span>
+		        </div>
+	
+	      	</div>
+	
+	      <!--Footer-->
+	      <div class="modal-footer justify-content-center flex-column flex-md-row">
+	      	<button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+	          data-dismiss="modal" id="modal-detail-btn">상세</button>
+	        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+	          data-dismiss="modal" id="modal-close-btn">닫기</button>
+	      </div>
+	
+	    </div>
+	    <!--/.Content-->
+	
+	  </div>
+	</div>
+	<!--Modal: modalVM-->
+
     <!-- breadcrumb start -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -146,7 +187,9 @@
                                             </div>
                                         </div>
                                          
-                                        
+                                        <div class="store-view">
+                                        	<span class="btn btn-solid btn-sm btn-xs me-3" id="complex-btn">혼잡도 보기</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -494,17 +537,106 @@
 	
 
     <script>
-    	
-        $(document).ready(function () {
-        	
-            if ($(window).width() > 991) {
-                $(".product_img_scroll, .pro_sticky_info").stick_in_parent();
-            }
-        	
-        });
-    	
+		var timer;
+		var storeCapacity;
+		function openSearch() {
+			document.getElementById("search-overlay").style.display = "block";
+		}
 
-    </script>
+		function closeSearch() {
+			document.getElementById("search-overlay").style.display = "none";
+		}
+		
+		function getCapacity(duration){
+			timer = duration * 3600;
+			
+			var interval = setInterval(function(){
+				
+				$.ajax({
+					url: "http://175.205.200.40:8080/store1.txt",
+					method: "GET",
+					dataType: "json",
+					success : function(data){
+						console.log(data.objects);
+						var personCnt = 0;
+						for(var i = 0; i < data.objects.length; i++){
+							if(data.objects[i].name === 'person'){
+								personCnt++;
+							}
+						}
+						
+						console.log('person cnt : ' + personCnt);
+						
+						var percent = parseInt((personCnt / storeCapacity) * 100);
+						console.log('percent : ' + percent + '%');
+						
+						if(percent < 60){
+							$('.json-data').html('원활');
+						} else if(60 < percent && percent < 80){
+							$('.json-data').html('혼잡');
+						} else if(percent <= 100){
+							$('.json-data').html('포화');
+						}
+						
+					},
+					complete : function(){
+						console.log("complete");
+					}
+				});
+				
+			
+				
+			if(--timer < 0){
+				timer = 0;
+				clearInterval(interval);
+			}
+			}, 1000);
+		}
+		
+		$(document).ready(function(){
+			var imgTime = 3600 * 3;
+			$('#complex-btn').click(function(){
+				console.log($(this).data('storeid'));
+				$('#modalVM').modal('show');
+				
+				$('.modal-title').text('${store.name}');
+				$('.modal-title').attr('data-storeid', '${store.id}');
+				
+				storeCapacity = ${store.capacity};
+				
+				getCapacity(3);
+				imgTime = 3600*3;
+				var imgInterval = setInterval(function(){
+					var url = 'http://175.205.200.40:8080/store/1/video?frame=' + imgTime;
+					
+					$('#mjpeg-stream').attr('src', url);
+					
+					console.log('img time : ' + imgTime);
+					
+					if(--imgTime < 0){
+						imgTime = 0;
+						clearInterval(imgInterval);
+					}
+					
+				}, 1000);
+			});
+			
+			$('#modal-close-btn').click(function(){
+				$('#modalVM').modal('hide');
+			});
+			$('#modal-detail-btn').click(function(){
+				window.location.href = '/app/store/' + ${store.id};
+			});
+			
+			$('#modalVM').on('hidden.bs.modal', function () {
+				timer = 0;
+				imgTime = 0;
+			});
+			
+			
+			
+		});
+	</script>
 </body>
 
 </html>

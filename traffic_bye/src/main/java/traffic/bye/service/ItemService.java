@@ -45,5 +45,15 @@ public interface ItemService {
 	// 페이징 된 아이템 목록(상점, 아이템)들 조회
 	List<ItemVO> getPagingItemList(HashMap<String, Object> map) throws SQLException;
 
+	int countStoreItem(long store_id) throws Exception;
+
+	List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws Exception;
+
+	// 메인 카테고리에 재고가 없는 순으로 8개 가져옴.(100이하일 경우만)
+	List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException;
+	
+	// 스마트 오더가 완료(orders_detail 상태가 3)인 개수들을 세서 개수가 많은 순으로 반환 
+	List<ItemVO> getFrequentSmartOrderItems() throws SQLException;
+	
 	
 }
