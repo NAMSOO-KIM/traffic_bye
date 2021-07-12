@@ -571,7 +571,6 @@
   <div id="modal-content" class="modal-content" 
        title="클릭하면 창이 닫힙니다."><br><br><br><br><br><br><br>
   </div>
-  
 </div>
 <!-- 모달 세트  끝 -->
 			<!--------------------------- 소켓 시작 ---------------------------->
@@ -732,7 +731,7 @@
 			<!-- The Modal -->
 			<style>
 /* The Modal (background) */
-.modal {
+/* .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
@@ -743,16 +742,16 @@
 	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
+} */
 
 /* Modal Content/Box */
-.modal-content {
+/* .modal-content {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 30%; /* Could be more or less, depending on screen size */
-}
+} */
 
 /* The Modal (background) */
 .myModal {
@@ -766,26 +765,26 @@
 	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
+} 
 
 /* Modal Content/Box */
-.myModal-content {
+ .myModal-content {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 30%; /* Could be more or less, depending on screen size */
-}
+} 
 </style>
-<!-- orderModal custom -->
-			<div id="orderModal" class="myModal">
+<!--orderModal custom -->	
+		<div id="orderModal" class="myModal">
 				<div class="myModal-content" id="myModalContent">
 				</div>
 			</div>
 			
 <!-- orderModal custom -->
-			<div id="myModal" class="modal">
-				<!-- Modal content -->
+<!-- 			<div id="myModal" class="modal">
+				Modal content
 				<div class="modal-content">
 					<p style="text-align: center;">
 						<span style="font-size: 14pt;"><b><span
@@ -831,10 +830,10 @@
 						<a>X</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!--End Modal-->
 
-			<script type="text/javascript">
+<!-- 			<script type="text/javascript">
 				//팝업 Close 기능
 				function close_pop(flag) {
 					$('#myModal').hide();
@@ -843,7 +842,7 @@
 				$('#confirmBtn').click(function() {
 					
 				});
-			</script>
+			</script> -->
 
 			<!--------------------------- 내용 끝 ---------------------------->
 			<!-- footer start-->
