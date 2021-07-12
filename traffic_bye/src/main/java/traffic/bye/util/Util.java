@@ -16,13 +16,27 @@ import org.springframework.web.multipart.MultipartFile;
 public class Util {
 	public static String originItemFolder = "item/origin/";
 	public static String thumbItemFolder = "item/thumb/";
+	public static String mainThumbItemFolder = "item/mainThumb/";
 	public static String originStoreFolder = "store/origin/";
 	public static String thumbStoreFolder = "store/thumb/";
-	public static byte[] mamkeThumbnail(String type, String fileURL) throws IOException {
+	public static String mainThumbStoreFolder = "store/mainThumb/";
+	public static byte[] makeThumbnail(String type, String fileURL) throws IOException {
 		URL url = new URL(fileURL);
 		BufferedImage srcImg = ImageIO.read(url);
-		BufferedImage destImg = Scalr.resize(srcImg, Scalr.Method.AUTOMATIC,
-				Scalr.Mode.FIT_TO_HEIGHT, 100);
+//		BufferedImage destImg = Scalr.resize(srcImg, Scalr.Method.AUTOMATIC,
+//				Scalr.Mode.FIT_TO_HEIGHT, 100);
+		BufferedImage destImg = Scalr.resize(srcImg, 120, 120);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(destImg, type, baos);
+		//ImageIO.write(destImg, "PNG", baos);
+		return baos.toByteArray();
+	}
+	public static byte[] makeMainThumbnail(String type, String fileURL) throws IOException {
+		URL url = new URL(fileURL);
+		BufferedImage srcImg = ImageIO.read(url);
+//		BufferedImage destImg = Scalr.resize(srcImg, Scalr.Method.AUTOMATIC,
+//				Scalr.Mode.FIT_TO_HEIGHT, 100);
+		BufferedImage destImg = Scalr.resize(srcImg, 320, 320);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(destImg, type, baos);
 		//ImageIO.write(destImg, "PNG", baos);

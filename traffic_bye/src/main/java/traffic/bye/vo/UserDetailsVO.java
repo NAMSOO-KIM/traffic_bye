@@ -13,7 +13,10 @@ public class UserDetailsVO implements UserDetails {
 	private Long storeId; 
 	private String username;
 	private String password;
+	private String memberName;
+	private String storeName;
 	private List<GrantedAuthority> authorities;
+	
 	
 	public void setId(Long id) {
 		this.id= id;
@@ -44,6 +47,15 @@ public class UserDetailsVO implements UserDetails {
 
 		this.authorities = authorities;
 	}
+	
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -69,6 +81,14 @@ public class UserDetailsVO implements UserDetails {
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return username;
+	}
+	
+	public String getMemberName() {
+		return memberName;
+	}
+	
+	public String getStoreName() {
+		return storeName;
 	}
 
 	@Override

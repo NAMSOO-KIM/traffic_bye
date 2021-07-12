@@ -11,6 +11,7 @@ import traffic.bye.vo.ItemDeleteVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
+import traffic.bye.vo.OrdersDetailVO;
 import traffic.bye.vo.PagingVO;
 import traffic.bye.vo.StoreItemVO;
 
@@ -68,4 +69,6 @@ public interface ItemDAO {
 	
 	// 스마트 오더 인기제품 (주문 기준 내림차순)
 	List<ItemVO> getFrequentSmartOrderItems() throws SQLException;
+	
+	int updateStock(OrdersDetailVO ordersDetailVO) throws SQLException;
 }

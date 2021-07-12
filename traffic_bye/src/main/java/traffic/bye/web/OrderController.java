@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jdk.internal.org.jline.utils.Log;
+import lombok.extern.slf4j.Slf4j;
 import traffic.bye.service.CartService;
 import traffic.bye.service.MemberService;
 import traffic.bye.service.OrdersService;
@@ -34,6 +38,7 @@ import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
 
 @Controller
+@Slf4j
 public class OrderController {
 
 	@Autowired
@@ -61,35 +66,43 @@ public class OrderController {
 	}
 
 	@PostMapping(value = "orderInsert")
-	public String orderInsert(HttpSession session, OrdersVO orders, OrdersDetailVO ordersDetail, Model model)
-			throws Exception {
+	public ResponseEntity<Void> orderInsert(HttpSession session, OrdersVO orders, OrdersDetailVO ordersDetail, Model model)
+			 {
 		OrdersVO ordersVO = new OrdersVO();
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
 		long memberId = loginSession.getId();
 		// 멤버 아이디
-		List<CartVO> cartList = cartService.getCartList(memberId);
-		System.out.println(cartList);
-		// 카트 목록
-		long amount = 0;
-		List<Long> itemId = new ArrayList<>();
-		for (int i = 0; i < cartList.size(); i++) {
-			itemId.add(cartList.get(i).getItem_id());
-			amount += (cartList.get(i).getPrice() * cartList.get(i).getQuantity());
+		try {
+			log.info("ajax 매핑 들어옴");
+//			List<CartVO> cartList = cartService.getCartList(memberId);
+//			System.out.println(cartList);
+//			// 카트 목록
+//			long amount = 0;
+//			List<Long> itemId = new ArrayList<>();
+//			for (int i = 0; i < cartList.size(); i++) {
+//				itemId.add(cartList.get(i).getItem_id());
+//				amount += (cartList.get(i).getPrice() * cartList.get(i).getQuantity());
+//			}
+//			ordersVO.setMemberId(memberId);
+//			ordersVO.setAmount(amount);
+//			ordersService.insertOrders(ordersVO);
+//			System.out.println("오더 번호는 : " + ordersService.getOrderId());
+//			model.addAttribute("orderId", ordersService.getOrderId());
+//			
+//			List<OrdersDetailVO> orderDetails = new ArrayList<OrdersDetailVO>();
+//			
+//			for (int i = 0; i < cartList.size(); i++) {
+//				OrdersDetailVO ordersDetailVO = new OrdersDetailVO();
+//				ordersDetailVO.setItemId(cartList.get(i).getItem_id());
+//				ordersDetailVO.setStoreId(cartList.get(i).getStore_id());
+//				ordersDetailVO.setQuantity(cartList.get(i).getQuantity());
+//				orderDetails.add(ordersDetailVO);
+//			}
+//			ordersService.makeOrder(ordersVO, orderDetails);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);			
+		} catch(Exception e) {
+			return new ResponseEntity<Void>(HttpStatus.BAD_GATEWAY);
 		}
-		ordersVO.setMemberId(memberId);
-		ordersVO.setAmount(amount);
-		ordersService.insertOrders(ordersVO);
-		System.out.println("오더 번호는 : " + ordersService.getOrderId());
-		model.addAttribute("orderId", ordersService.getOrderId());
-
-		for (int i = 0; i < cartList.size(); i++) {
-			OrdersDetailVO ordersDetailVO = new OrdersDetailVO();
-			ordersDetailVO.setItemId(cartList.get(i).getItem_id());
-			ordersDetailVO.setStoreId(cartList.get(i).getStore_id());
-			ordersDetailVO.setQuantity(cartList.get(i).getQuantity());
-			ordersService.insertOrdersDetail(ordersDetailVO);
-		}
-		return "orders/ordersuccess";
 	}
 
 	@PostMapping(value = "/getOrderId")
@@ -174,7 +187,15 @@ public class OrderController {
 	
 	
 	
-	@GetMapping(value="order/orderlist")
+//	@GetMapping(value="order/orderlist")
+//	public String ordersList(HttpSession session, Model model) throws Exception{
+//		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
+//		long memberId = loginSession.getId();
+//		List<OrdersListVO> ordersList = ordersService.getOrdersList(memberId);
+//		model.addAttribute("ordersList", ordersList);
+//		return "orders/orderlist";
+//	}
+	@GetMapping(value="member/mypage/orders")
 	public String ordersList(HttpSession session, Model model) throws Exception{
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
 		long memberId = loginSession.getId();
@@ -183,7 +204,7 @@ public class OrderController {
 		return "orders/orderlist";
 	}
 	
-	@GetMapping(value ="order/orderlist/{memberId}/{id}")
+	@GetMapping(value ="member/mypage/orders/{memberId}/{id}")
 	public String orderTracking(@PathVariable long memberId, @PathVariable long id ,Model model) throws Exception {
 		OrdersTrackingVO trackingList = ordersService.getOrderTrackingList(id);
 		model.addAttribute("list",trackingList);

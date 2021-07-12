@@ -39,6 +39,30 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+	<!-- breadcrumb start -->
+	<div class="breadcrumb-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h2>주문현황</h2>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<nav aria-label="breadcrumb" class="theme-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="${contextPath}/member/mypage">마이페이지</a></li>
+							<li class="breadcrumb-item"><a href="${contextPath}/member/mypage/orders">주문목록</a></li>
+							<li class="breadcrumb-item active" aria-current="page">주문현황</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- breadcrumb End -->
+	
+	
 	<c:set var="myList" value="${list}" />
 	<!-- tracking page start -->
 	<section class="tracking-page section-b-space">
@@ -49,7 +73,7 @@
 					<div class="row border-part">
 						<div class="col-xl-2 col-md-3 col-sm-4">
 							<div class="product-detail">
-								<img src="${contextPath}/resources/assets/images/fashion/pro/1.jpg"
+								<img src="${contextPath}/resources/imgs/orderdetail.jpg"
 									class="img-fluid blur-up lazyload" alt="">
 							</div>
 						</div>
@@ -77,7 +101,7 @@
 											<span>총 금액 :</span>
 										</div>
 										<div class="right">
-											<span>${myList.amount}</span>
+											<span>$${myList.amount}</span>
 										</div>
 									</li>
 								</ul>

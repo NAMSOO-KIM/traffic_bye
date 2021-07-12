@@ -111,7 +111,7 @@
 	
 
 	<insert id="addItem" parameterType="ItemAddVO">
-		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url, repre_file_size, repre_file_url ) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR }, #{repreFileSize}, #{repreFileURL})	
+		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url, repre_file_size, repre_file_url, main_thumb_file_url ) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR }, #{repreFileSize}, #{repreFileURL}, #{mainThumbFileURL} )	
 	
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			select item_id_seq.currval from dual
@@ -328,5 +328,7 @@
 	</select>
 	
 	
-	
+	<update id="updateStock" parameterType="OrdersDetailVO">
+		update item set stock = stock - {quantity} where id = {itemId} and stock >= {quantity}
+	</update>
 </mapper>

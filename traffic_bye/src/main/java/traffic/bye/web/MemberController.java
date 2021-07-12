@@ -329,7 +329,7 @@ public class MemberController {
 	
 	@PostMapping("/findAndChangePw")
 	public String findAndchangePw(String loginId, String password, RedirectAttributes rttr) {
-		LoginInfo loginInfo = new LoginInfo(null, null, loginId, password);
+		LoginInfo loginInfo = new LoginInfo(null, null, loginId, password, null, null);
 		log.info("비밀번호 찾기 {} {}", loginId, password);
 		try{
 			memberService.passwordChange(loginInfo);

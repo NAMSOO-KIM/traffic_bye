@@ -30,7 +30,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		UserDetailsVO vo = (UserDetailsVO)authentication.getPrincipal();
 		HttpSession session = request.getSession();
-		session.setAttribute("loginInfo", new LoginInfo(vo.getId(), vo.getStoreId(), vo.getUsername(), null));
+		session.setAttribute("loginInfo", new LoginInfo(vo.getId(), vo.getStoreId(), vo.getUsername(), null, vo.getMemberName(), vo.getStoreName()));
 		
 		//로그인 버튼을 바로 누른 경우 이전 페이지 가져오기
 		String prevPage = (String) request.getSession().getAttribute("prevPage");

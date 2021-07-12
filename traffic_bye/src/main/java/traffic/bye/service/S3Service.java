@@ -25,7 +25,9 @@ public interface S3Service {
 	public void fileDelete(String bucketName, String fileName);
 
 	// 파일 URL
-	public String getFileURL(String bucketName, String fileName);
+	public String getFileURLFrom(String bucketName, String fileName);
+
+	public String getFileURLFromCF(String bucketName, String fileName);
 	
 	public ImageVO processItemImage(MultipartFile file) throws Exception;
 	

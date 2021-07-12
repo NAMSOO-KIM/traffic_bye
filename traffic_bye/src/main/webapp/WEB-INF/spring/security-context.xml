@@ -36,8 +36,6 @@
 			pattern="/member/findAndChangePw" access="isAnonymous()" />
 		<security:intercept-url
 			pattern="/member/result" access="isAnonymous()" />
-		<security:intercept-url
-			pattern="/member" access="isAnonymous()" />
 		
 			
 		<!-- <security:intercept-url
@@ -49,14 +47,14 @@
 		<security:intercept-url
 			pattern="/member/mypage/{userId}/**" access="isAuthenticated()" />
 			
-		<security:intercept-url
-			pattern="/member/mypage/{userId}/**" access="@webSecurity.checkUserId(authentication,#userId)" />
+		<!-- <security:intercept-url
+			pattern="/member/mypage/{userId}/**" access="@webSecurity.checkUserId(authentication,#userId)" /> -->
 			
 			
 		<!-- 관리자페이지는 관리자만 접근 허용 -->
 			
-		<security:intercept-url pattern="/admin/{storeId}/**"
-			access="hasAuthority('ADMIN')" />
+		<!-- <security:intercept-url pattern="/admin/**"
+			access="hasAuthority('ADMIN')" /> -->
 			
 		<security:intercept-url pattern="/admin/{storeId}/**"
 			access="@webSecurity.checkAdminId(authentication,#storeId)" />

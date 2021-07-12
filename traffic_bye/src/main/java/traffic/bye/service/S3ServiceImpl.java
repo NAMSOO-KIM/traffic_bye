@@ -63,14 +63,24 @@ public class S3ServiceImpl implements S3Service {
 	}
 
 	// 파일 URL
+	
 	@Override
-	public String getFileURL(String bucketName, String fileName) { // filename이 경로
+	public String getFileURLFrom(String bucketName, String fileName) {
+		// TODO Auto-generated method stub
+		String imgName = (fileName).replace(File.separatorChar, '/');
+		return S3Client.getUrl(bucketName, imgName).toString();
+	}
+	
+	
+	@Override
+	public String getFileURLFromCF(String bucketName, String fileName) { // filename이 경로
 //		System.out.println("넘어오는 파일명 : "+fileName);
 		String imgName = (fileName).replace(File.separatorChar, '/');
 //		return S3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
 		//return S3Client.getUrl(bucketName, imgName).toString();
 		return cloudFront + imgName;
 	}
+
 
 	@Override
 	public ImageVO processItemImage(MultipartFile file) throws Exception {
@@ -81,11 +91,17 @@ public class S3ServiceImpl implements S3Service {
 		imageVO.setUploadFileName(file.getOriginalFilename());
 		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
 		fileUpload("kosateam2", Util.originItemFolder + imageVO.getRealFileName(), file.getBytes());
-		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originItemFolder + imageVO.getRealFileName()));
+		imageVO.setOriginFileURL(getFileURLFromCF("kosateam2", Util.originItemFolder + imageVO.getRealFileName()));
+		String fileURL = getFileURLFrom("kosateam2", Util.originItemFolder + imageVO.getRealFileName());
 		fileUpload("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName(),
-				Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
-		imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
+				Util.makeThumbnail(Util.getType(imageVO.getUploadFileName()), fileURL));
+		imageVO.setThumbFileURL(getFileURLFromCF("kosateam2", Util.thumbItemFolder + imageVO.getRealFileName()));
 		imageVO.setFileSize(file.getSize());
+		if(file.getName().equals("repreFile")) {
+			fileUpload("kosateam2", Util.mainThumbItemFolder + imageVO.getRealFileName(),
+					Util.makeMainThumbnail(Util.getType(imageVO.getUploadFileName()), fileURL));
+			imageVO.setMainThumbFileURL(getFileURLFromCF("kosateam2", Util.mainThumbItemFolder + imageVO.getRealFileName()));
+		}
 		return imageVO;
 	}
 
@@ -96,12 +112,12 @@ public class S3ServiceImpl implements S3Service {
 		imageVO.setUploadFileName(file.getOriginalFilename());
 		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
 		fileUpload("kosateam2", Util.originStoreFolder + imageVO.getRealFileName(), file.getBytes());
-		imageVO.setOriginFileURL(getFileURL("kosateam2", Util.originStoreFolder + imageVO.getRealFileName()));
+		imageVO.setOriginFileURL(getFileURLFromCF("kosateam2", Util.originStoreFolder + imageVO.getRealFileName()));
 		if (file.getName().equals("repreFile")) {
 			fileUpload("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName(),
-					Util.mamkeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
+					Util.makeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
 			imageVO.setThumbFileURL(null);
-			imageVO.setThumbFileURL(getFileURL("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
+			imageVO.setThumbFileURL(getFileURLFromCF("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
 		}
 		return imageVO;
 	}

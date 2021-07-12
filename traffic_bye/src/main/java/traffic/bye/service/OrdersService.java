@@ -40,4 +40,6 @@ public interface OrdersService {
 	void changeQuantity(CartChangeQuantityVO vo) throws Exception;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws Exception;
+	
+	int makeOrder(OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception;
 }
