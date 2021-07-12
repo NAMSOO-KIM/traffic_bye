@@ -63,7 +63,7 @@
                     <div class="col offset-xl-1" style="margin: 0px 100px 0px 0px;">
                         <div class="sub-title">
                             <div class="footer-title">
-                                <h4>내 정보</h4>
+                                <h4>정보</h4>
                             </div>
                             <div class="footer-contant">
                             	<p>현대백화점면세점은 50년 유통 전문 그룹 현대백화점그룹에서 탄생한 면세점입니다.</p>
@@ -95,7 +95,7 @@
                     <div class="col">
                         <div class="sub-title">
                             <div class="footer-title">
-                                <h4>store information</h4>
+                                <h4>contact</h4>
                             </div>
                             <div class="footer-contant">
                                 <ul class="contact-list">
@@ -116,8 +116,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="footer-end">
-                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                                pixelstrap</p>
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021 team2</p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6 col-sm-12">

@@ -13,7 +13,6 @@
  
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script>
-
 <body>
 	
 
@@ -39,7 +38,7 @@
 						<c:set var="sum" value="0" />
 						<c:forEach items="${cartList}" var="cart" varStatus="status">
 							<tr>
-								<td><a href="#"><img src="../assets/images/pro3/2.jpg"
+								<td><a href="#"><img src="${cart.thumb_file_url}"
 										alt=""></a></td>
 								<td><a href="#">${cart.name}<input type="hidden" name="itemid${status.index}" class="current-item-id" value="${cart.item_id}"/></a>
 									<div class="mobile-cart-content row">
@@ -58,7 +57,7 @@
 										</div>
 									</div></td>
 								<td>
-									<h2>${cart.price}</h2>
+									<h2>$${cart.price}</h2>
 								</td>
 								<td>
 									<div class="qty-box">
@@ -71,7 +70,7 @@
 								</td>
 								<td><a href="#" class="icon"><i class="ti-close" onclick="deleteQuantity('${cart.item_id}')"></i></a></td>
 								<td>
-									<h2 class="td-color">${cart.quantity*cart.price}</h2>
+									<h2 class="td-color">$${cart.quantity*cart.price}</h2>
 									<c:set var="sum" value="${sum + cart.quantity*cart.price}"/>
 								</td>
 							</tr>
@@ -84,7 +83,7 @@
 								<tr>
 									<td>total price :</td>
 									<td>
-										<h2>${sum}</h2>
+										<h2>$${sum}</h2>
 									</td>
 								</tr>
 							</tfoot>
@@ -117,7 +116,7 @@
 	
 
 <!-- Button that triggers the popup -->
-	<script>
+		<script>
 
 	function deleteQuantity(itemId){
 		let deleteData = "itemId="+itemId;
@@ -234,7 +233,7 @@
 		    	console.log(rsp.apply_num);
 		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 		    	jQuery.ajax({
-		    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+		    		url: "/payments/comple", //cross-doma//in error가 발생하지 않도록 주의해주세요
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {
@@ -445,6 +444,51 @@
    	*/
 	</script>
 
+
+
+<!-- 모달 세트  시작 -->
+<script type="text/javascript">
+	/*
+	var modal = document.getElementById("modal");
+	
+	const closeBtn = modal.querySelector(".close-area");
+	closeBtn.addEventListener("click", e => {
+	    modal.style.display = "none"
+	});
+	
+	modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal-overlay")) {
+        modal.style.display = "none"
+	    }
+	});
+	
+	window.addEventListener("keyup", e => {
+	    if(modal.style.display === "flex" && e.key === "Escape") {
+	        modal.style.display = "none"
+	    }
+	});
+		function isModalOn() {
+	    return modal.style.display === "flex"
+	}
+		
+	*/
+	
+	//팝업 Close 기능
+    function close_pop(flag) {
+         $('#myModal').hide();
+    };
+    
+    function open_modal() {
+        $('#myModal').show();
+   };
+   	/*
+    $('#confirmBtn').click(function(){
+		receive();
+	});
+   	*/
+	</script>
+
 	<!-- 모달 세트  끝 -->
 	
 	
@@ -549,6 +593,7 @@
         
         
         /* 결제부분  */
+        
     	function iamport(){
     	
     		let member_name = document.getElementById('member_name').value;

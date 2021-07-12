@@ -16,4 +16,6 @@ public class LoginInfo {
 	private Long storeId;
 	private String loginId;
 	private String password;
+	private String memberName;
+	private String storeName;
 }

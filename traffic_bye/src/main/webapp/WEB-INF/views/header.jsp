@@ -70,13 +70,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6">
-						<div class="header-contact">
-							<ul>
-								<li>Welcome to Our store Multikart</li>
-								<li><i class="fa fa-phone" aria-hidden="true"></i>Call Us:
-									123 - 456 - 7890</li>
-							</ul>
-						</div>
 					</div>
 					<div class="col-lg-6 text-end">
 						<ul class="header-dropdown">
@@ -96,11 +89,11 @@
 						<div class="main-menu">
 							<div class="menu-left">
 								<div class="navbar">
-									<a href="javascript:void(0)">
+									<!-- <a href="javascript:void(0)">
 										<div class="bar-style">
 											<i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
 										</div>
-									</a>
+									</a> -->
 								</div>
 								<div class="brand-logo">
 
@@ -122,7 +115,7 @@
 													Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
 												</div>
 											</li>
-											<li><a href="index.html">Home</a></li>
+											<li><a href="${contextPath}">Home</a></li>
 											<li><a href="${contextPath}/store">매장
 													<!-- <div class="lable-nav">new</div> -->
 											</a></li>
@@ -290,13 +283,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6">
-						<div class="header-contact">
-							<ul>
-								<li>Welcome to Our store Multikart</li>
-								<li><i class="fa fa-phone" aria-hidden="true"></i>Call Us:
-									123 - 456 - 7890</li>
-							</ul>
-						</div>
 					</div>
 					<div class="col-lg-6 text-end">
 						<ul class="header-dropdown">
@@ -328,11 +314,11 @@
 					<div class="main-menu">
 						<div class="menu-left">
 							<div class="navbar">
-								<a href="javascript:void(0)" onclick="openNav()">
+								<!-- <a href="javascript:void(0)" onclick="openNav()">
 									<div class="bar-style">
 										<i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
 									</div>
-								</a>
+								</a> -->
 								<div id="mySidenav" class="sidenav">
 									<a href="javascript:void(0)" class="sidebar-overlay"
 										onclick="closeNav()"></a>
@@ -477,7 +463,7 @@
 												Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
 											</div>
 										</li>
-										<li><a href="index.html">Home</a></li>
+										<li><a href="${contextPath}">Home</a></li>
 										
 											<li><a href="${contextPath}/store">매장</a>
 											<ul>

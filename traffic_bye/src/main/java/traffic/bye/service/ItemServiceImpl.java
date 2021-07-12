@@ -102,6 +102,7 @@ public class ItemServiceImpl implements ItemService {
 		itemAddVO.setThumbFileURL(repreImage.getThumbFileURL());
 		itemAddVO.setRepreFileSize(repreImage.getFileSize());
 		itemAddVO.setRepreFileURL(repreImage.getOriginFileURL());
+		itemAddVO.setMainThumbFileURL(repreImage.getMainThumbFileURL());
 		itemDAO.addItem(itemAddVO);
 		Long id = itemAddVO.getId();
 		repreImage.setItemId(id);
@@ -187,6 +188,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<ItemVO> getPagingStoreItemList(HashMap<String, Object> map) throws Exception {
 		return itemDAO.getPagingStoreItemList(map);
+	}
 	
 	@Override
 	public List<ItemVO> getMainOutOfStockList(long parent_id) throws SQLException {

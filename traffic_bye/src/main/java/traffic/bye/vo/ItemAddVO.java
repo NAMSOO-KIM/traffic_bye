@@ -24,5 +24,6 @@ public class ItemAddVO {
 	private String repreFile;
 	private String thumbFileURL;
 	private String repreFileURL;
+	private String mainThumbFileURL;
 	private Long repreFileSize;
 }

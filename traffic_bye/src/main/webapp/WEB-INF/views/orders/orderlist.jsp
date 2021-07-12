@@ -64,6 +64,29 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+	
+	<!-- breadcrumb start -->
+	<div class="breadcrumb-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h2>주문목록</h2>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<nav aria-label="breadcrumb" class="theme-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="${contextPath}/member/mypage">마이페이지</a></li>
+							<li class="breadcrumb-item active" aria-current="page">주문목록</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- breadcrumb End -->
+	
 
 	<!-- 내용 입력해주세요 -->
 				<!-- Container-fluid starts-->
@@ -87,7 +110,7 @@
 										</thead>
 										<tbody>
 											<c:forEach items="${ordersList}" var="list">
-												<tr onclick="location.href='${contextPath}/order/orderlist/${list.memberId}/${list.orderId}'" style="cursor:pointer;">
+												<tr onclick="location.href='${contextPath}/member/mypage/orders/${list.memberId}/${list.orderId}'" style="cursor:pointer;">
 													<td>${list.orderId}</td>
 													<td>
 														<div class="d-flex">${list.departureDate}</div>
