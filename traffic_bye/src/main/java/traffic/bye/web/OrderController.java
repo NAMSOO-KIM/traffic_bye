@@ -209,7 +209,7 @@ public class OrderController {
 	
 	@GetMapping(value ="member/mypage/orders/{memberId}/{id}")
 	public String orderTracking(@PathVariable long memberId, @PathVariable long id ,Model model) throws Exception {
-		OrdersTrackingVO trackingList = ordersService.getOrderTrackingList(id);
+		List<OrdersTrackingVO> trackingList = ordersService.getOrderTrackingList(id);
 		model.addAttribute("list",trackingList);
 		System.out.println("트래킹 리스트:"+trackingList.toString());
 		return "orders/ordertracking";
