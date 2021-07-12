@@ -115,7 +115,7 @@ public class OrderServiceImpl implements OrdersService {
 	}
 
 	@Override
-	public OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception {
+	public List<OrdersTrackingVO> getOrderTrackingList(long orderId) throws Exception {
 		return ordersDAO.getOrderTrackingList(orderId);
 	}
 
@@ -127,5 +127,10 @@ public class OrderServiceImpl implements OrdersService {
 	@Override
 	public void deleteQuantity(DeleteQuantityVO vo) throws Exception {
 		ordersDAO.deleteQuantity(vo);
+	}
+
+	@Override
+	public List<OrdersTrackingVO> getFirstOrder(Long id) throws Exception {
+		return ordersDAO.getFirstOrder(id);
 	}
 }

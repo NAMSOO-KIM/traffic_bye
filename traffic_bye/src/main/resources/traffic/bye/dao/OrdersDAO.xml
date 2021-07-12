@@ -77,10 +77,15 @@ member_id = #{memberId}
 	</select>
 	
 	<select id="getOrderTrackingList" parameterType="long" resultType="OrdersTrackingVO">
-	select O.id orderId ,M.name memberName , payment_date paymentDate, O.amount amount, status
-from orders O, member M
+select S.name storeName , I.name itemName , I.price price , D.quantity quantity , O.id orderId ,
+D.quantity*I.price totalPrice , M.name memberName , O.payment_date paymentDate, D.detail_status detailStatus , O.status totalStatus,O.amount orderAmount
+,I.main_thumb_file_url itemImg
+from orders O, member M , orders_detail D , item I , store S
 where O.member_id = M.id
-and O.id = #{id}
+and D.orders_id = O.id
+and I.id = D.item_id
+and S.id = I.store_id
+and D.orders_id = #{id}
 	</select>
 	
 	<update id="changeQuantity" parameterType="CartChangeQuantityVO">
@@ -96,7 +101,27 @@ member_id = #{currentMemberId}
 where item_id = #{itemId} and member_id = #{memberId}
 	</delete>
 	
-	
+		<select id="getFirstOrder" parameterType="Long" resultType="OrdersTrackingVO">
+	<![CDATA[
+	select S.name storeName , I.name itemName , I.price price , D.quantity quantity , O.id orderId ,
+D.quantity*I.price totalPrice , M.name memberName , O.payment_date paymentDate, D.detail_status detailStatus , O.status totalStatus,
+O.amount orderAmount ,I.main_thumb_file_url itemImg
+from orders O, member M , orders_detail D , item I , store S
+where O.member_id = M.id
+and D.orders_id = O.id
+and I.id = D.item_id
+and S.id = I.store_id
+and O.id = 
+(select id
+from
+(select id from orders
+where  member_id = #{id}
+order by id desc)
+where rownum<=1) 
+and O.member_id=#{id}
+order by D.orders_id desc
+]]>
+	</select>
 
 
 </mapper>

@@ -35,11 +35,13 @@ public interface OrdersService {
 
 	List<OrdersListVO> getOrdersList(long memberId) throws Exception;
 
-	OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception;
+	List<OrdersTrackingVO> getOrderTrackingList(long orderId) throws Exception;
 
 	void changeQuantity(CartChangeQuantityVO vo) throws Exception;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws Exception;
 	
 	int makeOrder(OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception;
+
+	List<OrdersTrackingVO> getFirstOrder(Long id) throws Exception;
 }
