@@ -1,5 +1,7 @@
 package traffic.bye.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,10 +28,12 @@ import traffic.bye.exception.SMSMissMatchException;
 import traffic.bye.service.CoolSMSService;
 import traffic.bye.service.KakaoService;
 import traffic.bye.service.MemberService;
+import traffic.bye.service.OrdersService;
 import traffic.bye.vo.AuthInfo;
 import traffic.bye.vo.AuthType;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.MemberVO;
+import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.ROLE;
 import traffic.bye.vo.SMSVO;
 import traffic.bye.vo.UpdateMemberVO;
@@ -75,6 +79,9 @@ public class MemberController {
 	@Autowired
 	RedisDAO redisDAO;
 
+	@Autowired
+	OrdersService ordersService;
+	
 	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String loginForm(HttpServletRequest req) {
 		// 요청 시점의 사용자 URI 정보를 Session의 Attribute에 담아서 전달(잘 지워줘야 함)
@@ -377,9 +384,12 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage(Authentication authentication) {
+	public String mypage(Authentication authentication, Model model) throws Exception {
 		UserDetailsVO vo = (UserDetailsVO)authentication.getPrincipal();
 		log.info("id : {}, loginId : {}, password : {}", new Object[] {vo.getId(), vo.getUsername(), vo.getPassword()});
+		long id = vo.getId();
+		List<OrdersTrackingVO> list = ordersService.getFirstOrder(id);
+		model.addAttribute("list", list);
 		return "member/mypage";
 	}
 	

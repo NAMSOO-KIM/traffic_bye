@@ -69,11 +69,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h3>주문 번호 : ${myList.orderId}</h3>
+					<div class="title1">
+ 					<h4>주문자 성함 : ${myList[0].memberName}</h4>
+ 					<h2 class="title-inner1">주문 번호 : ${myList[0].orderId}</h2>
+					</div>
+					<!-- 여기 부터 -->
+					<c:forEach items="${list}" var="detailList">
 					<div class="row border-part">
 						<div class="col-xl-2 col-md-3 col-sm-4">
 							<div class="product-detail">
-								<img src="${contextPath}/resources/imgs/orderdetail.jpg"
+								<img src="${detailList.itemImg}"
 									class="img-fluid blur-up lazyload" alt="">
 							</div>
 						</div>
@@ -82,33 +87,91 @@
 								<ul>
 									<li>
 										<div class="left">
-											<span>주문자 성함 :</span>
+											<span>스토어 이름 :</span>
 										</div>
 										<div class="right">
-											<span>${myList.memberName}</span>
+											<span>${detailList.storeName}</span>
 										</div>
+										<br>
+									</li>
+									<li>
+										<div class="left">
+											<span>상품 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.itemName}</span>
+										</div>
+										<br>
 									</li>
 									<li>
 										<div class="left">
 											<span>주문 날짜 :</span>
 										</div>
 										<div class="right">
-											<span>${myList.paymentDate}</span>
+											<span>${detailList.paymentDate}</span>
 										</div>
-									</li>
-									<li>
-										<div class="left">
-											<span>총 금액 :</span>
-										</div>
-										<div class="right">
-											<span>$${myList.amount}</span>
-										</div>
+										<br>
 									</li>
 								</ul>
 							</div>
 						</div>
+						 <div class="col-xl-5 col-lg-4">
+                          	<div class="tracking-detail">
+								<ul>
+									<li>
+										<div class="left">
+											<span>주문 수량 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.quantity}</span>
+										</div>
+										<br>
+									</li>
+									<li>
+										<div class="left">
+											<span>가격 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.price}</span>
+										</div>
+										<br>
+									</li>
+									
+									<li>
+										<div class="left">
+											<span>결제 금액 :</span>
+										</div>
+										<br>
+										<br>
+										<div class="right">
+											<span>${detailList.totalPrice}</span>
+										</div>
+									</li>
+									<li>
+										<div class="left">
+											<span>스마트 오더 진행 상황</span>
+										</div>
+										<div class="right">
+												<div class="title1 title-fancy">
+												 <h4 class="title-inner1 title-gradient mb-0"><c:choose>
+												<c:when test="${detailList.detailStatus eq '0'}">수락 대기</c:when>
+												<c:when test="${detailList.detailStatus eq '1'}">주문 수락</c:when>
+												<c:when test="${detailList.detailStatus eq '2'}">준비 완료</c:when>
+												<c:otherwise>수령완료</c:otherwise>
+												</c:choose></h4>
+												</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+                        </div>
 					</div>
+					</c:forEach>
+					<!-- 여기 까지가 한칸 -->
 					  <div class="wrapper">
+					  <div class="title2">
+ 						<h2 class="title-inner2">스마트 오더 전체 진행상황</h2>
+						</div>
                         <div class="arrow-steps clearfix">
                             <div class="step" id="status1"> <span> 수락 대기</span> </div>
                             <div class="step" id="status2"> <span>주문 수락</span> </div>
@@ -119,7 +182,7 @@
                    
                     <script type="text/javascript">
                 	$(document).ready(function() {
-                		var currentStatus = '<c:out value="${myList.status}"/>';
+                		var currentStatus = '<c:out value="${myList[0].totalStatus}"/>';
                 		console.log(currentStatus);
                 		if(currentStatus == 0){
                 			$("#status1").attr('class','step current'); 

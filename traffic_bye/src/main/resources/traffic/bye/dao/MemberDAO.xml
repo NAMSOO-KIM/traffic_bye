@@ -61,5 +61,7 @@
 	<select id="getAuthId" parameterType="Long" resultType="Long">
 		select auth_id authId from member where id = #{id}
 	</select>
+	
+
 
 </mapper>
