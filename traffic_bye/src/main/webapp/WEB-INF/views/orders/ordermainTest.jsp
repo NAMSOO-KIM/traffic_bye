@@ -223,7 +223,7 @@
 		    // buyer_postcode : '123-456'
 		}, function(rsp) {
 		    if ( rsp.success ) {
-		    	
+		    	send();
 		    	alert("결제가 정상적으로 완료되었습니다.");
 		    	$('#myForm').submit();
 		    	
@@ -295,6 +295,7 @@
 		    
 		}, function(rsp) {
 		    if ( rsp.success ) {
+		    	send();
 		    	alert('결제가 정상적으로 완료되었습니다.');
 		    	$('#myForm').submit();
 		    	
@@ -624,7 +625,7 @@
     		    // buyer_postcode : '123-456'
     		}, function(rsp) {
     		    if ( rsp.success ) {
-    		    	
+    		    	send();
     		    	alert("하이");
     		    	$('#myForm').submit();
     		    	
@@ -700,6 +701,7 @@
     		    buyer_postcode : '123-456'
     		}, function(rsp) {
     		    if ( rsp.success ) {
+    		    	send();
     		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
     		    	jQuery.ajax({
     		    		url: "/payments/complete", // cross-domain error가 발생하지 않도록 주의해주세요

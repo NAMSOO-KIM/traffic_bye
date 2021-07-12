@@ -55,10 +55,20 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
 
+<!-- App css-->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/pages/elements.css">
+<!-- prism -->
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/assets/css/vendors/prism.css">
 
 
 </head>
 
+<!-- latest jquery-->
+<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 <body class="theme-color-1">
 
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -72,19 +82,25 @@
 	<!--section start-->
 	<section class="register-page section-b-space">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="text-align: center;">
 				<div class="col-lg-12">
-					<h3>인증방식 선택</h3>
+					<div class="title2">
+						<h2 class="title-inner2">인증방식 선택</h2>
+					</div>
 					<div class="theme-card">
 						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/phone.png"
+							<img src="${contextPath}/resources/imgs/message.png"
 								class="auth_img">
-							<h3 class="auth_type">휴대폰 인증</h3>
+							<div>
+								<a href="#" class="btn btn-solid me-3">휴대폰 인증</a>
+							</div>
 						</div>
 						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/kakao.png"
+							<img src="${contextPath}/resources/imgs/Kakao.png"
 								class="auth_img">
-							<h3 class="auth_type">카카오 인증</h3>
+							<div>
+								<a href="#" class="btn btn-solid me-3">카카오 인증</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -108,8 +124,7 @@
 	<!-- tap to top end -->
 
 
-	<!-- latest jquery-->
-	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+
 
 	<!-- menu js-->
 	<script src="${contextPath}/resources/assets/js/menu.js"></script>
@@ -132,6 +147,9 @@
 	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
 	<script src="${contextPath}/resources/assets/js/script.js"></script>
 	<script src="${contextPath}/resources/js/registerAuth.js"></script>
+	<!-- Theme js-->
+	<script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
+	<script src="${contextPath}/resources/assets/js/script.js"></script>
 	<script>
 		function openSearch() {
 			document.getElementById("search-overlay").style.display = "block";
