@@ -22,4 +22,5 @@ public class MemberVO {
 	String birth;
 	ROLE role;
 	AuthType authType;
+	String authPhone;
 }

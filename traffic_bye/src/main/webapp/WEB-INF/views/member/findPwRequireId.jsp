@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대 백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -68,16 +68,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="page-title">
-						<h2>forget password</h2>
+						<h2>비밀번호 찾기</h2>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<nav aria-label="breadcrumb" class="theme-breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="login.html">login</a></li>
-							<li class="breadcrumb-item active" aria-current="page">forget
-								password</li>
+							<li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
+							<li class="breadcrumb-item"><a href="${contextPath}/member/login">로그인</a></li>
+							<li class="breadcrumb-item active" aria-current="page">비밀번호 찾기</li>
 						</ol>
 					</nav>
 				</div>

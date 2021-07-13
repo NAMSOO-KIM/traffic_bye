@@ -113,8 +113,8 @@
 							<h6 class="mt-3 f-14">${loginInfo.memberName}</h6>
 						</div>
 						<ul class="profile-dropdown onhover-show-div p-20">
-							<li><a href="#"><i data-feather="user"></i>마이페이지</a></li>
-							<li><a href="#"><i data-feather="log-out"></i>로그아웃</a></li>
+							<li><a href="${contextPath}/member/mypage"><i data-feather="user"></i>마이페이지</a></li>
+							<li><a href="${contextPath}/member/logout"><i data-feather="log-out"></i>로그아웃</a></li>
 						</ul>
 					</li>
 				</ul>

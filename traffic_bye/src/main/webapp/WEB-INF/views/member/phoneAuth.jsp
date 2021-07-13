@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link

@@ -8,7 +8,7 @@ import traffic.bye.vo.MemberVO;
 import traffic.bye.vo.UpdateMemberVO;
 
 public interface MemberDAO {
-	public int checkPhoneDuplicate(String phone) throws SQLException;
+	public int checkPhoneDuplicate(String authPhone) throws SQLException;
 	
 	public int checkIdDuplicate(String loginId) throws SQLException;
 	
@@ -24,7 +24,7 @@ public interface MemberDAO {
 	
 	public String findIdByKakaoId(Long kakaoId) throws SQLException;
 	
-	public String findIdByPhone(String phone) throws SQLException;
+	public String findIdByPhone(String authPhone) throws SQLException;
 	
 	public void testUpdate(String pw) throws SQLException;
 	

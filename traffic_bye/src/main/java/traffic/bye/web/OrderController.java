@@ -16,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jdk.internal.org.jline.utils.Log;
@@ -65,7 +68,7 @@ public class OrderController {
 		return "orders/ordermainTest";  // 정상적으로 작동하면 orders/ordermainTest.jsp 파일을 ordermain.jsp에 복붙 후 사용 (ordermainTest.jsp 삭제)
 	}
 
-	@PostMapping(value = "orderInsert")
+	@PostMapping(value = "orderInsert", produces = "application/json; charset=UTF-8")
 	public ResponseEntity<Void> orderInsert(HttpSession session, OrdersVO orders, OrdersDetailVO ordersDetail, Model model)
 			 {
 		OrdersVO ordersVO = new OrdersVO();
@@ -245,4 +248,14 @@ public class OrderController {
 		return "orders/ordermainTest";
 	}
 	*/
+	
+	@RequestMapping(value = "/order/check", method = {RequestMethod.POST}, produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<Void> getOrderTest(@RequestBody Map<String, Object> params) throws Exception {
+		log.info(params.toString());
+		log.info("주문 confirm 체크");
+		//throw new Exception();
+		//return "orders/ordermainTest";
+		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	}
 }

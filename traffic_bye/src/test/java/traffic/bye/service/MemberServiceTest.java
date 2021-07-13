@@ -21,7 +21,7 @@ public class MemberServiceTest {
 	
 	@Test
 	public void test() throws Exception{
-		MemberVO memberVO = new MemberVO(null, null, "test3", "1", "1234567", "1234", "남수3", "1234", ROLE.ADMIN, AuthType.PHONE);
-		memberService.memberRegister(memberVO);
+	//	MemberVO memberVO = new MemberVO(null, null, "test3", "1", "1234567", "1234", "남수3", "1234", ROLE.ADMIN, AuthType.PHONE);
+		//memberService.memberRegister(memberVO);
 	}
 }

@@ -193,6 +193,7 @@
 	
 	
 	/* 결제부분  */
+	/*
 	function iamport(){
 	
 		let member_name = document.getElementById('member_name').value;
@@ -263,7 +264,7 @@
 		    }
 		});
 	}
-	
+	*/
 	
 	
 	
@@ -291,7 +292,7 @@
 		    name : member_name + '님의 결제',
 		    amount : total_price,
 		    buyer_name : member_name,
-		    buyer_tel : phone_number,
+		    buyer_tel : phone_number
 		    
 		}, function(rsp) {
 		    if ( rsp.success ) {
@@ -617,14 +618,21 @@
     		    pay_method : 'card',
     		    merchant_uid : 'merchant_' + new Date().getTime(),
     		    name : member_name+'님의 결제',
-    		    amount : total_price, // 나중에 수정
+    		    amount : 1000, // 나중에 수정
     		    // buyer_email : 'iamport@siot.do',
     		    buyer_name : member_name,
     		    buyer_tel : phone_number,
+    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
     		    // buyer_addr : '서울특별시 강남구 삼성동',
     		    // buyer_postcode : '123-456'
+    		    /* status : "paid",
+    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check" */
     		}, function(rsp) {
-    		    if ( rsp.success ) {
+    			console.log(rsp);
+    			console.log(rsp.success);
+    			
+    		    // if ( rsp.success ) {
+    		    if(rsp.code!= 200){
     		    	send();
     		    	alert("하이");
     		    	$('#myForm').submit();
@@ -700,6 +708,9 @@
     		    buyer_addr : '서울특별시 강남구 삼성동',
     		    buyer_postcode : '123-456'
     		}, function(rsp) {
+    			console.log(rsp);
+    			console.log(rsp.success);
+  
     		    if ( rsp.success ) {
     		    	send();
     		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
