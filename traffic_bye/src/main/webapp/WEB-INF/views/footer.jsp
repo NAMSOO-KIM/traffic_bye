@@ -187,6 +187,9 @@
     <!-- Theme js-->
     <script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
     <script src="${contextPath}/resources/assets/js/script.js"></script>
+    
+
+    
 
     <script>
         $(window).on('load', function () {
@@ -298,5 +301,6 @@
     </footer>
     <!-- footer end -->
 
+	<script src="${contextPath}/resources/js/customerWebsocket.js"></script>
 </body>
 </html>

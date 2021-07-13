@@ -45,4 +45,8 @@
 		
 	</update>
 	
+	<delete id="completeCart" parameterType="Long">
+		delete from cart where member_id = #{memberId}
+	</delete>
+	
 </mapper>

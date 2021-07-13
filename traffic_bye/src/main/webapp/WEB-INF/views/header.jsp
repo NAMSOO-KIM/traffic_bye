@@ -20,7 +20,9 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+	
+
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -57,6 +59,9 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
+	
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}/resources/css/modal.css">
 
 <!-- 
 <meta charset="UTF-8">
@@ -64,6 +69,7 @@
  -->
 </head>
 <body>
+	<div class="popup-container"></div>
 	<!-- loader start -->
 	<div class="loader_skeleton">
 		<div class="top-header">
