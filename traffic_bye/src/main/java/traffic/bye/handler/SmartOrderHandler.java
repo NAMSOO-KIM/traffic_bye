@@ -82,7 +82,7 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 //				sendData.put("customer", customer);
 //				sendData.put("auth", auth);
 //				sendData.put("type", type);
-				receiver.sendMessage(new TextMessage(storeId+ "님 주문이 들어왔습니다."));
+				receiver.sendMessage(new TextMessage(storeId));
 			}
 		}
 		

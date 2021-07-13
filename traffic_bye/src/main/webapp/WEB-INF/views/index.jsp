@@ -196,7 +196,6 @@
 	
 
 	<jsp:include page="header.jsp"></jsp:include>
-
 	
     <!-- Home slider -->
     <section class="p-0">
@@ -205,7 +204,31 @@
                 <div class="home  text-center">
                 
                   <!--  <img src="${contextPath}/resources/assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload"> --> 
-                  <img src="https://cdn.hddfs.com/files/dm/20210526/975ccbe9_202105260921408170.jpg?RS=1920x718" alt="" class="bg-img blur-up lazyload">
+                  <img src="${contextPath}/resources/imgs/index3.jpg" alt="" class="bg-img blur-up lazyload">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-contain">
+                                    <div>
+                                    	 <!-- 
+                                        <h4>윤아가 차근차근 알려줄게요~</h4>
+                                        <h1>혼잡도 서비스 함께해요!</h1>
+                                         -->
+                                        <!-- 
+                                        <a href="#" class="btn btn-solid">shop now</a>
+                                         -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div>
+                <div class="home  text-center">
+                
+                  <!--  <img src="${contextPath}/resources/assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload"> --> 
+                  <img src="${contextPath}/resources/imgs/index4.jpg" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -227,7 +250,7 @@
             </div>
             <div>
                 <div class="home text-center">
-                    <img src="https://cdn.hddfs.com/files/dm/20210601/726d8e81_202106011800365620.jpg?RS=1920x450" alt="" class="bg-img blur-up lazyload">
+                    <img src="${contextPath}/resources/imgs/index2.jpg" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
