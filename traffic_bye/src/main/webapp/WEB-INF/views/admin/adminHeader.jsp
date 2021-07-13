@@ -4,6 +4,14 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -126,13 +134,17 @@
 	</div>
 	<!-- Page Header Ends -->
 
-	<!-- latest jquery-->
-	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
-	<!-- Bootstrap js-->
+	<!-- jquery 로딩 -->
 	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+
+	<!-- fly cart ui jquery-->
+	<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+
+	<!-- exitintent jquery-->
+	<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
 	<!-- feather icon js-->
 	<script
 		src="${contextPath}/resources/assets/js/icons/feather-icon/feather.min.js"></script>
@@ -153,5 +165,8 @@
 
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

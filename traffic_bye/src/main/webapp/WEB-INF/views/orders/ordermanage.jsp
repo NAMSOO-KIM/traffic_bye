@@ -22,14 +22,14 @@
 	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
 	type="image/x-icon">
 <title>Multikart - Premium Admin Template</title>
-<!-- latest jquery-->
+<%-- <!-- latest jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- fly cart ui jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
 
 <!-- exitintent jquery-->
-<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script> --%>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"

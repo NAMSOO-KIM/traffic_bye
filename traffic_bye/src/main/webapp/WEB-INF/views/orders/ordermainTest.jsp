@@ -113,6 +113,38 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+		<!-- 모달 실험 시작 -->
+		
+		
+<button id="modal-on">클릭</button>
+<div class="modal" tabindex="-1" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+       <!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
+      </div>
+      <div class="modal-body">
+       <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+var myModal = document.getElementById('myModal');
+var myInput = document.getElementById('myInput');
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
+
+<!-- 모달 실험 끝 -->
+	
+	
 	
 
 <!-- Button that triggers the popup -->
