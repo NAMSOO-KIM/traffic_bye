@@ -23,7 +23,6 @@ public class StoreDAOTest {
 	
 	@Test
 	public void test() throws Exception{
-		List<StoreStatusVO> list = storeDAO.getStoreStatus(1L);
-		log.info(list.toString());
+		log.info(storeDAO.getStoreDetail(1L).toString());
 	}
 }

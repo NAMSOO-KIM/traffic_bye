@@ -105,13 +105,13 @@
 							action="${contextPath}/member/loginProcess" method="post">
 							<div class="form-group">
 								<label for="loginId">ID</label> <input type="text"
-									class="form-control" id="loginId" placeholder="Email"
+									class="form-control" id="loginId" placeholder="아이디를 입력하세요"
 									required="required" name="loginId">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label> <input type="password"
 									class="form-control" id="password"
-									placeholder="Enter your password" required="required"
+									placeholder="비밀번호를 입력하세요" required="required"
 									name="password">
 							</div>
 							<button type="submit" class="btn btn-solid">로그인</button>

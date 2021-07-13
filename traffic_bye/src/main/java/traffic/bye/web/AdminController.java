@@ -28,6 +28,7 @@ import traffic.bye.vo.ItemDeleteVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.LoginInfo;
 import traffic.bye.vo.OrdersManageVO;
+import traffic.bye.vo.StoreDetailVO;
 
 @Slf4j
 @RequestMapping("admin/{id}")
@@ -133,6 +134,28 @@ public class AdminController {
 	
 	@GetMapping("/manage")
 	public String storeManage(@PathVariable Long id, Model model){
+		try {
+			StoreDetailVO storeDetailVO = storeService.getStoreDetail(id);
+			ObjectMapper objectMapper = new ObjectMapper();
+			String data = objectMapper.writeValueAsString(storeDetailVO);
+			log.info(data);
+			model.addAttribute("storeDetailVO", data);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "admin/updateStore";
+	}
+	
+	@PostMapping("/manage")
+	public ResponseEntity<Void> updateStoreProc(@PathVariable Long id, String items, MultipartHttpServletRequest mreq) {
+		log.info("업데이트 메소드 요청!");
+		try {
+			log.info("아이템 : {}, 파일 : {}", items, String.valueOf(mreq.getFileMap().size()));
+			storeService.updateStore(id, items, mreq);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.BAD_GATEWAY);
+		}
 	}
 }

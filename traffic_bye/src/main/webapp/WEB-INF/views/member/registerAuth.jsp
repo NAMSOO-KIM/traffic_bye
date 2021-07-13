@@ -80,33 +80,7 @@
 		</c:when>
 	</c:choose>
 	<!--section start-->
-	<section class="register-page section-b-space">
-		<div class="container">
-			<div class="row" style="text-align: center;">
-				<div class="col-lg-12">
-					<div class="title2">
-						<h2 class="title-inner2">인증방식 선택</h2>
-					</div>
-					<div class="theme-card">
-						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/message.png"
-								class="auth_img">
-							<div>
-								<a href="#" class="btn btn-solid me-3">휴대폰 인증</a>
-							</div>
-						</div>
-						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/Kakao.png"
-								class="auth_img">
-							<div>
-								<a href="#" class="btn btn-solid me-3">카카오 인증</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<jsp:include page="authSection.jsp"></jsp:include>
 	<!--Section ends-->
 
 	<jsp:include page="../footer.jsp"></jsp:include>

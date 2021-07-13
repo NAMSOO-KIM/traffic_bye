@@ -3,11 +3,14 @@
  */
  
  $('document').ready(()=>{
-	//console.log(storeDetailVO);
 	let currPath = location.pathname; 
     let repreFile = Dropzone.forElement('#repreFileUpload');
     CKEDITOR.instances.editor1.setData(storeDetailVO.detail);
+    $('#streamingURL').val(storeDetailVO.streamingURL);
     $('#name').val(storeDetailVO.name);
+    $('#capacity').val(storeDetailVO.capacity);
+    $('#location').val(storeDetailVO.location);
+    $('#contact').val(storeDetailVO.contact);
     repreFile.options.thumbnailWidth = 120;
 	repreFile.options.thumbnailHeight = 120;
 	let rePreFileDeleted = false;
@@ -29,14 +32,17 @@
 		var detail = CKEDITOR.instances.editor1.getData();
 		let formData = new FormData();
 		let repre = repreFile.getAcceptedFiles();
-		let another = anotherFiles.getAcceptedFiles();
 		if(repreFile.length < 1){
 			alert("대표 이미지는 필수로 등록해야 합니다!");
 			return;
 		}	
 		let otherData = {
 			"name" : $('#name').val(),
-			"detail" : detail 
+			"detail" : detail,
+			"streamingURL" : $('#streamingURL').val(),
+			"capacity" : $('#capacity').val(),
+			"location" : $('#location').val(),
+			"contact" : $('#contact').val() 
 		};
 		if(!checkIt(otherData)){
 			alert("입력되지 않은 정보가 있습니다!");
@@ -65,6 +71,11 @@
 });
 
 function checkIt(d){
-	if(d.name == "" || d.detail == "") return false;
+	if(d.name == "" 
+		|| d.detail == "" || 
+		d.streamingURL == "" || 
+		d.capacity == "" || 
+		d.location == "" || 
+		d.contact == "") return false;
 	return true;
 }
