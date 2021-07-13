@@ -41,7 +41,7 @@ public interface OrdersService {
 
 	void deleteQuantity(DeleteQuantityVO vo) throws Exception;
 	
-	int makeOrder(OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception;
+	int makeOrder(Long memberId, OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception;
 
 	List<OrdersTrackingVO> getFirstOrder(Long id) throws Exception;
 }

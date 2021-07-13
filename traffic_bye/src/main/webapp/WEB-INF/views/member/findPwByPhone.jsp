@@ -70,31 +70,31 @@
 			</script>
 		</c:when>
 	</c:choose>
-
-	<!--section start-->
+	
+	
 	<section class="register-page section-b-space">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<h3>휴대폰 인증</h3>
 					<div class="theme-card">
-						<label for="phone">휴대폰 번호</label> <input type="text" id="phoneNum"
-							required="required" placeholder="번호를 입력하세요"> <input
-							type="button" id="sendSMS" value="인증번호 전송">
-						<form action="${contextPath}/member/auth/findPw/phone/check"
-							id="phoneCheck">
-							<input type="text" name="loginId" placeholder="비밀번호를 찾을 아이디를 입력하세요">
-							<input type="text" name="randomNumber"> <input
-								type="hidden" id="phone" name="phone"> <input
-								type="submit" value="입력">
+						<div class="form-group">
+						<label for="phone">휴대폰 번호</label>
+						 <input type="text" class="form-control" id="phoneNum" required="required" placeholder="번호를 입력하세요"> 
+							<input type="button" class="btn btn-solid" id="sendSMS" value="인증번호 전송"> <p id="certTimer"></p>
+						</div>
+						<form action="${contextPath}/member/auth/findPw/phone/check" id="phoneCheck" class="theme-form">
+							<input type="text" name="loginId" class="form-control" placeholder="비밀번호를 찾을 아이디를 입력하세요">
+							<input type="text" class="form-control" name="randomNumber" placeholder="인증번호를 입력하세요"> 
+							<input type="hidden"  id="phone" name="phone"> 
+							<input type="submit" class="btn btn-solid" value="입력">
 						</form>
-						<p id="certTimer"></p>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!--Section ends-->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 

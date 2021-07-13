@@ -117,7 +117,7 @@
 		
 		
 <button id="modal-on">클릭</button>
-<div class="modal" tabindex="-1" id="myModal">
+<div class="modal" tabindex="-1" id="team2-modal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -134,12 +134,12 @@
   </div>
 </div>
 <script type="text/javascript">
-var myModal = document.getElementById('myModal');
-var myInput = document.getElementById('myInput');
+//var myModal = document.getElementById('myModal');
+/* var myInput = document.getElementById('myInput');
 
 myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
-})
+}) */
 </script>
 
 <!-- 모달 실험 끝 -->
@@ -388,7 +388,6 @@ myModal.addEventListener('shown.bs.modal', function () {
 	
 	<script type="text/javascript" src=" https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 	<script type="text/javascript">
-	var wsocket;
 	var customer = '<c:out value="${loginInfo.loginId}"/>';
 	var memberId = '<c:out value="${loginInfo.id}"/>';
 	var auth = '<c:out value="${loginInfo.storeId}"/>';
@@ -399,39 +398,6 @@ myModal.addEventListener('shown.bs.modal', function () {
 	sendData.auth=auth;
 	console.log(sendData);
 	console.log(sendData.customer);
-	function connect() {
-		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.onopen = onOpen;
-		wsocket.onmessage = onMessage;
-		wsocket.onclose = onClose;
-	}
-	function onMessage(evt) {
-		console.log("메세지 도착");
-		$('.title-modal').empty();
-		$('.content-modal').empty();
-		$('.title-modal').append('<h2>제목</h2>');
-		$('.content-modal').append(evt.data);
-		   modal.style.display = "flex";
-	}
-	function onOpen(){
-		console.log('hi');
-	}
-	
-	function onClose(evt) {
-		console.log("연결을 끊었습니다.");
-	}
-	function send() {
-		wsocket.send(JSON.stringify(sendData));
-	}
-	
-	
-	$(document).ready(function(){
-		connect();
-		console.log('안녕');
-		$('#sendBtn').click(function(){send();});
-		console.log("준비완료");
-	});
-	
 </script>
 
 
@@ -663,12 +629,11 @@ myModal.addEventListener('shown.bs.modal', function () {
     			console.log(rsp);
     			console.log(rsp.success);
     			
-    		    // if ( rsp.success ) {
-    		    if(rsp.code!= 200){
+    		    if ( rsp.success ) {
+    		    // if(rsp.code!= 200){
     		    	send();
     		    	alert("하이");
     		    	$('#myForm').submit();
-    		    	
     		    	console.log(rsp.imp_uid);
     		    	console.log(rsp.merchant_uid);
     		    	console.log(rsp.paid_amount);

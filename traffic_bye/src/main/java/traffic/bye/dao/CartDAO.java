@@ -13,4 +13,5 @@ public interface CartDAO {
 	CartVO findItemCart(CartVO cartVO) throws SQLException;
 	void updateCart(CartVO cartVO) throws SQLException;
 	long countCart(long member_id) throws SQLException; 
+	int completeCart(Long memberId) throws SQLException;
 }

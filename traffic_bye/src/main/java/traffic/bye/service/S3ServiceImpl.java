@@ -113,12 +113,11 @@ public class S3ServiceImpl implements S3Service {
 		imageVO.setRealFileName(Util.getCurrentUploadPath() + Util.makeFileName(file));
 		fileUpload("kosateam2", Util.originStoreFolder + imageVO.getRealFileName(), file.getBytes());
 		imageVO.setOriginFileURL(getFileURLFromCF("kosateam2", Util.originStoreFolder + imageVO.getRealFileName()));
-		if (file.getName().equals("repreFile")) {
-			fileUpload("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName(),
-					Util.makeThumbnail(Util.getType(imageVO.getUploadFileName()), imageVO.getOriginFileURL()));
-			imageVO.setThumbFileURL(null);
-			imageVO.setThumbFileURL(getFileURLFromCF("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
-		}
+		String fileURL = getFileURLFrom("kosateam2", Util.originStoreFolder + imageVO.getRealFileName());
+		fileUpload("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName(),
+				Util.makeThumbnail(Util.getType(imageVO.getUploadFileName()), fileURL));
+		imageVO.setThumbFileURL(getFileURLFromCF("kosateam2", Util.thumbStoreFolder + imageVO.getRealFileName()));
+		imageVO.setFileSize(file.getSize());
 		return imageVO;
 	}
 

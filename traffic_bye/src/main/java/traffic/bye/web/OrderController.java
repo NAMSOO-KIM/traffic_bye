@@ -69,7 +69,7 @@ public class OrderController {
 	}
 
 	@PostMapping(value = "orderInsert", produces = "application/json; charset=UTF-8")
-	public ResponseEntity<Void> orderInsert(HttpSession session, OrdersVO orders, OrdersDetailVO ordersDetail, Model model)
+	public String orderInsert(HttpSession session, OrdersVO orders, OrdersDetailVO ordersDetail, Model model)
 			 {
 		OrdersVO ordersVO = new OrdersVO();
 		LoginInfo loginSession = (LoginInfo) session.getAttribute("loginInfo");
@@ -77,34 +77,35 @@ public class OrderController {
 		// 멤버 아이디
 		try {
 			log.info("ajax 매핑 들어옴");
-//			List<CartVO> cartList = cartService.getCartList(memberId);
-//			System.out.println(cartList);
-//			// 카트 목록
-//			long amount = 0;
-//			List<Long> itemId = new ArrayList<>();
-//			for (int i = 0; i < cartList.size(); i++) {
-//				itemId.add(cartList.get(i).getItem_id());
-//				amount += (cartList.get(i).getPrice() * cartList.get(i).getQuantity());
-//			}
-//			ordersVO.setMemberId(memberId);
-//			ordersVO.setAmount(amount);
-//			ordersService.insertOrders(ordersVO);
-//			System.out.println("오더 번호는 : " + ordersService.getOrderId());
-//			model.addAttribute("orderId", ordersService.getOrderId());
-//			
-//			List<OrdersDetailVO> orderDetails = new ArrayList<OrdersDetailVO>();
-//			
-//			for (int i = 0; i < cartList.size(); i++) {
-//				OrdersDetailVO ordersDetailVO = new OrdersDetailVO();
-//				ordersDetailVO.setItemId(cartList.get(i).getItem_id());
-//				ordersDetailVO.setStoreId(cartList.get(i).getStore_id());
-//				ordersDetailVO.setQuantity(cartList.get(i).getQuantity());
-//				orderDetails.add(ordersDetailVO);
-//			}
-//			ordersService.makeOrder(ordersVO, orderDetails);
-			return new ResponseEntity<Void>(HttpStatus.CREATED);			
+			List<CartVO> cartList = cartService.getCartList(memberId);
+			System.out.println(cartList);
+			// 카트 목록
+			long amount = 0;
+			List<Long> itemId = new ArrayList<>();
+			for (int i = 0; i < cartList.size(); i++) {
+				itemId.add(cartList.get(i).getItem_id());
+				amount += (cartList.get(i).getPrice() * cartList.get(i).getQuantity());
+			}
+			ordersVO.setMemberId(memberId);
+			ordersVO.setAmount(amount);
+			ordersService.insertOrders(ordersVO);
+			System.out.println("오더 번호는 : " + ordersService.getOrderId());
+			model.addAttribute("orderId", ordersService.getOrderId());
+			
+			List<OrdersDetailVO> orderDetails = new ArrayList<OrdersDetailVO>();
+			
+			for (int i = 0; i < cartList.size(); i++) {
+				OrdersDetailVO ordersDetailVO = new OrdersDetailVO();
+				ordersDetailVO.setItemId(cartList.get(i).getItem_id());
+				ordersDetailVO.setStoreId(cartList.get(i).getStore_id());
+				ordersDetailVO.setQuantity(cartList.get(i).getQuantity());
+				orderDetails.add(ordersDetailVO);
+			}
+			ordersService.makeOrder(memberId, ordersVO, orderDetails);
+			return "redirect:/member/mypage";			
 		} catch(Exception e) {
-			return new ResponseEntity<Void>(HttpStatus.BAD_GATEWAY);
+			e.printStackTrace();
+			return "";
 		}
 	}
 

@@ -50,7 +50,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
 <script>
-	//storeDetailVO = ${storeDetailVO};
+	storeDetailVO = ${storeDetailVO};
 </script>
 </head>
 <body>
@@ -107,6 +107,26 @@
 											매장명</label> <input class="form-control" id="name" type="text"
 											required="required" name="name">
 									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											실시간 영상 주소</label> <input class="form-control" id="streamingURL" type="text"
+											required="required" name="streamingURL">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											수용인원</label> <input class="form-control" id="capacity" type="text"
+											required="required" name="capacity">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											연락처</label> <input class="form-control" id="contact" type="text"
+											required="required" name="contact">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											위치</label> <input class="form-control" id="location" type="text"
+											required="required" name="location">
+									</div>
 									<label class="col-form-label pt-0">대표 이미지</label>
 									<form class="dropzone digits" id="repreFileUpload" action="">
 										<div class="dz-message needsclick">
@@ -127,7 +147,7 @@
 								<div class="digital-add needs-validation">
 									<div class="form-group">
 										<div class="product-buttons text-center">
-											<button type="button" class="btn btn-primary" id="updateItem">등록</button>
+											<button type="button" class="btn btn-primary" id="updateStore">등록</button>
 											<button type="button" class="btn btn-light">취소</button>
 										</div>
 									</div>
@@ -189,7 +209,7 @@
 		src="${contextPath}/resources/assets/js/editor/ckeditor/ckeditor.custom.js"></script>
 
 	<!--Customizer admin-->
-	<script src="${contextPath}/resources/assets/js/admin-customizer.js"></script>
+	<%-- <script src="${contextPath}/resources/assets/js/admin-customizer.js"></script> --%>
 
 	<!-- lazyload js-->
 	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>

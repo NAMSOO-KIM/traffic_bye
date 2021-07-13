@@ -26,6 +26,7 @@ public class ItemUpdateVO {
 	private String repreFile;
 	private String thumbFileURL;
 	private String repreFileURL;
+	private String mainThumbFileURL;
 	private Long repreFileSize;
 	private List<String> deletedImgs;
 }

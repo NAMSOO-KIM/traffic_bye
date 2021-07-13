@@ -148,6 +148,7 @@ public class ItemServiceImpl implements ItemService {
 			itemUpdateVO.setThumbFileURL(repreImage.getThumbFileURL());
 			itemUpdateVO.setRepreFileSize(repreImage.getFileSize());
 			itemUpdateVO.setRepreFileURL(repreImage.getOriginFileURL());
+			itemUpdateVO.setMainThumbFileURL(repreImage.getMainThumbFileURL());
 		}
 		if(itemUpdateVO.getDeletedImgs().size() > 0) {
 			ImageDeleteVO imageDeleteVO = new ImageDeleteVO();
