@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
  <!-- latest jquery-->
     <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
@@ -69,14 +69,13 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="page-title">
-						<h2>Dashboard</h2>
+						<h2>마이페이지</h2>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<nav aria-label="breadcrumb" class="theme-breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+							<li class="breadcrumb-item active" aria-current="page">마이페이지</li>
 						</ol>
 					</nav>
 				</div>

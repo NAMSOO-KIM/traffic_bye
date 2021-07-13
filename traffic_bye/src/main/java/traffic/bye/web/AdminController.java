@@ -130,4 +130,9 @@ public class AdminController {
 			
 		}
 	}
+	
+	@GetMapping("/manage")
+	public String storeManage(@PathVariable Long id, Model model){
+		return "admin/updateStore";
+	}
 }

@@ -207,6 +207,7 @@ public class MemberController {
 			memberVO.setAuthType(authInfo.getAuthType());
 			memberVO.setAuthId(authInfo.getId());
 			memberVO.setRole(ROLE.USER);
+			memberVO.setAuthPhone(authInfo.getPhone());
 			log.info(memberVO.toString());
 			memberService.memberRegister(memberVO);
 			session.removeAttribute("authInfo");
