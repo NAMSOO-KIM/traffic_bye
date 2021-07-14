@@ -21,7 +21,8 @@
 <meta name="keywords"
 	content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
-<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico"
+	type="image/x-icon">
 <title>현대백화점 면세점 관리자페이지</title>
 
 <!-- Google font-->
@@ -54,32 +55,34 @@
 </head>
 <body>
 	<div class="modal" tabindex="-1" id="myModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-       <!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
-      </div>
-      <div class="modal-body">
-       <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header" style="align-items: center; justify-content: center;">
+					<!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close">✖</button>
+				</div>
+				<div class="modal-body" style="align-items: center; text-align: center;">
+					<!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<script type="text/javascript">
-var currentPath = "${currentPath}";
+	<script type="text/javascript">
+		var currentPath = "${currentPath}";
 
-var myModal = document.getElementById('myModal');
-var myInput = document.getElementById('myInput');
+		var myModal = document.getElementById('myModal');
+		var myInput = document.getElementById('myInput');
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
-</script>
+		myModal.addEventListener('shown.bs.modal', function() {
+			myInput.focus()
+		})
+	</script>
 	<!-- Page Header Start-->
 	<div class="page-main-header">
 		<div class="main-header-right row">
@@ -143,8 +146,10 @@ myModal.addEventListener('shown.bs.modal', function () {
 							<h6 class="mt-3 f-14">${loginInfo.memberName}</h6>
 						</div>
 						<ul class="profile-dropdown onhover-show-div p-20">
-							<li><a href="${contextPath}/member/mypage"><i data-feather="user"></i>마이페이지</a></li>
-							<li><a href="${contextPath}/member/logout"><i data-feather="log-out"></i>로그아웃</a></li>
+							<li><a href="${contextPath}/member/mypage"><i
+									data-feather="user"></i>마이페이지</a></li>
+							<li><a href="${contextPath}/member/logout"><i
+									data-feather="log-out"></i>로그아웃</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -190,7 +195,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		
+
 	<script src="${contextPath}/resources/js/adminWebsocket.js"></script>
 </body>
 </html>
