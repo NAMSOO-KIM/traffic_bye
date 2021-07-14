@@ -66,6 +66,18 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
 	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+
+<style>
+.btn-custom555{
+	border: 0px;
+    background-color: #FF4C3B;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    width: 70px;
+    height: 35px;
+}
+</style>
 </head>
 <body>
 	<script src="${contextPath}/resources/js/itemList.js"></script>
@@ -134,8 +146,8 @@
 													<td>${item.name}</td>
 													<td>${item.stock }</td>
 													<td>${item.price}</td>
-													<td><button class="updateItem">수정</button>
-														<button class="deleteItem">삭제</button></td>
+													<td><button class="updateItem btn-custom555">수정</button>
+														<button class="deleteItem btn-custom555">삭제</button></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -186,5 +198,11 @@
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-list').addClass('active');
+		});
+	</script>
 </body>
 </html>

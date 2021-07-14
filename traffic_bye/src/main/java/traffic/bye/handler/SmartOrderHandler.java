@@ -26,6 +26,9 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		LoginInfo loginInfo = getLoginInfo(session);
+		if(loginInfo == null) {
+			return;
+		}
 		Long storeId = loginInfo.getStoreId();
 		if(storeId == null) {
 			users.put(loginInfo.getLoginId(), session);
@@ -36,12 +39,14 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 		managers.put(storeId, session);
 		System.out.println(users.toString());
 		System.out.println(managers.toString());
-		// id -> 상점으로 바꿔야할듯
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		LoginInfo loginInfo = getLoginInfo(session);
+		if(loginInfo == null) {
+			return;
+		}
 		if(loginInfo.getStoreId() == null) {
 			users.remove(loginInfo.getLoginId());
 			return;
@@ -61,23 +66,26 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("주문이 수락되었습니다."));
+			receiver.sendMessage(new TextMessage("👍스마트오더 주문이 수락되었습니다."));
 		}else if(auth !="" && type.equals("ready")) {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("상품이 준비되었습니다."));
+			receiver.sendMessage(new TextMessage("👍스마트오더 상품이 준비되었습니다."));
 		}else if(auth !="" && type.equals("receipt")) {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("이용해주셔서 감사합니다! 즐거운 시간 되셨나요?"));
+			receiver.sendMessage(new TextMessage("스마트오더를 이용해주셔서 감사합니다!(●'◡'●) 즐거운 시간 되셨나요?"));
 		}else {
 			JSONObject json = getJsonDataFormMsg(msg);
 			ArrayList<String> stores = (ArrayList<String>)json.get("storeList");
 			//상점 목록 받기
 			for(String storeId : stores) {
 				WebSocketSession receiver = managers.get(Long.parseLong(storeId));
+				if(receiver==null) {
+					return;
+				}
 				//JSONObject sendData = new JSONObject();
 //				sendData.put("customer", customer);
 //				sendData.put("auth", auth);

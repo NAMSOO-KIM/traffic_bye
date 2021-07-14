@@ -238,6 +238,13 @@
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
 	<script src="${contextPath}/resources/js/addItem.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-add').addClass('active');
+		});
+	</script>
 
 </body>
 </html>

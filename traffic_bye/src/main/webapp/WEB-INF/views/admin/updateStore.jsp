@@ -222,6 +222,13 @@
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
 	<script src="${contextPath}/resources/js/updateStore.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-store').addClass('active');
+		});
+	</script>
 
 </body>
 </html>
