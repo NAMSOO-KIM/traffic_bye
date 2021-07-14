@@ -220,7 +220,7 @@
                             aria-labelledby="top-home-tab">
                             <div class="product-tab-discription">
                             	<div class="top-banner-wrapper">
-                                        <a href="${contextPath}/store/${store.id}"><img src="${store.thumb_file_url}"
+                                        <a href="${contextPath}/store/${store.id}"><img src="${store.repre_file_url}"
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
                                             <h4>${store.name}</h4>
@@ -277,12 +277,14 @@
                                 <div class="form-row row">
                                     <div class="col-md-12">
                                         <div class="media">
+                                        	<!-- 
                                             <label>Rating</label>
                                             <div class="media-body ms-3">
                                                 <div class="rating three-star"><i class="fa fa-star"></i> <i
                                                         class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                         class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                                             </div>
+                                             -->
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -343,12 +345,14 @@
                             
                         </div>
                         <div class="product-detail">
+                        	<!-- 
                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                            -->
                             <a href="product-page(no-sidebar).html">
                                 <h6>[${RelatedItemVar.store_name}] ${RelatedItemVar.name}</h6>
                             </a>
-                            <h4>${RelatedItemVar.price}</h4>
+                            <h4>$${RelatedItemVar.price}</h4>
                             
                         </div>
                     </div>
@@ -363,28 +367,7 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 
     <!-- theme setting -->
-    <div class="theme-settings">
-        <ul>
-        	<!-- 
-            <li class="demo-li">
-                <a href="javascript:void(0)" onclick="openSetting()">
-                    <div class="setting-sidebar" id="setting-icon">
-                        <h5>50+ <br>demo</h5>
-                    </div>
-                </a>
-            </li>
-             -->
-            <li>
-                <div class="dark-btn">Dark</div>
-            </li>
-            <li>
-                <div class="rtl-btn">RTL</div>
-            </li>
-            <li class="input-picker">
-                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
-            </li>
-        </ul>
-    </div>
+    
     <div class="scroll-setting-box">
         <div id="setting_box" class="setting-box">
             <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
