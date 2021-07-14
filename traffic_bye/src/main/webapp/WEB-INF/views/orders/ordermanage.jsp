@@ -21,7 +21,38 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
 	type="image/x-icon">
-<title>Multikart - Premium Admin Template</title>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+<title>현대백화점 면세점</title>
+	<!-- Bootstrap js-->
+	<script
+		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- feather icon js-->
+	<script
+		src="${contextPath}/resources/assets/js/icons/feather-icon/feather.min.js"></script>
+	<script
+		src="${contextPath}/resources/assets/js/icons/feather-icon/feather-icon.js"></script>
+
+	<!-- Sidebar jquery-->
+	<script src="${contextPath}/resources/assets/js/sidebar-menu.js"></script>
+
+	<!-- Datatable js-->
+	<script
+		src="${contextPath}/resources/assets/js/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="${contextPath}/resources/assets/js/datatables/custom-basic.js"></script>
+
+	<!--Customizer admin-->
+	<script src="${contextPath}/resources/assets/js/admin-customizer.js"></script>
+
+	<!-- lazyload js-->
+	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
+
+	<!--right sidebar js-->
+	<script src="${contextPath}/resources/assets/js/chat-menu.js"></script>
+
+	<!--script admin-->
+	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 <%-- <!-- latest jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
@@ -628,43 +659,7 @@
 			
 <!-- 모달 세트  끝 -->
 			<!--------------------------- 소켓 시작 ---------------------------->
-				<script type="text/javascript">
-				var wsocket;
-				var auth = '<c:out value="${loginInfo.storeId}"/>';
-
-				function connect() {
-					wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-					wsocket.onmessage = onMessage;
-					wsocket.onclose = onClose;
-				}
-
-				var receiveData = {};
-				
-				function onMessage(evt) {
-					$('.modal-content').empty();
-					$('.modal-content').append(evt.data);
-					$('.modal-content').append('<br><br><br><br><div><a href="${contextPath}/ordermanage">관리 페이지 이동</a></div>');
-					$(function(){ 
-					    $(".modal").fadeIn()
-						  $(".modal-content").click(function(){
-						    $(".modal").fadeOut();
-						  });
-						});
-				}
-				function onClose(evt) {
-					console.log("연결을 끊었습니다.");
-				}
-				
-				$(document).ready(function() {
-					connect();
-					$('#orderId').click(function() {
-						console.log('hi');
-
-					});
-					
-
-				});
-			</script>
+	
 			
 			<!--------------------------- 소켓 끝 ---------------------------->
 			
@@ -798,36 +793,7 @@
 
 	</div>
 
-	<!-- Bootstrap js-->
-	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
 
-	<!-- feather icon js-->
-	<script
-		src="${contextPath}/resources/assets/js/icons/feather-icon/feather.min.js"></script>
-	<script
-		src="${contextPath}/resources/assets/js/icons/feather-icon/feather-icon.js"></script>
-
-	<!-- Sidebar jquery-->
-	<script src="${contextPath}/resources/assets/js/sidebar-menu.js"></script>
-
-	<!-- Datatable js-->
-	<script
-		src="${contextPath}/resources/assets/js/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="${contextPath}/resources/assets/js/datatables/custom-basic.js"></script>
-
-	<!--Customizer admin-->
-	<script src="${contextPath}/resources/assets/js/admin-customizer.js"></script>
-
-	<!-- lazyload js-->
-	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
-
-	<!--right sidebar js-->
-	<script src="${contextPath}/resources/assets/js/chat-menu.js"></script>
-
-	<!--script admin-->
-	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
 </body>
 </html>

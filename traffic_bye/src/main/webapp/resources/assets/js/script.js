@@ -1947,7 +1947,7 @@ $('#cartEffect').on('click', function (e) {
             dataType: "text", 
 			success : function (result) { 
 				if (result == 1) { // 1 성공, 0 이면 실패
-					//alert(result);
+					// alert(result);
 					
 					$('#cartEffect').text("Added to bag ");
 					$('.added-notification').addClass("show");
@@ -1959,10 +1959,10 @@ $('#cartEffect').on('click', function (e) {
                     getCartItemList();
 				}
 				else if(result == 0){
-					alert("로그인 부터 하셈");
+					alert("로그인 후 이용 가능합니다.");
 				}
 				else if(result == 2){
-					alert("재고 없셈");
+					alert("재고가 없습니다.");
 				}
 			},
             error: function(request, status, error) {
@@ -1976,7 +1976,7 @@ $('#cartEffect').on('click', function (e) {
 		
 		
     }else{
-		alert("재고 없삼~");
+		alert("재고가 없습니다.");
 	}
     
 });

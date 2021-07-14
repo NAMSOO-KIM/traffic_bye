@@ -3,9 +3,13 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+
 <!DOCTYPE html>
 <html>
-
+<head>
+<title>현대백화점 면세점</title>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+</head>
 <body class="theme-color-1">
 	<!-- header start -->
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
@@ -183,12 +187,12 @@
                                                     <div class="product-box">
                                                         <div class="img-wrapper">
                                                             <div class="front">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>

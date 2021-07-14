@@ -10,7 +10,8 @@
 
 <head>
 <!-- latest jquery-->
-	
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+	<title>현대백화점 면세점</title>
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script>
 			
@@ -43,7 +44,7 @@
 	                        			html += "<a href='${contextPath}/items/";
 	                        			html += value.id;
 	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
+	                        			html += value.main_thumb_file_url;
 	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                        	
 	                       		html += "</div>";
@@ -52,7 +53,7 @@
 		                       		html += "<a href='${contextPath}/items/";
 	                    			html += value.id;
 	                    			html += "' ><img src='";
-	                    			html += value.thumb_file_url;
+	                    			html += value.main_thumb_file_url;
 	                    			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                       			
 	                    		html += "</div>";
@@ -91,7 +92,8 @@
 							$("#tab-content-cls").html(html);
 						},
 	    				error : function(request, status, error) {
-	    						alert("오우 실패쓰");
+	    						alert("실패");
+	    						
 	    				}
 	                        
 						});
@@ -139,7 +141,7 @@
 	                            			html += "<a href='${contextPath}/items/";
 	                            			html += value.id;
 	                            			html += "' ><img src='";
-	                            			html += value.thumb_file_url;
+	                            			html += value.main_thumb_file_url;
 	                            			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                            	
 	                           		html += "</div>";
@@ -148,7 +150,7 @@
 		                           		html += "<a href='${contextPath}/items/";
 	                        			html += value.id;
 	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
+	                        			html += value.main_thumb_file_url;
 	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                        		html += "</div>";
 	                        		
@@ -182,7 +184,7 @@
 	    						$("#tab-content-cls").html(html);
 	    					},
 	        				error : function(request, status, error) {
-	        						alert("오우 실패쓰");
+	        						alert("실패");
 	        				}
 	                            
 	    					});
@@ -280,8 +282,15 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
+                            	 
+                                <img src="${contextPath}/resources/imgs/banner1.png" class="img-fluid blur-up lazyload bg-img"
+                                alt="">
+                                
+                                <!-- 
                                 <img src="https://cdn.hddfs.com/files/dm/20210426/f8ebe76c_202104260935171020.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
-                                    alt="">
+                                alt="">
+                                -->
+                                    
                             </div>
                             <!-- 
                             <div class="contain-banner">
@@ -298,8 +307,14 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="https://cdn.hddfs.com/files/dm/20210512/2d87894d_202105121747001780.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
-                                    alt="">
+                            	<!-- 
+                                <img src="https://cdn.hddfs.com/files/dm/20210426/f8ebe76c_202104260935171020.jpg" class="img-fluid blur-up lazyload bg-img"
+                                -->
+                                
+                                <img src="${contextPath}/resources/imgs/banner2.png" class="img-fluid blur-up lazyload bg-img"
+                                alt="">
+                                 
+                                    
                             </div>
                             <!-- 
                             <div class="contain-banner">
@@ -340,20 +355,18 @@
                                   <div class="img-wrapper">
                                       <div class="front">
                                           <a href="${contextPath}/items/${itemVar.id}"><img
-                                                  src="${itemVar.thumb_file_url}"
+                                                  src="${itemVar.main_thumb_file_url}"
                                                   class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                       </div>
                                       <div class="back">
                                           <a href="${contextPath}/items/${itemVar.id}"><img
-                                                  src="${itemVar.thumb_file_url}"
+                                                  src="${itemVar.main_thumb_file_url}"
                                                   class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                       </div>
                                       
                                   </div>
                                   <div class="product-detail">
-                                      <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i></div>
+                                  
                                       <a href="product-page(no-sidebar).html">
                                           <h6>[${itemVar.store_name}] ${itemVar.name}</h6>
                                       </a>
@@ -374,16 +387,23 @@
 
     <!-- Parallax banner -->
     <section class="p-0">
-        <div class="full-banner parallax text-center p-left">
-            <img src="https://cdn.hddfs.com/files/dm/20210526/b804f39c_202105261400021610.jpg?RS=1920x450" alt="" class="bg-img blur-up lazyload">
+        <div class="full-banner parallax text-center p-left" style="background-image: url(https://cdn.hddfs.com/files/dm/20201214/47e16caf_202012141815453560.jpg?RS=1920x450);">
+        	<!-- 
+        	<img src="${contextPath}/resources/imgs/banner3.jpg?RS=1920x450" alt="" class="bg-img blur-up lazyload">
+        	 -->
+            
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="banner-contain">
+                        <!-- 
+                        <img src="https://cdn.hddfs.com/files/dm/20201214/e0c4d715_202012141815378420.jpg?RS=1920x450" alt="" class="blur-up lazyload">
+                         -->
+                         
                             <h2>2021</h2>
                             <h3 style="color:white !important">혼잡도 분석 서비스</h3>
                             <h5 style="color:white !important">스따또!!</h5>
-                            
+                        
                         </div>
                     </div>
                 </div>
@@ -606,7 +626,7 @@
                     <div class="slide-7 no-arrow slick-instagram">
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/2.jpg?RS=275x275" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/imgs/1.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -614,7 +634,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/3.jpg?RS=275x275" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/imgs/2.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -622,7 +642,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/4.jpg?RS=275x275" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/imgs/3.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -632,7 +652,7 @@
                         
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="${contextPath}/resources/assets/images/slider/5.jpg?RS=275x275" class="bg-img"
+                                <div class="instagram-box"> <img src="${contextPath}/resources/imgs/4.jpg?RS=275x275" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>

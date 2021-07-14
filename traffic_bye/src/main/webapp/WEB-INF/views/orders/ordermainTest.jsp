@@ -5,6 +5,7 @@
 <c:set var="memberVO" value="${memberVO}" />
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <jsp:include page="../header.jsp"></jsp:include>
  
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -115,31 +116,30 @@
 	<!-- 내용 시작 -->
 		<!-- 모달 실험 시작 -->
 		
-		
-<button id="modal-on">클릭</button>
-<div class="modal" tabindex="-1" id="team2-modal">
+<div class="modal" tabindex="-1" id="team2-modal" style ="z-index:9999999999999;">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-       <!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
+    <div class="modal-content" id="team2-modal-content" style="max-width: 100%; width: auto; display: table; border-radius: 20px;">
+      <div class="team2-modal-header">
+       <h5 class="modal-title">알림 제목이 들어갑니다.</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
       </div>
-      <div class="modal-body">
-       <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
+      <div class="team2-modal-body">
+      <p>여기에 알림 내용이 들어갑니다.</p> 
       </div>
-      <div class="modal-footer">
+      <div class="team2-modal-footer" style="text-align: center;">
+      
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript">
-//var myModal = document.getElementById('myModal');
-/* var myInput = document.getElementById('myInput');
+var myModal = document.getElementById('team2-modal');
+var myInput = document.getElementById('team2-modal-content');
 
 myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
-}) */
+})
 </script>
 
 <!-- 모달 실험 끝 -->
@@ -150,76 +150,80 @@ myModal.addEventListener('shown.bs.modal', function () {
 <!-- Button that triggers the popup -->
 		<script>
 
-	function deleteQuantity(itemId){
-		let deleteData = "itemId="+itemId;
-		let deletelink = "${contextPath}/deleteQuantity";
-		$('.title-modal').empty();
-		$('.content-modal').empty();
-		$('.title-modal').append('<h2>장바구니에서 삭제하시겠습니까?</h2>');
-		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
-		   modal.style.display = "flex";
-		   $('#yes-btn').click(function(){
-				$.ajax({
-					url : deletelink,
-					type : 'post',
-					data: deleteData ,
-					success : function(){
-						location.reload();
-						console.log('삭제 완료');
-					}
-					
-				});
-		   });
-		   
-		   $('#no-btn').click(function(){
-			   modal.style.display = "none"
-		   });
-	}
-	
-	function updateQuantity(itemId) {
-		var elId = 'cart-quantity'+itemId;
-		
-		var currentQuantity = document.getElementById(elId).value;
-		//memberId 세션 있음
-		var currentMemberId = '<c:out value="${loginInfo.id}"/>';
-		var currentItemId = itemId;
-		console.log(currentItemId);
-		let currentlink = "${contextPath}/changeQuantity";
-		var currentSendData = {"currentMemberId" : currentMemberId,
-							    "currentQuantity" : currentQuantity,
-							    "currentItemId" : currentItemId};
-		console.log(currentSendData);
-		
-		$('.title-modal').empty();
-		$('.content-modal').empty();
-		$('.title-modal').append('<h2>정말로 변경하시겠습니까?</h2>');
-		$('.content-modal').append('<button id="yes-btn">Yes</button>&nbsp&nbsp&nbsp<button id="no-btn">No</button>');
-		   modal.style.display = "flex";
-		
-		   $('#yes-btn').click(function(){
-				$.ajax({
-					url : currentlink,
-					type : 'post',
-					data:{
-						data : JSON.stringify(currentSendData)
-					},
-					success : function(){
-						location.reload();
-						console.log('수정 완료');
-					}
-					
-				});
-		   });
-		   
-		   
-		   $('#no-btn').click(function(){
-			   modal.style.display = "none"
-		   });
 
+		function deleteQuantity(itemId){
+			let deleteData = "itemId="+itemId;
+			let deletelink = "${contextPath}/deleteQuantity";
+			$('.team2-modal-body').empty();
+			$('.team2-modal-header').empty();
+			$('.team2-modal-footer').empty();
+			$('.team2-modal-header').append('<h3>장바구니에서 삭제하시겠습니까?</h3><br><br>');
+			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" style="margin-right: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9; border-radius: 15px;" data-bs-dismiss="modal">예</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary" style="margin-left: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;     border-radius: 15px;" data-bs-dismiss="modal">아니오</button>');
+			$('#team2-modal').modal('show');
+			   $('#yes-btn').click(function(){
+					$.ajax({
+						url : deletelink,
+						type : 'post',
+						data: deleteData ,
+						success : function(){
+							location.reload();
+							console.log('삭제 완료');
+						}
+						
+					});
+			   });
+			   
+			   $('#no-btn').click(function(){
+				   $('#team2-modal').modal('hide');
+			   });
+		}
 		
-		console.log(currentQuantity);
-		
-	}
+		function updateQuantity(itemId) {
+			var elId = 'cart-quantity'+itemId;
+			
+			var currentQuantity = document.getElementById(elId).value;
+			//memberId 세션 있음
+			var currentMemberId = '<c:out value="${loginInfo.id}"/>';
+			var currentItemId = itemId;
+			console.log(currentItemId);
+			let currentlink = "${contextPath}/changeQuantity";
+			var currentSendData = {"currentMemberId" : currentMemberId,
+								    "currentQuantity" : currentQuantity,
+								    "currentItemId" : currentItemId};
+			console.log(currentSendData);
+			
+			$('.team2-modal-body').empty();
+			$('.team2-modal-header').empty();
+			$('.team2-modal-footer').empty();
+			$('.team2-modal-header').append('<h3>정말 수량을 변경하시겠습니까?</h3><br><br>');
+			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" style="margin-right: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;     border-radius: 15px;" data-bs-dismiss="modal">예</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary"  style="margin-left: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;    border-radius: 15px;" data-bs-dismiss="modal">아니오</button>');
+			$('#team2-modal').modal('show');
+			   $('#yes-btn').click(function(){
+					$.ajax({
+						url : currentlink,
+						type : 'post',
+						data:{
+							data : JSON.stringify(currentSendData)
+						},
+						success : function(){
+							location.reload();
+							console.log('수정 완료');
+						}
+						
+					});
+			   });
+			   
+			   
+			   $('#no-btn').click(function(){
+				   $('#team2-modal').modal('hide');
+			   });
+
+			
+			console.log(currentQuantity);
+			
+		}
 	
 	
 	
@@ -266,7 +270,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 		    	console.log(rsp.apply_num);
 		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 		    	jQuery.ajax({
-		    		url: "/payments/comple", //cross-doma//in error가 발생하지 않도록 주의해주세요
+		    		url: "/payments/complete", //cross-doma//in error가 발생하지 않도록 주의해주세요
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {
@@ -560,7 +564,6 @@ myModal.addEventListener('shown.bs.modal', function () {
     </div>
     <!--End Modal-->
     
-    <!-- 
 
 	<div id="container">
 		<div id="lorem-ipsum"></div>
@@ -574,7 +577,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 			</div>
 		</div>
 	</div>
-	 -->
+	
 
 	
 	<!-- 내용 끝 -->
@@ -619,8 +622,8 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    amount : 1000, // 나중에 수정
     		    // buyer_email : 'iamport@siot.do',
     		    buyer_name : member_name,
-    		    buyer_tel : phone_number,
-    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
+    		    buyer_tel : phone_number
+    		    // confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
     		    // buyer_addr : '서울특별시 강남구 삼성동',
     		    // buyer_postcode : '123-456'
     		    /* status : "paid",
@@ -632,7 +635,7 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    if ( rsp.success ) {
     		    // if(rsp.code!= 200){
     		    	send();
-    		    	alert("하이");
+    		    	// alert("하이");
     		    	$('#myForm').submit();
     		    	console.log(rsp.imp_uid);
     		    	console.log(rsp.merchant_uid);

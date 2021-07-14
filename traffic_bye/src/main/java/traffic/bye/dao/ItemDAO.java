@@ -17,7 +17,7 @@ import traffic.bye.vo.StoreItemVO;
 
 public interface ItemDAO {
 	//ItemDTO getItem(long itemNO) throws Exception;
-	List<ItemVO> getItemList() throws SQLException;
+	List<ItemVO> getItemList() throws SQLException; //상점과 아이템 전체 목록 가져오기 
 	
 	ItemVO getItem(long id) throws SQLException;
 	

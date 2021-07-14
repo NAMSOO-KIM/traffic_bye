@@ -14,12 +14,7 @@
 <meta name="description" content="multikart">
 <meta name="keywords" content="multikart">
 <meta name="author" content="multikart">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 	
 
 <title>현대백화점 면세점</title>
@@ -472,14 +467,7 @@
 										<li><a href="${contextPath}">Home</a></li>
 										
 											<li><a href="${contextPath}/store">매장</a>
-											<ul>
-												<li><a href="${contextPath}/mm/items/list/1">담배매장
-													</a></li>
-												<li><a href="${contextPath}/mm/items/list/3">전자
-													</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">식품</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">안내데스크</a></li>
-											</ul>
+											
 											</li>
 											
 										<li><a href="${contextPath}/mm/items/list/3">전자/리빙</a>
