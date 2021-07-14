@@ -23,7 +23,6 @@ import traffic.bye.vo.ItemAddVO;
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
-import traffic.bye.vo.PagingVO;
 
 
 @Slf4j

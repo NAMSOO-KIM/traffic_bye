@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import traffic.bye.vo.ItemDeleteVO;
-import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.StoreDetailVO;
 import traffic.bye.vo.StoreItemVO;
 import traffic.bye.vo.StoreStatusVO;
