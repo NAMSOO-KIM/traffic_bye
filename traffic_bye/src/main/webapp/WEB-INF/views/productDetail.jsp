@@ -93,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-12 product_img_scroll image-scroll" data-sticky_column>
                                             <div>
-                                            	<div><img src="${item.thumb_file_url}" alt=" "
+                                            	<div><img src="${item.main_thumb_file_url}" alt=" "
 	                                                        class="img-fluid blur-up lazyload" width="546px" height="742px"></div>
                                             	
                                             	<c:forEach items="${itemDetailList}" var="itemDetailVO">
@@ -333,11 +333,11 @@
                     <div class="product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.thumb_file_url}"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.main_thumb_file_url}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="back">
-                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.thumb_file_url}"
+                                <a href="${contextPath}/items/${RelatedItemVar.id}"><img src="${RelatedItemVar.main_thumb_file_url}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             

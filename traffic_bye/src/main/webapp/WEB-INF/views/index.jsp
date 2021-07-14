@@ -43,7 +43,7 @@
 	                        			html += "<a href='${contextPath}/items/";
 	                        			html += value.id;
 	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
+	                        			html += value.main_thumb_file_url;
 	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                        	
 	                       		html += "</div>";
@@ -52,7 +52,7 @@
 		                       		html += "<a href='${contextPath}/items/";
 	                    			html += value.id;
 	                    			html += "' ><img src='";
-	                    			html += value.thumb_file_url;
+	                    			html += value.main_thumb_file_url;
 	                    			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                       			
 	                    		html += "</div>";
@@ -139,7 +139,7 @@
 	                            			html += "<a href='${contextPath}/items/";
 	                            			html += value.id;
 	                            			html += "' ><img src='";
-	                            			html += value.thumb_file_url;
+	                            			html += value.main_thumb_file_url;
 	                            			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                            	
 	                           		html += "</div>";
@@ -148,7 +148,7 @@
 		                           		html += "<a href='${contextPath}/items/";
 	                        			html += value.id;
 	                        			html += "' ><img src='";
-	                        			html += value.thumb_file_url;
+	                        			html += value.main_thumb_file_url;
 	                        			html += "' class='img-fluid blur-up lazyload bg-img' alt='' ></a>";
 	                        		html += "</div>";
 	                        		
@@ -340,12 +340,12 @@
                                   <div class="img-wrapper">
                                       <div class="front">
                                           <a href="${contextPath}/items/${itemVar.id}"><img
-                                                  src="${itemVar.thumb_file_url}"
+                                                  src="${itemVar.main_thumb_file_url}"
                                                   class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                       </div>
                                       <div class="back">
                                           <a href="${contextPath}/items/${itemVar.id}"><img
-                                                  src="${itemVar.thumb_file_url}"
+                                                  src="${itemVar.main_thumb_file_url}"
                                                   class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                       </div>
                                       
