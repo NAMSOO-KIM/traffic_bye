@@ -73,28 +73,25 @@
 					<h3>휴대폰 인증</h3>
 					<div class="theme-card">
 						<div class="form-group">
-							<label for="phone" style="margin-bottom: 15px; font-size: 15px; font-weight: 600;">휴대폰 번호</label>
+							<label for="phone" style="margin-bottom: 15px; font-size: 15px; font-weight: 600;">휴대폰 번호</label><br />
 							<div class="row">
-								<input type="text" style="" class="col-2" id="phoneNum" required="required" placeholder="번호를 입력하세요">
+								<input type="text" style="" class="col-2 form-group" id="phoneNum" required="required" placeholder="번호를 입력하세요">
 								<div class="col-3">
-									<button id="sendSMS" class="btn btn-solid col-6">인증번호 전송</button> 
-									<p id="certTimer" style="font-size: 15px; font-weight: 600; text-align: cemter;"></p>
+									<span class="btn btn-solid btn-sm btn-xs me-3" id="sendSMS">인증번호 전송</span>
+									<p id="certTimer" style="font-size: 15px; font-weight: 600; text-align: center;"></p>
 								</div>
-								
 							</div>
-							
-							
-						</div>
-						<form action="${contextPath}/member/auth/phone/check" id="phoneCheck" class="theme-form">
+								
+						<form action="${contextPath}/member/auth/phone/check" id="phoneCheck">
+						<div class="form-group">
 							<div class="row">
-								<input type="text" class="col-2" name="randomNumber" placeholder="인증번호를 입력하세요"> 
+								<input type="text" class="col-2 form-group" name="randomNumber" placeholder="인증번호를 입력하세요" style="height: 35px;"> 
 								<div class="col-3">
 									<input type="hidden"  id="phone" name="phone"> 
-							<input type="submit" class="btn btn-solid" value="입력">
+									<input type="submit" class="btn btn-solid btn-sm btn-xs me-3" value="입력">
 								</div>
 							</div>
-							
-							
+						</div>
 						</form>
 						
 					</div>
