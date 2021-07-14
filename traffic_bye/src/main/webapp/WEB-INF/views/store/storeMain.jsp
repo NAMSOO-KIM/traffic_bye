@@ -308,20 +308,8 @@
 														</div>
 													</div>
 												</div>
-												<hr style="border-top: 1px dashed #bbb;" />
 												
-												<div class="row">
-													<div class="col-7">
-														<div class="row">
-															<div class="col-3">
-																<span style="font-size: 12px; font-weight: 700;">주요상품</span>
-															</div>
-															<div class="col-9">
-																<span style="font-size: 12px;">카테고리명</span>
-															</div>
-														</div>
-													</div>
-												</div>
+												
 											</div>
 										</div>
 										

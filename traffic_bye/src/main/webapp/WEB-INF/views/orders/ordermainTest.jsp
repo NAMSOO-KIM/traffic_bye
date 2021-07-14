@@ -270,7 +270,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 		    	console.log(rsp.apply_num);
 		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 		    	jQuery.ajax({
-		    		url: "/payments/comple", //cross-doma//in error가 발생하지 않도록 주의해주세요
+		    		url: "/payments/complete", //cross-doma//in error가 발생하지 않도록 주의해주세요
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {
@@ -622,8 +622,8 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    amount : 1000, // 나중에 수정
     		    // buyer_email : 'iamport@siot.do',
     		    buyer_name : member_name,
-    		    buyer_tel : phone_number,
-    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
+    		    buyer_tel : phone_number
+    		    // confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
     		    // buyer_addr : '서울특별시 강남구 삼성동',
     		    // buyer_postcode : '123-456'
     		    /* status : "paid",
@@ -635,7 +635,7 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    if ( rsp.success ) {
     		    // if(rsp.code!= 200){
     		    	send();
-    		    	alert("하이");
+    		    	// alert("하이");
     		    	$('#myForm').submit();
     		    	console.log(rsp.imp_uid);
     		    	console.log(rsp.merchant_uid);

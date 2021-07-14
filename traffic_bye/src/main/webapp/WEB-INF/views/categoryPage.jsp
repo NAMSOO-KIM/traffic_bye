@@ -270,11 +270,7 @@
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <nav aria-label="Page navigation">
                                                             <ul class="pagination">
-                                                            <!-- 
-                                                            <c:if test="${paging.startPage != 1 }">
-																<a href="/boardList?no`wPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
-															</c:if>
-															 -->
+                                                            
                                                                 <li class="page-item">
                                                                 	<c:if test="${paging.startPage != 1 }">
 	                                                                <a class="page-link" href="${contextPath}/mm/items/list/${category_id}?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">

@@ -92,7 +92,8 @@
 							$("#tab-content-cls").html(html);
 						},
 	    				error : function(request, status, error) {
-	    						alert("오우 실패쓰");
+	    						alert("실패");
+	    						
 	    				}
 	                        
 						});
@@ -183,7 +184,7 @@
 	    						$("#tab-content-cls").html(html);
 	    					},
 	        				error : function(request, status, error) {
-	        						alert("오우 실패쓰");
+	        						alert("실패");
 	        				}
 	                            
 	    					});

@@ -184,7 +184,7 @@
                                             	<span class="lang" style="color:black">위치 : ${store.detail}</span>
                                             	 -->
                                             	 
-                                            	<h5>위치 : 여기 위치정보 있어야 될거 같음</h5>
+                                            	<h5>위치 : ${store.location}</h5>
                                             	
                                             </div>
                                         </div>
