@@ -18,8 +18,10 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
+ <!-- latest jquery-->
+    <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 <!--Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
@@ -67,14 +69,13 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="page-title">
-						<h2>Dashboard</h2>
+						<h2>마이페이지</h2>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<nav aria-label="breadcrumb" class="theme-breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+							<li class="breadcrumb-item active" aria-current="page">마이페이지</li>
 						</ol>
 					</nav>
 				</div>
@@ -107,77 +108,157 @@
 					</div>
 				</div>
 				<div class="col-lg-9">
-					<div class="dashboard-right">
-						<div class="dashboard">
-							<div class="page-title">
-								<h2>My Dashboard</h2>
-							</div>
-							<div class="welcome-msg">
-								<p>Hello, MARK JECNO !</p>
-								<p>From your My Account Dashboard you have the ability to
-									view a snapshot of your recent account activity and update your
-									account information. Select a link below to view or edit
-									information.</p>
-							</div>
-							<div class="box-account box-info">
-								<div class="box-head">
-									<h2>Account Information</h2>
-								</div>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="box">
-											<div class="box-title">
-												<h3>Contact Information</h3>
-												<a href="#">Edit</a>
-											</div>
-											<div class="box-content">
-												<h6>MARK JECNO</h6>
-												<h6>MARk-JECNO@gmail.com</h6>
-												<h6>
-													<a href="#">Change Password</a>
-												</h6>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="box">
-											<div class="box-title">
-												<h3>Newsletters</h3>
-												<a href="#">Edit</a>
-											</div>
-											<div class="box-content">
-												<p>You are currently not subscribed to any newsletter.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div>
-									<div class="box">
-										<div class="box-title">
-											<h3>Address Book</h3>
-											<a href="#">Manage Addresses</a>
-										</div>
-										<div class="row">
-											<div class="col-sm-6">
-												<h6>Default Billing Address</h6>
-												<address>
-													You have not set a default billing address.<br>
-													<a href="#">Edit Address</a>
-												</address>
-											</div>
-											<div class="col-sm-6">
-												<h6>Default Shipping Address</h6>
-												<address>
-													You have not set a default shipping address.<br>
-													<a href="#">Edit Address</a>
-												</address>
-											</div>
-										</div>
-									</div>
-								</div>
+					<!-- tracking page start -->
+	<section class="tracking-page section-b-space">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="title1">
+ 					<h4>안녕하세요. ${loginInfo.memberName}</h4>
+ 					<h2 class="title-inner1">최근 스마트 오더 상황판</h2>
+					</div>
+					<!-- 여기 부터 -->
+					<c:forEach items="${list}" var="detailList">
+					<div class="row border-part">
+						<div class="col-xl-2 col-md-3 col-sm-4">
+							<div class="product-detail">
+								<img src="${detailList.itemImg}"
+									class="img-fluid blur-up lazyload" alt="">
 							</div>
 						</div>
+						<div class="col-xl-4 col-lg-5 col-sm-8">
+							<div class="tracking-detail">
+								<ul>
+									<li>
+										<div class="left">
+											<span>스토어 이름 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.storeName}</span>
+										</div>
+										<br>
+									</li>
+									<li>
+										<div class="left">
+											<span>상품 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.itemName}</span>
+										</div>
+										<br>
+									</li>
+									<li>
+										<div class="left">
+											<span>주문 날짜 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.paymentDate}</span>
+										</div>
+										<br>
+									</li>
+								</ul>
+							</div>
+						</div>
+						 <div class="col-xl-5 col-lg-4">
+                          	<div class="tracking-detail">
+								<ul>
+									<li>
+										<div class="left">
+											<span>주문 수량 :</span>
+										</div>
+										<div class="right">
+											<span>${detailList.quantity}</span>
+										</div>
+										<br>
+									</li>
+									<li>
+										<div class="left">
+											<span>가격 :</span>
+										</div>
+										<div class="right">
+											<span>$${detailList.price}</span>
+										</div>
+										<br>
+									</li>
+									
+									<li>
+										<div class="left">
+											<span>결제 금액 :</span>
+										</div>
+										<br>
+										<br>
+										<div class="right">
+											<span>$${detailList.totalPrice}</span>
+										</div>
+									</li>
+									<li>
+										<div class="left">
+											<span>스마트 오더 진행 상황</span>
+										</div>
+										<div class="right">
+												<div class="title1 title-fancy">
+												 <h4 class="title-inner1 title-gradient mb-0"><c:choose>
+												<c:when test="${detailList.detailStatus eq '0'}">수락 대기</c:when>
+												<c:when test="${detailList.detailStatus eq '1'}">주문 수락</c:when>
+												<c:when test="${detailList.detailStatus eq '2'}">준비 완료</c:when>
+												<c:otherwise>수령완료</c:otherwise>
+												</c:choose></h4>
+												</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+                        </div>
 					</div>
+					</c:forEach>
+					<!-- 여기 까지가 한칸 -->
+					  <div class="wrapper">
+					  <div class="title2">
+ 					<!-- 	<h2 class="title-inner2">스마트 오더 전체 진행상황</h2> -->
+						</div>
+                        <div class="arrow-steps clearfix">
+                            <div class="step" id="status1"> <span> 수락 대기</span> </div>
+                            <div class="step" id="status2"> <span>주문 수락</span> </div>
+                            <div class="step" id="status3"><span> 준비 완료</span> </div>
+                            <div class="step" id="status4"><span> 수령 완료</span> </div>
+                        </div>
+                    </div>     
+                   
+                   <c:set var="myList" value="${list}"/>
+                    <script type="text/javascript">
+                	$(document).ready(function() {
+                		var currentStatus = '<c:out value="${myList[0].totalStatus}"/>';
+                		console.log(currentStatus);
+                		if(currentStatus == 0){
+                			$("#status1").attr('class','step current'); 
+                			$("#status2").attr('class','step'); 
+                			$("#status3").attr('class','step'); 
+                			$("#status4").attr('class','step'); 
+                		}else if(currentStatus == 1){
+                			$("#status1").attr('class','step done'); 
+                			$("#status2").attr('class','step current'); 
+                			$("#status3").attr('class','step'); 
+                			$("#status4").attr('class','step'); 
+                		}else if(currentStatus == 2){
+                			$("#status1").attr('class','step done'); 
+                			$("#status2").attr('class','step done'); 
+                			$("#status3").attr('class','step current'); 
+                			$("#status4").attr('class','step'); 
+                		}else if(currentStatus == 3){
+                			$("#status1").attr('class','step done'); 
+                			$("#status2").attr('class','step done'); 
+                			$("#status3").attr('class','step done'); 
+                			$("#status4").attr('class','step current');
+                		}
+                		
+            		});
+                    
+                    </script>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- tracking page end -->
 				</div>
 			</div>
 		</div>
@@ -200,9 +281,6 @@
 	</div>
 	<!-- tap to top end -->
 
-
-	<!-- latest jquery-->
-	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
 	<!-- menu js-->
 	<script src="${contextPath}/resources/assets/js/menu.js"></script>

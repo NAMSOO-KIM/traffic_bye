@@ -6,6 +6,8 @@
 	console.log(itemDetailVO);
     let repreFile = Dropzone.forElement('#repreFileUpload');
     let anotherFiles = Dropzone.forElement('#anotherFileUpload');
+    let currPath = location.pathname;
+	let itemId = currPath.substr(currPath.lastIndexOf('/') + 1); 
     $('#stock').val(itemDetailVO.stock);
     $('#price').val(itemDetailVO.price);
     $('#name').val(itemDetailVO.name);
@@ -83,7 +85,7 @@
 		    url : "",
 		    type : 'post',
 		    success : function(data){
-				location.href = "/app/store/1/item/" + data;
+				location.href = "/app/items/" + itemId;
 			},
 			fail : function(){
 				console.log("실패 ㅠ");

@@ -50,7 +50,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
 <script>
-	itemDetailVO = ${itemDetailVO};
+	storeDetailVO = ${storeDetailVO};
 </script>
 </head>
 <body>
@@ -77,17 +77,14 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="page-header-left">
-									<h3>
-										상품수정
-									</h3>
+									<h3>매장관리</h3>
 								</div>
 							</div>
 							<div class="col-lg-6">
 								<ol class="breadcrumb pull-right">
 									<li class="breadcrumb-item"><a href="${currentPath}"><i
 											data-feather="home"></i></a></li>
-									<li class="breadcrumb-item"><a href="${currentPath}/items">상품목록</a></li>		
-									<li class="breadcrumb-item">상품수정</li>
+									<li class="breadcrumb-item active">매장관리</li>
 								</ol>
 							</div>
 						</div>
@@ -98,90 +95,67 @@
 				<!-- Container-fluid starts-->
 				<div class="container-fluid">
 					<div class="row product-adding">
-						<div class="col-xl-6">
-							<div class="card">
-								<div class="card-header">
-									<h5>가격 및 이미지</h5>
-								</div>
-								<div class="card-body">
-									<div class="digital-add needs-validation">
-										<div class="form-group">
-											<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
-												상품명</label> <input class="form-control" id="name" type="text"
-												required="required" name="name">
-										</div>
-										<div class="form-group" id="categories">
-											<label class="col-form-label"><span>*</span> 카테고리</label> <select
-												class="custom-select form-control" required="required"
-												name="bigCategory" id="bigCategory">
-												<option value="">대분류</option>
-												<c:forEach var="item" items="${bigCategories}">
-													<option value="${item.id}">${item.name}</option>
-												</c:forEach>
-											</select> <select class="custom-select form-control"
-												required="required" name="midCategory" id="midCategory">
-												<option value="">중분류</option>
-												<c:forEach var="item" items="${midCategories}">
-													<option value="${item.id}">${item.name}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="form-group">
-											<label class="col-xl-3 col-sm-4 mb-0">재고 :</label>
-											<div class="input-group">
-												<input class="touchspin" type="text" value="1"
-													style="text-align: center;" name="stock" id="stock">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="validationCustom02" class="col-form-label"><span>*</span>
-												가격</label> <input class="form-control" id="price" type="text"
-												required="required" name="price">
-										</div>
 
-										<label class="col-form-label pt-0"> 대표 이미지</label>
-										<form class="dropzone digits" id="repreFileUpload" action="">
-											<div class="dz-message needsclick">
-												<i class="fa fa-cloud-upload"></i>
-												<h4 class="mb-0 f-w-600">파일을 드래그 하거나 클릭해서 업로드하세요!</h4>
-											</div>
-										</form>
-										<label class="col-form-label pt-0"> 추가 이미지</label>
-										<form class="dropzone digits" id="anotherFileUpload" action="">
-											<div class="dz-message needsclick">
-												<i class="fa fa-cloud-upload"></i>
-												<h4 class="mb-0 f-w-600">파일을 드래그 하거나 클릭해서 업로드하세요!</h4>
-											</div>
-										</form>
+						<div class="card">
+							<div class="card-header">
+								<h5>매장 정보</h5>
+							</div>
+							<div class="card-body">
+								<div class="digital-add needs-validation">
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											매장명</label> <input class="form-control" id="name" type="text"
+											required="required" name="name">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											실시간 영상 주소</label> <input class="form-control" id="streamingURL" type="text"
+											required="required" name="streamingURL">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											수용인원</label> <input class="form-control" id="capacity" type="text"
+											required="required" name="capacity">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											연락처</label> <input class="form-control" id="contact" type="text"
+											required="required" name="contact">
+									</div>
+									<div class="form-group">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											위치</label> <input class="form-control" id="location" type="text"
+											required="required" name="location">
+									</div>
+									<label class="col-form-label pt-0">대표 이미지</label>
+									<form class="dropzone digits" id="repreFileUpload" action="">
+										<div class="dz-message needsclick">
+											<i class="fa fa-cloud-upload"></i>
+											<h4 class="mb-0 f-w-600">파일을 드래그 하거나 클릭해서 업로드하세요!</h4>
+										</div>
+									</form>
+								</div>
+								<div class="digital-add needs-validation">
+									<div class="form-group mb-0">
+										<label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+											매장설명</label>
+										<div class="description-sm">
+											<textarea id="editor1" name="editor1" cols="10" rows="50"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="digital-add needs-validation">
+									<div class="form-group">
+										<div class="product-buttons text-center">
+											<button type="button" class="btn btn-primary" id="updateStore">등록</button>
+											<button type="button" class="btn btn-light">취소</button>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-6">
-							<div class="card">
-								<div class="card-header">
-									<h5>상품 설명</h5>
-								</div>
-								<div class="card-body">
-									<div class="digital-add needs-validation">
-										<div class="form-group mb-0">
-											<div class="description-sm">
-												<textarea id="editor1" name="editor1" cols="10" rows="50"></textarea>
-											</div>
-										</div>
-									</div>
-									<div class="digital-add needs-validation">
-										<div class="form-group">
-											<div class="product-buttons text-center">
-												<button type="button" class="btn btn-primary"
-													id="updateItem">등록</button>
-												<button type="button" class="btn btn-light">취소</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+
+
 					</div>
 				</div>
 				<!-- Container-fluid Ends-->
@@ -235,7 +209,7 @@
 		src="${contextPath}/resources/assets/js/editor/ckeditor/ckeditor.custom.js"></script>
 
 	<!--Customizer admin-->
-	<script src="${contextPath}/resources/assets/js/admin-customizer.js"></script>
+	<%-- <script src="${contextPath}/resources/assets/js/admin-customizer.js"></script> --%>
 
 	<!-- lazyload js-->
 	<script src="${contextPath}/resources/assets/js/lazysizes.min.js"></script>
@@ -246,7 +220,7 @@
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
-	<script src="${contextPath}/resources/js/updateItem.js"></script>
+	<script src="${contextPath}/resources/js/updateStore.js"></script>
 
 </body>
 </html>

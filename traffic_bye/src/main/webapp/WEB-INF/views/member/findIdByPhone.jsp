@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -71,6 +71,8 @@
 		</c:when>
 	</c:choose>
 
+
+
 	<!--section start-->
 	<section class="register-page section-b-space">
 		<div class="container">
@@ -78,14 +80,18 @@
 				<div class="col-lg-12">
 					<h3>휴대폰 인증</h3>
 					<div class="theme-card">
-						<label for="phone">휴대폰 번호</label> <input type="text" id="phoneNum"
-							required="required" placeholder="번호를 입력하세요"> <input
-							type="button" id="sendSMS" value="인증번호 전송">
+						<div class="form-group">
+							<label for="phone">휴대폰 번호</label> <input type="text"
+								class="form-control" id="phoneNum" required="required"
+								placeholder="번호를 입력하세요"> <input type="button"
+								class="btn btn-solid" id="sendSMS" value="인증번호 전송">
+						</div>
 						<form action="${contextPath}/member/auth/findId/phone/check"
-							id="phoneCheck">
-							<input type="text" name="randomNumber"> <input
-								type="hidden" id="phone" name="phone"> <input
-								type="submit" value="입력">
+							id="phoneCheck" class="theme-form">
+							<input type="text" class="form-control" name="randomNumber"
+								placeholder="인증번호를 입력하세요"> <input type="hidden"
+								id="phone" name="phone"> <input type="submit"
+								class="btn btn-solid" value="입력">
 						</form>
 						<p id="certTimer"></p>
 					</div>

@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -77,14 +77,14 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="page-title">
-						<h2>customer's login</h2>
+						<h2>로그인</h2>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<nav aria-label="breadcrumb" class="theme-breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active">login</li>
+							<li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
+							<li class="breadcrumb-item active">로그인</li>
 						</ol>
 					</nav>
 				</div>
@@ -105,13 +105,13 @@
 							action="${contextPath}/member/loginProcess" method="post">
 							<div class="form-group">
 								<label for="loginId">ID</label> <input type="text"
-									class="form-control" id="loginId" placeholder="Email"
+									class="form-control" id="loginId" placeholder="아이디를 입력하세요"
 									required="required" name="loginId">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label> <input type="password"
 									class="form-control" id="password"
-									placeholder="Enter your password" required="required"
+									placeholder="비밀번호를 입력하세요" required="required"
 									name="password">
 							</div>
 							<button type="submit" class="btn btn-solid">로그인</button>

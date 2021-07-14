@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import traffic.bye.dao.CartDAO;
 import traffic.bye.dao.ItemDAO;
 import traffic.bye.dao.OrdersDAO;
 import traffic.bye.dao.StoreDAO;
@@ -35,11 +36,14 @@ public class OrderServiceImpl implements OrdersService {
 	@Autowired
 	private ItemDAO itemDAO;
 	
+	@Autowired
+	private CartDAO cartDAO;
+	
 
 
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	@Override
-	public int makeOrder(OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception {
+	public int makeOrder(Long memberId, OrdersVO ordersVO, List<OrdersDetailVO> ordersDetails) throws Exception {
 		// TODO Auto-generated method stub
 		int row = 0;
 		for(OrdersDetailVO ordersDetailVO : ordersDetails) {
@@ -51,6 +55,7 @@ public class OrderServiceImpl implements OrdersService {
 			ordersDetailVO.setOrdersId(orderId);
 			ordersDAO.insertOrdersDetail(ordersDetailVO);
 		}
+		cartDAO.completeCart(memberId);
 		return orderId;
 	}
 
@@ -115,7 +120,7 @@ public class OrderServiceImpl implements OrdersService {
 	}
 
 	@Override
-	public OrdersTrackingVO getOrderTrackingList(long orderId) throws Exception {
+	public List<OrdersTrackingVO> getOrderTrackingList(long orderId) throws Exception {
 		return ordersDAO.getOrderTrackingList(orderId);
 	}
 
@@ -127,5 +132,10 @@ public class OrderServiceImpl implements OrdersService {
 	@Override
 	public void deleteQuantity(DeleteQuantityVO vo) throws Exception {
 		ordersDAO.deleteQuantity(vo);
+	}
+
+	@Override
+	public List<OrdersTrackingVO> getFirstOrder(Long id) throws Exception {
+		return ordersDAO.getFirstOrder(id);
 	}
 }

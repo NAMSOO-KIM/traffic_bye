@@ -113,6 +113,38 @@
 	</section>
 	<!--section end-->
 	<!-- 내용 시작 -->
+		<!-- 모달 실험 시작 -->
+		
+		
+<button id="modal-on">클릭</button>
+<div class="modal" tabindex="-1" id="team2-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+       <!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
+      </div>
+      <div class="modal-body">
+       <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+//var myModal = document.getElementById('myModal');
+/* var myInput = document.getElementById('myInput');
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+}) */
+</script>
+
+<!-- 모달 실험 끝 -->
+	
+	
 	
 
 <!-- Button that triggers the popup -->
@@ -193,6 +225,7 @@
 	
 	
 	/* 결제부분  */
+	/*
 	function iamport(){
 	
 		let member_name = document.getElementById('member_name').value;
@@ -223,7 +256,7 @@
 		    // buyer_postcode : '123-456'
 		}, function(rsp) {
 		    if ( rsp.success ) {
-		    	
+		    	send();
 		    	alert("결제가 정상적으로 완료되었습니다.");
 		    	$('#myForm').submit();
 		    	
@@ -263,7 +296,7 @@
 		    }
 		});
 	}
-	
+	*/
 	
 	
 	
@@ -291,10 +324,11 @@
 		    name : member_name + '님의 결제',
 		    amount : total_price,
 		    buyer_name : member_name,
-		    buyer_tel : phone_number,
+		    buyer_tel : phone_number
 		    
 		}, function(rsp) {
 		    if ( rsp.success ) {
+		    	send();
 		    	alert('결제가 정상적으로 완료되었습니다.');
 		    	$('#myForm').submit();
 		    	
@@ -354,7 +388,6 @@
 	
 	<script type="text/javascript" src=" https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 	<script type="text/javascript">
-	var wsocket;
 	var customer = '<c:out value="${loginInfo.loginId}"/>';
 	var memberId = '<c:out value="${loginInfo.id}"/>';
 	var auth = '<c:out value="${loginInfo.storeId}"/>';
@@ -365,39 +398,6 @@
 	sendData.auth=auth;
 	console.log(sendData);
 	console.log(sendData.customer);
-	function connect() {
-		wsocket = new WebSocket("ws://localhost/app/smartOrder-ws");
-		wsocket.onopen = onOpen;
-		wsocket.onmessage = onMessage;
-		wsocket.onclose = onClose;
-	}
-	function onMessage(evt) {
-		console.log("메세지 도착");
-		$('.title-modal').empty();
-		$('.content-modal').empty();
-		$('.title-modal').append('<h2>제목</h2>');
-		$('.content-modal').append(evt.data);
-		   modal.style.display = "flex";
-	}
-	function onOpen(){
-		console.log('hi');
-	}
-	
-	function onClose(evt) {
-		console.log("연결을 끊었습니다.");
-	}
-	function send() {
-		wsocket.send(JSON.stringify(sendData));
-	}
-	
-	
-	$(document).ready(function(){
-		connect();
-		console.log('안녕');
-		$('#sendBtn').click(function(){send();});
-		console.log("준비완료");
-	});
-	
 </script>
 
 
@@ -616,18 +616,24 @@
     		    pay_method : 'card',
     		    merchant_uid : 'merchant_' + new Date().getTime(),
     		    name : member_name+'님의 결제',
-    		    amount : total_price, // 나중에 수정
+    		    amount : 1000, // 나중에 수정
     		    // buyer_email : 'iamport@siot.do',
     		    buyer_name : member_name,
     		    buyer_tel : phone_number,
+    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
     		    // buyer_addr : '서울특별시 강남구 삼성동',
     		    // buyer_postcode : '123-456'
+    		    /* status : "paid",
+    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check" */
     		}, function(rsp) {
+    			console.log(rsp);
+    			console.log(rsp.success);
+    			
     		    if ( rsp.success ) {
-    		    	
+    		    // if(rsp.code!= 200){
+    		    	send();
     		    	alert("하이");
     		    	$('#myForm').submit();
-    		    	
     		    	console.log(rsp.imp_uid);
     		    	console.log(rsp.merchant_uid);
     		    	console.log(rsp.paid_amount);
@@ -699,7 +705,11 @@
     		    buyer_addr : '서울특별시 강남구 삼성동',
     		    buyer_postcode : '123-456'
     		}, function(rsp) {
+    			console.log(rsp);
+    			console.log(rsp.success);
+  
     		    if ( rsp.success ) {
+    		    	send();
     		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
     		    	jQuery.ajax({
     		    		url: "/payments/complete", // cross-domain error가 발생하지 않도록 주의해주세요

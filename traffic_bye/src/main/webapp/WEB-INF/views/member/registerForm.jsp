@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -83,7 +83,7 @@
 									<label for="loginId">아이디</label> <input type="text"
 										class="form-control" id="loginId" placeholder="아이디를 입력하세요"
 										required="required" name="loginId"> <input
-										type="button" value="중복확인" id="idValidBtn">
+										type="button" value="중복확인" id="idValidBtn" class="btn btn-solid w-auto">
 								</div>
 							</div>
 							<div class="form-row row">

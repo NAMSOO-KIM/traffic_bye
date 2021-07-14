@@ -4,6 +4,14 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,6 +58,33 @@
 	href="${contextPath}/resources/assets/css/admin.css">
 </head>
 <body>
+	<div class="modal" tabindex="-1" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+       <!--  <h5 class="modal-title">알림 제목이 들어갑니다.</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
+      </div>
+      <div class="modal-body">
+       <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var currentPath = "${currentPath}";
+
+var myModal = document.getElementById('myModal');
+var myInput = document.getElementById('myInput');
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
 	<!-- Page Header Start-->
 	<div class="page-main-header">
 		<div class="main-header-right row">
@@ -113,8 +148,8 @@
 							<h6 class="mt-3 f-14">${loginInfo.memberName}</h6>
 						</div>
 						<ul class="profile-dropdown onhover-show-div p-20">
-							<li><a href="#"><i data-feather="user"></i>마이페이지</a></li>
-							<li><a href="#"><i data-feather="log-out"></i>로그아웃</a></li>
+							<li><a href="${contextPath}/member/mypage"><i data-feather="user"></i>마이페이지</a></li>
+							<li><a href="${contextPath}/member/logout"><i data-feather="log-out"></i>로그아웃</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -126,13 +161,17 @@
 	</div>
 	<!-- Page Header Ends -->
 
-	<!-- latest jquery-->
-	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
-	<!-- Bootstrap js-->
+	<!-- jquery 로딩 -->
 	<script
-		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+
+	<!-- fly cart ui jquery-->
+	<script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
+
+	<!-- exitintent jquery-->
+	<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
 	<!-- feather icon js-->
 	<script
 		src="${contextPath}/resources/assets/js/icons/feather-icon/feather.min.js"></script>
@@ -153,5 +192,10 @@
 
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+	<script src="${contextPath}/resources/js/adminWebsocket.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -70,27 +70,7 @@
 		</c:when>
 	</c:choose>
 	<!--section start-->
-	<section class="register-page section-b-space">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h3>인증방식 선택</h3>
-					<div class="theme-card">
-						<div class="auth" id="phoneAuth">
-							<img src="${contextPath}/resources/imgs/phone.png"
-								class="auth_img">
-							<h3 class="auth_type">휴대폰 인증</h3>
-						</div>
-						<div class="auth" id="kakaoAuth">
-							<img src="${contextPath}/resources/imgs/kakao.png"
-								class="auth_img">
-							<h3 class="auth_type">카카오 인증</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<jsp:include page="authSection.jsp"></jsp:include>
 	<!--Section ends-->
 
 	<jsp:include page="../footer.jsp"></jsp:include>

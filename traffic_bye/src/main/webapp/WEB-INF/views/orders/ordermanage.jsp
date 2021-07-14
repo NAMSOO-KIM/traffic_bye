@@ -22,14 +22,14 @@
 	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
 	type="image/x-icon">
 <title>Multikart - Premium Admin Template</title>
-<!-- latest jquery-->
+<%-- <!-- latest jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- fly cart ui jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-ui.min.js"></script>
 
 <!-- exitintent jquery-->
-<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script>
+<script src="${contextPath}/resources/assets/js/jquery.exitintent.js"></script> --%>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
@@ -573,6 +573,59 @@
   </div>
   
 </div>
+<style>
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Modal (background) */
+.myModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.myModal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+</style>
+<!-- orderModal custom -->
+			<div id="orderModal" class="myModal">
+				<div class="myModal-content" id="myModalContent">
+				</div>
+			</div>
+			
 <!-- 모달 세트  끝 -->
 			<!--------------------------- 소켓 시작 ---------------------------->
 				<script type="text/javascript">
@@ -722,129 +775,7 @@
 
 				});
 				
-				
-			
-				
 			</script>
-
-		
-
-			<!-- The Modal -->
-			<style>
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 30%; /* Could be more or less, depending on screen size */
-}
-
-/* The Modal (background) */
-.myModal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.myModal-content {
-	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 30%; /* Could be more or less, depending on screen size */
-}
-</style>
-<!-- orderModal custom -->
-			<div id="orderModal" class="myModal">
-				<div class="myModal-content" id="myModalContent">
-				</div>
-			</div>
-			
-<!-- orderModal custom -->
-			<div id="myModal" class="modal">
-				<!-- Modal content -->
-				<div class="modal-content">
-					<p style="text-align: center;">
-						<span style="font-size: 14pt;"><b><span
-								style="font-size: 24pt;">알림</span></b></span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<br />
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<span style="font-size: 14pt;">주문이 도착했습니다.</span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<b><span style="color: rgb(255, 0, 0); font-size: 14pt;">내용추가</span></b>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<span style="font-size: 14pt;">내용추가</span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<span style="font-size: 14pt;"><br /></span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<span style="font-size: 14pt;">내용추가 </span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<span style="font-size: 14pt;">내용추가</span>
-					</p>
-					<p style="text-align: center; line-height: 1.5;">
-						<br />
-					</p>
-					<p>
-						<br />
-					</p>
-					<div
-						style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
-						onClick="close_pop();">
-						<span class="pop_bt" style="font-size: 13pt;"> <a
-							id="confirmBtn">주문 수락</a>
-						</span>
-					</div>
-					<div
-						style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
-						onClick="close_pop();">
-						<a>X</a>
-					</div>
-				</div>
-			</div>
-			<!--End Modal-->
-
-			<script type="text/javascript">
-				//팝업 Close 기능
-				function close_pop(flag) {
-					$('#myModal').hide();
-				};
-				let link = "${contextPath}/getOrderId";
-				$('#confirmBtn').click(function() {
-					
-				});
-			</script>
-
 			<!--------------------------- 내용 끝 ---------------------------->
 			<!-- footer start-->
 			<footer class="footer">

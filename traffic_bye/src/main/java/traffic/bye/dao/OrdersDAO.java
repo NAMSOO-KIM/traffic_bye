@@ -35,13 +35,15 @@ public interface OrdersDAO {
 
 	List<OrdersListVO> getOrdersList(long memberId) throws SQLException;
 
-	OrdersTrackingVO getOrderTrackingList(long orderId) throws SQLException;
+	List<OrdersTrackingVO> getOrderTrackingList(long orderId) throws SQLException;
 
 	void changeQuantity(CartChangeQuantityVO vo) throws SQLException;
 
 	void deleteQuantity(DeleteQuantityVO vo) throws SQLException;
 	
 	long customerStatus(Long id) throws SQLException;
+
+	List<OrdersTrackingVO> getFirstOrder(Long id) throws SQLException;
 	
 	
 

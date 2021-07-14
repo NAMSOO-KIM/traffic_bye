@@ -46,7 +46,14 @@
 	
 	<beans:bean id="smartOrderHandler" class="traffic.bye.handler.SmartOrderHandler" />
 	
-
+	<beans:bean id="adminInterceptor" class="traffic.bye.interceptor.AdminInterceptor"/>
+	
+	<interceptors>
+       <interceptor>
+           <mapping path="/admin/**" />
+           <beans:ref bean="adminInterceptor" />
+       </interceptor>
+    </interceptors>
 
 
 </beans:beans>

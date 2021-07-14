@@ -19,10 +19,15 @@ $('document').ready(()=>{
          statusCode: {
 			409:function(data) {
 				alert("이미 가입된 번호입니다!");
+			},
+			400:function(data){
+				alert("잠시 후에 다시 시도하세요!");
 			}
 		}
       }).done(function (data, textStatus, xhr) {
+			alert("인증번호가 발송되었습니다. 인증시간은 3분동안 유효합니다!");
 			count = 180;
+			$('#sendSMS').attr('disabled', true);
 			$('#phone').val(phoneNum);
 			time = setInterval("timer()", 1000);
       }).fail(function (data, textStatus, xhr){
@@ -34,6 +39,7 @@ function timer() {
 		count -= 1;
 		$('#certTimer').html(getTime(count));
 		if(count == 0){
+			$('#sendSMS').attr('disabled', false);
 			clearInterval(time);
 		}
 }

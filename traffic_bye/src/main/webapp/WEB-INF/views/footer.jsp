@@ -99,11 +99,12 @@
                             </div>
                             <div class="footer-contant">
                                 <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
+                                    <li><i class="fa fa-map-marker"></i>현대 IT&E  & KOSA 채용 확정형 교육
                                     </li>
-                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">Support@Fiot.com</a></li>
-                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
+                                    <li><i class="fa fa-envelope-o"></i>김태형<a href="#">bobois94@naver.com</a></li>
+                                    <li><i class="fa fa-envelope-o"></i>반어진<a href="#">djwls_qks@kakao.com</a></li>
+                                    <li><i class="fa fa-envelope-o"></i>김남수<a href="#">golden3333@hanmail.net</a></li>
+                                    <li><i class="fa fa-envelope-o"></i>허준수<a href="#">jsheo1548@gmail.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -186,6 +187,9 @@
     <!-- Theme js-->
     <script src="${contextPath}/resources/assets/js/theme-setting.js"></script>
     <script src="${contextPath}/resources/assets/js/script.js"></script>
+    
+
+    
 
     <script>
         $(window).on('load', function () {
@@ -273,7 +277,7 @@
                         html += "</div>";
                         html += "</li>";
                         html += "<li>";
-                        html += "<div class='buttons'><a href='order' class='view-cart'>view";
+                        html += "<div class='buttons'><a href='${contextPath}/order' class='view-cart'>view";
                         html += "cart</a> <a href='#' class='checkout'>checkout</a></div>";
                         html += "</li>";
 
@@ -297,5 +301,6 @@
     </footer>
     <!-- footer end -->
 
+	<script src="${contextPath}/resources/js/customerWebsocket.js"></script>
 </body>
 </html>

@@ -163,7 +163,8 @@
 		repre_file = case when #{repreFile, jdbcType=VARCHAR} is null then repre_file else #{repreFile, jdbcType=VARCHAR} end,
 		thumb_file_url = case when #{thumbFileURL, jdbcType=VARCHAR} is null then thumb_file_url else #{thumbFileURL, jdbcType=VARCHAR} end,
 		repre_file_size = case when #{repreFileSize, jdbcType=NUMERIC} is null then repre_file_size else #{repreFileSize, jdbcType=NUMERIC} end,
-		repre_file_url = case when #{repreFileURL, jdbcType=VARCHAR} is null then repre_file else #{repreFileURL, jdbcType=VARCHAR} end
+		repre_file_url = case when #{repreFileURL, jdbcType=VARCHAR} is null then repre_file else #{repreFileURL, jdbcType=VARCHAR} end,
+		main_thumb_file_url = case when #{mainThumbFileURL, jdbcType=VARCHAR} is null then repre_file else #{mainThumbFileURL, jdbcType=VARCHAR} end
 		where id = #{id}
 	</update>
 	
@@ -329,6 +330,6 @@
 	
 	
 	<update id="updateStock" parameterType="OrdersDetailVO">
-		update item set stock = stock - {quantity} where id = {itemId} and stock >= {quantity}
+		update item set stock = stock - #{quantity} where id = #{itemId} and stock >= #{quantity}
 	</update>
 </mapper>

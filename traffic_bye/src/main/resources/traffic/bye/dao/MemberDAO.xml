@@ -5,7 +5,7 @@
 
 <mapper namespace="traffic.bye.dao.MemberDAO">
 	<select id="checkPhoneDuplicate" parameterType="String" resultType="int">
-		select count(*) from member where phone = #{phone}
+		select count(*) from member where auth_phone = #{authPhone}
 	</select>
 	
 	<select id="checkKakaoDuplicate" parameterType="long" resultType="int">
@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="memberRegister" parameterType="MemberVO">
-		insert into member values(member_id_seq.nextval, #{passport}, #{phone, jdbcType=NUMERIC}, #{name}, #{birth}, #{role}, #{authType}, #{authId, jdbcType=NUMERIC}, #{loginId}, #{password})
+		insert into member values(member_id_seq.nextval, #{passport}, #{phone, jdbcType=NUMERIC}, #{name}, #{birth}, #{role}, #{authType}, #{authId, jdbcType=NUMERIC}, #{loginId}, #{password}, #{authPhone, jdbcType=VARCHAR})
 	</insert>
 	
 	<select id="login" parameterType="LoginInfo" resultType="int">
@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="findIdByPhone" parameterType="String" resultType="String">
-		select login_id loginId from member where phone = #{phone}
+		select login_id loginId from member where phone = #{authPhone}
 	</select>
 	
 	<update id="passwordChange" parameterType="LoginInfo">
@@ -61,5 +61,7 @@
 	<select id="getAuthId" parameterType="Long" resultType="Long">
 		select auth_id authId from member where id = #{id}
 	</select>
+	
+
 
 </mapper>
