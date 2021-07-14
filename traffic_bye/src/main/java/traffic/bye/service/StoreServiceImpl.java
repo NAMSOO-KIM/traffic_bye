@@ -1,9 +1,7 @@
 package traffic.bye.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import traffic.bye.dao.ItemDAO;
 import traffic.bye.dao.StoreDAO;
-import traffic.bye.vo.ImageDeleteVO;
 import traffic.bye.vo.ImageVO;
 import traffic.bye.vo.ItemDeleteVO;
-import traffic.bye.vo.ItemDetailVO;
-import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.StoreDetailVO;
 import traffic.bye.vo.StoreItemVO;
 import traffic.bye.vo.StoreStatusVO;

@@ -369,7 +369,7 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 
     <!-- theme setting -->
-    
+    <!-- 
     <div class="scroll-setting-box">
         <div id="setting_box" class="setting-box">
             <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
@@ -390,10 +390,12 @@
             </div>
         </div>
     </div>
+     -->
     <!-- theme setting -->
 	
 
     <!-- Add to cart modal popup start-->
+    <!-- 
     <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -506,12 +508,13 @@
             </div>
         </div>
     </div>
+     -->
     <!-- Add to cart modal popup end-->
 
     <!-- added to cart notification -->
     <div class="added-notification">
-        <img src="${contextPath}/resources/assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
-        <h3>added to cart</h3>
+        <img src="${item.main_thumb_file_url}" class="img-fluid" alt="">
+        <h3>상품이 장바구니에 등록 되었습니다.</h3>
     </div>
     <!-- added to cart notification -->
 
@@ -619,6 +622,11 @@
 			});
 			
 			
+            if ($(window).width() > 991) {	
+                $(".product_img_scroll, .pro_sticky_info").stick_in_parent();	
+            }	
+	        		
+	        
 			
 		});
 	</script>
