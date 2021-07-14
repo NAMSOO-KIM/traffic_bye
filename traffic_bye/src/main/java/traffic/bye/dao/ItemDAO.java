@@ -12,7 +12,6 @@ import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemUpdateVO;
 import traffic.bye.vo.ItemVO;
 import traffic.bye.vo.OrdersDetailVO;
-import traffic.bye.vo.PagingVO;
 import traffic.bye.vo.StoreItemVO;
 
 public interface ItemDAO {
