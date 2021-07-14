@@ -183,12 +183,12 @@
                                                     <div class="product-box">
                                                         <div class="img-wrapper">
                                                             <div class="front">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload "
                                                                         alt=""></a>
                                                             </div>
