@@ -29,13 +29,13 @@
 				<p>${loginInfo.memberName}</p>
 			</div>
 			<ul class="sidebar-menu">
-				<li><a class="sidebar-header" href="${currentPath}"><i
+				<li><a class="sidebar-header sidebar-manage" href="${currentPath}"><i
 						data-feather="home"></i><span>주문관리</span></a></li>
-				<li><a class="sidebar-header" href="${currentPath}/items"><i
+				<li><a class="sidebar-header sidebar-list" href="${currentPath}/items"><i
 						data-feather="box"></i><span>상품목록</span></a></li>
-				<li><a class="sidebar-header" href="${currentPath}/addItem"><i
+				<li><a class="sidebar-header sidebar-add" href="${currentPath}/addItem"><i
 						data-feather="dollar-sign"></i><span>상품등록</span></a></li>
-				<li><a class="sidebar-header" href="${currentPath}/manage"><i
+				<li><a class="sidebar-header sidebar-store" href="${currentPath}/manage"><i
 						data-feather="tag"></i><span>매장관리</span></a></li>
 
 				<li><a class="sidebar-header" href=""><i

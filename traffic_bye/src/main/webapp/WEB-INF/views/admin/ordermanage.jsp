@@ -243,7 +243,7 @@
       <div class="modal-body">
        <!--  <p>여기에 알림 내용이 들어갑니다.</p> -->
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="justify-content: center;">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
@@ -291,7 +291,7 @@ $("#basic-1 tr")
 											$('.modal-header')
 													.append(
 															'<div class="title1 title5">' +
-															 '<h4 >주문자 성함 :'+result[0].memberName+'</h4>' +
+															 '<h4 >주문자 성함 : '+result[0].memberName+'</h4>' +
 															 '<h2 class="title-inner1">주문 번호:'+result[0].orderId+'</h2>' +
 															 '<hr role="tournament6">'+
 															'</div>');
@@ -308,6 +308,7 @@ $("#basic-1 tr")
 																		+ result[i].price
 																		+ "</p>");
 											}
+											
 											$('.modal-footer')
 													.append('&nbsp<button type="button" id ="acceptBtn" class="btn btn-secondary" data-bs-dismiss="modal">주문수락</button>&nbsp');
 											$('.modal-footer')
@@ -316,6 +317,7 @@ $("#basic-1 tr")
 											$('.modal-footer')
 													.append(
 															'&nbsp<button type="button" id ="receiptBtn" class="btn btn-secondary" data-bs-dismiss="modal">수령완료</button>&nbsp');
+											$('.modal-footer').css('justify-content', 'center');
 											$('#myModal').modal('show');
 
 											var acceptLink = "${contextPath}/orderAccept";
@@ -460,6 +462,13 @@ $("#basic-1 tr")
 
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-manage').addClass('active');
+		});
+	</script>
 
 </body>
 </html>
