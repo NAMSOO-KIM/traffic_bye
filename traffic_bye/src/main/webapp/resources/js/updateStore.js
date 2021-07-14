@@ -59,7 +59,7 @@
 		    url : "",
 		    type : 'post',
 		    success : function(data){
-				location.href = "/app/store/1/item/" + data;
+				location.href = "/app/store";
 			},
 			fail : function(){
 				console.log("실패 ㅠ");
