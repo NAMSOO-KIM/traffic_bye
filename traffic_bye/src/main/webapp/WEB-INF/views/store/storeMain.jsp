@@ -303,7 +303,7 @@
 																<span style="font-size: 12px; font-weight: 700;">위치</span>
 															</div>
 															<div class="col-9">
-																<span style="font-size: 12px;">1여객터미널 3층 면세지역 29번 게이트</span>
+																<span style="font-size: 12px;">${store.location}</span>
 															</div>
 														</div>
 													</div>

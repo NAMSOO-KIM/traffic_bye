@@ -365,9 +365,7 @@
                                       
                                   </div>
                                   <div class="product-detail">
-                                      <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i></div>
+                                  
                                       <a href="product-page(no-sidebar).html">
                                           <h6>[${itemVar.store_name}] ${itemVar.name}</h6>
                                       </a>
