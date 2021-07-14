@@ -180,9 +180,6 @@
                                             </a>
                                             <div class="product-icon">
                                             	
-                                            	<!-- 
-                                            	<span class="lang" style="color:black">위치 : ${store.detail}</span>
-                                            	 -->
                                             	 
                                             	<h5>위치 : ${store.location}</h5>
                                             	
@@ -279,14 +276,7 @@
                                 <div class="form-row row">
                                     <div class="col-md-12">
                                         <div class="media">
-                                        	<!-- 
-                                            <label>Rating</label>
-                                            <div class="media-body ms-3">
-                                                <div class="rating three-star"><i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                            </div>
-                                             -->
+                                        	
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -370,148 +360,17 @@
 
     <!-- theme setting -->
     
-    <div class="scroll-setting-box">
-        <div id="setting_box" class="setting-box">
-            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
-            <div class="setting_box_body">
-                <div onclick="closeSetting()">
-                    <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back
-                    </div>
-                </div>
-                <div class="setting-body">
-                    <div class="setting-title">
-                        <div>
-                            <img src="${contextPath}/resources/assets/images/icon/logo.png" class="img-fluid" alt="">
-                            <h3>장바구니 할거임<span>하욤</span> <br> suit for any type of online store.</h3>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- theme setting -->
 	
 
     <!-- Add to cart modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body modal1">
-                    <div class="container-fluid p-0">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="modal-bg addtocart">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <div class="media">
-                                        <a href="#">
-                                            <img class="img-fluid blur-up lazyload pro-img"
-                                                src="${contextPath}/resources/assets/images/fashion/product/43.jpg" alt="">
-                                        </a>
-                                        <div class="media-body align-self-center text-center">
-                                            <a href="#">
-                                                <h6>
-                                                    <i class="fa fa-check"></i>Item
-                                                    <span>men full sleeves</span>
-                                                    <span> successfully added to your Cart</span>
-                                                </h6>
-                                            </a>
-                                            <div class="buttons">
-                                                <a href="#" class="view-cart btn btn-solid">Your cart</a>
-                                                <a href="#" class="checkout btn btn-solid">Check out</a>
-                                                <a href="#" class="continue btn btn-solid">Continue shopping</a>
-                                            </div>
-
-                                            <div class="upsell_payment">
-                                                <img src="${contextPath}/resources/assets/images/payment_cart.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-section">
-                                        <div class="col-12 product-upsell text-center">
-                                            <h4>Customers who bought this item also.</h4>
-                                        </div>
-                                        <div class="row" id="upsell_product">
-                                            <div class="product-box col-sm-3 col-6">
-                                                <div class="img-wrapper">
-                                                    <div class="front">
-                                                        <a href="#">
-                                                            <img src="${contextPath}/resources/assets/images/fashion/product/1.jpg"
-                                                                class="img-fluid blur-up lazyload mb-1"
-                                                                alt="cotton top">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <h6><a href="#"><span>cotton top</span></a></h6>
-                                                        <h4><span>$25</span></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-box col-sm-3 col-6">
-                                                <div class="img-wrapper">
-                                                    <div class="front">
-                                                        <a href="#">
-                                                            <img src="${contextPath}/resources/assets/images/fashion/product/34.jpg"
-                                                                class="img-fluid blur-up lazyload mb-1"
-                                                                alt="cotton top">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <h6><a href="#"><span>cotton top</span></a></h6>
-                                                        <h4><span>$25</span></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-box col-sm-3 col-6">
-                                                <div class="img-wrapper">
-                                                    <div class="front">
-                                                        <a href="#">
-                                                            <img src="${contextPath}/resources/assets/images/fashion/product/13.jpg"
-                                                                class="img-fluid blur-up lazyload mb-1"
-                                                                alt="cotton top">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <h6><a href="#"><span>cotton top</span></a></h6>
-                                                        <h4><span>$25</span></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-box col-sm-3 col-6">
-                                                <div class="img-wrapper">
-                                                    <div class="front">
-                                                        <a href="#">
-                                                            <img src="${contextPath}/resources/assets/images/fashion/product/19.jpg"
-                                                                class="img-fluid blur-up lazyload mb-1"
-                                                                alt="cotton top">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <h6><a href="#"><span>cotton top</span></a></h6>
-                                                        <h4><span>$25</span></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Add to cart modal popup end-->
 
     <!-- added to cart notification -->
     <div class="added-notification">
-        <img src="${contextPath}/resources/assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
-        <h3>added to cart</h3>
+        <img src="${item.main_thumb_file_url}" class="img-fluid" alt="">
+        <h3>상품이 장바구니에 등록 되었습니다.</h3>
     </div>
     <!-- added to cart notification -->
 
@@ -619,6 +478,11 @@
 			});
 			
 			
+            if ($(window).width() > 991) {	
+                $(".product_img_scroll, .pro_sticky_info").stick_in_parent();	
+            }	
+	        		
+	        
 			
 		});
 	</script>

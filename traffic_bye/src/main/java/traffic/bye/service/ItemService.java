@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import traffic.bye.vo.ItemDetailVO;
 import traffic.bye.vo.ItemVO;
-import traffic.bye.vo.PagingVO;
 
 
 public interface ItemService {

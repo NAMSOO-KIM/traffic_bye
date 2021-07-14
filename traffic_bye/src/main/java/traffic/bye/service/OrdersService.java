@@ -13,7 +13,6 @@ import traffic.bye.vo.OrdersManageVO;
 import traffic.bye.vo.OrdersTrackingVO;
 import traffic.bye.vo.OrdersUpdateParamVO;
 import traffic.bye.vo.OrdersVO;
-import traffic.bye.vo.StoreStatusVO;
 
 public interface OrdersService {
 	
