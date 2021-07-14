@@ -66,17 +66,17 @@ public class SmartOrderHandler extends TextWebSocketHandler {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("주문이 수락되었습니다."));
+			receiver.sendMessage(new TextMessage("👍스마트오더 주문이 수락되었습니다."));
 		}else if(auth !="" && type.equals("ready")) {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("상품이 준비되었습니다."));
+			receiver.sendMessage(new TextMessage("👍스마트오더 상품이 준비되었습니다."));
 		}else if(auth !="" && type.equals("receipt")) {
 			WebSocketSession receiver = users.get(customer);
 			System.out.println("소비자 : "+receiver);
 			if(receiver == null) return;
-			receiver.sendMessage(new TextMessage("이용해주셔서 감사합니다! 즐거운 시간 되셨나요?"));
+			receiver.sendMessage(new TextMessage("스마트오더를 이용해주셔서 감사합니다!(●'◡'●) 즐거운 시간 되셨나요?"));
 		}else {
 			JSONObject json = getJsonDataFormMsg(msg);
 			ArrayList<String> stores = (ArrayList<String>)json.get("storeList");
