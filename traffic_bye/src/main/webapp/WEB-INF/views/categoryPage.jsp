@@ -11,7 +11,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <body class="theme-color-1">
 	<!-- header start -->
 	

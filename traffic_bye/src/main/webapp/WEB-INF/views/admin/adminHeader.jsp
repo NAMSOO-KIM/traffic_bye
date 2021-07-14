@@ -21,12 +21,7 @@
 <meta name="keywords"
 	content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
-	type="image/x-icon">
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <title>현대백화점 면세점 관리자페이지</title>
 
 <!-- Google font-->

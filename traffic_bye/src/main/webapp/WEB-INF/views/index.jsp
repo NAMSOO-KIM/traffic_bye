@@ -8,8 +8,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 <!-- latest jquery-->
+	<!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> -->
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 	
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script>
@@ -280,7 +283,7 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="https://cdn.hddfs.com/files/dm/20210426/f8ebe76c_202104260935171020.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
+                                <img src="${contextPath}/resources/imgs/bannerHddf1.jpg" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
                             <!-- 
@@ -298,7 +301,7 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="https://cdn.hddfs.com/files/dm/20210512/2d87894d_202105121747001780.jpg?RS=672x310" class="img-fluid blur-up lazyload bg-img"
+                                <img src="${contextPath}/resources/imgs/bannerHddf2.jpg" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
                             <!-- 

@@ -5,6 +5,7 @@
 <c:set var="memberVO" value="${memberVO}" />
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <jsp:include page="../header.jsp"></jsp:include>
  
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>

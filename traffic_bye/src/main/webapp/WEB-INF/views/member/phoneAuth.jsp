@@ -12,12 +12,6 @@
 <meta name="description" content="multikart">
 <meta name="keywords" content="multikart">
 <meta name="author" content="multikart">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
 <title>현대백화점 면세점</title>
 
 <!--Google font-->
@@ -56,7 +50,7 @@
 	href="${contextPath}/resources/assets/css/style.css">
 
 
-
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="theme-color-1">
