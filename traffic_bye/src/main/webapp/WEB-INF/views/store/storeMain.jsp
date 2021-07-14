@@ -256,12 +256,12 @@
 									<div class="row store-row category-0" id="store-${store.id}" style="border: 0.3px solid #ababab; margin-bottom: 10px; border-radius: 5px;" data-storeid="${store.id}" data-storename="${store.name}" data-storecapacity="${store.capacity}">
 										<div class="col-3" style="display: table;">
 											<div class="image-wrapper" style=" padding-bottom: 10px; padding-top: 10px;  display: table-cell; text-align-center; vertical-align: middle;">
-												<c:if test="${empty store.thumb_file_url}">
+												<c:if test="${empty store.repre_file_url}">
 													<img src="${contextPath}/resources/assets/images/icon/logos.png" style="max-width: 100%; height: auto;" />
 												</c:if>
 												
-												<c:if test="${not empty store.thumb_file_url}">
-													<img src="${store.thumb_file_url}" style="max-width: 100%; height: auto; "/>
+												<c:if test="${not empty store.repre_file_url}">
+													<img src="${store.repre_file_url}" style="max-width: 100%; height: auto; "/>
 												</c:if>
 											</div>
 											

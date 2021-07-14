@@ -20,6 +20,7 @@ public class StoreVO {
 	//추가?
 	private String origin_file_name;
 	private String thumb_file_url;
+	private String repre_file_url;
 	
 	private String contact;
 	private List<Long> categories;
