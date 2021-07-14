@@ -132,7 +132,7 @@
                                 	
                                     <div class="media">
                                         <a href="${contextPath}/items/${newProductList[j].id}"><img class="img-fluid blur-up lazyload"
-                                                src="${newProductList[j].thumb_file_url}" alt=""></a>
+                                                src="${newProductList[j].main_thumb_file_url}" alt=""></a>
                                         <div class="media-body align-self-center">
                                         
                                             <a href="${contextPath}/items/${newProductList[j].id}">
@@ -227,12 +227,12 @@
                                                     <div class="product-box">
                                                         <div class="img-wrapper">
                                                             <div class="front">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload bg-img"
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.thumb_file_url}"
+                                                                <a href="${contextPath}/items/${selectItemVO.id}"><img src="${selectItemVO.main_thumb_file_url}"
                                                                         class="img-fluid blur-up lazyload bg-img"
                                                                         alt=""></a>
                                                             </div>
