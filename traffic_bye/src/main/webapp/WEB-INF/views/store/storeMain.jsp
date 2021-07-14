@@ -18,7 +18,7 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/favicon/1.png"
 	type="image/x-icon">
-<title>Multikart - Multi-purpopse E-commerce Html Template</title>
+<title>현대백화점 면세점</title>
 
 <!--Google font-->
 <link
@@ -61,7 +61,7 @@
 <!-- App css-->
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/pages/elements.css">
-
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <style type="text/css">
 .custom-select{
 	background-color: white;
@@ -303,25 +303,13 @@
 																<span style="font-size: 12px; font-weight: 700;">위치</span>
 															</div>
 															<div class="col-9">
-																<span style="font-size: 12px;">1여객터미널 3층 면세지역 29번 게이트</span>
+																<span style="font-size: 12px;">${store.location}</span>
 															</div>
 														</div>
 													</div>
 												</div>
-												<hr style="border-top: 1px dashed #bbb;" />
 												
-												<div class="row">
-													<div class="col-7">
-														<div class="row">
-															<div class="col-3">
-																<span style="font-size: 12px; font-weight: 700;">주요상품</span>
-															</div>
-															<div class="col-9">
-																<span style="font-size: 12px;">카테고리명</span>
-															</div>
-														</div>
-													</div>
-												</div>
+												
 											</div>
 										</div>
 										

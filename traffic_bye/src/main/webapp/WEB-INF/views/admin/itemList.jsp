@@ -14,12 +14,7 @@
 <meta name="keywords"
 	content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
-	type="image/x-icon">
+
 <title>현대백화점 면세점 관리자 페이지</title>
 <!-- latest jquery-->
 <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
@@ -70,6 +65,19 @@
 <!-- App css-->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+
+<style>
+.btn-custom555{
+	border: 0px;
+    background-color: #FF4C3B;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    width: 70px;
+    height: 35px;
+}
+</style>
 </head>
 <body>
 	<script src="${contextPath}/resources/js/itemList.js"></script>
@@ -138,8 +146,8 @@
 													<td>${item.name}</td>
 													<td>${item.stock }</td>
 													<td>${item.price}</td>
-													<td><button class="updateItem">수정</button>
-														<button class="deleteItem">삭제</button></td>
+													<td><button class="updateItem btn-custom555">수정</button>
+														<button class="deleteItem btn-custom555">삭제</button></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -190,5 +198,11 @@
 	<!--script admin-->
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-list').addClass('active');
+		});
+	</script>
 </body>
 </html>

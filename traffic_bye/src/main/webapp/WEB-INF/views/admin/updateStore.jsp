@@ -49,6 +49,7 @@
 <!-- App css-->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <script>
 	storeDetailVO = ${storeDetailVO};
 </script>
@@ -221,6 +222,13 @@
 	<script src="${contextPath}/resources/assets/js/admin-script.js"></script>
 
 	<script src="${contextPath}/resources/js/updateStore.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.sidebar-header').removeClass('active');
+			$('.sidebar-store').addClass('active');
+		});
+	</script>
 
 </body>
 </html>

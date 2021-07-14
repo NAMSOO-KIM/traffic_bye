@@ -4,7 +4,7 @@
 	display:flex;
 	flex-direction:column;
 	width: 400px;
-	height: 200px;
+	height: 150px;
 	border:5px;
 	background-color: white;
 	box-shadow: rgb(0 0 0 / 20%) 0px 7px 15px -2px;
@@ -31,6 +31,7 @@
 	font-size: 11pt;
 	margin-left: auto;
 	margin-right: auto;
+	text-align: center;
 }
 .popup-content {
 	width: 70%;
@@ -41,5 +42,6 @@
 	text-overflow:ellipsis;
 	overflow: hidden;
 	white-space:nowrap;
+	text-align: center;
 	
 }

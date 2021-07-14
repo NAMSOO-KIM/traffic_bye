@@ -21,7 +21,8 @@
 <link rel="shortcut icon"
 	href="${contextPath}/resources/assets/images/dashboard/favicon.png"
 	type="image/x-icon">
-<title>Multikart - Premium Admin Template</title>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+<title>현대백화점 면세점</title>
 	<!-- Bootstrap js-->
 	<script
 		src="${contextPath}/resources/assets/js/bootstrap.bundle.min.js"></script>

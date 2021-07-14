@@ -27,7 +27,7 @@
 	<![CDATA[
 		select category_id
 		from item
-		where store_id = #{store_id}
+		where store_id = #{store_id} and deleted = 0
 		group by category_id
 	]]>
 	</select>
@@ -58,7 +58,7 @@
 	
 	<update id="updateStore" parameterType="StoreDetailVO">
 		update 
-		item 
+		store 
 		set
 		name = #{name},
 		detail = #{detail},

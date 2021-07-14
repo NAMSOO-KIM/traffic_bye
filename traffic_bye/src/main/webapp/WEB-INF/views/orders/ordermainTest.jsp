@@ -5,6 +5,7 @@
 <c:set var="memberVO" value="${memberVO}" />
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <jsp:include page="../header.jsp"></jsp:include>
  
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -117,7 +118,7 @@
 		
 <div class="modal" tabindex="-1" id="team2-modal" style ="z-index:9999999999999;">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" id="team2-modal-content" style="max-width: 100%; width: auto; display: table;">
+    <div class="modal-content" id="team2-modal-content" style="max-width: 100%; width: auto; display: table; border-radius: 20px;">
       <div class="team2-modal-header">
        <h5 class="modal-title">알림 제목이 들어갑니다.</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
@@ -157,8 +158,8 @@ myModal.addEventListener('shown.bs.modal', function () {
 			$('.team2-modal-header').empty();
 			$('.team2-modal-footer').empty();
 			$('.team2-modal-header').append('<h3>장바구니에서 삭제하시겠습니까?</h3><br><br>');
-			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" data-bs-dismiss="modal">예</button>');
-			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" style="margin-right: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9; border-radius: 15px;" data-bs-dismiss="modal">예</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary" style="margin-left: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;     border-radius: 15px;" data-bs-dismiss="modal">아니오</button>');
 			$('#team2-modal').modal('show');
 			   $('#yes-btn').click(function(){
 					$.ajax({
@@ -196,8 +197,8 @@ myModal.addEventListener('shown.bs.modal', function () {
 			$('.team2-modal-header').empty();
 			$('.team2-modal-footer').empty();
 			$('.team2-modal-header').append('<h3>정말 수량을 변경하시겠습니까?</h3><br><br>');
-			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" data-bs-dismiss="modal">예</button>');
-			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="yes-btn" class="btn btn-secondary" style="margin-right: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;     border-radius: 15px;" data-bs-dismiss="modal">예</button>');
+			$('.team2-modal-footer').append(' <button type="button" id="no-btn" class="btn btn-secondary"  style="margin-left: 10px; color: #fff; background-color: #0053D9; border-color: #0053D9;    border-radius: 15px;" data-bs-dismiss="modal">아니오</button>');
 			$('#team2-modal').modal('show');
 			   $('#yes-btn').click(function(){
 					$.ajax({
@@ -269,7 +270,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 		    	console.log(rsp.apply_num);
 		    	// [1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 		    	jQuery.ajax({
-		    		url: "/payments/comple", //cross-doma//in error가 발생하지 않도록 주의해주세요
+		    		url: "/payments/complete", //cross-doma//in error가 발생하지 않도록 주의해주세요
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {
@@ -621,8 +622,8 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    amount : 1000, // 나중에 수정
     		    // buyer_email : 'iamport@siot.do',
     		    buyer_name : member_name,
-    		    buyer_tel : phone_number,
-    		    confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
+    		    buyer_tel : phone_number
+    		    // confirm_url:"http://7d4a3a41ce62.ngrok.io/app/order/check"
     		    // buyer_addr : '서울특별시 강남구 삼성동',
     		    // buyer_postcode : '123-456'
     		    /* status : "paid",
@@ -634,7 +635,7 @@ myModal.addEventListener('shown.bs.modal', function () {
     		    if ( rsp.success ) {
     		    // if(rsp.code!= 200){
     		    	send();
-    		    	alert("하이");
+    		    	// alert("하이");
     		    	$('#myForm').submit();
     		    	console.log(rsp.imp_uid);
     		    	console.log(rsp.merchant_uid);

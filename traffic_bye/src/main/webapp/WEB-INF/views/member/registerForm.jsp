@@ -12,12 +12,7 @@
 <meta name="description" content="multikart">
 <meta name="keywords" content="multikart">
 <meta name="author" content="multikart">
-<link rel="icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
-<link rel="shortcut icon"
-	href="${contextPath}/resources/assets/images/favicon/1.png"
-	type="image/x-icon">
+
 <title>현대백화점 면세점</title>
 
 <!--Google font-->
@@ -54,7 +49,8 @@
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/style.css">
-
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico"
+	type="image/x-icon">
 </head>
 
 <body class="theme-color-1">
@@ -79,12 +75,14 @@
 						<form class="theme-form" action="${contextPath}/member"
 							method="post" id="registerForm">
 							<div class="form-row row">
+								<label for="loginId">아이디</label>
 								<div class="col-md-6">
-									<label for="loginId">아이디</label> <input type="text"
+									 <input type="text"
 										class="form-control" id="loginId" placeholder="아이디를 입력하세요"
-										required="required" name="loginId"> <input
-										type="button" value="중복확인" id="idValidBtn" class="btn btn-solid w-auto">
+										required="required" name="loginId">
 								</div>
+								<input type="button" value="중복확인" id="idValidBtn"
+									class="btn btn-solid w-auto">
 							</div>
 							<div class="form-row row">
 								<div class="col-md-6">
@@ -116,9 +114,9 @@
 							</div>
 							<div class="form-row row">
 								<div class="col-md-6">
-									<label for="phone">휴대폰 번호</label>
-									<input type="text" class="form-control" id="phone"
-										placeholder="휴대폰 번호를 입력하세요" required="required" name="phone">
+									<label for="phone">휴대폰 번호</label> <input type="text"
+										class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요"
+										required="required" name="phone">
 								</div>
 							</div>
 							<div class="form-row row">
