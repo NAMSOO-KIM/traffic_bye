@@ -467,14 +467,7 @@
 										<li><a href="${contextPath}">Home</a></li>
 										
 											<li><a href="${contextPath}/store">매장</a>
-											<ul>
-												<li><a href="${contextPath}/mm/items/list/1">담배매장
-													</a></li>
-												<li><a href="${contextPath}/mm/items/list/3">전자
-													</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">식품</a></li>
-												<li><a href="${contextPath}/mm/items/list/1">안내데스크</a></li>
-											</ul>
+											
 											</li>
 											
 										<li><a href="${contextPath}/mm/items/list/3">전자/리빙</a>

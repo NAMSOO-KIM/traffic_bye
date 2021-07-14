@@ -92,7 +92,8 @@
 							$("#tab-content-cls").html(html);
 						},
 	    				error : function(request, status, error) {
-	    						alert("오우 실패쓰");
+	    						alert("실패");
+	    						
 	    				}
 	                        
 						});
@@ -183,7 +184,7 @@
 	    						$("#tab-content-cls").html(html);
 	    					},
 	        				error : function(request, status, error) {
-	        						alert("오우 실패쓰");
+	        						alert("실패");
 	        				}
 	                            
 	    					});
@@ -365,9 +366,7 @@
                                       
                                   </div>
                                   <div class="product-detail">
-                                      <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                              class="fa fa-star"></i></div>
+                                  
                                       <a href="product-page(no-sidebar).html">
                                           <h6>[${itemVar.store_name}] ${itemVar.name}</h6>
                                       </a>
