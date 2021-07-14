@@ -12,6 +12,7 @@
 		from item it
 		inner join store s
 		on it.store_id = s.id
+		where it.deleted = 0
 	]]>
 	</select>
 	
@@ -38,7 +39,7 @@
 		(
 		    select *
 		    from item
-		    where category_id = #{category_id} and id != #{id}
+		    where category_id = #{category_id} and id != #{id} and deleted = 0
     	)A
 		inner join store s
 		on s.id = A.store_id
@@ -60,6 +61,7 @@
     		)A
 		INNER JOIN STORE s 
 		on s.id = A.store_id
+		where A.deleted = 0
 		
 	]]>
 	</select>
@@ -68,7 +70,7 @@
 	<![CDATA[
 		select *
 		from ITEM
-		where id = #{id}
+		where id = #{id} and deleted = 0
 	]]>
 	</select>
 	
@@ -81,8 +83,8 @@
 	<![CDATA[
 		
 		select count(*)
-		from team2.item
-		where category_id = #{category_id} and id != #{id}
+		from item
+		where category_id = #{category_id} and id != #{id} and deleted = 0 
 
 	]]>
 	</select>
@@ -90,9 +92,9 @@
 
 	<select id="getItemFromStore" parameterType="long" resultType="ItemVO">
 	<![CDATA[
-		select id, category_id, name, stock, price, detail, thumb_file_url
-		from team2.item
-		where store_id = #{store_id}
+		select *
+		from item
+		where store_id = #{store_id} and deleted = 0 
 	]]>
 	</select>
 
@@ -101,10 +103,11 @@
 		SELECT s.name as store_name , A.*
 		FROM (SELECT *
     		from item it
-    		where it.category_id = #{category_id}
+    		where it.category_id = #{category_id} and it.deleted = 0
     		)A
 		INNER JOIN STORE s 
 		on s.id = A.store_id
+		
 	]]>
 	</select>
 	
@@ -135,7 +138,7 @@
         		select id
         		from category
         		where parent_id = #{parent_id}
-        	)
+        	) and it.deleted = 0
     		)A
 		INNER JOIN STORE s 
 		on s.id = A.store_id
@@ -144,11 +147,16 @@
 	</select>
 	
 	<select id="getItemDetailWithoutImage" resultType="ItemDetailVO" parameterType="Long">
-		select item.id id, item.name, stock, price, detail, repre_file repreFile, thumb_file_URL thumbFileURL, category.id categoryId, category.parent_id parentCategoryId, repre_file_size repreFileSize, repre_file_url repreFileURL from item join category on item.id = #{id} and item.category_id = category.id
+		select item.id id, item.name, stock, price, detail, repre_file repreFile, thumb_file_URL thumbFileURL, category.id categoryId, category.parent_id parentCategoryId, repre_file_size repreFileSize, repre_file_url repreFileURL 
+		from item 
+		join category 
+		on item.id = #{id} and item.category_id = category.id
 	</select>
 	
 	<select id="getImage" resultType="ImageVO" parameterType="Long">
-		select item_id itemId, upload_file_name uploadFileName, real_file_name realFileName, origin_file_url originFileURL, thumb_file_url thumbFileURL, file_size fileSize from item_image where item_id = #{id}
+		select item_id itemId, upload_file_name uploadFileName, real_file_name realFileName, origin_file_url originFileURL, thumb_file_url thumbFileURL, file_size fileSize 
+		from item_image 
+		where item_id = #{id}
 	</select>
 	
 	<update id="updateItem" parameterType="ItemUpdateVO">
@@ -182,7 +190,7 @@
 		from item it
 		inner join category c
 		on it.category_id = c.id 
-		where (c.id = #{id} or c.parent_id = #{id}) and (c.parent_id is not null)
+		where (c.id = #{id} or c.parent_id = #{id}) and (c.parent_id is not null) and it.deleted = 0
 	]]>
 	</select>
 	
@@ -193,6 +201,7 @@
 		inner join store c
 		on it.store_id = c.id 
 		where c.id = #{store_id}
+		and it.deleted = 0
 	]]>
 	</select>
 	
@@ -203,7 +212,8 @@
 			SELECT ROWNUM RN, A.* 
 				FROM (
 						SELECT * 
-						FROM team2.item
+						FROM item
+						where deleted = 0
 						ORDER BY id DESC 
 						) A
 				)
@@ -234,7 +244,7 @@
 		                        select id
 		                        from category c
 		                        where (c.parent_id = #{parent_id} or c.id = #{parent_id})
-		                        )
+		                        ) and it.deleted = 0
 		                        )A
 		                        INNER JOIN STORE s 
 				                on s.id = A.store_id
@@ -260,6 +270,7 @@
 				                FROM (SELECT *
 		    		            from item it
 		    		            where store_id = #{store_id}
+		    		            and it.deleted = 0
 		                        )A
 		                        INNER JOIN STORE s 
 				                on s.id = A.store_id
@@ -274,7 +285,10 @@
 	</select>
 	
 	<select id="getStoreItems" resultType="StoreItemVO" parameterType="Long">
-		select item.id id, item.name name, stock, price, store.id storeId, item.repre_file repreFile, item.thumb_file_url thumbFileURL, category.id categoryId, category.name category from store join item on store.id = #{storeId} and store.id = item.store_id join category on item.category_id = category.id where item.deleted = 0	
+		select item.id id, item.name name, stock, price, store.id storeId, item.repre_file repreFile, item.thumb_file_url thumbFileURL, category.id categoryId, category.name category 
+		from store 
+		join item 
+		on store.id = #{storeId} and store.id = item.store_id join category on item.category_id = category.id where item.deleted = 0	
 	</select>
 	
 	<update id="deleteItem" parameterType="ItemDeleteVO">
@@ -294,7 +308,7 @@
 		        		select id
 		        		from category
 		        		where parent_id = #{parent_id}
-		        	)
+		        	) and it.deleted = 0
 		    		)A
 				INNER JOIN STORE s 
 				on s.id = A.store_id
@@ -321,6 +335,7 @@
 		                )A 
 		
 		    on A.item_id = it.id
+		    where it.deleted = 0
 		    order by A.cnt desc
 		    )
 		where ROWNUM <= 8
