@@ -3,9 +3,13 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+
 <!DOCTYPE html>
 <html>
-
+<head>
+<title>현대백화점 면세점</title>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+</head>
 <body class="theme-color-1">
 	<!-- header start -->
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>

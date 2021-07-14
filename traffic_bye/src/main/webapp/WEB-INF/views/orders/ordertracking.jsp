@@ -5,11 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <meta charset="UTF-8">
-<title>Insert title here</title>
-  <link rel="icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="${contextPath}/resources/assets/images/favicon/1.png" type="image/x-icon" />
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+
+    <title>현대백화점 면세점</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -36,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/assets/css/style.css">
   <!-- latest jquery-->
     <script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
+    <link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>

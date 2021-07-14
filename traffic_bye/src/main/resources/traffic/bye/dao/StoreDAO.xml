@@ -58,7 +58,7 @@
 	
 	<update id="updateStore" parameterType="StoreDetailVO">
 		update 
-		item 
+		store 
 		set
 		name = #{name},
 		detail = #{detail},

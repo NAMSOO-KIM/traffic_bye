@@ -33,12 +33,6 @@
       $('.popup:first').remove();
    }, 5000);
 	
-		
-		$('.title-modal').empty();
-		$('.content-modal').empty();
-		$('.title-modal').append('<h2>제목</h2>');
-		$('.content-modal').append(evt.data);
-		   modal.style.display = "flex";
 	}
 	function onOpen(){
 		console.log('hi');

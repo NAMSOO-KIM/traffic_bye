@@ -49,6 +49,7 @@
 <!-- App css-->
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/resources/assets/css/admin.css">
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 <script>
 	storeDetailVO = ${storeDetailVO};
 </script>
