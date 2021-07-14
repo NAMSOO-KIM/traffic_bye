@@ -10,7 +10,8 @@
 
 <head>
 <!-- latest jquery-->
-	
+	<link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
+	<title>현대백화점 면세점</title>
 	<script src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script>
 			

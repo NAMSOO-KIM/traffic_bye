@@ -12,9 +12,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+ <link rel="icon" href="${contextPath}/resources/imgs/favicon.ico" type="image/x-icon">
 
+</head>
 <jsp:include page="header.jsp"></jsp:include>
-
 <body class="theme-color-1">
 
 	<!--Modal: modalVM-->
