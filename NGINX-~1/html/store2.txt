@@ -1,0 +1,6 @@
+{
+ "frame_id":2850, 
+ "objects": [ 
+  {"class_id":62, "name":"tvmonitor", "relative_coordinates":{"center_x":0.524866, "center_y":0.742074, "width":0.320619, "height":0.187863}, "confidence":0.885599}
+ ] 
+}
