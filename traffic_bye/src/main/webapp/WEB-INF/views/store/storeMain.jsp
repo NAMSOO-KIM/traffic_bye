@@ -390,7 +390,7 @@
 							$('.json-data').html('원활');
 						} else if(60 < percent && percent < 80){
 							$('.json-data').html('혼잡');
-						} else if(percent <= 100){
+						} else{
 							$('.json-data').html('포화');
 						}
 						

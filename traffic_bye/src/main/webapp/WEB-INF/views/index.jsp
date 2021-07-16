@@ -61,9 +61,11 @@
 	                    		
 	  							html += "</div>";
 	  							html += "<div class='product-detail'>";
+	  							/*
 	  							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	  							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	  							html += "class='fa fa-star'></i></div>";
+	  							*/
 	  							html += "<a href='product-page(no-sidebar).html'>";
 	  							html += "<h6>[";
 	  							html += value.store_name;
@@ -157,9 +159,11 @@
 	                        		
 	      							html += "</div>";
 	      							html += "<div class='product-detail'>";
+	      							/*
 	      							html += "<div class='rating'><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	      							html += "class='fa fa-star'></i> <i class='fa fa-star'></i> <i ";
 	      							html += "class='fa fa-star'></i></div>";
+	      							*/
 	      							html += "<a href='product-page(no-sidebar).html'>";
 	    	  							html += "<h6>[";
 	    	  							html += value.store_name;
@@ -849,11 +853,11 @@
 
 	
     <!-- tap to top -->
-    <div class="tap-top top-cls">
+    <!-- <div class="tap-top top-cls">
         <div>
             <i class="fa fa-angle-double-up"></i>
         </div>
-    </div>
+    </div> -->
     <!-- tap to top end -->
 
 	<!-- script -->

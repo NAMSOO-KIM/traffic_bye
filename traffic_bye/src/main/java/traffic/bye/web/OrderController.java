@@ -101,7 +101,7 @@ public class OrderController {
 				orderDetails.add(ordersDetailVO);
 			}
 			ordersService.makeOrder(memberId, ordersVO, orderDetails);
-			return "redirect:/member/mypage";			
+			return "redirect:/ordersuccess";			
 		} catch(Exception e) {
 			e.printStackTrace();
 			return "";
@@ -257,5 +257,10 @@ public class OrderController {
 		//throw new Exception();
 		//return "orders/ordermainTest";
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping(value = "ordersuccess")
+	public String complete() {
+		return "orders/ordersuccess";
 	}
 }

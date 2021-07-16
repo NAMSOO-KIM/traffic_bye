@@ -397,7 +397,7 @@
 			var interval = setInterval(function(){
 				
 				$.ajax({
-					url: "http://175.205.200.40:8080/store1.txt",
+					url: "http://175.205.200.40:8080/store2.txt",
 					method: "GET",
 					dataType: "json",
 					success : function(data){
@@ -418,7 +418,7 @@
 							$('.json-data').html('원활');
 						} else if(60 < percent && percent < 80){
 							$('.json-data').html('혼잡');
-						} else if(percent <= 100){
+						} else{
 							$('.json-data').html('포화');
 						}
 						
@@ -451,7 +451,7 @@
 				getCapacity(3);
 				imgTime = 3600*3;
 				var imgInterval = setInterval(function(){
-					var url = 'http://175.205.200.40:8080/store/1/video?frame=' + imgTime;
+					var url = 'http://175.205.200.40:8080/store/2/video?frame=' + imgTime;
 					
 					$('#mjpeg-stream').attr('src', url);
 					
