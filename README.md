@@ -1,57 +1,281 @@
-#### 님들 하욤~!
 
 
 
 
 
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
-
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
-
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
-
----
-
-## Edit a file
-
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
 
 
 
 
 
-님들 하이욤~!
+## 프로젝트
+
+> 프로젝트 명 : traffic bye
+>
+> 팀원 : 김태형, 김남수, 반어진, 허준수
+>
+> 프로젝트 상세
+>
+> - 면세점의 매장 혼잡도를 분석하고 결제할 수 있는 서비스 개발
+> - Spring / Oracle Cloud / AWS S3 기반 웹앱 서비스
+> - Spring REST API 백엔드 구성
+>
+> - Spring, Mybatis, Ajax, JQuery, 오라클 클라우드, AWS S3, 스프링 시큐리티, OAuth , 라즈베리파이 기술 적용
+>
+> - Jira/컨플루언스/비트버킷을 사용해 협업 및 이슈 관리
+
+
+
+## 프로젝트 개요
+
+> **프로젝트 소개**
+>
+> ㅇ 면세점에서 긴 대기열로 인한 소비자들의 불편 발생
+>
+> ㅇ 스마트 오더와 혼잡도 분석으로 불편사항 해소를 목표로 함
+>
+> ㅇ 이를 통해 사용자는 출국 시간 전에 시간을 효율적으로 사용하며 쇼핑할 수 있음
+
+
+
+> **프로젝트 상세** 
+>
+> \-    면세점의 매장 혼잡도를 분석하고 결제할 수 있는 서비스 개발
+>
+> \-    Spring / Oracle Cloud / AWS S3  기반 웹 서비스
+>
+> \-    Spring REST API 백엔드 구성
+>
+> \-    Spring, Mybatis, Ajax, JQuery, 오라클 클라우드, AWS S3, 스프링 시큐리티, OAuth , 라즈베리파이 기술 적용
+
+
+
+> **서비스 동작구조**
+>
+> ![1](./ReadmeImg/1.JPG)
+
+
+
+## 핵심기능 및 기대효과
+
+> **핵심기능**
+>
+> - 스프링 시큐리티 적용으로 인한 보안성 강화
+> - 결제 및 스마트 오더 알림 시스템
+> - 라즈베리 파이를 이용한 실시간 혼잡도 분석 및 영상 송출
+
+
+
+> **기대효과**
+>
+> - 매장의 혼잡도를 미리 파악할 수 있기 때문에 소비자들이 효율적으로 시간을 활용
+> - 소비자들의 시간 절약으로 인한 만족감 상승
+> - 절약된 시간을 통한 다른 상품 구매를 유도해 매출 증대
+> - 해당 프로세스를 면세점 이외의 상점에 확대 적용 가능성 
+
+
+
+> **본인 인증(카카오)**
+
+![본인인증](./ReadmeImg/본인인증.JPG)
+
+
+
+> **본인 인증(휴대폰)**
+
+
+
+![본인인증(휴대폰인증)](./ReadmeImg/본인인증(휴대폰인증).JPG)
+
+
+
+> **S3 파일서버**
+
+![s3파일서버](./ReadmeImg/s3파일서버.JPG)
+
+> **결제 : 아임포트 API**
+
+![아임포트API](./ReadmeImg/아임포트API.JPG)
+
+
+
+> **스마트 오더**
+
+![웹소켓](./ReadmeImg/웹소켓.JPG)
+
+
+
+> **혼잡도 분석**
+
+![혼잡도분석PPT](./ReadmeImg/혼잡도분석PPT.JPG)
+
+> **영상 송출**
+
+![영상송출](./ReadmeImg/영상송출.JPG)
+
+
+
+> **객체 검출**
+
+
+
+![객체검출](./ReadmeImg/객체검출.JPG)
+
+
+
+> **검출 결과**
+
+![검출결과](./ReadmeImg/검출결과.JPG)
+
+
+
+
+
+# 페이지 소개
+
+
+
+#### 메인 페이지
+
+
+
+![index](./ReadmeImg/index.png)
+
+
+
+
+
+#### 상품 목록 페이지
+
+
+
+![주류](./ReadmeImg/주류.png)
+
+
+
+
+
+
+
+#### 상품 상세 페이지
+
+
+
+![카메라디테일](./ReadmeImg/카메라디테일.png)
+
+
+
+
+
+
+
+#### 장바구니 등록
+
+![장바구니 등록](./ReadmeImg/장바구니 등록.JPG)
+
+
+
+
+
+
+
+
+
+#### 스마트 오더 주문하기
+
+> **결제(고객)**
+
+![스마트오더(사용자)](./ReadmeImg/스마트오더(사용자).JPG)
+
+
+
+![소비자스마트오더상황판](./ReadmeImg/소비자스마트오더상황판.jpg)
+
+
+
+
+
+> **관리자**
+
+
+
+![스마트오더(관리자)](./ReadmeImg/스마트오더(관리자).JPG)
+
+
+
+
+
+
+
+#### 매장 페이지
+
+> **매장 소개**
+
+
+
+![매장](./ReadmeImg/매장.png)
+
+
+
+
+
+> **매장안내 페이지**
+
+
+
+![매장안내](./ReadmeImg/매장안내.png)
+
+
+
+
+
+> **매장 혼잡도 분석**
+
+![혼잡도분석](./ReadmeImg/혼잡도분석.jpg)
+
+
+
+#### 관리자 페이지
+
+
+
+> **관리자 메인 페이지**
+
+
+
+![관리자메인](./ReadmeImg/관리자메인.jpg)
+
+
+
+> **상품 목록 조회**
+
+
+
+![관리자상품목록](./ReadmeImg/관리자상품목록.jpg)
+
+
+
+
+
+
+
+
+
+> **상품 등록**
+
+
+
+![관리자상품등록](./ReadmeImg/관리자상품등록.jpg)
+
+
+
+
+
+> **매장관리**
+
+
+
+![관리자매장관리](./ReadmeImg/관리자매장관리.jpg)
+
+
+
