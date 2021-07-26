@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan
+		base-package="traffic.bye" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<security:http auto-config="true" use-expressions="true">
+
+		<!-- 정적 리소스는 모두 접근 허용 -->
+		<security:intercept-url pattern="/resources/**"
+			access="permitAll" />
+
+		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
+		<security:intercept-url
+			pattern="/member/login/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/register/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/auth/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/idCheck/*" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findId/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findPw/**" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/findAndChangePw" access="isAnonymous()" />
+		<security:intercept-url
+			pattern="/member/result" access="isAnonymous()" />
+		
+			
+		<!-- <security:intercept-url
+			pattern="/member/mypage/**" access="isAuthenticated()" /> -->
+			
+			
+		<!-- 마이페이지는 해당하는 회원만 접근 가능 -->
+			
+		<security:intercept-url
+			pattern="/member/mypage/**" access="isAuthenticated()" />
+			
+		<security:intercept-url
+			pattern="/order/**" access="isAuthenticated()" />
+			
+		<!-- <security:intercept-url
+			pattern="/member/mypage/{userId}/**" access="@webSecurity.checkUserId(authentication,#userId)" /> -->
+			
+			
+		<!-- 관리자페이지는 관리자만 접근 허용 -->
+			
+		<security:intercept-url pattern="/admin/**"
+			access="hasAuthority('ADMIN')" />
+			
+		<!-- <security:intercept-url pattern="/admin/{storeId}/**"
+			access="@webSecurity.checkAdminId(authentication,#storeId)" /> -->
+
+		<!-- 로그인 설정 -->
+		<security:form-login username-parameter="loginId"
+			password-parameter="password"
+			login-processing-url="/member/loginProcess"
+			login-page="/member/login" default-target-url="/"
+			authentication-failure-handler-ref="userLoginFailHandler"
+			authentication-success-handler-ref="userLoginSuccessHandler" />
+
+		<!-- 로그아웃 설정 -->
+		<security:logout logout-url="/member/logout"
+			logout-success-url="/" invalidate-session="true"
+			delete-cookies="true" />
+
+		<security:csrf disabled="true" />
+		<security:access-denied-handler
+			error-page="/" />
+	</security:http>
+
+
+	<!-- DB 연동 설정 -->
+	<security:authentication-manager>
+		<security:authentication-provider
+			ref="userLoginAuthenticationProvider">
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

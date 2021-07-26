@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.OrdersDAO">
+	<insert id="insertOrders" parameterType="OrdersVO">
+		insert into orders(id,
+		member_id , departure_date, payment_date, status ,
+		amount ,
+		destination_id, cigarette_amount, drink_amount,
+		perfume_amount)
+		values(order_id_seq.nextval, #{memberId}, sysdate + (1/24) * 9, sysdate + (1/24) * 9, 0 ,
+		#{amount} , 1,2,0,0)
+	</insert>
+
+	<insert id="insertOrdersDetail" parameterType="OrdersDetailVO">
+		insert into
+		orders_detail(item_id, orders_id , store_id, quantity)
+		values(#{itemId}, order_id_seq.currval, #{storeId}, #{quantity})
+	</insert>
+
+	<select id="getOrderId" resultType="long">
+		select order_id_seq.currval
+		from dual
+	</select>
+
+	<select id="getOrderList" parameterType="long"
+		resultType="OrdersManageVO">
+		select distinct O.id ordersId, S.id storeId , D.detail_status
+		status , O.amount
+		amount , M.name memberName , O.payment_date
+		paymentDate
+		from orders_detail D , orders O ,store S , member M
+		where
+		O.id = D.orders_id
+		and D.store_id = S.id
+		and M.id = O.member_id
+		and S.id
+		= #{storeId}
+	</select>
+
+	<select id="getOrdersDetailList" parameterType="OrdersDetailListParmVO"
+		resultType="OrdersDetailListVO">
+		select I.name itemName , I.price price, O.member_id
+		memberId ,O.id orderId , M.name memberName 
+        from orders_detail D , orders O , item I , member M
+		where
+		D.orders_id = O.id
+		and I.id = D.item_id
+        and M.id = O.member_id
+		and O.id = #{orderId}
+		and I.store_id = #{storeId}
+	</select>
+
+	<update id="orderAccept" parameterType="OrdersUpdateParamVO">
+		update orders_detail set detail_status = 1 where store_id = #{storeId} and orders_id=#{orderId}
+	</update>
+
+	<update id="orderReady" parameterType="OrdersUpdateParamVO">
+		update orders_detail set detail_status = 2 where store_id = #{storeId} and orders_id=#{orderId}
+	</update>
+
+	<update id="orderReceipt" parameterType="OrdersUpdateParamVO">
+	update orders_detail set detail_status = 3 where store_id = #{storeId} and orders_id=#{orderId}
+	</update>
+	
+	<update id="customerStatus" parameterType="Long">
+		update orders set status = (select min(detail_status) from orders_detail where orders_id = #{orderId}) where id=#{orderId}
+	</update>
+	
+	
+	<select id="getOrdersList" parameterType="long" resultType="OrdersListVO">
+	select M.id memberId , O.id orderId, departure_date departureDate , payment_date paymentDate , status status, amount amount from orders O, member M
+where M.id=O.member_id and
+member_id = #{memberId}
+	</select>
+	
+	<select id="getOrderTrackingList" parameterType="long" resultType="OrdersTrackingVO">
+select S.name storeName , I.name itemName , I.price price , D.quantity quantity , O.id orderId ,
+D.quantity*I.price totalPrice , M.name memberName , O.payment_date paymentDate, D.detail_status detailStatus , O.status totalStatus,O.amount orderAmount
+,I.main_thumb_file_url itemImg
+from orders O, member M , orders_detail D , item I , store S
+where O.member_id = M.id
+and D.orders_id = O.id
+and I.id = D.item_id
+and S.id = I.store_id
+and D.orders_id = #{id}
+	</select>
+	
+	<update id="changeQuantity" parameterType="CartChangeQuantityVO">
+	update cart set quantity=#{currentQuantity}
+where 
+item_id=#{currentItemId} and 
+member_id = #{currentMemberId}
+	
+	</update>
+	
+	<delete id="deleteQuantity" parameterType="DeleteQuantityVO">
+	delete from cart 
+where item_id = #{itemId} and member_id = #{memberId}
+	</delete>
+	
+		<select id="getFirstOrder" parameterType="Long" resultType="OrdersTrackingVO">
+	<![CDATA[
+	select S.name storeName , I.name itemName , I.price price , D.quantity quantity , O.id orderId ,
+D.quantity*I.price totalPrice , M.name memberName , O.payment_date paymentDate, D.detail_status detailStatus , O.status totalStatus,
+O.amount orderAmount ,I.main_thumb_file_url itemImg
+from orders O, member M , orders_detail D , item I , store S
+where O.member_id = M.id
+and D.orders_id = O.id
+and I.id = D.item_id
+and S.id = I.store_id
+and O.id = 
+(select id
+from
+(select id from orders
+where  member_id = #{id}
+order by id desc)
+where rownum<=1) 
+and O.member_id=#{id}
+order by D.orders_id desc
+]]>
+	</select>
+
+
+</mapper>

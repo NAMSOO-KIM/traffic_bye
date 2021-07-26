@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.MemberDAO">
+	<select id="checkPhoneDuplicate" parameterType="String" resultType="int">
+		select count(*) from member where auth_phone = #{authPhone}
+	</select>
+	
+	<select id="checkKakaoDuplicate" parameterType="long" resultType="int">
+		select count(*) from member where auth_id = #{authId}
+	</select>
+	
+	<select id="checkIdDuplicate" parameterType="String" resultType="int">
+		select count(*) from member where login_id = #{loginId}
+	</select>
+	
+	<insert id="memberRegister" parameterType="MemberVO">
+		insert into member values(member_id_seq.nextval, #{passport}, #{phone, jdbcType=NUMERIC}, #{name}, #{birth}, #{role}, #{authType}, #{authId, jdbcType=NUMERIC}, #{loginId}, #{password}, #{authPhone, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="login" parameterType="LoginInfo" resultType="int">
+		select count(*) from member where login_id = #{loginId} and password = #{password}
+	</select>
+	
+	<select id="getLoginInfo" parameterType="String" resultType="LoginInfo">
+		select info.id id, loginId, password, store.id storeId, info.name memberName, store.name storeName from (select login_id loginId, id, password, name from member where login_id = #{loginId}) info left join store on info.id = store.manager_id
+	</select>
+	
+	<select id="getRoleInfo" parameterType="String" resultType="String">
+		select role from member where login_id = #{loginId}
+	</select>
+
+	<select id="findIdByKakaoId" parameterType="Long" resultType="String">
+		select login_id loginId from member where auth_id = #{kakaoId}
+	</select>
+	
+	<select id="findIdByPhone" parameterType="String" resultType="String">
+		select login_id loginId from member where phone = #{authPhone}
+	</select>
+	
+	<update id="passwordChange" parameterType="LoginInfo">
+		update member set password = #{password} where login_id = #{loginId}
+	</update>
+
+	<!-- 추가 김남수 07.07 -->
+	<select id="findMember" parameterType="long" resultType="MemberVO">
+		select * from member where id = #{id}
+	</select>
+	
+	
+	<update id="updateMember" parameterType="updateMemberVO">
+		update member set name = #{name}, phone = #{phone}, passport = #{passport}, birth = #{birth}, password = #{changePassword} where id = #{id}
+	</update>
+	
+	<update id="deleteMember" parameterType="LoginInfo">
+		update member set login_id = null, auth_id = null, phone = null where id = #{id}
+	</update>
+	
+	<select id="getAuthId" parameterType="Long" resultType="Long">
+		select auth_id authId from member where id = #{id}
+	</select>
+	
+
+
+</mapper>

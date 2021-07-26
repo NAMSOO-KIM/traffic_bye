@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.ItemDAO">
+
+	
+	<select id="getItemList" resultType="ItemVO">
+	<![CDATA[
+		select s.name as store_name , it.*
+		from item it
+		inner join store s
+		on it.store_id = s.id
+		where it.deleted = 0
+	]]>
+	</select>
+	
+	<select id="getItemDetail" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from ITEM it
+		left join item_image im
+		on it.ID = im.ITEM_ID
+		where it.id = #{id}
+	]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="selectRelatedMap">
+		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="getRelatedItemList" parameterMap="selectRelatedMap" resultType="ItemVO">
+	<![CDATA[
+		
+		select s.name as store_name, A.*
+		FROM 
+		(
+		    select *
+		    from item
+		    where category_id = #{category_id} and id != #{id} and deleted = 0
+    	)A
+		inner join store s
+		on s.id = A.store_id
+
+	]]>
+	</select>
+	
+	<select id="getMainCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	)
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		where A.deleted = 0
+		
+	]]>
+	</select>
+	
+	<select id="getItem" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from ITEM
+		where id = #{id} and deleted = 0
+	]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="isRelatedMap">
+		<parameter property="category_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="id" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="isRelatedItem" parameterMap="isRelatedMap" resultType="int">
+	<![CDATA[
+		
+		select count(*)
+		from item
+		where category_id = #{category_id} and id != #{id} and deleted = 0 
+
+	]]>
+	</select>
+	
+
+	<select id="getItemFromStore" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from item
+		where store_id = #{store_id} and deleted = 0 
+	]]>
+	</select>
+
+	<select id="getMediumCategoryItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where it.category_id = #{category_id} and it.deleted = 0
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		
+	]]>
+	</select>
+	
+	
+
+	<insert id="addItem" parameterType="ItemAddVO">
+		insert into item(id, category_id, name, stock, price, detail, store_id, repre_file, thumb_file_url, repre_file_size, repre_file_url, main_thumb_file_url ) values(item_id_seq.nextval, #{midCategory}, #{name}, #{stock}, #{price}, #{detail}, #{storeId}, #{repreFile}, #{thumbFileURL, jdbcType = VARCHAR }, #{repreFileSize}, #{repreFileURL}, #{mainThumbFileURL} )	
+	
+		<selectKey keyProperty="id" resultType="Long" order="AFTER">
+			select item_id_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="addItemImages" parameterType="java.util.List">
+		<foreach collection="list" item="image" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+			 into item_image 
+			values (#{image.itemId}, #{image.uploadFileName}, #{image.realFileName}, #{image.originFileURL}, #{image.thumbFileURL}, #{image.fileSize})			
+		</foreach>
+	</insert>
+	
+	<select id="getMainCategoryNewItemList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		SELECT s.name as store_name , A.*
+		FROM (SELECT *
+    		from item it
+    		where category_id in 
+       		(
+        		select id
+        		from category
+        		where parent_id = #{parent_id}
+        	) and it.deleted = 0
+    		)A
+		INNER JOIN STORE s 
+		on s.id = A.store_id
+		order by A.id desc
+	]]>
+	</select>
+	
+	<select id="getItemDetailWithoutImage" resultType="ItemDetailVO" parameterType="Long">
+		select item.id id, item.name, stock, price, detail, repre_file repreFile, thumb_file_URL thumbFileURL, category.id categoryId, category.parent_id parentCategoryId, repre_file_size repreFileSize, repre_file_url repreFileURL 
+		from item 
+		join category 
+		on item.id = #{id} and item.category_id = category.id
+	</select>
+	
+	<select id="getImage" resultType="ImageVO" parameterType="Long">
+		select item_id itemId, upload_file_name uploadFileName, real_file_name realFileName, origin_file_url originFileURL, thumb_file_url thumbFileURL, file_size fileSize 
+		from item_image 
+		where item_id = #{id}
+	</select>
+	
+	<update id="updateItem" parameterType="ItemUpdateVO">
+		update 
+		item 
+		set
+		category_id = #{midCategory},
+		name = #{name},
+		stock = #{stock},
+		price = #{price},
+		detail = #{detail},
+		repre_file = case when #{repreFile, jdbcType=VARCHAR} is null then repre_file else #{repreFile, jdbcType=VARCHAR} end,
+		thumb_file_url = case when #{thumbFileURL, jdbcType=VARCHAR} is null then thumb_file_url else #{thumbFileURL, jdbcType=VARCHAR} end,
+		repre_file_size = case when #{repreFileSize, jdbcType=NUMERIC} is null then repre_file_size else #{repreFileSize, jdbcType=NUMERIC} end,
+		repre_file_url = case when #{repreFileURL, jdbcType=VARCHAR} is null then repre_file else #{repreFileURL, jdbcType=VARCHAR} end,
+		main_thumb_file_url = case when #{mainThumbFileURL, jdbcType=VARCHAR} is null then repre_file else #{mainThumbFileURL, jdbcType=VARCHAR} end
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteItemImages" parameterType="ImageDeleteVO">
+		delete from item_image where item_id = #{id} and 
+			real_file_name in 
+			<foreach collection="list" item="item" separator="," index="index" open="(" close=")">
+				#{item}
+			</foreach>
+	</delete>
+	
+	<select id="countItem" resultType="int">
+	<![CDATA[
+		select count(*)
+		from item it
+		inner join category c
+		on it.category_id = c.id 
+		where (c.id = #{id} or c.parent_id = #{id}) and (c.parent_id is not null) and it.deleted = 0
+	]]>
+	</select>
+	
+	<select id="countStoreItem" resultType="int">
+	<![CDATA[
+		select count(*)
+		from item it
+		inner join store c
+		on it.store_id = c.id 
+		where c.id = #{store_id}
+		and it.deleted = 0
+	]]>
+	</select>
+	
+	<select id="getPagingItem" resultType="ItemVO">
+	<![CDATA[
+	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM item
+						where deleted = 0
+						ORDER BY id DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+	]]>
+	</select>
+	
+	
+	<parameterMap type="java.util.HashMap" id="isPagingItemMap">
+		<parameter property="parent_id" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="start" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="end" jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	
+	<select id="getPagingItemList" parameterMap="isPagingItemMap" resultType="ItemVO">
+	
+	<![CDATA[
+		
+			SELECT * 
+				FROM (
+					SELECT ROWNUM RN, B.* 
+						FROM (
+								SELECT s.name as store_name , A.*
+				                FROM (SELECT *
+		    		            from item it
+		    		            where category_id in 
+		       		            (
+		                        select id
+		                        from category c
+		                        where (c.parent_id = #{parent_id} or c.id = #{parent_id})
+		                        ) and it.deleted = 0
+		                        )A
+		                        INNER JOIN STORE s 
+				                on s.id = A.store_id
+		                        where A.id is not null
+		                        ORDER BY A.id desc
+						) B
+		        	)
+			WHERE RN BETWEEN #{start} AND #{end}
+		
+	]]>
+	
+	</select>
+	
+	<select id="getPagingStoreItemList" parameterMap="isPagingItemMap" resultType="ItemVO">
+	
+	<![CDATA[
+		
+			SELECT * 
+				FROM (
+					SELECT ROWNUM RN, B.* 
+						FROM (
+								SELECT s.name as store_name , A.*
+				                FROM (SELECT *
+		    		            from item it
+		    		            where store_id = #{store_id}
+		    		            and it.deleted = 0
+		                        )A
+		                        INNER JOIN STORE s 
+				                on s.id = A.store_id
+		                        where A.id is not null
+		                        ORDER BY A.id desc
+						) B
+		        	)
+			WHERE RN BETWEEN #{start} AND #{end}
+		
+	]]>
+	
+	</select>
+	
+	<select id="getStoreItems" resultType="StoreItemVO" parameterType="Long">
+		select item.id id, item.name name, stock, price, store.id storeId, item.repre_file repreFile, item.thumb_file_url thumbFileURL, category.id categoryId, category.name category 
+		from store 
+		join item 
+		on store.id = #{storeId} and store.id = item.store_id join category on item.category_id = category.id where item.deleted = 0	
+	</select>
+	
+	<update id="deleteItem" parameterType="ItemDeleteVO">
+		update item set deleted = 1 where id = #{itemId} and store_id = #{storeId}
+	</update>
+	
+	<select id="getMainOutOfStockList" parameterType="long" resultType="ItemVO">
+	<![CDATA[
+		select *
+		from 
+		(
+		SELECT s.name as store_name , A.*
+				FROM (SELECT *
+		    		from item it
+		    		where category_id in 
+		       		(
+		        		select id
+		        		from category
+		        		where parent_id = #{parent_id}
+		        	) and it.deleted = 0
+		    		)A
+				INNER JOIN STORE s 
+				on s.id = A.store_id
+		        where A.stock <= 100
+		        order by A.stock ASC
+		)
+		where rownum <= 8
+		
+	]]>
+	</select>
+	
+	<select id="getFrequentSmartOrderItems" resultType="ItemVO">
+	<![CDATA[
+		SELECT * 
+		FROM (
+		    select s.name as store_name , it.*, A.cnt
+		    from item it
+		    inner join store s on it.store_id = s.id
+		    inner join (
+		                select item_id, count(*) as cnt
+		                from orders_detail 
+		                where detail_status = 3
+		                group by item_id
+		                )A 
+		
+		    on A.item_id = it.id
+		    where it.deleted = 0
+		    order by A.cnt desc
+		    )
+		where ROWNUM <= 8
+
+	]]>
+	</select>
+	
+	
+	<update id="updateStock" parameterType="OrdersDetailVO">
+		update item set stock = stock - #{quantity} where id = #{itemId} and stock >= #{quantity}
+	</update>
+</mapper>

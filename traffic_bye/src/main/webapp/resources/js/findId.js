@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+  $(document).ready(()=>{
+	$('#kakaoAuth').on('click',function(){
+		location.href="/app/member/findId/kakao";
+	});
+	$('#phoneAuth').on('click',function(){
+		location.href="/app/member/findId/phone";
+	});
+});

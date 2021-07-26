@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="traffic.bye.dao.StoreDAO">
+
+	
+	<select id="getStoreList" resultType="StoreVO">
+	<![CDATA[
+	
+		select *
+		from store 
+		
+	]]>
+	</select>
+	
+	<select id="getStore" parameterType="long" resultType="StoreVO">
+	<![CDATA[
+		select *
+		from store 
+		where id = #{id}
+	]]>
+	</select>
+	
+	<select id="getStoreCategories" parameterType="long" resultType="long">
+	<![CDATA[
+		select category_id
+		from item
+		where store_id = #{store_id} and deleted = 0
+		group by category_id
+	]]>
+	</select>
+	
+	<select id="getStoreStatus" parameterType="Long" resultType="StoreStatusVO">
+	<![CDATA[
+		select 
+		lv status, nvl(cnt,0) cnt
+		from
+		(select (level - 1) lv from dual connect by level <= 4) info1
+			left join
+		(select detail_status, count(detail_status) cnt
+		from 
+		store join orders_detail od on store.id = #{storeId} and store.id = od.store_id 
+		join orders on od.orders_id = orders.id
+		where substr(payment_date,0,5) = to_char(sysdate + (1/24) * 9, 'YY/MM')
+		group by detail_status) info2
+		on lv = detail_status
+		order by lv
+	]]>	
+	</select>
+	
+	<select id="getStoreDetail" parameterType="Long" resultType="StoreDetailVO">
+		select 
+			id, name, detail, contact, streaming_url streamingURL, capacity, thumb_file_url thumbFileURL, location, repre_file_size repreFileSize 
+		from store where id = #{id}
+	</select>
+	
+	<update id="updateStore" parameterType="StoreDetailVO">
+		update 
+		store 
+		set
+		name = #{name},
+		detail = #{detail},
+		contact = #{contact},
+		streaming_url = #{streamingURL},
+		capacity = #{capacity},
+		location = #{location},
+		repre_file = case when #{repreFile, jdbcType=VARCHAR} is null then repre_file else #{repreFile, jdbcType=VARCHAR} end,
+		thumb_file_url = case when #{thumbFileURL, jdbcType=VARCHAR} is null then thumb_file_url else #{thumbFileURL, jdbcType=VARCHAR} end,
+		repre_file_size = case when #{repreFileSize, jdbcType=NUMERIC} is null then repre_file_size else #{repreFileSize, jdbcType=NUMERIC} end,
+		repre_file_url = case when #{repreFileURL, jdbcType=VARCHAR} is null then repre_file else #{repreFileURL, jdbcType=VARCHAR} end
+		where id = #{id}
+	</update>
+</mapper>

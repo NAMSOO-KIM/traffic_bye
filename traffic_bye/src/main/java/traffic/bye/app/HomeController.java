@@ -2,6 +2,7 @@ package traffic.bye.app;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -12,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import traffic.bye.dao.SampleDAO;
+import traffic.bye.service.CategoryService;
+import traffic.bye.service.ItemService;
+import traffic.bye.vo.CategoryVO;
+import traffic.bye.vo.ItemVO;
 
 /**
  * Handles requests for the application home page.
@@ -22,8 +26,12 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+
 	@Autowired
-	SampleDAO sampleDAO;
+	private ItemService itemService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -31,19 +39,34 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		try {
-			System.out.println(sampleDAO.test());
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
 		
+		try {
+			// 스마트 오더 인기 제품
+			
+			// List<ItemVO> list = itemService.getItemList();
+			List<ItemVO> list = itemService.getFrequentSmartOrderItems();
+
+			// 대분류 카테고리 가져오기
+			List<CategoryVO> mainCategoryList = categoryService.getMainCategory();
+			
+			
+			
+			model.addAttribute("itemList",list);
+			model.addAttribute("mainCategoryList",mainCategoryList);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "index";
 	}
 	
 }
